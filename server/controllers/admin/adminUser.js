@@ -21,7 +21,7 @@ exports.adminSignIn = (req, res) => {
         jwt.sign(payload, authKey, { expiresIn: 3600 }, (err, token) => {
           res.json({
             success: true,
-            token: "Bearer " + token,
+            token: token,
           });
         });
       } else {

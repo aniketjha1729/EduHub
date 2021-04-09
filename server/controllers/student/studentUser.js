@@ -72,21 +72,22 @@ exports.studentSignUp = (req, res) => {
   }
 };
 
-exports.testAuth = (req, res) => {
-  res.status(200).json(req.auth);
+exports.getStudentById = (req, res, next, id) => {
+  User.findById(id).exec((err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        error: "No user found",
+      });
+    }
+    req.profile = user;
+    next();
+  });
 };
 
-exports.isSignedIn = exprssJwt({
-  secret: process.env.SECRET_STUDENT_AUTH_KEY,
-  userProperty: "auth",
-});
+exports.getStudent = (req, res) => {
+  return res.json(req.profile);
+};
 
-exports.isAuthenticated = (req, res, next) => {
-  let checker = req.profile && req.auth && req.profile._id == req.auth._id;
-  if (!checker) {
-    return res.status(403).json({
-      errors: "Access Denied",
-    });
-  }
-  next();
+exports.testStudentAuth = (req, res) => {
+  res.status(200).json(req.auth);
 };

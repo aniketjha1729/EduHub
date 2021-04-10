@@ -1,4 +1,3 @@
-const jwt = require("jsonwebtoken");
 const exprssJwt = require("express-jwt");
 
 exports.isSignedIn = exprssJwt({

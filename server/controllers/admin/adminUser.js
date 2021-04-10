@@ -19,7 +19,14 @@ exports.adminSignIn = (req, res) => {
       if (isMatch) {
         const payload = { id: adminUser.id, name: adminUser.email };
         jwt.sign(payload, authKey, { expiresIn: 3600 }, (err, token) => {
+          const { _id, name, email, isAdmin } = adminUser;
           res.json({
+            user: {
+              _id,
+              name,
+              email,
+              isAdmin,
+            },
             success: true,
             token: token,
           });
@@ -31,3 +38,5 @@ exports.adminSignIn = (req, res) => {
     });
   });
 };
+
+exports.isAdmin = (req, res) => {};

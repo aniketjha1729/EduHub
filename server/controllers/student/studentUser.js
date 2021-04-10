@@ -1,6 +1,5 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const exprssJwt = require("express-jwt");
 const {
   validateStudentsigninInput,
   validateStudentsignupInput,
@@ -24,15 +23,9 @@ exports.studentSignIn = (req, res) => {
               process.env.SECRET_STUDENT_AUTH_KEY
             );
             res.cookie("token", authToken, { expire: new Date() + 9999 });
-            const { _id, name, email, role } = studentUser;
             return res.json({
               authToken,
-              user: {
-                _id,
-                name,
-                email,
-                role,
-              },
+              user: studentUser,
             });
           } else {
             return res.status(400).json({ error: "Password does not match" });
@@ -86,8 +79,4 @@ exports.getStudentById = (req, res, next, id) => {
 
 exports.getStudent = (req, res) => {
   return res.json(req.profile);
-};
-
-exports.testStudentAuth = (req, res) => {
-  res.status(200).json(req.auth);
 };

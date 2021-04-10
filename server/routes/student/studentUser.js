@@ -3,7 +3,6 @@ const router = express.Router();
 const {
   studentSignIn,
   studentSignUp,
-  testStudentAuth,
   getStudentById,
   getStudent
 } = require("../../controllers/student/studentUser");

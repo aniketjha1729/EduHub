@@ -7,9 +7,9 @@ const {
   getStudent,
 } = require("../../controllers/student/studentUser");
 const {
-  isSignedIn,
-  isAuthenticated,
-  isVerifed,
+  isStudentSignedIn,
+  isStudentAuthenticated,
+  isStudentVerifed,
 } = require("../../controllers/auth");
 
 /*<===============================================================================================>*/
@@ -27,9 +27,9 @@ router.post("/signup", studentSignUp);
 
 router.get(
   "/testauth/:studentId",
-  isSignedIn,
-  isAuthenticated,
-  isVerifed,
+  isStudentSignedIn,
+  isStudentAuthenticated,
+  isStudentVerifed,
   getStudent
 );
 

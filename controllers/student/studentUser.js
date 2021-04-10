@@ -5,6 +5,7 @@ const {
   validateStudentsignupInput,
 } = require("../validation/studentUserValidation");
 const StudentUser = require("../../models/student/studentUserModel");
+const authKey = process.env.SECRET_STUDENT_AUTH_KEY;
 
 /*<==================================================================================================>*/
 
@@ -22,10 +23,10 @@ exports.studentSignIn = (req, res) => {
           if (isMatch) {
             const authToken = jwt.sign(
               { _id: studentUser._id },
-              process.env.SECRET_STUDENT_AUTH_KEY
+              authKey
             );
             res.cookie("token", authToken, { expire: new Date() + 9999 });
-            return res.json({
+            return res.status(200).json({
               authToken,
               user: studentUser,
             });

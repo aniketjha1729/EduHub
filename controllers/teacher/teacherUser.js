@@ -5,6 +5,7 @@ const {
   validateTeachersignupInput,
 } = require("../validation/teacherUserValidation");
 const TeacherUser = require("../../models/teacher/teacherUserModel");
+const authKey = process.env.SECRET_TEACHER_AUTH_KEY;
 
 /*<==================================================================================================>*/
 
@@ -20,10 +21,7 @@ exports.teacherSignIn = (req, res) => {
       } else {
         bcrypt.compare(password, teacherUser.password).then((isMatch) => {
           if (isMatch) {
-            const authToken = jwt.sign(
-              { _id: teacherUser._id },
-              process.env.SECRET_STUDENT_AUTH_KEY
-            );
+            const authToken = jwt.sign({ _id: teacherUser._id }, authKey);
             res.cookie("token", authToken, { expire: new Date() + 9999 });
 
             return res.json({
@@ -66,4 +64,20 @@ exports.teacherSignUp = (req, res) => {
       }
     });
   }
+};
+
+exports.getTeacherById = (req, res, next, id) => {
+  TeacherUser.findById(id).exec((err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        error: "No user found",
+      });
+    }
+    req.profile = user;
+    next();
+  });
+};
+
+exports.getTeacher = (req, res) => {
+  return res.json(req.profile);
 };

@@ -1,11 +1,13 @@
 const exprssJwt = require("express-jwt");
 
-exports.isSignedIn = exprssJwt({
+
+/*<============================Student=======================================>*/
+exports.isStudentSignedIn = exprssJwt({
   secret: process.env.SECRET_STUDENT_AUTH_KEY,
   userProperty: "auth",
 });
 
-exports.isAuthenticated = (req, res, next) => {
+exports.isStudentAuthenticated = (req, res, next) => {
   let checker = req.profile && req.auth && req.profile._id == req.auth._id;
   if (!checker) {
     return res.status(403).json({
@@ -15,8 +17,7 @@ exports.isAuthenticated = (req, res, next) => {
   next();
 };
 
-exports.isVerifed = (req, res, next) => {
-  console.log(req.profile.isVerified);
+exports.isStudentVerifed = (req, res, next) => {
   if (!req.profile.isVerified) {
     return res.status(403).json({
       error: "Not verifed",
@@ -24,3 +25,31 @@ exports.isVerifed = (req, res, next) => {
   }
   next();
 };
+/*=============================================================================*/
+
+
+/*<============================Teacher=======================================>*/
+exports.isTeacherSignedIn = exprssJwt({
+  secret: process.env.SECRET_TEACHER_AUTH_KEY,
+  userProperty: "auth",
+});
+
+exports.isTeacherAuthenticated = (req, res, next) => {
+  let checker = req.profile && req.auth && req.profile._id == req.auth._id;
+  if (!checker) {
+    return res.status(403).json({
+      error: "Access Denied",
+    });
+  }
+  next();
+};
+
+exports.isTeacherVerifed = (req, res, next) => {
+  if (!req.profile.isVerified) {
+    return res.status(403).json({
+      error: "Not verifed",
+    });
+  }
+  next();
+};
+/*=============================================================================*/

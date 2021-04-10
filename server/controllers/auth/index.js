@@ -15,3 +15,13 @@ exports.isAuthenticated = (req, res, next) => {
   }
   next();
 };
+
+exports.isVerifed = (req, res, next) => {
+  console.log(req.profile.isVerified);
+  if (!req.profile.isVerified) {
+    return res.status(403).json({
+      error: "Not verifed",
+    });
+  }
+  next();
+};

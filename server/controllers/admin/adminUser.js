@@ -4,6 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const authKey = process.env.SECRET_ADMIN_AUTH_KEY;
 
+/*<=================================================================================================>*/
+
 exports.adminSignIn = (req, res) => {
   const { errors, isValid } = validateAdminInput(req.body);
   if (!isValid) {

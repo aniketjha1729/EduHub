@@ -6,6 +6,8 @@ const {
 } = require("../validation/teacherUserValidation");
 const TeacherUser = require("../../models/teacher/teacherUserModel");
 
+/*<==================================================================================================>*/
+
 exports.teacherSignIn = (req, res) => {
   const { errors, isValid } = validateTeachersigninInput(req.body);
   if (!isValid) {

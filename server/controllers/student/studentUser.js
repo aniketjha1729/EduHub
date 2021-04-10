@@ -6,6 +6,8 @@ const {
 } = require("../validation/studentUserValidation");
 const StudentUser = require("../../models/student/studentUserModel");
 
+/*<==================================================================================================>*/
+
 exports.studentSignIn = (req, res) => {
   const { errors, isValid } = validateStudentsigninInput(req.body);
   if (!isValid) {
@@ -66,7 +68,7 @@ exports.studentSignUp = (req, res) => {
 };
 
 exports.getStudentById = (req, res, next, id) => {
-  User.findById(id).exec((err, user) => {
+  StudentUser.findById(id).exec((err, user) => {
     if (err || !user) {
       return res.status(400).json({
         error: "No user found",

@@ -23,8 +23,7 @@ exports.teacherSignIn = (req, res) => {
           if (isMatch) {
             const authToken = jwt.sign({ _id: teacherUser._id }, authKey);
             res.cookie("token", authToken, { expire: new Date() + 9999 });
-
-            return res.json({
+            return res.status(200).json({
               authToken,
               user: teacherUser,
             });
@@ -79,5 +78,11 @@ exports.getTeacherById = (req, res, next, id) => {
 };
 
 exports.getTeacher = (req, res) => {
-  return res.json(req.profile);
+  return res.status(200).json(req.profile);
+};
+
+exports.getAllTeacher = (req, res) => {
+  TeacherUser.find().then((teachers) => {
+    res.status(200).json(teachers);
+  });
 };

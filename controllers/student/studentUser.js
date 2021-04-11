@@ -21,10 +21,7 @@ exports.studentSignIn = (req, res) => {
       } else {
         bcrypt.compare(password, studentUser.password).then((isMatch) => {
           if (isMatch) {
-            const authToken = jwt.sign(
-              { _id: studentUser._id },
-              authKey
-            );
+            const authToken = jwt.sign({ _id: studentUser._id }, authKey);
             res.cookie("token", authToken, { expire: new Date() + 9999 });
             return res.status(200).json({
               authToken,
@@ -82,4 +79,10 @@ exports.getStudentById = (req, res, next, id) => {
 
 exports.getStudent = (req, res) => {
   return res.json(req.profile);
+};
+
+exports.getAllStudent = (req, res) => {
+  StudentUser.find().then((students) => {
+    res.status(200).json(students);
+  });
 };

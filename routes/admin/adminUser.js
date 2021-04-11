@@ -1,6 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const { adminSignIn, isAdmin } = require("../../controllers/admin/adminUser");
+const {
+  adminSignIn,
+  getAdminById,
+  getAdmin
+} = require("../../controllers/admin/adminUser");
+const {
+  isAdminSignedIn,
+  isAdminAuthenticated,
+  isAdmin,
+} = require("../../controllers/auth");
 
 /*<================================================================================================>*/
 
@@ -10,10 +19,15 @@ router.get("/test", (req, res) => {
   });
 });
 
-router.post("/signin", adminSignIn);
+router.param("adminId", getAdminById);
 
-router.get("/testadmin", isAdmin, (req, res) => {
-  res.status(200).json({ msg: "W" });
-});
+router.post("/signin", adminSignIn);
+router.get(
+  "/testauth/:adminId",
+  isAdminSignedIn,
+  isAdminAuthenticated,
+  isAdmin,
+  getAdmin
+);
 
 module.exports = router;

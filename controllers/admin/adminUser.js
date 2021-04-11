@@ -10,36 +10,42 @@ exports.adminSignIn = (req, res) => {
   const { errors, isValid } = validateAdminInput(req.body);
   if (!isValid) {
     return res.status(422).json(errors);
-  }
-  const { email, password } = req.body;
-  AdminUser.findOne({ email }).then((adminUser) => {
-    if (!adminUser) {
-      errors.email = "Admin Not found";
-      return res.status(404).json(errors);
-    }
-    bcrypt.compare(password, adminUser.password).then((isMatch) => {
-      if (isMatch) {
-        const payload = { id: adminUser.id, name: adminUser.email };
-        jwt.sign(payload, authKey, { expiresIn: 3600 }, (err, token) => {
-          const { _id, name, email, isAdmin } = adminUser;
-          res.json({
-            user: {
-              _id,
-              name,
-              email,
-              isAdmin,
-            },
-            success: true,
-            token: token,
-          });
-        });
+  } else {
+    const { email, password } = req.body;
+    AdminUser.findOne({ email }).then((adminUser) => {
+      if (!adminUser) {
+        res.status(404).json({ error: "User Not found" });
       } else {
-        errors.password = "Password does not match";
-        return res.status(400).json(errors);
+        bcrypt.compare(password, adminUser.password).then((isMatch) => {
+          if (isMatch) {
+            const authToken = jwt.sign({ _id: adminUser._id }, authKey);
+            res.cookie("token", authToken, { expire: new Date() + 9999 });
+            return res.status(200).json({
+              authToken,
+              user: adminUser,
+            });
+          } else {
+            return res.status(400).json({ error: "Password does not match" });
+          }
+        });
       }
     });
+  }
+};
+
+exports.getAdminById = (req, res, next, id) => {
+  AdminUser.findById(id).exec((err, user) => {
+    //console.log(user);
+    if (err || !user) {
+      return res.status(400).json({
+        error: "No user found",
+      });
+    }
+    req.profile = user;
+    next();
   });
 };
 
-
-exports.isAdmin = (req, res) => {};
+exports.getAdmin = (req, res) => {
+  return res.json(req.profile);
+};

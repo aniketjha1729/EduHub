@@ -12,8 +12,15 @@ const {
   isAdmin,
 } = require("../../controllers/auth");
 
-const { getAllTeacher } = require("../../controllers/teacher/teacherUser");
-const { getAllStudent } = require("../../controllers/student/studentUser");
+const {
+  getAllTeacher,
+  verifyTeacher,
+} = require("../../controllers/teacher/teacherUser");
+
+const {
+  getAllStudent,
+  verifyStudent,
+} = require("../../controllers/student/studentUser");
 
 /*<================================================================================================>*/
 
@@ -50,4 +57,21 @@ router.get(
   isAdmin,
   getAllStudent
 );
+
+router.put(
+  "/:adminId/verifyTeacher/:teacherId",
+  isAdminSignedIn,
+  isAdminAuthenticated,
+  isAdmin,
+  verifyTeacher
+);
+
+router.put(
+  "/:adminId/verifyStudent/:studentId",
+  isAdminSignedIn,
+  isAdminAuthenticated,
+  isAdmin,
+  verifyStudent
+);
+
 module.exports = router;

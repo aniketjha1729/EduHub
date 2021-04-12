@@ -12,24 +12,31 @@ exports.adminSignIn = (req, res) => {
     return res.status(422).json(errors);
   } else {
     const { email, password } = req.body;
-    AdminUser.findOne({ email }).then((adminUser) => {
-      if (!adminUser) {
-        res.status(404).json({ error: "User Not found" });
-      } else {
-        bcrypt.compare(password, adminUser.password).then((isMatch) => {
-          if (isMatch) {
-            const authToken = jwt.sign({ _id: adminUser._id }, authKey);
-            res.cookie("token", authToken, { expire: new Date() + 9999 });
-            return res.status(200).json({
-              authToken,
-              user: adminUser,
-            });
-          } else {
-            return res.status(400).json({ error: "Password does not match" });
-          }
-        });
-      }
-    });
+    AdminUser.findOne({ email })
+      .then((adminUser) => {
+        if (!adminUser) {
+          res.status(404).json({ error: "User Not found" });
+        } else {
+          bcrypt
+            .compare(password, adminUser.password)
+            .then((isMatch) => {
+              if (isMatch) {
+                const authToken = jwt.sign({ _id: adminUser._id }, authKey);
+                res.cookie("token", authToken, { expire: new Date() + 9999 });
+                return res.status(200).json({
+                  authToken,
+                  user: adminUser,
+                });
+              } else {
+                return res
+                  .status(400)
+                  .json({ error: "Password does not match" });
+              }
+            })
+            .catch((err) => console.log(err));
+        }
+      })
+      .catch((err) => console.log(err));
   }
 };
 
@@ -37,7 +44,7 @@ exports.getAdminById = (req, res, next, id) => {
   AdminUser.findById(id).exec((err, user) => {
     if (err || !user) {
       return res.status(400).json({
-        error: "No user found",
+        error: "Not an admin",
       });
     }
     req.profile = user;

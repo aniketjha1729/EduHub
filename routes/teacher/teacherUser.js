@@ -1,16 +1,12 @@
 const express = require("express");
 const router = express.Router();
+
 const {
   teacherSignIn,
   teacherSignUp,
-  getTeacherById,
-  getTeacher,
 } = require("../../controllers/teacher/teacherUser");
-const {
-  isTeacherSignedIn,
-  isTeacherAuthenticated,
-  isTeacherVerifed,
-} = require("../../controllers/auth");
+
+const { isTeacherAuth } = require("../../controllers/auth");
 
 /*<==================================================================================================>*/
 
@@ -20,17 +16,11 @@ router.get("/test", (req, res) => {
   });
 });
 
-router.param("teacherId", getTeacherById);
-
 router.post("/signin", teacherSignIn);
 router.post("/signup", teacherSignUp);
 
-router.get(
-  "/testauth/:teacherId",
-  isTeacherSignedIn,
-  isTeacherAuthenticated,
-  isTeacherVerifed,
-  getTeacher
-);
+router.get("/testauth", isTeacherAuth, (req, res) => {
+  res.status(200).json({ msg: "Teacher authenticated" });
+});
 
 module.exports = router;

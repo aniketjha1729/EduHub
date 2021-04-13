@@ -24,7 +24,15 @@ exports.teacherSignIn = (req, res) => {
             .compare(password, teacherUser.password)
             .then((isMatch) => {
               if (isMatch) {
-                const authToken = jwt.sign({ _id: teacherUser._id }, authKey);
+                const authToken = jwt.sign(
+                  {
+                    _id: teacherUser._id,
+                    name: teacherUser.name,
+                    email: teacherUser.email,
+                    isVerified: teacherUser.isVerified,
+                  },
+                  authKey
+                );
                 res.cookie("token", authToken, { expire: new Date() + 9999 });
                 return res.status(200).json({
                   authToken,
@@ -82,20 +90,14 @@ exports.getAllTeacher = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-exports.getTeacherById = (req, res, next, id) => {
-  TeacherUser.findById(id).exec((err, user) => {
-    if (err || !user) {
-      return res.status(400).json({
-        error: "No user found",
-      });
+exports.getTeacherById = (req, res) => {
+  TeacherUser.findById({_id: req.params.teacherId}).then((teacher)=>{
+    if(teacher){
+      res.status(200).json(teacher)
+    }else{
+      return res.status(404).json({err:"No teacher found"})
     }
-    req.profile = user;
-    next();
-  });
-};
-
-exports.getTeacher = (req, res) => {
-  return res.status(200).json(req.profile);
+  })
 };
 
 exports.verifyTeacher = (req, res) => {

@@ -24,7 +24,15 @@ exports.studentSignIn = (req, res) => {
             .compare(password, studentUser.password)
             .then((isMatch) => {
               if (isMatch) {
-                const authToken = jwt.sign({ _id: studentUser._id }, authKey);
+                const authToken = jwt.sign(
+                  {
+                    _id: studentUser._id,
+                    name: studentUser.name,
+                    email: studentUser.email,
+                    isVerified: studentUser.isVerified,
+                  },
+                  authKey
+                );
                 res.cookie("token", authToken, { expire: new Date() + 9999 });
                 return res.status(200).json({
                   authToken,
@@ -82,20 +90,14 @@ exports.getAllStudent = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-exports.getStudentById = (req, res, next, id) => {
-  StudentUser.findById(id).exec((err, user) => {
-    if (err || !user) {
-      return res.status(400).json({
-        error: "No user found",
-      });
+exports.getStudentById = (req, res) => {
+  StudentUser.findById({_id: req.params.studentId}).then((student)=>{
+    if(student){
+      res.status(200).json(student)
+    }else{
+      return res.status(404).json({err:"No student found"})
     }
-    req.profile = user;
-    next();
-  });
-};
-
-exports.getStudent = (req, res) => {
-  return res.json(req.profile);
+  })
 };
 
 exports.verifyStudent = (req, res) => {

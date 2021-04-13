@@ -21,8 +21,18 @@ exports.adminSignIn = (req, res) => {
             .compare(password, adminUser.password)
             .then((isMatch) => {
               if (isMatch) {
-                const authToken = jwt.sign({ _id: adminUser._id }, authKey);
-                res.cookie("token", authToken, { expire: new Date() + 9999 });
+                const authToken = jwt.sign(
+                  {
+                    _id: adminUser._id,
+                    isAdmin: adminUser.isAdmin,
+                    email: adminUser.email,
+                    name: adminUser.name,
+                  },
+                  authKey,
+                  {
+                    expiresIn: "48h",
+                  }
+                );
                 return res.status(200).json({
                   authToken,
                   user: adminUser,
@@ -40,18 +50,4 @@ exports.adminSignIn = (req, res) => {
   }
 };
 
-exports.getAdminById = (req, res, next, id) => {
-  AdminUser.findById(id).exec((err, user) => {
-    if (err || !user) {
-      return res.status(400).json({
-        error: "Not an admin",
-      });
-    }
-    req.profile = user;
-    next();
-  });
-};
 
-exports.getAdmin = (req, res) => {
-  return res.json(req.profile);
-};

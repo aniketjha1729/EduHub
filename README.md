@@ -30,7 +30,7 @@ A Social Network developed with MERN stack.
 5.  Now load the app
 
     ```javacript
-    localhost:300
+    localhost:3000
     ```
 
 6.  Enjoy!!

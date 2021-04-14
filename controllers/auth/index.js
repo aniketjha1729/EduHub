@@ -1,5 +1,7 @@
-const exprssJwt = require("express-jwt");
 const jwt = require("jsonwebtoken");
+const AdminUser = require("../../models/admin/adminUserModel");
+const StudentUser = require("../../models/student/studentUserModel");
+const TeacherUser = require("../../models/teacher/teacherUserModel");
 
 /*<============================Student=======================================>*/
 
@@ -7,16 +9,33 @@ exports.isStudentAuth = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     const onlyToken = token.slice(7, token.length);
-    jwt.verify(onlyToken, process.env.SECRET_STUDENT_AUTH_KEY, (err, decode) => {
-      if (err) {
-        return res.status(401).send({ message: "Invalid Token" });
+    jwt.verify(
+      onlyToken,
+      process.env.SECRET_STUDENT_AUTH_KEY,
+      (err, payload) => {
+        if (err) {
+          return res.status(401).send({ message: "Invalid Token" });
+        }
+        const { _id } = payload;
+        StudentUser.findById(_id)
+          .select("-password")
+          .then((userdata) => {
+            req.user = userdata;
+            next();
+          });
       }
-      req.user = decode;
-      next();
-      return;
-    });
+    );
   } else {
     return res.status(401).send({ message: "User not signed in." });
+  }
+};
+
+exports.isStudentVerified = (req, res, next) => {
+  console.log(req.user);
+  if (req.user && req.user.isVerified) {
+    return next();
+  } else {
+    return res.status(401).send({ message: "Student is yet to be verified" });
   }
 };
 
@@ -28,16 +47,33 @@ exports.isTeacherAuth = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     const onlyToken = token.slice(7, token.length);
-    jwt.verify(onlyToken, process.env.SECRET_TEACHER_AUTH_KEY, (err, decode) => {
-      if (err) {
-        return res.status(401).send({ message: "Invalid Token" });
+    jwt.verify(
+      onlyToken,
+      process.env.SECRET_TEACHER_AUTH_KEY,
+      (err, payload) => {
+        if (err) {
+          return res.status(401).send({ message: "Invalid Token" });
+        }
+        const { _id } = payload;
+        TeacherUser.findById(_id)
+          .select("-password")
+          .then((userdata) => {
+            req.user = userdata;
+            next();
+          });
       }
-      req.user = decode;
-      next();
-      return;
-    });
+    );
   } else {
     return res.status(401).send({ message: "User not signed in." });
+  }
+};
+
+exports.isTeacherVerified = (req, res, next) => {
+  console.log(req.user);
+  if (req.user && req.user.isVerified) {
+    return next();
+  } else {
+    return res.status(401).send({ message: "Teacher is yet to be verified" });
   }
 };
 
@@ -49,13 +85,17 @@ exports.isAdminAuth = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     const onlyToken = token.slice(7, token.length);
-    jwt.verify(onlyToken, process.env.SECRET_ADMIN_AUTH_KEY, (err, decode) => {
+    jwt.verify(onlyToken, process.env.SECRET_ADMIN_AUTH_KEY, (err, payload) => {
       if (err) {
         return res.status(401).send({ message: "Invalid Token" });
       }
-      req.user = decode;
-      next();
-      return;
+      const { _id } = payload;
+      AdminUser.findById(_id)
+        .select("-password")
+        .then((userdata) => {
+          req.user = userdata;
+          next();
+        });
     });
   } else {
     return res.status(401).send({ message: "User not signed in." });
@@ -63,6 +103,7 @@ exports.isAdminAuth = (req, res, next) => {
 };
 
 exports.isAdmin = (req, res, next) => {
+  console.log(req.user);
   if (req.user && req.user.isAdmin) {
     return next();
   }

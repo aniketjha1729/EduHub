@@ -11,7 +11,7 @@ A Social Network developed with MERN stack.
 ## Steps to init project
 
 1.  First install all dependencies with npm:
-    `npm install` in the root directory && `npm install in the client directory.
+    `npm install` in the root directory && `npm install` in the client directory.
 2.  Open mongodb, and the server.
 3.  Create a `.env` file and insert the following code. Replace values with yours!!
 
@@ -23,9 +23,9 @@ A Social Network developed with MERN stack.
     ```
 
 4.  Start the server for backend and forntend
-    ### forbackend
+    ### For backend
     `npm start` in the root directory
-    ### for frontend
+    ### For frontend
     Go to the client directory and run the command `npm start`
 5.  Now load the app
 

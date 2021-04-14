@@ -27,9 +27,6 @@ exports.teacherSignIn = (req, res) => {
                 const authToken = jwt.sign(
                   {
                     _id: teacherUser._id,
-                    name: teacherUser.name,
-                    email: teacherUser.email,
-                    isVerified: teacherUser.isVerified,
                   },
                   authKey
                 );

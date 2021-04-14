@@ -27,9 +27,6 @@ exports.studentSignIn = (req, res) => {
                 const authToken = jwt.sign(
                   {
                     _id: studentUser._id,
-                    name: studentUser.name,
-                    email: studentUser.email,
-                    isVerified: studentUser.isVerified,
                   },
                   authKey
                 );
@@ -91,13 +88,13 @@ exports.getAllStudent = (req, res) => {
 };
 
 exports.getStudentById = (req, res) => {
-  StudentUser.findById({_id: req.params.studentId}).then((student)=>{
-    if(student){
-      res.status(200).json(student)
-    }else{
-      return res.status(404).json({err:"No student found"})
+  StudentUser.findById({ _id: req.params.studentId }).then((student) => {
+    if (student) {
+      res.status(200).json(student);
+    } else {
+      return res.status(404).json({ err: "No student found" });
     }
-  })
+  });
 };
 
 exports.verifyStudent = (req, res) => {

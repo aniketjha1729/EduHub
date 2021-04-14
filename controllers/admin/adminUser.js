@@ -24,9 +24,6 @@ exports.adminSignIn = (req, res) => {
                 const authToken = jwt.sign(
                   {
                     _id: adminUser._id,
-                    isAdmin: adminUser.isAdmin,
-                    email: adminUser.email,
-                    name: adminUser.name,
                   },
                   authKey,
                   {

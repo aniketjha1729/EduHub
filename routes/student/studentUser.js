@@ -6,7 +6,7 @@ const {
   studentSignUp,
 } = require("../../controllers/student/studentUser");
 
-const { isStudentAuth } = require("../../controllers/auth");
+const { isStudentAuth, isStudentVerified } = require("../../controllers/auth");
 
 /*<===============================================================================================>*/
 
@@ -19,7 +19,7 @@ router.get("/test", (req, res) => {
 router.post("/signin", studentSignIn);
 router.post("/signup", studentSignUp);
 
-router.get("/testauth", isStudentAuth, (req, res) => {
+router.get("/testauth", isStudentAuth, isStudentVerified, (req, res) => {
   res.status(200).json({ msg: "Student Authenticated" });
 });
 

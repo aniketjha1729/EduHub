@@ -3,7 +3,7 @@ const AdminUser = require("../../models/admin/adminUserModel");
 const StudentUser = require("../../models/student/studentUserModel");
 const TeacherUser = require("../../models/teacher/teacherUserModel");
 
-/*<============================Student=======================================>*/
+/*<=====================================Student====================================================>*/
 
 exports.isStudentAuth = (req, res, next) => {
   const token = req.headers.authorization;
@@ -39,9 +39,9 @@ exports.isStudentVerified = (req, res, next) => {
   }
 };
 
-/*<=============================================================================>*/
+/*<================================================================================================>*/
 
-/*<==============================Teacher========================================>*/
+/*<====================================Teacher=====================================================>*/
 
 exports.isTeacherAuth = (req, res, next) => {
   const token = req.headers.authorization;
@@ -77,9 +77,9 @@ exports.isTeacherVerified = (req, res, next) => {
   }
 };
 
-/*<=============================================================================>*/
+/*<================================================================================================>*/
 
-/*<==============================Admin==========================================>*/
+/*<=====================================Admin======================================================>*/
 
 exports.isAdminAuth = (req, res, next) => {
   const token = req.headers.authorization;
@@ -109,3 +109,5 @@ exports.isAdmin = (req, res, next) => {
   }
   return res.status(401).send({ message: "Admin Token is not valid." });
 };
+
+/*<================================================================================================>*/

@@ -1,7 +1,11 @@
 const { validateAdminInput } = require("../validation/adminUserValidation");
 const AdminUser = require("../../models/admin/adminUserModel");
+const Notification = require("../../models/notice/noticeModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const formidable = require("formidable");
+const _ = require("lodash");
+const fs = require("fs");
 const authKey = process.env.SECRET_ADMIN_AUTH_KEY;
 
 /*<=================================================================================================>*/
@@ -45,4 +49,42 @@ exports.adminSignIn = (req, res) => {
       })
       .catch((err) => console.log(err));
   }
+};
+
+exports.createMainNotifcation = (req, res) => {
+  let form = new formidable.IncomingForm();
+  form.keepExtensions = true;
+  form.parse(req, (err, fields, file) => {
+    if (err) {
+      return res.status(400).json({
+        errors: "Problem with file",
+      });
+    }
+    //destructing fileds:
+    const { content } = fields;
+    if (!content) {
+      return res.status(400).json({
+        errors: "Please inlcude all fileds",
+      });
+    }
+    let notification = new Notification(fields);
+    if (file.document) {
+      if (file.document.size > 300000) {
+        return res.status(400).json({
+          errors: "file is to big",
+        });
+      }
+      notification.document.data = fs.readFileSync(file.document.path);
+      notification.document.contentType = file.document.type;
+    }
+    //console.log(product)
+    notification.save((err, notification) => {
+      if (err) {
+        return res.status(400).json({
+          errors: "saving failed",
+        });
+      }
+      res.json(notification);
+    });
+  });
 };

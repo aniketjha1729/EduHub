@@ -4,7 +4,7 @@ import axios from "axios";
 function App() {
   const myf1 = () => {
     axios
-      .get("http://localhost:5000/test")
+      .get("http://localhost:5000/admin/test")
       .then((response) => console.log(response.data));
   };
   return (

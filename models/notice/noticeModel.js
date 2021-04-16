@@ -13,7 +13,6 @@ const NoticeSchema = new Schema({
   },
   isVerified: {
     type: Boolean,
-    default: false,
   },
   date: {
     type: Date,

@@ -51,7 +51,7 @@ exports.adminSignIn = (req, res) => {
   }
 };
 
-exports.createMainNotifcation = (req, res) => {
+exports.createNotifcation = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
   form.parse(req, (err, fields, file) => {
@@ -75,6 +75,7 @@ exports.createMainNotifcation = (req, res) => {
       }
       notification.document.data = fs.readFileSync(file.document.path);
       notification.document.contentType = file.document.type;
+      notification.isVerified = true;
     }
     notification.save((err, notification) => {
       if (err) {

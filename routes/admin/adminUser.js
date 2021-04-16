@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {
   adminSignIn,
-  createMainNotifcation,
+  createNotifcation,
 } = require("../../controllers/admin/adminUser");
 
 const { isAdmin, isAdminAuth } = require("../../controllers/auth");
@@ -44,6 +44,6 @@ router.get("/student/:studentId", isAdminAuth, isAdmin, getStudentById);
 router.put("/verifyTeacher/:teacherId", isAdminAuth, isAdmin, verifyTeacher);
 router.put("/verifyStudent/:studentId", isAdminAuth, isAdmin, verifyStudent);
 
-router.post("/createnotification", isAdminAuth, isAdmin, createMainNotifcation);
+router.post("/createnotification", isAdminAuth, isAdmin, createNotifcation);
 
 module.exports = router;

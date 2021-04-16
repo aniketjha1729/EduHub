@@ -4,7 +4,8 @@ const router = express.Router();
 const {
   studentSignIn,
   studentSignUp,
-  getAllNotification
+  getAllNotification,
+  createNotifcation,
 } = require("../../controllers/student/studentUser");
 
 const { isStudentAuth, isStudentVerified } = require("../../controllers/auth");
@@ -24,6 +25,17 @@ router.get("/testauth", isStudentAuth, isStudentVerified, (req, res) => {
   res.status(200).json({ msg: "Student Authenticated" });
 });
 
-router.get("/notifications",isStudentAuth, isStudentVerified,getAllNotification);
+router.get(
+  "/notifications",
+  isStudentAuth,
+  isStudentVerified,
+  getAllNotification
+);
+router.post(
+  "/createnotification",
+  isStudentAuth,
+  isStudentVerified,
+  createNotifcation
+);
 
 module.exports = router;

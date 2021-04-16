@@ -31,7 +31,6 @@ exports.isStudentAuth = (req, res, next) => {
 };
 
 exports.isStudentVerified = (req, res, next) => {
-  console.log(req.user);
   if (req.user && req.user.isVerified) {
     return next();
   } else {
@@ -103,7 +102,6 @@ exports.isAdminAuth = (req, res, next) => {
 };
 
 exports.isAdmin = (req, res, next) => {
-  console.log(req.user);
   if (req.user && req.user.isAdmin) {
     return next();
   }

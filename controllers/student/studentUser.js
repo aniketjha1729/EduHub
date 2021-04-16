@@ -6,6 +6,9 @@ const {
 } = require("../validation/studentUserValidation");
 const StudentUser = require("../../models/student/studentUserModel");
 const Notification = require("../../models/notice/noticeModel");
+const formidable = require("formidable");
+const _ = require("lodash");
+const fs = require("fs");
 const authKey = process.env.SECRET_STUDENT_AUTH_KEY;
 
 /*<==================================================================================================>*/
@@ -132,4 +135,41 @@ exports.getAllNotification = (req, res) => {
       });
       res.status(200).json(data);
     });
+};
+
+exports.createNotifcation = (req, res) => {
+  let form = new formidable.IncomingForm();
+  form.keepExtensions = true;
+  form.parse(req, (err, fields, file) => {
+    if (err) {
+      return res.status(400).json({
+        errors: "Problem with file",
+      });
+    }
+    const { content } = fields;
+    if (!content) {
+      return res.status(400).json({
+        errors: "Please inlcude all fileds",
+      });
+    }
+    let notification = new Notification(fields);
+    if (file.document) {
+      if (file.document.size > 300000) {
+        return res.status(400).json({
+          errors: "file is to big",
+        });
+      }
+      notification.document.data = fs.readFileSync(file.document.path);
+      notification.document.contentType = file.document.type;
+      notification.isVerified = false;
+    }
+    notification.save((err, notification) => {
+      if (err) {
+        return res.status(400).json({
+          errors: "saving failed",
+        });
+      }
+      res.json(notification);
+    });
+  });
 };

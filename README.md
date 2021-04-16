@@ -6,7 +6,7 @@ A Social Network developed with MERN stack.
 
 1. nodeJS >=14.15.4
 2. npm >=6.14.10
-3. mongdb
+3. mongodb
 
 ## Steps to init project
 

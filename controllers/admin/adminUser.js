@@ -60,7 +60,6 @@ exports.createMainNotifcation = (req, res) => {
         errors: "Problem with file",
       });
     }
-    //destructing fileds:
     const { content } = fields;
     if (!content) {
       return res.status(400).json({
@@ -77,7 +76,6 @@ exports.createMainNotifcation = (req, res) => {
       notification.document.data = fs.readFileSync(file.document.path);
       notification.document.contentType = file.document.type;
     }
-    //console.log(product)
     notification.save((err, notification) => {
       if (err) {
         return res.status(400).json({

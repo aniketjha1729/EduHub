@@ -5,6 +5,7 @@ const {
   validateStudentsignupInput,
 } = require("../validation/studentUserValidation");
 const StudentUser = require("../../models/student/studentUserModel");
+const Notification = require("../../models/notice/noticeModel");
 const authKey = process.env.SECRET_STUDENT_AUTH_KEY;
 
 /*<==================================================================================================>*/
@@ -36,9 +37,7 @@ exports.studentSignIn = (req, res) => {
                   user: studentUser,
                 });
               } else {
-                return res
-                  .status(400)
-                  .json({ error: "Password does not match" });
+                return res.status(400).json({ error: "Password do not match" });
               }
             })
             .catch((err) => console.log(err));
@@ -116,4 +115,21 @@ exports.verifyStudent = (req, res) => {
       }
     })
     .catch((err) => console.log(err));
+};
+
+exports.getAllNotification = (req, res) => {
+  let data = [];
+  Notification.find()
+    .select("-document")
+    .then((notifcations) => {
+      if (!notifcations) {
+        return res.status(404).json({ message: "No notice found" });
+      }
+      notifcations.map((notifcation) => {
+        if (notifcation.isVerified) {
+          data.push(notifcation);
+        }
+      });
+      res.status(200).json(data);
+    });
 };

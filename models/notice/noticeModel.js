@@ -20,4 +20,4 @@ const NoticeSchema = new Schema({
   },
 });
 
-module.exports = User = mongoose.model("notifications", NoticeSchema);
+module.exports = User = mongoose.model("notices", NoticeSchema);

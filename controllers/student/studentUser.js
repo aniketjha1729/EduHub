@@ -5,10 +5,6 @@ const {
   validateStudentsignupInput,
 } = require("../validation/studentUserValidation");
 const StudentUser = require("../../models/student/studentUserModel");
-const Notification = require("../../models/notice/noticeModel");
-const formidable = require("formidable");
-const _ = require("lodash");
-const fs = require("fs");
 const authKey = process.env.SECRET_STUDENT_AUTH_KEY;
 
 /*<==================================================================================================>*/
@@ -79,97 +75,4 @@ exports.studentSignUp = (req, res) => {
       })
       .catch((err) => console.log(err));
   }
-};
-
-exports.getAllStudent = (req, res) => {
-  StudentUser.find()
-    .then((students) => {
-      res.status(200).json(students);
-    })
-    .catch((err) => console.log(err));
-};
-
-exports.getStudentById = (req, res) => {
-  StudentUser.findById({ _id: req.params.studentId }).then((student) => {
-    if (student) {
-      res.status(200).json(student);
-    } else {
-      return res.status(404).json({ err: "No student found" });
-    }
-  });
-};
-
-exports.verifyStudent = (req, res) => {
-  StudentUser.findById({ _id: req.params.studentId })
-    .then((student) => {
-      if (!student) {
-        return res.status(404).json({
-          error: "No student found",
-        });
-      } else {
-        const { verify } = req.body;
-        student.isVerified = verify;
-        student
-          .save()
-          .then((updatedStudent) => {
-            res.status(200).json(updatedStudent);
-          })
-          .catch((err) => console.log(err));
-      }
-    })
-    .catch((err) => console.log(err));
-};
-
-exports.getAllNotification = (req, res) => {
-  let data = [];
-  Notification.find({}, {}, { sort: { date: -1 } })
-    .select("-document")
-    .then((notifcations) => {
-      if (!notifcations) {
-        return res.status(404).json({ message: "No notice found" });
-      }
-      notifcations.map((notifcation) => {
-        if (notifcation.isVerified) {
-          data.push(notifcation);
-        }
-      });
-      res.status(200).json(data);
-    });
-};
-
-exports.createNotifcation = (req, res) => {
-  let form = new formidable.IncomingForm();
-  form.keepExtensions = true;
-  form.parse(req, (err, fields, file) => {
-    if (err) {
-      return res.status(400).json({
-        errors: "Problem with file",
-      });
-    }
-    const { content } = fields;
-    if (!content) {
-      return res.status(400).json({
-        errors: "Please inlcude all fileds",
-      });
-    }
-    let notification = new Notification(fields);
-    if (file.document) {
-      if (file.document.size > 300000) {
-        return res.status(400).json({
-          errors: "file is to big",
-        });
-      }
-      notification.document.data = fs.readFileSync(file.document.path);
-      notification.document.contentType = file.document.type;
-      notification.isVerified = false;
-    }
-    notification.save((err, notification) => {
-      if (err) {
-        return res.status(400).json({
-          errors: "saving failed",
-        });
-      }
-      res.json(notification);
-    });
-  });
 };

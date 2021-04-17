@@ -68,7 +68,6 @@ exports.isTeacherAuth = (req, res, next) => {
 };
 
 exports.isTeacherVerified = (req, res, next) => {
-  console.log(req.user);
   if (req.user && req.user.isVerified) {
     return next();
   } else {

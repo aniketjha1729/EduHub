@@ -87,3 +87,32 @@ exports.createNotifcation = (req, res) => {
     });
   });
 };
+
+TODO: exports.getAllNotification = (req, res) => {
+  Notification.find({}, {}, { sort: { date: -1 } })
+    .select("-document")
+    .then((notifications) => {
+      if (!notifications) {
+        return res.status(404).json({ message: "No notification found" });
+      }
+      return res.status(200).json(notifications);
+    });
+};
+
+exports.verifyNotification = (req, res) => {
+  Notification.findById({ _id: req.params.notificationId })
+    .then((notification) => {
+      if (!notification) {
+        return res.status(404).json({ message: "No notification found" });
+      }
+      const { verify } = req.body;
+      notification.isVerified = verify;
+      notification
+        .save()
+        .then((updatedNotification) => {
+          res.status(200).json(updatedNotification);
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+};

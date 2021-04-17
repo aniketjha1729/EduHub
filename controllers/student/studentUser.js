@@ -122,7 +122,7 @@ exports.verifyStudent = (req, res) => {
 
 exports.getAllNotification = (req, res) => {
   let data = [];
-  Notification.find()
+  Notification.find({}, {}, { sort: { date: -1 } })
     .select("-document")
     .then((notifcations) => {
       if (!notifcations) {

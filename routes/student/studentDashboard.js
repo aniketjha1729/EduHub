@@ -14,12 +14,7 @@ router.get("/testauth", isStudentAuth, isStudentVerified, (req, res) => {
   res.status(200).json({ msg: "Student Authenticated" });
 });
 
-router.get(
-  "/notifications",
-  isStudentAuth,
-  isStudentVerified,
-  getAllNotices
-);
+router.get("/notifications", isStudentAuth, isStudentVerified, getAllNotices);
 router.post(
   "/createnotification",
   isStudentAuth,

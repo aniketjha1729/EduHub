@@ -5,7 +5,7 @@ const {
   getAllNotices,
   verifyNotice,
   verifyStudent,
-  verifyTeacher
+  verifyTeacher,
 } = require("../../controllers/admin/adminDashboard");
 
 const { isAdmin, isAdminAuth } = require("../../controllers/auth");
@@ -19,7 +19,6 @@ const {
   getAllStudent,
   getStudentById,
 } = require("../../controllers/student/studentDashboard");
-
 
 /*<======================================================================================================>*/
 

@@ -7,7 +7,6 @@ const { isTeacherAuth, isTeacherVerified } = require("../../controllers/auth");
 
 /*<=======================================================================================================>*/
 
-
 router.get("/testauth", isTeacherAuth, isTeacherVerified, (req, res) => {
   res.status(200).json({ msg: "Teacher authenticated" });
 });

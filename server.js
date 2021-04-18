@@ -31,12 +31,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use("/admin", adminUserRoutes);
-app.use("/admin", adminDashboardRoutes);
-app.use("/student", studentUserRoutes);
-app.use("/student", studentDashboardRoutes);
-app.use("/teacher", teacherUserRoutes);
-app.use("/teacher", teacherDashboardRoutes);
+app.use("/admin", adminUserRoutes,adminDashboardRoutes);
+app.use("/student", studentUserRoutes,studentDashboardRoutes);
+app.use("/teacher", teacherUserRoutes,teacherDashboardRoutes);
 
 app.listen(PORT, () => {
   console.log("Server is running on", PORT);

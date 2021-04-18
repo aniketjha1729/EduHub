@@ -1,8 +1,8 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "EduHub",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },

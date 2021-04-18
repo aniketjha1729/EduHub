@@ -76,4 +76,3 @@ exports.getAllNotices = (req, res) => {
       res.status(200).json(data);
     });
 };
-

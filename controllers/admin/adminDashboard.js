@@ -4,7 +4,6 @@ const TeacherUser = require("../../models/teacher/teacherUserModel");
 const formidable = require("formidable");
 const fs = require("fs");
 
-
 /*<=================================================================================================>*/
 exports.verifyStudent = (req, res) => {
   StudentUser.findById({ _id: req.params.studentId })
@@ -85,8 +84,8 @@ exports.createNotice = (req, res) => {
   });
 };
 
-TODO: // remove .select("-document") 
-exports.getAllNotices = (req, res) => {
+// remove .select("-document")
+TODO: exports.getAllNotices = (req, res) => {
   Notice.find({}, {}, { sort: { date: -1 } })
     .select("-document")
     .then((notices) => {

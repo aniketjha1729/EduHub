@@ -67,7 +67,8 @@ exports.createNotice = (req, res) => {
   });
 };
 
-exports.getAllNotices = (req, res) => {
+//add document
+TODO: exports.getAllNotices = (req, res) => {
   let data = [];
   Notice.find({}, {}, { sort: { date: -1 } })
     .select("-document")
@@ -121,11 +122,24 @@ exports.createPost = (req, res) => {
   });
 };
 
-exports.getAllPost = (req, res) => {
+//add document
+TODO: exports.getAllPost = (req, res) => {
   Post.find()
     .select("-document")
     .populate("postedBy")
     .then((posts) => {
       res.status(200).json(posts);
+    });
+};
+
+//add document
+TODO: exports.getPostById = (req, res) => {
+  Post.findById({ _id: req.params.postId })
+    .select("-document")
+    .then((post) => {
+      if (!post) {
+        res.status(404).json({ message: "no post found" });
+      }
+      res.status(200).json(post);
     });
 };

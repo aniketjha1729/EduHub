@@ -25,6 +25,15 @@ exports.verifyUser = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+exports.deleteUser = (req, res) => {
+  User.findOne({ _id: req.params.userId }).then((user) => {
+    if (!user) {
+      return res.status(404).json({ message: "No user found" });
+    }
+    user.remove().then(() => res.status(200).json({ success: true }));
+  });
+};
+
 exports.createNotice = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
@@ -78,6 +87,15 @@ exports.verifyNotice = (req, res) => {
         .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
+};
+
+exports.deleteNotice = (req, res) => {
+  Notice.findOne({ _id: req.params.noticeId }).then((notice) => {
+    if (!notice) {
+      return res.status(404).json({ message: "No notice found" });
+    }
+    notice.remove().then(() => res.status(200).json({ success: true }));
+  });
 };
 
 // remove .select("-document")

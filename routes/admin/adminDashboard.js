@@ -5,6 +5,8 @@ const {
   getAllNotices,
   verifyNotice,
   verifyUser,
+  deleteNotice,
+  deleteUser,
 } = require("../../controllers/admin/adminDashboard");
 
 const { getAllUsers } = require("../../controllers/user/userDashboard");
@@ -21,9 +23,13 @@ router.get("/testauth", isAdminAuth, isAdmin, (req, res) => {
 
 router.put("/verify/:userId", isAdminAuth, isAdmin, verifyUser);
 
+router.delete("/deleteUser/:userId", isAdminAuth, isAdmin, deleteUser);
+
 router.post("/createnotice", isAdminAuth, isAdmin, createNotice);
 
 router.put("/verifynotice/:noticeId", isAdminAuth, isAdmin, verifyNotice);
+
+router.delete("/deletenotice/:noticeId", isAdminAuth, isAdmin, deleteNotice);
 
 router.get("/notices", isAdminAuth, isAdmin, getAllNotices);
 

@@ -122,7 +122,10 @@ exports.createPost = (req, res) => {
 };
 
 exports.getAllPost = (req, res) => {
-  Post.find().then((posts) => {
-    res.status(200).json(posts);
-  });
+  Post.find()
+    .select("-document")
+    .populate("postedBy")
+    .then((posts) => {
+      res.status(200).json(posts);
+    });
 };

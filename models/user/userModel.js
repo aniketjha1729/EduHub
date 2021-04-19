@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const UserSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     required: true,
@@ -13,11 +17,11 @@ const UserSchema = new Schema({
   },
   isVerified: {
     type: Boolean,
-    default: false,
+    default:false
   },
-  isAdmin: {
-    type: Boolean,
-    default: false,
+  role: {
+    type: String,
+    required: true,
   },
   date: {
     type: Date,
@@ -25,4 +29,4 @@ const UserSchema = new Schema({
   },
 });
 
-module.exports = User = mongoose.model("teacherusers", UserSchema);
+module.exports = User = mongoose.model("users", UserSchema);

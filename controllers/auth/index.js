@@ -1,11 +1,10 @@
 const jwt = require("jsonwebtoken");
 const AdminUser = require("../../models/admin/adminUserModel");
-const StudentUser = require("../../models/student/studentUserModel");
-const TeacherUser = require("../../models/teacher/teacherUserModel");
+const User = require("../../models/user/userModel");
 
 /*<=====================================Student====================================================>*/
 
-exports.isStudentAuth = (req, res, next) => {
+exports.isUserAuth = (req, res, next) => {
   const token = req.headers.authorization;
   if (token) {
     const onlyToken = token.slice(7, token.length);
@@ -17,7 +16,7 @@ exports.isStudentAuth = (req, res, next) => {
           return res.status(401).send({ message: "Invalid Token" });
         }
         const { _id } = payload;
-        StudentUser.findById(_id)
+        User.findById(_id)
           .select("-password")
           .then((userdata) => {
             req.user = userdata;
@@ -30,54 +29,33 @@ exports.isStudentAuth = (req, res, next) => {
   }
 };
 
-exports.isStudentVerified = (req, res, next) => {
+exports.isVerified = (req, res, next) => {
+  if (!req.user || !req.user.isVerified) {
+    return res.status(401).json({ message: "User not verified by admin" });
+  }
+
   if (req.user && req.user.isVerified) {
     return next();
-  } else {
-    return res.status(401).send({ message: "Student is yet to be verified" });
   }
 };
 
-/*<================================================================================================>*/
-
-/*<====================================Teacher=====================================================>*/
-
-exports.isTeacherAuth = (req, res, next) => {
-  const token = req.headers.authorization;
-  if (token) {
-    const onlyToken = token.slice(7, token.length);
-    jwt.verify(
-      onlyToken,
-      process.env.SECRET_TEACHER_AUTH_KEY,
-      (err, payload) => {
-        if (err) {
-          return res.status(401).send({ message: "Invalid Token" });
-        }
-        const { _id } = payload;
-        TeacherUser.findById(_id)
-          .select("-password")
-          .then((userdata) => {
-            req.user = userdata;
-            next();
-          });
-      }
-    );
-  } else {
-    return res.status(401).send({ message: "User not signed in." });
+exports.isTeacher = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "Not athorized" });
   }
-};
-
-exports.isTeacherVerified = (req, res, next) => {
-  if (req.user && req.user.isVerified) {
+  if (req.user && req.user.role == "teacher") {
     return next();
-  } else {
-    return res.status(401).send({ message: "Teacher is yet to be verified" });
   }
 };
 
-/*<================================================================================================>*/
-
-/*<=====================================Admin======================================================>*/
+exports.isStudent = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({ message: "Not athorized" });
+  }
+  if (req.user && req.user.role == "student") {
+    return next();
+  }
+};
 
 exports.isAdminAuth = (req, res, next) => {
   const token = req.headers.authorization;

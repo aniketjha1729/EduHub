@@ -31,6 +31,7 @@ exports.validateStudentsignupInput = (data) => {
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.name = !isEmpty(data.name) ? data.name : "";
+  data.role = !isEmpty(data.role) ? data.role : "";
 
   if (Validator.isEmpty(data.email)) {
     errors.email = "Email field is required";
@@ -38,6 +39,10 @@ exports.validateStudentsignupInput = (data) => {
 
   if (!Validator.isEmail(data.email)) {
     errors.email = "Email is invalid";
+  }
+
+  if (Validator.isEmpty(data.role)) {
+    errors.role = "role is invalid";
   }
 
   if (Validator.isEmpty(data.name)) {

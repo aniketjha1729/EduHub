@@ -9,10 +9,9 @@ const PORT = process.env.PORT || 5000;
 
 const adminUserRoutes = require("./routes/admin/adminUser");
 const adminDashboardRoutes = require("./routes/admin/adminDashboard");
-const studentUserRoutes = require("./routes/student/studentUser");
-const studentDashboardRoutes = require("./routes/student/studentDashboard");
-const teacherUserRoutes = require("./routes/teacher/teacherUser");
-const teacherDashboardRoutes = require("./routes/teacher/teacherDashboard");
+const userRoutes = require("./routes/user/user");
+const userDashboardRoutes = require("./routes/user/userDashboard");
+
 
 const app = express();
 
@@ -32,8 +31,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use("/admin", adminUserRoutes,adminDashboardRoutes);
-app.use("/student", studentUserRoutes,studentDashboardRoutes);
-app.use("/teacher", teacherUserRoutes,teacherDashboardRoutes);
+app.use("/user", userRoutes,userDashboardRoutes);
 
 app.listen(PORT, () => {
   console.log("Server is running on", PORT);

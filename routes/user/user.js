@@ -2,19 +2,19 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  teacherSignIn,
-  teacherSignUp,
-} = require("../../controllers/teacher/teacherUser");
+  signIn,
+  signUp,
+} = require("../../controllers/user/user");
 
 /*<=======================================================================================================>*/
 
 router.get("/test", (req, res) => {
   res.status(200).json({
-    Message: "Teacher Routes Working",
+    Message: "Students Routes Working",
   });
 });
 
-router.post("/signin", teacherSignIn);
-router.post("/signup", teacherSignUp);
+router.post("/signin", signIn);
+router.post("/signup", signUp);
 
 module.exports = router;

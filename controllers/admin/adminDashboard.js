@@ -1,45 +1,23 @@
 const Notice = require("../../models/notice/noticeModel");
-const StudentUser = require("../../models/student/studentUserModel");
-const TeacherUser = require("../../models/teacher/teacherUserModel");
+const User = require("../../models/user/userModel");
 const formidable = require("formidable");
 const fs = require("fs");
 
 /*<=================================================================================================>*/
-exports.verifyStudent = (req, res) => {
-  StudentUser.findById({ _id: req.params.studentId })
-    .then((student) => {
-      if (!student) {
+exports.verifyUser = (req, res) => {
+  User.findById({ _id: req.params.userId })
+    .then((user) => {
+      if (!user) {
         return res.status(404).json({
-          error: "No student found",
+          error: "No user found",
         });
       } else {
         const { verify } = req.body;
-        student.isVerified = verify;
-        student
+        user.isVerified = verify;
+        user
           .save()
-          .then((updatedStudent) => {
-            res.status(200).json(updatedStudent);
-          })
-          .catch((err) => console.log(err));
-      }
-    })
-    .catch((err) => console.log(err));
-};
-
-exports.verifyTeacher = (req, res) => {
-  TeacherUser.findById({ _id: req.params.teacherId })
-    .then((teacher) => {
-      if (!teacher) {
-        return res.status(404).json({
-          error: "No teacher found",
-        });
-      } else {
-        const { verify } = req.body;
-        teacher.isVerified = verify;
-        teacher
-          .save()
-          .then((updatedTeacher) => {
-            res.status(200).json(updatedTeacher);
+          .then((updateduser) => {
+            res.status(200).json(updateduser);
           })
           .catch((err) => console.log(err));
       }

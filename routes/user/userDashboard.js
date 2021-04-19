@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {
   getAllNotices,
-  createStudentNotice,
+  createNotice,
 } = require("../../controllers/user/userDashboard");
 
 const { isUserAuth, isVerified, isStudent,isTeacher } = require("../../controllers/auth");
@@ -17,10 +17,10 @@ router.get("/testauth", isUserAuth, isVerified, (req, res) => {
 router.get("/notices", isUserAuth, isVerified, getAllNotices);
 
 router.post(
-  "/createStudentnotice",
+  "/createNotice",
   isUserAuth,
   isVerified,
-  createStudentNotice
+  createNotice
 );
 
 

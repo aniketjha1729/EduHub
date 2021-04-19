@@ -19,12 +19,12 @@ router.get("/testauth", isAdminAuth, isAdmin, (req, res) => {
 
 router.put("/verify/:userId", isAdminAuth, isAdmin, verifyUser);
 
-router.post("/createnotification", isAdminAuth, isAdmin, createNotice);
+router.post("/createnotice", isAdminAuth, isAdmin, createNotice);
 
-router.get("/notifications", isAdminAuth, isAdmin, getAllNotices);
+router.get("/notices", isAdminAuth, isAdmin, getAllNotices);
 
 router.put(
-  "/verifynotification/:notificationId",
+  "/verifynotice/:noticeId",
   isAdminAuth,
   isAdmin,
   verifyNotice

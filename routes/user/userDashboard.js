@@ -14,7 +14,7 @@ router.get("/testauth", isUserAuth, isVerified, (req, res) => {
   res.status(200).json({ msg: "User Authenticated" });
 });
 
-router.get("/notifications", isUserAuth, isVerified, getAllNotices);
+router.get("/notices", isUserAuth, isVerified, getAllNotices);
 
 router.post(
   "/createStudentnotice",
@@ -22,5 +22,7 @@ router.post(
   isVerified,
   createStudentNotice
 );
+
+
 
 module.exports = router;

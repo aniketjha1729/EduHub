@@ -75,7 +75,7 @@ TODO: exports.getAllNotices = (req, res) => {
 };
 
 exports.verifyNotice = (req, res) => {
-  Notice.findById({ _id: req.params.notificationId })
+  Notice.findById({ _id: req.params.noticeId })
     .then((notice) => {
       if (!notice) {
         return res.status(404).json({ message: "No notice found" });

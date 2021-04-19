@@ -62,18 +62,6 @@ exports.createNotice = (req, res) => {
   });
 };
 
-// remove .select("-document")
-TODO: exports.getAllNotices = (req, res) => {
-  Notice.find({}, {}, { sort: { date: -1 } })
-    .select("-document")
-    .then((notices) => {
-      if (!notices) {
-        return res.status(404).json({ message: "No notification found" });
-      }
-      return res.status(200).json(notices);
-    });
-};
-
 exports.verifyNotice = (req, res) => {
   Notice.findById({ _id: req.params.noticeId })
     .then((notice) => {
@@ -90,4 +78,16 @@ exports.verifyNotice = (req, res) => {
         .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
+};
+
+// remove .select("-document")
+TODO: exports.getAllNotices = (req, res) => {
+  Notice.find({}, {}, { sort: { date: -1 } })
+    .select("-document")
+    .then((notices) => {
+      if (!notices) {
+        return res.status(404).json({ message: "No notification found" });
+      }
+      return res.status(200).json(notices);
+    });
 };

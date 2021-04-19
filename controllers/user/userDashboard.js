@@ -13,8 +13,8 @@ exports.getAllStudent = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-exports.getStudentById = (req, res) => {
-  User.findById({ _id: req.params.studentId }).then((user) => {
+exports.getUserById = (req, res) => {
+  User.findById({ _id: req.params.userId }).then((user) => {
     if (user) {
       res.status(200).json(user);
     } else {

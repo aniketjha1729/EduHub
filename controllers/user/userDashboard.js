@@ -165,7 +165,8 @@ TODO: exports.getMyPost = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-exports.addComment = (req, res) => {
+//add document
+TODO: exports.addComment = (req, res) => {
   const { comment } = req.body;
   if (!comment) {
     return res.status(422).json({ message: "Please include all fields" });
@@ -177,6 +178,24 @@ exports.addComment = (req, res) => {
         commentedBy: req.user._id,
       };
       post.comments.unshift(newComment);
+      post.save().then((post) => res.json(post));
+    })
+    .catch((err) => console.log(err));
+};
+
+//add comment
+TODO: exports.addLikes = (req, res) => {
+  Post.findById(req.params.postId)
+    .then((post) => {
+      if (
+        post.likes.filter((like) => like.likedBy.toString() === req.user.id)
+          .length > 0
+      ) {
+        return res
+          .status(400)
+          .json({ alreadyliked: "User already liked this post" });
+      }
+      post.likes.unshift({ likedBy: req.user.id });
       post.save().then((post) => res.json(post));
     })
     .catch((err) => console.log(err));

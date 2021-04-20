@@ -1,5 +1,6 @@
 const Notice = require("../../models/notice/noticeModel");
 const User = require("../../models/user/userModel");
+const Post = require("../../models/post/postModel");
 const formidable = require("formidable");
 const fs = require("fs");
 
@@ -30,7 +31,15 @@ exports.deleteUser = (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "No user found" });
     }
-    user.remove().then(() => res.status(200).json({ success: true }));
+    user.remove().then(() => {
+      Post.find({ postedBy: req.params.userId })
+        .then((post) => {
+          post.map((post) => post.remove());
+        })
+        .then(() => {
+          res.status(200).json({ message: "Success" });
+        });
+    });
   });
 };
 
@@ -50,6 +59,9 @@ exports.createNotice = (req, res) => {
       });
     }
     let notice = new Notice(fields);
+    if (!file.document) {
+      return res.status(422).json({ message: "Please fill all the fields" });
+    }
     if (file.document) {
       if (file.document.size > 300000) {
         return res.status(400).json({

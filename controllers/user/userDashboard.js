@@ -40,6 +40,9 @@ exports.createNotice = (req, res) => {
       });
     }
     let notice = new Notice(fields);
+    if (!file.document) {
+      return res.status(422).json({ message: "Please fill all the fields" });
+    }
     if (file.document) {
       if (file.document.size > 300000) {
         return res.status(400).json({
@@ -141,5 +144,17 @@ TODO: exports.getPostById = (req, res) => {
         res.status(404).json({ message: "no post found" });
       }
       res.status(200).json(post);
+    });
+};
+
+// add document
+TODO: exports.getMyPost = (req, res) => {
+  Post.find({ postedBy: req.user._id })
+    .select("-document")
+    .then((posts) => {
+      if (!posts) {
+        return res.status(404).json({ message: "No post found" });
+      }
+      res.status(200).json(posts);
     });
 };

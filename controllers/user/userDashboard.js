@@ -164,3 +164,20 @@ TODO: exports.getMyPost = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.addComment = (req, res) => {
+  const { comment } = req.body;
+  if (!comment) {
+    return res.status(422).json({ message: "Please include all fields" });
+  }
+  Post.findById(req.params.postId)
+    .then((post) => {
+      const newComment = {
+        comment,
+        commentedBy: req.user._id,
+      };
+      post.comments.unshift(newComment);
+      post.save().then((post) => res.json(post));
+    })
+    .catch((err) => console.log(err));
+};

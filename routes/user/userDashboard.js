@@ -9,6 +9,7 @@ const {
   getUserById,
   getPostById,
   getMyPost,
+  addComment,
 } = require("../../controllers/user/userDashboard");
 
 const { isUserAuth, isVerified } = require("../../controllers/auth");
@@ -32,5 +33,7 @@ router.get("/post/getAllPost", isUserAuth, isVerified, getAllPost);
 router.get("/post/mypost", isUserAuth, isVerified, getMyPost);
 
 router.get("/post/:postId", isUserAuth, isVerified, getPostById);
+
+router.post("/post/comment/:postId", isUserAuth, isVerified, addComment);
 
 module.exports = router;

@@ -38,7 +38,8 @@ exports.deleteUser = (req, res) => {
         })
         .then(() => {
           res.status(200).json({ message: "Success" });
-        });
+        })
+        .catch((err) => console.log(err));
     });
   });
 };
@@ -102,12 +103,14 @@ exports.verifyNotice = (req, res) => {
 };
 
 exports.deleteNotice = (req, res) => {
-  Notice.findOne({ _id: req.params.noticeId }).then((notice) => {
-    if (!notice) {
-      return res.status(404).json({ message: "No notice found" });
-    }
-    notice.remove().then(() => res.status(200).json({ success: true }));
-  });
+  Notice.findOne({ _id: req.params.noticeId })
+    .then((notice) => {
+      if (!notice) {
+        return res.status(404).json({ message: "No notice found" });
+      }
+      notice.remove().then(() => res.status(200).json({ success: true }));
+    })
+    .catch((err) => console.log(err));
 };
 
 // remove .select("-document")
@@ -119,5 +122,6 @@ TODO: exports.getAllNotices = (req, res) => {
         return res.status(404).json({ message: "No notification found" });
       }
       return res.status(200).json(notices);
-    });
+    })
+    .catch((err) => console.log(err));
 };

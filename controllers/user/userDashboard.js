@@ -7,13 +7,15 @@ const fs = require("fs");
 /*<==================================================================================================>*/
 
 exports.getUserById = (req, res) => {
-  User.findById({ _id: req.params.userId }).then((user) => {
-    if (user) {
-      res.status(200).json(user);
-    } else {
-      return res.status(404).json({ err: "No user found" });
-    }
-  });
+  User.findById({ _id: req.params.userId })
+    .then((user) => {
+      if (user) {
+        res.status(200).json(user);
+      } else {
+        return res.status(404).json({ err: "No user found" });
+      }
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getAllUsers = (req, res) => {
@@ -85,7 +87,8 @@ TODO: exports.getAllNotices = (req, res) => {
         }
       });
       res.status(200).json(data);
-    });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.createPost = (req, res) => {
@@ -132,7 +135,8 @@ TODO: exports.getAllPost = (req, res) => {
     .populate("postedBy")
     .then((posts) => {
       res.status(200).json(posts);
-    });
+    })
+    .catch((err) => console.log(err));
 };
 
 //add document
@@ -144,7 +148,8 @@ TODO: exports.getPostById = (req, res) => {
         res.status(404).json({ message: "no post found" });
       }
       res.status(200).json(post);
-    });
+    })
+    .catch((err) => console.log(err));
 };
 
 // add document
@@ -156,5 +161,6 @@ TODO: exports.getMyPost = (req, res) => {
         return res.status(404).json({ message: "No post found" });
       }
       res.status(200).json(posts);
-    });
+    })
+    .catch((err) => console.log(err));
 };

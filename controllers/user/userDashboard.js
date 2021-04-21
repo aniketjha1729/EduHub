@@ -183,7 +183,7 @@ TODO: exports.addComment = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-//add comment
+//add document
 TODO: exports.addLikes = (req, res) => {
   Post.findById(req.params.postId)
     .then((post) => {
@@ -199,4 +199,25 @@ TODO: exports.addLikes = (req, res) => {
       post.save().then((post) => res.json(post));
     })
     .catch((err) => console.log(err));
+};
+
+// add documment
+TODO: exports.removeLike = (req, res) => {
+  Post.findById(req.params.postId)
+    .then((post) => {
+      if (
+        post.likes.filter((like) => like.likedBy.toString() === req.user.id)
+          .length === 0
+      ) {
+        return res
+          .status(400)
+          .json({ notliked: "You have not yet liked this post" });
+      }
+      const removeIndex = post.likes
+        .map((item) => item.likedBy.toString())
+        .indexOf(req.user.id);
+      post.likes.splice(removeIndex, 1);
+      post.save().then((post) => res.json(post));
+    })
+    .catch((err) => res.status(404).json({ postnotfound: "No post found" }));
 };

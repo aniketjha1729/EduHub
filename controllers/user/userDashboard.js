@@ -4,7 +4,7 @@ const Post = require("../../models/post/postModel");
 const formidable = require("formidable");
 const fs = require("fs");
 
-/*<==================================================================================================>*/
+/*<=========================================User==================================================>*/
 
 exports.getUserById = (req, res) => {
   User.findById({ _id: req.params.userId })
@@ -25,6 +25,9 @@ exports.getAllUsers = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+// <========================================************===========================================>
+
+// <========================================Notice=================================================>
 
 exports.createNotice = (req, res) => {
   let form = new formidable.IncomingForm();
@@ -90,6 +93,9 @@ TODO: exports.getAllNotices = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+// <========================================************===========================================>
+
+// <========================================Post===================================================>
 
 exports.createPost = (req, res) => {
   let form = new formidable.IncomingForm();
@@ -125,6 +131,22 @@ exports.createPost = (req, res) => {
       }
       res.json(post);
     });
+  });
+};
+
+exports.deletePost = (req, res) => {
+  Post.findById({ _id: req.params.postId }).then((post) => {
+    if (!post) {
+      return res.status(404).json({ message: "No post found" });
+    }
+    if (
+      post.postedBy.toString() == req.user._id ||
+      req.user.role == "teacher"
+    ) {
+      post.remove().then(() => res.status(200).json({ success: true }));
+    } else {
+      return res.status(401).json({ message: "Not authorized" });
+    }
   });
 };
 
@@ -164,6 +186,9 @@ TODO: exports.getMyPost = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+// <========================================************===========================================>
+
+// <========================================Comment================================================>
 
 //add document
 TODO: exports.addComment = (req, res) => {
@@ -182,6 +207,36 @@ TODO: exports.addComment = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.deleteComment = (req, res) => {
+  Post.findById(req.params.postId)
+    .then((post) => {
+      if (
+        post.comments.filter(
+          (comment) => comment._id.toString() === req.params.commentId
+        ).length === 0
+      ) {
+        return res
+          .status(404)
+          .json({ commentnotexists: "Comment does not exist" });
+      }
+      const removeIndex = post.comments
+        .map((item) => item._id.toString())
+        .indexOf(req.params.commentId);
+      if (
+        post.comments[removeIndex].commentedBy.toString() === req.user.id ||
+        req.user.role == "teacher"
+      ) {
+        post.comments.splice(removeIndex, 1);
+      }
+      post.save().then((post) => res.json(post));
+    })
+    .catch((err) => res.status(404).json({ postnotfound: "No post found" }));
+};
+
+// <========================================************===========================================>
+
+// <========================================Like====================================================>
 
 //add document
 TODO: exports.addLikes = (req, res) => {
@@ -221,3 +276,4 @@ TODO: exports.removeLike = (req, res) => {
     })
     .catch((err) => res.status(404).json({ postnotfound: "No post found" }));
 };
+// <========================================************===========================================>

@@ -12,6 +12,8 @@ const {
   addComment,
   addLikes,
   removeLike,
+  deletePost,
+  deleteComment,
 } = require("../../controllers/user/userDashboard");
 
 const { isUserAuth, isVerified } = require("../../controllers/auth");
@@ -22,7 +24,7 @@ router.get("/testauth", isUserAuth, isVerified, (req, res) => {
   res.status(200).json({ msg: "User Authenticated" });
 });
 
-router.get("/:userId", isUserAuth, isVerified, getUserById);
+router.get("/profile/:userId", isUserAuth, isVerified, getUserById);
 
 router.post("/createNotice", isUserAuth, isVerified, createNotice);
 
@@ -36,7 +38,16 @@ router.get("/post/mypost", isUserAuth, isVerified, getMyPost);
 
 router.get("/post/:postId", isUserAuth, isVerified, getPostById);
 
+router.delete("/post/delete/:postId", isUserAuth, isVerified, deletePost);
+
 router.post("/post/comment/:postId", isUserAuth, isVerified, addComment);
+
+router.delete(
+  "/post/deleteComment/:postId/:commentId",
+  isUserAuth,
+  isVerified,
+  deleteComment
+);
 
 router.post("/post/like/:postId", isUserAuth, isVerified, addLikes);
 

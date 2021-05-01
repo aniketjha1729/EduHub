@@ -93,6 +93,28 @@ TODO: exports.getAllNotices = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.verifyNotice = (req, res) => {
+  console.log(req.user.role);
+  if (req.user.role == "student") {
+    return res.status(401).json({ msg: "Not authorized" });
+  }
+  Notice.findById({ _id: req.params.noticeId })
+    .then((notice) => {
+      if (!notice) {
+        return res.status(404).json({ message: "No notice found" });
+      }
+      const { verify } = req.body;
+      notice.isVerified = verify;
+      notice
+        .save()
+        .then((updatedNotice) => {
+          res.status(200).json(updatedNotice);
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+};
 // <========================================************===========================================>
 
 // <========================================Post===================================================>

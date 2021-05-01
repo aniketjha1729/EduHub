@@ -228,8 +228,12 @@ exports.deleteComment = (req, res) => {
         req.user.role == "teacher"
       ) {
         post.comments.splice(removeIndex, 1);
+        post.save().then((post) => {
+          return res.status(200).json(post);
+        });
+      } else {
+        return res.status(401).json({ message: "No authorized" });
       }
-      post.save().then((post) => res.json(post));
     })
     .catch((err) => res.status(404).json({ postnotfound: "No post found" }));
 };

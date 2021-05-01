@@ -95,7 +95,6 @@ TODO: exports.getAllNotices = (req, res) => {
 };
 
 exports.verifyNotice = (req, res) => {
-  console.log(req.user.role);
   if (req.user.role == "student") {
     return res.status(401).json({ msg: "Not authorized" });
   }

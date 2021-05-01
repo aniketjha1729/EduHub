@@ -33,7 +33,6 @@ exports.isVerified = (req, res, next) => {
   if (!req.user || !req.user.isVerified) {
     return res.status(401).json({ message: "User not verified by admin" });
   }
-
   if (req.user && req.user.isVerified) {
     return next();
   }

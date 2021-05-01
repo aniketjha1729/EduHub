@@ -4,7 +4,7 @@ const Post = require("../../models/post/postModel");
 const formidable = require("formidable");
 const fs = require("fs");
 
-/*<=================================================================================================>*/
+/*<===============================================================================================>*/
 exports.verifyUser = (req, res) => {
   User.findById({ _id: req.params.userId })
     .then((user) => {

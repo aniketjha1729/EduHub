@@ -1,18 +1,19 @@
-import React from "react";
-import Routes from "./routers/Routes";
-//import axios from "axios";
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./components/navbar/Navbar";
+import Routes from "./components/routing/Routes";
 
-function App() {
-  // const myf1 = () => {
-  //   axios
-  //     .get("http://localhost:5000/admin/test")
-  //     .then((response) => console.log(response.data));
-  // };
+const App = () => {
   return (
-    <div>
-      <Routes />
-    </div>
+    <Router>
+      <Fragment>
+        <Navbar />
+        <Switch>
+          <Route component={Routes} />
+        </Switch>
+      </Fragment>
+    </Router>
   );
-}
+};
 
 export default App;

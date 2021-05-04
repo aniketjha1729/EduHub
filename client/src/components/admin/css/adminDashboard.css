@@ -1,0 +1,15 @@
+.dashboard {
+  margin-top: 10px;
+  border: 2px solid red;
+}
+.dashborad_left {
+  background-color: rgb(108, 108, 235);
+  margin-left: 15px;
+  display: flex;
+  justify-content: center;
+}
+.dashborad_right {
+  background-color: rgba(152, 250, 143, 0.952);
+  display: flex;
+  justify-content: center;
+}

@@ -500,6 +500,19 @@ const AdminDashboard = () => {
                     DataTables Example
                   </h6>
                 </div>
+                <br />
+                <div
+                  className="form-group"
+                  style={{ width: "200px", marginLeft: "20px" }}
+                >
+                  <input
+                    type="text"
+                    className="form-control form-control-user"
+                    id="search "
+                    aria-describedby="emailHelp"
+                    placeholder="Search By Name"
+                  />
+                </div>
                 <div className="card-body">
                   <div className="table-responsive">
                     <table

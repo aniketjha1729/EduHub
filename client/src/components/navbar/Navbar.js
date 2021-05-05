@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./css/navbar.css";
 import axios from "../../api/axios";
 const Navbar = () => {
   useEffect(() => {
@@ -16,9 +15,9 @@ const Navbar = () => {
   }, []);
   return (
     <div>
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <a href="#" class="navbar-brand">
-          Aniket
+          EduHub
         </a>
         <button
           class="navbar-toggler"

@@ -93,6 +93,27 @@ TODO: exports.getAllNotices = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.verifyNotice = (req, res) => {
+  if (req.user.role == "student") {
+    return res.status(401).json({ msg: "Not authorized" });
+  }
+  Notice.findById({ _id: req.params.noticeId })
+    .then((notice) => {
+      if (!notice) {
+        return res.status(404).json({ message: "No notice found" });
+      }
+      const { verify } = req.body;
+      notice.isVerified = verify;
+      notice
+        .save()
+        .then((updatedNotice) => {
+          res.status(200).json(updatedNotice);
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+};
 // <========================================************===========================================>
 
 // <========================================Post===================================================>
@@ -228,8 +249,12 @@ exports.deleteComment = (req, res) => {
         req.user.role == "teacher"
       ) {
         post.comments.splice(removeIndex, 1);
+        post.save().then((post) => {
+          return res.status(200).json(post);
+        });
+      } else {
+        return res.status(401).json({ message: "No authorized" });
       }
-      post.save().then((post) => res.json(post));
     })
     .catch((err) => res.status(404).json({ postnotfound: "No post found" }));
 };

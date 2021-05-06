@@ -14,6 +14,7 @@ const {
   removeLike,
   deletePost,
   deleteComment,
+  verifyNotice,
 } = require("../../controllers/user/userDashboard");
 
 const { isUserAuth, isVerified } = require("../../controllers/auth");
@@ -25,6 +26,8 @@ router.get("/testauth", isUserAuth, isVerified, (req, res) => {
 });
 
 router.get("/profile/:userId", isUserAuth, isVerified, getUserById);
+
+router.put("/verifynotice/:noticeId", isUserAuth, isVerified, verifyNotice);
 
 router.post("/createNotice", isUserAuth, isVerified, createNotice);
 

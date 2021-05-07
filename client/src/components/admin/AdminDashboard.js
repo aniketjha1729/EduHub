@@ -1,12 +1,17 @@
 import React from "react";
 import "./css/adminDashboard.css";
+import AdminDashboardTable from "./AdminDashboardTable";
 const AdminDashboard = () => {
   return (
     <div className="container">
       <div className="dashboard">
         <div className="row">
           <div className="col-2 dashborad_left">
-            <div className="dashborad_left_header">Menu</div>
+            <br />
+            <div className="dashborad_left_header">
+              <i class="fas fa-chalkboard-teacher" size="3x"></i> &nbsp;&nbsp;
+              <b>EduHub</b>
+            </div>
             <div className="dashborad_left_menu">
               <div className="dashborad_left_menu_item">User</div>
               <div className="dashborad_left_menu_item">Notices</div>
@@ -14,81 +19,17 @@ const AdminDashboard = () => {
             </div>
           </div>
           <div className="col-10 dashborad_right">
-            <div className="dashborad_right_header">Content</div>
-            <div className="dashborad_right_content">
-              <table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col">S.No</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                      <button type="button" className="btn btn-primary">
-                        Primary
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>
-                      <button type="button" className="btn btn-primary">
-                        Primary
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>
-                      <button type="button" className="btn btn-primary">
-                        Primary
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                      <button type="button" className="btn btn-primary">
-                        Primary
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>
-                      <button type="button" className="btn btn-primary">
-                        Primary
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>
-                      <button type="button" className="btn btn-primary">
-                        Primary
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <br />
+            <AdminDashboardTable
+              totalUser="Total User"
+              userCount="130"
+              verifiedUser="Verfied User"
+              noOfVerifiedUser="50"
+              teacher="Teacher"
+              noOfTeacher="30"
+              student="Student"
+              noOfStudent="52"
+            />
           </div>
         </div>
       </div>

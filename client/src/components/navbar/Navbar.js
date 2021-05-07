@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./css/navbar.css";
 import axios from "../../api/axios";
 const Navbar = () => {
   useEffect(() => {
@@ -16,30 +15,32 @@ const Navbar = () => {
   }, []);
   return (
     <div>
-      <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a href="#" class="navbar-brand">
-          Aniket
-        </a>
-        <button
-          class="navbar-toggler"
-          data-toggle="collapse"
-          data-target="#navbarMenu"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarMenu">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a href="" class="nav-link">
-                Users
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="" class="nav-link">
-                Users
-              </a>
-            </li>
-          </ul>
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <div class="container">
+          <a href="#" class="navbar-brand">
+            EduHub
+          </a>
+          <button
+            class="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#navbarMenu"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  Users
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="" class="nav-link">
+                  Users
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </div>

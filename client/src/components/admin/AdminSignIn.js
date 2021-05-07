@@ -1,8 +1,28 @@
 import React, { useState } from "react";
-const AdminSignIn = () => {
-  const [password, setPasword] = useState("aniket");
-  const [email, setEmail] = useState("aniket@gmail.com");
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { adminLogin } from "../../redux/actions/admin";
+
+const AdminSignIn = ({ adminLogin, isAuthenticated }) => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = formData;
   const [errormsg, setErrormsg] = useState("");
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    adminLogin(email, password);
+  };
+
+  if (isAuthenticated) {
+    return <Redirect to="/admin/dashboard" />;
+  }
   return (
     <div className="signin">
       <div
@@ -37,33 +57,40 @@ const AdminSignIn = () => {
         ) : (
           ""
         )}
-        <input
-          type="text"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPasword(e.target.value)}
-        />
-        <br />
-        {/* <Link to="/reset">Forgot Password?</Link> */}
-        <br />
-        <button
-          type="button"
-          className="btn btn-primary"
-          // onClick={() => PostData()}
-        >
-          SignIn
-        </button>
-        <br />
+        <form className="form" onSubmit={onSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            value={email}
+            onChange={onChange}
+          />
+          <br />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={password}
+            onChange={onChange}
+          />
+          <br />
+          <Link to="/reset">Forgot Password?</Link>
+          <br />
+          <input type="submit" className="btn btn-primary" value="Login" />
+          <br />
+        </form>
       </div>
     </div>
   );
 };
 
-export default AdminSignIn;
+AdminSignIn.propTypes = {
+  adminLogin: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.admin.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { adminLogin })(AdminSignIn);

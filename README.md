@@ -22,7 +22,7 @@ A Social Network developed with MERN stack.
     SECRET_TEACHER_AUTH_KEY = "teacherkey";
     ```
 
-4.  Start the server for backend and forntend
+4.  Start the server for backend and frontend
     ### For backend
     `npm start` in the root directory
     ### For frontend

@@ -69,6 +69,7 @@ const AdminDashboardTable = (props) => {
                   Primary
                 </button>
               </td>
+              
             </tr>
             <tr>
               <th scope="row">4</th>

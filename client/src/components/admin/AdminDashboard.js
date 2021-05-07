@@ -100,7 +100,7 @@ const AdminDashboard = () => {
                       </button>
                     </td>
                   </tr>
-                  <tr>
+                  <tr style={{width:"30%"}}>
                     <th scope="row">6</th>
                     <td>Larry</td>
                     <td>the Bird</td>

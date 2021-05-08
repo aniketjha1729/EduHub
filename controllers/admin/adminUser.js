@@ -49,7 +49,12 @@ exports.adminSignIn = (req, res) => {
                 );
                 return res.status(200).json({
                   authToken,
-                  user: adminUser,
+                  user: {
+                    _id: adminUser._id,
+                    name: adminUser.name,
+                    isAdmin: adminUser.isAdmin,
+                    email: adminUser.email,
+                  },
                 });
               } else {
                 return res

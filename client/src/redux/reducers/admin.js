@@ -1,8 +1,8 @@
 import { ADMIN_LOGIN_SUCCESS, ADMIN_LOGIN_FAIL } from "../actions/types";
 
 const initialState = {
-  token: localStorage.getItem("token"),
-  isAuthenticated: null,
+  authToken: localStorage.getItem("token"),
+  isAuthenticated: localStorage.getItem("isAuth"),
 };
 
 function adminAuthReducer(state = initialState, action) {
@@ -10,6 +10,7 @@ function adminAuthReducer(state = initialState, action) {
 
   switch (type) {
     case ADMIN_LOGIN_SUCCESS:
+      console.log(payload);
       return {
         ...state,
         ...payload,
@@ -18,7 +19,8 @@ function adminAuthReducer(state = initialState, action) {
     case ADMIN_LOGIN_FAIL:
       return {
         ...state,
-        isAuthenticated: false,
+        authToken: null,
+        isAuthenticated: true,
       };
     default:
       return state;

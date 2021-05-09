@@ -8,6 +8,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
 import { ADMIN_LOGIN_FAIL } from "./redux/actions/types";
+import { loadAdminData } from "./redux/actions/admin";
 
 const App = () => {
   useEffect(() => {
@@ -15,7 +16,8 @@ const App = () => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
-    //store.dispatch(testReducers());
+
+    store.dispatch(loadAdminData());
 
     // log user out from all tabs if they log out in one tab
     window.addEventListener("storage", () => {

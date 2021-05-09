@@ -1,14 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { testApi } from "../../redux/actions/test";
 import PropTypes from "prop-types";
 import "./css/adminDashboard.css";
 import AdminDashboardTable from "./AdminDashboardTable";
 
-const AdminDashboard = ({ testApi }) => {
-  useEffect(() => {
-    testApi();
-  }, []);
+const AdminDashboard = () => {
+  
   return (
     <div className="container">
       <div className="dashboard">
@@ -44,8 +41,4 @@ const AdminDashboard = ({ testApi }) => {
   );
 };
 
-AdminDashboard.propTypes = {
-  testApi: PropTypes.func.isRequired,
-};
-
-export default connect(null, { testApi })(AdminDashboard);
+export default AdminDashboard;

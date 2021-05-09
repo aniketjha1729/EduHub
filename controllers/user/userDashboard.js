@@ -6,6 +6,25 @@ const fs = require("fs");
 
 /*<=========================================User==================================================>*/
 
+exports.currentProfile = (req, res) => {
+  User.findById(req.user.id).then((user) => {
+    if (!user) {
+      return res.status(500).json({ msg: "Server error" });
+    } else {
+      const { name, isVerified, email, _id, role } = user;
+      return res.status(200).json({
+        user: {
+          name,
+          isVerified,
+          email,
+          _id,
+          role,
+        },
+      });
+    }
+  });
+};
+
 exports.getUserById = (req, res) => {
   User.findById({ _id: req.params.userId })
     .then((user) => {

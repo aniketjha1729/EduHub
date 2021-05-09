@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import Routes from "./components/routing/Routes";
+import Routes from "./routing/Routes";
 import "./App.css";
 
 import { Provider } from "react-redux";

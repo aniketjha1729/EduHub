@@ -8,6 +8,7 @@ const setAuthToken = (authToken) => {
   } else {
     delete api.defaults.headers.common["Bearer"];
     localStorage.removeItem("token");
+    localStorage.removeItem("isAuth");
   }
 };
 

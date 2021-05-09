@@ -1,6 +1,7 @@
 import axios from "../../api/axios";
-import { ADMIN_LOGIN_SUCCESS, ADMIN_LOGIN_FAIL } from "./types";
+import { ADMIN_LOGIN_SUCCESS, ADMIN_LOGIN_FAIL,ADMIN_LOGOUT } from "./types";
 import setAuthToken  from "../../utils/setAuthToken";
+
 export const adminLogin = (email, password) => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -19,3 +20,5 @@ export const adminLogin = (email, password) => async (dispatch) => {
     });
   }
 };
+
+export const logout = () => ({ type: ADMIN_LOGOUT });

@@ -1,18 +1,10 @@
-import React, { useEffect } from "react";
-import axios from "../../api/axios";
-const Navbar = () => {
-  useEffect(() => {
-    const apiCall = async () => {
-      try {
-        axios.get("/user/test").then(({ data }) => {
-          console.log(data);
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    apiCall();
-  }, []);
+import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../redux/actions/admin";
+
+const Navbar = ({ logout }) => {
   return (
     <div>
       <nav class="navbar navbar-expand-md navbar-dark bg-primary">
@@ -30,13 +22,13 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a href="" class="nav-link">
-                  Users
-                </a>
+                <Link to="/" class="nav-link">
+                  Admin
+                </Link>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
-                  Users
+                <a onClick={logout} href="" class="nav-link">
+                  Logout
                 </a>
               </li>
             </ul>
@@ -47,4 +39,8 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+};
+
+export default connect(null, { logout })(Navbar);

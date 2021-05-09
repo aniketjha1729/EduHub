@@ -1,11 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import "./css/adminDashboard.css";
-import AdminDashboardTable from "./AdminDashboardTable";
+import "../../components/admin/css/adminDashboard.css";
+import AdminDashboardTable from "../../components/admin/AdminDashboardTable";
 
 const AdminDashboard = () => {
-  
   return (
     <div className="container">
       <div className="dashboard">

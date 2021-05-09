@@ -4,7 +4,7 @@
   "description": "EduHub",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "aniketjha1729",
   "license": "MIT",

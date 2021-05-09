@@ -14,7 +14,7 @@ export const loadAdminData = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log(err.response.data.msg);
+    console.log(err);
   }
 };
 

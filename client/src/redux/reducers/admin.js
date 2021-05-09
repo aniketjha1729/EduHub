@@ -3,6 +3,7 @@ import { ADMIN_LOGIN_SUCCESS, ADMIN_LOGIN_FAIL } from "../actions/types";
 const initialState = {
   authToken: localStorage.getItem("token"),
   isAuthenticated: localStorage.getItem("isAuth"),
+  user: null,
 };
 
 function adminAuthReducer(state = initialState, action) {

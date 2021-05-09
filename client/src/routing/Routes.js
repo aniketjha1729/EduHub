@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import AdminDashboard from "../admin/AdminDashboard";
-import AdminSignIn from "../admin/AdminSignIn";
+import AdminDashboard from "../components/admin/AdminDashboard";
+import AdminSignIn from "../components/admin/AdminSignIn";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 
 const Routes = () => {

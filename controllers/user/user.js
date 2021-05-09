@@ -33,7 +33,6 @@ exports.signIn = (req, res) => {
                 res.cookie("token", authToken, { expire: new Date() + 9999 });
                 return res.status(200).json({
                   authToken,
-                  user: user,
                 });
               } else {
                 return res.status(400).json({ error: "Password do not match" });

@@ -6,7 +6,8 @@ import {
 
 const initialState = {
   authToken: localStorage.getItem("token"),
-  isAuthenticated: localStorage.getItem("isAuth")
+  isAuthenticated: localStorage.getItem("isAuth"),
+  user: null,
 };
 
 function adminAuthReducer(state = initialState, action) {
@@ -18,6 +19,7 @@ function adminAuthReducer(state = initialState, action) {
         ...state,
         ...payload,
         isAuthenticated: true,
+        user: payload,
       };
     case ADMIN_LOGIN_FAIL:
     case ADMIN_LOGOUT:
@@ -25,6 +27,7 @@ function adminAuthReducer(state = initialState, action) {
         ...state,
         authToken: null,
         isAuthenticated: false,
+        user: null,
       };
     default:
       return state;

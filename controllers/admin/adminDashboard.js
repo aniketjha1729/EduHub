@@ -1,10 +1,30 @@
 const Notice = require("../../models/notice/noticeModel");
 const User = require("../../models/user/userModel");
+const AdminUser = require("../../models/admin/adminUserModel");
 const Post = require("../../models/post/postModel");
 const formidable = require("formidable");
 const fs = require("fs");
 
 /*<===============================================================================================>*/
+
+exports.currentProfile = (req, res) => {
+  AdminUser.findById(req.user.id).then((user) => {
+    if (!user) {
+      return res.status(500).json({ msg: "Server error" });
+    } else {
+      const { name, isAdmin, email, _id } = user;
+      return res.status(200).json({
+        user: {
+          name,
+          isAdmin,
+          email,
+          _id,
+        },
+      });
+    }
+  });
+};
+
 exports.verifyUser = (req, res) => {
   User.findById({ _id: req.params.userId })
     .then((user) => {

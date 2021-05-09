@@ -48,13 +48,7 @@ exports.adminSignIn = (req, res) => {
                   }
                 );
                 return res.status(200).json({
-                  authToken,
-                  user: {
-                    _id: adminUser._id,
-                    name: adminUser.name,
-                    isAdmin: adminUser.isAdmin,
-                    email: adminUser.email,
-                  },
+                  authToken
                 });
               } else {
                 return res

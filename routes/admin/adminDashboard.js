@@ -7,9 +7,12 @@ const {
   verifyUser,
   deleteNotice,
   deleteUser,
+  currentProfile,
 } = require("../../controllers/admin/adminDashboard");
 
-const { getAllUsers } = require("../../controllers/user/userDashboard");
+const {
+  getAllUsers,
+} = require("../../controllers/user/userDashboard");
 
 const { isAdmin, isAdminAuth } = require("../../controllers/auth");
 
@@ -20,6 +23,8 @@ router.get("/testauth", isAdminAuth, isAdmin, (req, res) => {
     Message: "New Auth Working",
   });
 });
+
+router.get("/currentUser", isAdminAuth, isAdmin, currentProfile);
 
 router.put("/verify/:userId", isAdminAuth, isAdmin, verifyUser);
 

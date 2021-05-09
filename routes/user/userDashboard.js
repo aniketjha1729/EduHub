@@ -15,15 +15,20 @@ const {
   deletePost,
   deleteComment,
   verifyNotice,
+  currentProfile
 } = require("../../controllers/user/userDashboard");
 
 const { isUserAuth, isVerified } = require("../../controllers/auth");
+
 
 /*<===================================================================================================>*/
 
 router.get("/testauth", isUserAuth, isVerified, (req, res) => {
   res.status(200).json({ msg: "User Authenticated" });
 });
+
+
+router.get("/currentUser",isUserAuth,isVerified,currentProfile)
 
 router.get("/profile/:userId", isUserAuth, isVerified, getUserById);
 

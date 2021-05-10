@@ -32,6 +32,8 @@
 .dashborad_right_table {
   margin-top: 20px;
   background-color: white;
+  height: 400px;
+  overflow: scroll;
 }
 
 .dashborad_right_menu {
@@ -41,5 +43,4 @@
 .dashborad_right_menu_item {
   box-shadow: 5px 2px 5px 4px #dad8d8;
   background-color: white;
-  
 }

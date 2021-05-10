@@ -1,110 +1,151 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./css/adminDashboard.css";
+import axios from "../../api/axios";
+import useLoader from "../../components/loader/useLoader";
+
 const AdminDashboardTable = (props) => {
+  const [allUser, setAllUser] = useState([]);
+  const [dataChange, setDataChange] = useState();
+  const [loader, showLoader, hideLoader] = useLoader();
+
+  useEffect(() => {
+    const getAllUser = async () => {
+      try {
+        const { data } = await axios.get("/admin/allUsers");
+        console.log(data);
+        setAllUser(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getAllUser();
+    props.getAllUser();
+  }, [dataChange]);
+
+  const verifyUser = async (id) => {
+    showLoader();
+    const body = { verify: true };
+    try {
+      const { data } = await axios.put(`/admin/verify/${id}`, body);
+      setDataChange(data);
+      hideLoader();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const unVerify = async (id) => {
+    showLoader();
+    const body = { verify: false };
+    try {
+      const { data } = await axios.put(`/admin/verify/${id}`, body);
+      setDataChange(data);
+      hideLoader();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteUser = async (id) => {
+    showLoader();
+    try {
+      const { data } = await axios.delete(`/admin/deleteUser/${id}`);
+      setDataChange(data);
+      hideLoader();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <div>
-      <div className="row justify-content-around dashborad_right_menu">
-        <div className="col-2 dashborad_right_menu_item">
-          <b>{props.totalUser}</b>
-          <div>
-            <i class="fas fa-users"></i> &nbsp;{props.userCount}
+    <>
+      {allUser ? (
+        <div>
+          <div className="row justify-content-around dashborad_right_menu">
+            <div className="col-2 dashborad_right_menu_item">
+              <b>{props.totalUser}</b>
+              <div>
+                <i class="fas fa-users"></i> &nbsp;{props.userCount}
+              </div>
+            </div>
+            <div className="col-2 dashborad_right_menu_item">
+              <b>{props.verifiedUser}</b>
+              <div>
+                <i class="fas fa-users-cog"></i> &nbsp;{props.noOfVerifiedUser}
+              </div>
+            </div>
+            <div className="col-2 dashborad_right_menu_item">
+              <b>{props.teacher}</b>
+              <div>
+                <i class="fas fa-comments"></i> &nbsp;{props.noOfTeacher}
+              </div>
+            </div>
+            <div className="col-2 dashborad_right_menu_item">
+              <b>{props.student}</b>
+              <div>
+                <i class="fas fa-comments"></i> &nbsp;{props.noOfStudent}
+              </div>
+            </div>
+          </div>
+          <div className="dashborad_right_table">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">S.No</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allUser.map((user, index) => (
+                  <tr key={index}>
+                    <th scope="row">{index}</th>
+                    <td>{user.name}</td>
+                    <td>{user.email}</td>
+                    <td>{user.role}</td>
+                    <td>
+                      {user.isVerified ? (
+                        <button
+                          onClick={() => unVerify(user._id)}
+                          type="button"
+                          className="btn btn-success"
+                        >
+                          <i class="fas fa-user-check"></i> &nbsp;Verified
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => verifyUser(user._id)}
+                          type="button"
+                          className="btn btn-warning"
+                        >
+                          <i class="fas fa-arrow-right"></i> &nbsp; &nbsp;
+                          Verify
+                        </button>
+                      )}
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => deleteUser(user._id)}
+                        type="button"
+                        className="btn btn-danger"
+                      >
+                       <i class="fas fa-trash"></i> &nbsp; Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
-        <div className="col-2 dashborad_right_menu_item">
-          <b>{props.verifiedUser}</b>
-          <div>
-            <i class="fas fa-users-cog"></i> &nbsp;{props.noOfVerifiedUser}
-          </div>
-        </div>
-        <div className="col-2 dashborad_right_menu_item">
-          <b>{props.teacher}</b>
-          <div>
-            <i class="fas fa-comments"></i> &nbsp;{props.noOfTeacher} 
-          </div>
-        </div>
-        <div className="col-2 dashborad_right_menu_item">
-          <b>{props.student}</b>
-          <div>
-            <i class="fas fa-comments"></i> &nbsp;{props.noOfStudent} 
-          </div>
-        </div>
-      </div>
-      <div className="dashborad_right_table">
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">S.No</th>
-              <th scope="col">User</th>
-              <th scope="col">Role</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>
-                <button type="button" className="btn btn-primary">
-                  Primary
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>
-                <button type="button" className="btn btn-primary">
-                  Primary
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>
-                <button type="button" className="btn btn-primary">
-                  Primary
-                </button>
-              </td>
-              
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>
-                <button type="button" className="btn btn-primary">
-                  Primary
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">5</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>
-                <button type="button" className="btn btn-primary">
-                  Primary
-                </button>
-              </td>
-            </tr>
-            <tr style={{ width: "30%" }}>
-              <th scope="row">6</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>
-                <button type="button" className="btn btn-primary">
-                  Primary
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+      ) : (
+        ""
+      )}
+      {loader}
+    </>
   );
 };
 

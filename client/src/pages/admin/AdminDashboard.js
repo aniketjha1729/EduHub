@@ -3,6 +3,7 @@ import "../../components/admin/css/adminDashboard.css";
 import AdminDashboardTable from "../../components/admin/AdminDashboardTable";
 import axios from "../../api/axios";
 const AdminDashboard = () => {
+  const [allUser, setAllUser] = useState([])
   const [totalUserCount, setTotalUserCount] = useState();
   const [verfiedUserCount, setVerfiedUserCount] = useState();
   const [teacherCount, setTeacherCount] = useState();
@@ -12,7 +13,8 @@ const AdminDashboard = () => {
     const getAllUser = async () => {
       try {
         const { data } = await axios.get("/admin/allUsers");
-        console.log(data);
+        
+        setAllUser(data)
         setTotalUserCount(data.length);
         const verfiedUser = [];
         data.map((user) => {
@@ -60,6 +62,7 @@ const AdminDashboard = () => {
           <div className="col-10 dashborad_right">
             <br />
             <AdminDashboardTable
+              alluser={allUser}
               totalUser="Total User"
               userCount={totalUserCount}
               verifiedUser="Verfied User"

@@ -21,7 +21,7 @@ const AdminSignIn = ({ adminLogin, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/admin/dashboard" />;
+    return <Redirect to="/admin/users" />;
   }
   return (
     <div className="signin">
@@ -65,6 +65,7 @@ const AdminSignIn = ({ adminLogin, isAuthenticated }) => {
             value={email}
             onChange={onChange}
           />
+          <br />
           <br />
           <input
             type="password"

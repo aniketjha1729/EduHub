@@ -29,7 +29,6 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
-          <Navbar />
           <Switch>
             <Route component={Routes} />
           </Switch>

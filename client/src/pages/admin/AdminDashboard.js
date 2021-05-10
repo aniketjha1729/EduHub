@@ -2,22 +2,19 @@ import React, { useEffect, useState } from "react";
 import "../../components/admin/css/adminDashboard.css";
 import AdminDashboardTable from "../../components/admin/AdminDashboardTable";
 import axios from "../../api/axios";
-
+import useLoader from "../../components/loader/useLoader";
+import Navbar from "../../components/navbar/Navbar";
 const AdminDashboard = () => {
-  const [allUser, setAllUser] = useState([]);
   const [totalUserCount, setTotalUserCount] = useState();
   const [verfiedUserCount, setVerfiedUserCount] = useState();
   const [teacherCount, setTeacherCount] = useState();
   const [studentCount, setStudentCount] = useState();
-
-  useEffect(() => {
-    getAllUser();
-  }, []);
+  const [loader, showLoader, hideLoader] = useLoader();
 
   const getAllUser = async () => {
+    showLoader();
     try {
       const { data } = await axios.get("/admin/allUsers");
-      setAllUser(data);
       setTotalUserCount(data.length);
       const verfiedUser = [];
       data.map((user) => {
@@ -40,27 +37,31 @@ const AdminDashboard = () => {
         }
       });
       setStudentCount(studentCount.length);
+      hideLoader();
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <div className="container">
-      <br />
-      <AdminDashboardTable
-        alluser={allUser}
-        totalUser="Total User"
-        userCount={totalUserCount}
-        verifiedUser="Verfied User"
-        noOfVerifiedUser={verfiedUserCount}
-        teacher="Teachers"
-        noOfTeacher={teacherCount}
-        student="Students"
-        noOfStudent={studentCount}
-        getAllUser={getAllUser}
-      />
-    </div>
+    <>
+      <Navbar />
+      <div className="container">
+        <br />
+        <AdminDashboardTable
+          totalUser="Total User"
+          userCount={totalUserCount}
+          verifiedUser="Verfied User"
+          noOfVerifiedUser={verfiedUserCount}
+          teacher="Teachers"
+          noOfTeacher={teacherCount}
+          student="Students"
+          noOfStudent={studentCount}
+          getAllUser={getAllUser}
+        />
+        {loader}
+      </div>
+    </>
   );
 };
 

@@ -10,9 +10,9 @@ import PropTypes from "prop-types";
 import { logout } from "../../redux/actions/admin";
 
 const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const showSidebar = () => setSidebar(sidebar);
 
   return (
     <>
@@ -26,23 +26,19 @@ const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
+                <b style={{color:"white"}}>EduHub</b>
               </Link>
             </li>
             {user ? (
               <li className="nav-text">
                 <Link class="nav-text">
                   {" "}
-                  <FaIcons.FaUser />
+                  <FaIcons.FaAdn />
                   <span>{user.user.name}</span>
                 </Link>
               </li>
             ) : (
-              <li className="nav-text">
-                <Link to="/admin/signin" class="nav-text">
-                  Login
-                </Link>
-              </li>
+              ""
             )}
             {SidebarData.map((item, index) => {
               return (

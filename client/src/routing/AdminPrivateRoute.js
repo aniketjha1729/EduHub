@@ -14,7 +14,7 @@ const AdminPrivateRoute = ({
       isAuthenticated ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/admin/signin" />
+        <Redirect to="/admin" />
       )
     }
   />

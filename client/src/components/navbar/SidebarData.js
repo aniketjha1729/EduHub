@@ -1,26 +1,24 @@
 import React from "react";
 import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
-
 
 export const SidebarData = [
   {
-    title: "Dashboard",
-    path: "/admin/dashboard",
-    icon: <AiIcons.AiFillHome />,
+    title: "Users",
+    path: "/admin/users",
+    icon: <FaIcons.FaUserAlt />,
     cName: "nav-text",
   },
   {
-    title: "Reports",
-    path: "/admin/users",
+    title: "Create Notice",
+    path: "/admin/notices",
     icon: <IoIcons.IoIosPaper />,
     cName: "nav-text",
   },
   {
-    title: "Products",
-    path: "/admin/posts",
-    icon: <FaIcons.FaCartPlus />,
+    title: "Notices",
+    path: "/admin/users",
+    icon: <IoIcons.IoIosPaper />,
     cName: "nav-text",
   },
   {
@@ -28,5 +26,5 @@ export const SidebarData = [
     path: "/admin/notices",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
-  }
+  },
 ];

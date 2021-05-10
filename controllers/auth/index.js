@@ -26,6 +26,7 @@ exports.isUserAuth = (req, res, next) => {
 
 exports.isAdminAuth = (req, res, next) => {
   const token = req.header("Bearer");
+  console.log(token);
   if (token) {
     jwt.verify(token, process.env.SECRET_ADMIN_AUTH_KEY, (err, payload) => {
       if (err) {

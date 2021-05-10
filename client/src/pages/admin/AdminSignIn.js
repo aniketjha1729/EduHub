@@ -7,7 +7,7 @@ import { adminLogin } from "../../redux/actions/admin";
 const AdminSignIn = ({ adminLogin, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "admin@test.com",
-    password: "admin1234",
+    password: "admin@1234",
   });
   const { email, password } = formData;
   const [errormsg, setErrormsg] = useState("");

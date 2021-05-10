@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./css/adminDashboard.css";
 import axios from "../../api/axios";
+import useLoader from "../../components/loader/useLoader";
 
 const AdminDashboardTable = (props) => {
   const [allUser, setAllUser] = useState([]);
+  const [dataChange, setDataChange] = useState();
+  const [loader, showLoader, hideLoader] = useLoader();
 
   useEffect(() => {
     const getAllUser = async () => {
@@ -16,7 +19,43 @@ const AdminDashboardTable = (props) => {
       }
     };
     getAllUser();
-  }, []);
+    props.getAllUser();
+  }, [dataChange]);
+
+  const verifyUser = async (id) => {
+    showLoader();
+    const body = { verify: true };
+    try {
+      const { data } = await axios.put(`/admin/verify/${id}`, body);
+      setDataChange(data);
+      hideLoader();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const unVerify = async (id) => {
+    showLoader();
+    const body = { verify: false };
+    try {
+      const { data } = await axios.put(`/admin/verify/${id}`, body);
+      setDataChange(data);
+      hideLoader();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteUser = async (id) => {
+    showLoader();
+    try {
+      const { data } = await axios.delete(`/admin/deleteUser/${id}`);
+      setDataChange(data);
+      hideLoader();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -54,8 +93,10 @@ const AdminDashboardTable = (props) => {
                 <tr>
                   <th scope="col">S.No</th>
                   <th scope="col">Name</th>
+                  <th scope="col">Email</th>
                   <th scope="col">Role</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -63,17 +104,36 @@ const AdminDashboardTable = (props) => {
                   <tr key={index}>
                     <th scope="row">{index}</th>
                     <td>{user.name}</td>
+                    <td>{user.email}</td>
                     <td>{user.role}</td>
                     <td>
                       {user.isVerified ? (
-                        <button type="button" className="btn btn-success">
-                          Verified
+                        <button
+                          onClick={() => unVerify(user._id)}
+                          type="button"
+                          className="btn btn-success"
+                        >
+                          <i class="fas fa-user-check"></i> &nbsp;Verified
                         </button>
                       ) : (
-                        <button type="button" className="btn btn-warning">
+                        <button
+                          onClick={() => verifyUser(user._id)}
+                          type="button"
+                          className="btn btn-warning"
+                        >
+                          <i class="fas fa-arrow-right"></i> &nbsp; &nbsp;
                           Verify
                         </button>
                       )}
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => deleteUser(user._id)}
+                        type="button"
+                        className="btn btn-danger"
+                      >
+                       <i class="fas fa-trash"></i> &nbsp; Delete
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -84,6 +144,7 @@ const AdminDashboardTable = (props) => {
       ) : (
         ""
       )}
+      {loader}
     </>
   );
 };

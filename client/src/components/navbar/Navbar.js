@@ -1,54 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { SidebarData } from "./SidebarData";
+import "./navbar.css";
+import { IconContext } from "react-icons";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../redux/actions/admin";
 
 const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
+  const [sidebar, setSidebar] = useState(false);
+
+  const showSidebar = () => setSidebar(!sidebar);
+
   return (
-    <div>
-      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-        <div class="container">
-          <a href="#" class="navbar-brand">
-            EduHub
-          </a>
-          <button
-            class="navbar-toggler"
-            data-toggle="collapse"
-            data-target="#navbarMenu"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarMenu">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <Link to="/" class="nav-link">
-                  {user ? (
-                    user.user.name
-                  ) : (
-                    <Link to="/admin/signin" class="nav-link">
-                      Login
-                    </Link>
-                  )}
+    <>
+      <IconContext.Provider value={{ color: "#fff" }}>
+        <div className="navbar">
+          <Link to="#" className="menu-bars">
+            <FaIcons.FaBars onClick={showSidebar} />
+          </Link>
+        </div>
+        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+          <ul className="nav-menu-items" onClick={showSidebar}>
+            <li className="navbar-toggle">
+              <Link to="#" className="menu-bars">
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            {user ? (
+              <li className="nav-text">
+                <Link class="nav-text">
+                  {" "}
+                  <FaIcons.FaUser />
+                  <span>{user.user.name}</span>
                 </Link>
               </li>
-              {isAuthenticated ? (
-                <li class="nav-item">
-                  <a onClick={logout} href="" class="nav-link">
-                    Logout
-                  </a>
+            ) : (
+              <li className="nav-text">
+                <Link to="/admin/signin" class="nav-text">
+                  Login
+                </Link>
+              </li>
+            )}
+            {SidebarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
                 </li>
-              ) : (
-                ""
-              )}
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
+              );
+            })}
+            {isAuthenticated ? (
+              <li className="nav-text">
+                <Link onClick={logout}>Logout</Link>
+              </li>
+            ) : (
+              ""
+            )}
+          </ul>
+        </nav>
+      </IconContext.Provider>
+    </>
   );
 };
-
 //for action to be called
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,

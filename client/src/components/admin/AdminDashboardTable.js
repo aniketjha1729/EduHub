@@ -60,7 +60,7 @@ const AdminDashboardTable = (props) => {
   return (
     <>
       {allUser ? (
-        <div>
+        <div className="container dashboardData">
           <div className="row justify-content-around dashborad_right_menu">
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.totalUser}</b>
@@ -71,19 +71,20 @@ const AdminDashboardTable = (props) => {
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.verifiedUser}</b>
               <div>
-              <i class="fas fa-user-check"></i> &nbsp;{props.noOfVerifiedUser}
+                <i class="fas fa-user-check"></i> &nbsp;{props.noOfVerifiedUser}
               </div>
             </div>
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.teacher}</b>
               <div>
-              <i class="fas fa-chalkboard-teacher"></i> &nbsp;{props.noOfTeacher}
+                <i class="fas fa-chalkboard-teacher"></i> &nbsp;
+                {props.noOfTeacher}
               </div>
             </div>
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.student}</b>
               <div>
-              <i class="fas fa-user"></i> &nbsp;{props.noOfStudent}
+                <i class="fas fa-user"></i> &nbsp;{props.noOfStudent}
               </div>
             </div>
           </div>

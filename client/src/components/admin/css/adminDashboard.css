@@ -3,6 +3,9 @@
   box-shadow: 5px 2px 5px 4px #dad8d8;
   border-radius: 3px;
 }
+.dashboardData{
+  margin-left: 120px;
+}
 .dashborad_left {
   background-color: rgb(236, 236, 245);
 }

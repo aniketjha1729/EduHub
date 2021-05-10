@@ -12,6 +12,13 @@ const Routes = () => {
         path="/admin/dashboard"
         component={AdminDashboard}
       />
+      <AdminPrivateRoute exact path="/admin/users" component={""} />
+      <AdminPrivateRoute exact path="/admin/posts" component={""} />
+      <AdminPrivateRoute
+        exact
+        path="/admin/notices"
+        component={"AdminDashboard"}
+      />
       <Route exact path="/admin/signin" component={AdminSignIn} />
     </Switch>
   );

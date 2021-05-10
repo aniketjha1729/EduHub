@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../components/admin/css/adminDashboard.css";
 import AdminDashboardTable from "../../components/admin/AdminDashboardTable";
 import axios from "../../api/axios";
+
 const AdminDashboard = () => {
   const [allUser, setAllUser] = useState([]);
   const [totalUserCount, setTotalUserCount] = useState();
@@ -68,9 +69,9 @@ const AdminDashboard = () => {
               userCount={totalUserCount}
               verifiedUser="Verfied User"
               noOfVerifiedUser={verfiedUserCount}
-              teacher="Teacher"
+              teacher="Teachers"
               noOfTeacher={teacherCount}
-              student="Student"
+              student="Students"
               noOfStudent={studentCount}
               getAllUser={getAllUser}
             />

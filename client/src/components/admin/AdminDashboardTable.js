@@ -71,19 +71,19 @@ const AdminDashboardTable = (props) => {
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.verifiedUser}</b>
               <div>
-                <i class="fas fa-users-cog"></i> &nbsp;{props.noOfVerifiedUser}
+              <i class="fas fa-user-check"></i> &nbsp;{props.noOfVerifiedUser}
               </div>
             </div>
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.teacher}</b>
               <div>
-                <i class="fas fa-comments"></i> &nbsp;{props.noOfTeacher}
+              <i class="fas fa-chalkboard-teacher"></i> &nbsp;{props.noOfTeacher}
               </div>
             </div>
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.student}</b>
               <div>
-                <i class="fas fa-comments"></i> &nbsp;{props.noOfStudent}
+              <i class="fas fa-user"></i> &nbsp;{props.noOfStudent}
               </div>
             </div>
           </div>
@@ -96,7 +96,9 @@ const AdminDashboardTable = (props) => {
                   <th scope="col">Email</th>
                   <th scope="col">Role</th>
                   <th scope="col">Status</th>
-                  <th scope="col">Delete</th>
+                  <th scope="col" colSpan="2">
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -108,21 +110,12 @@ const AdminDashboardTable = (props) => {
                     <td>{user.role}</td>
                     <td>
                       {user.isVerified ? (
-                        <button
-                          onClick={() => unVerify(user._id)}
-                          type="button"
-                          className="btn btn-success"
-                        >
+                        <button type="button" className="btn btn-success">
                           <i class="fas fa-user-check"></i> &nbsp;Verified
                         </button>
                       ) : (
-                        <button
-                          onClick={() => verifyUser(user._id)}
-                          type="button"
-                          className="btn btn-warning"
-                        >
-                          <i class="fas fa-arrow-right"></i> &nbsp; &nbsp;
-                          Verify
+                        <button type="button" className="btn btn-warning">
+                          <i class="fas fa-flask"></i> &nbsp; Pending
                         </button>
                       )}
                     </td>
@@ -132,8 +125,26 @@ const AdminDashboardTable = (props) => {
                         type="button"
                         className="btn btn-danger"
                       >
-                       <i class="fas fa-trash"></i> &nbsp; Delete
+                        <i class="fas fa-trash"></i> &nbsp; Delete
                       </button>
+                      &nbsp; &nbsp; &nbsp;
+                      {!user.isVerified ? (
+                        <button
+                          onClick={() => verifyUser(user._id)}
+                          type="button"
+                          className="btn btn-primary"
+                        >
+                          <i class="fas fa-arrow-right"></i> &nbsp; Verify
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => unVerify(user._id)}
+                          type="button"
+                          className="btn btn-secondary"
+                        >
+                          <i class="fas fa-arrow-left"></i> &nbsp; Revert
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))}

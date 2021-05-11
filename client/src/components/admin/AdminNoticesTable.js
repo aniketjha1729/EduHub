@@ -3,30 +3,30 @@ import "./css/adminDashboard.css";
 import axios from "../../api/axios";
 import useLoader from "../../components/loader/useLoader";
 
-const AdminDashboardTable = (props) => {
-  const [allUser, setAllUser] = useState([]);
+const AdminNoticesTable = (props) => {
+  const [allNotices, setAllNotices] = useState([]);
   const [dataChange, setDataChange] = useState();
   const [loader, showLoader, hideLoader] = useLoader();
 
   useEffect(() => {
-    const getAllUser = async () => {
+    const getAllNotices = async () => {
       try {
-        const { data } = await axios.get("/admin/allUsers");
+        const { data } = await axios.get("/admin/notices");
         console.log(data);
-        setAllUser(data);
+        setAllNotices(data);
       } catch (err) {
         console.log(err);
       }
     };
-    getAllUser();
-    props.getAllUser();
+    getAllNotices();
+    props.getAllNotices();
   }, [dataChange]);
 
-  const verifyUser = async (id) => {
+  const verifyNotice = async (id) => {
     showLoader();
     const body = { verify: true };
     try {
-      const { data } = await axios.put(`/admin/verify/${id}`, body);
+      const { data } = await axios.put(`/admin/verifynotice/${id}`, body);
       setDataChange(data);
       hideLoader();
     } catch (err) {
@@ -38,7 +38,7 @@ const AdminDashboardTable = (props) => {
     showLoader();
     const body = { verify: false };
     try {
-      const { data } = await axios.put(`/admin/verify/${id}`, body);
+      const { data } = await axios.put(`/admin/verifynotice/${id}`, body);
       setDataChange(data);
       hideLoader();
     } catch (err) {
@@ -46,10 +46,10 @@ const AdminDashboardTable = (props) => {
     }
   };
 
-  const deleteUser = async (id) => {
+  const deleteNotice = async (id) => {
     showLoader();
     try {
-      const { data } = await axios.delete(`/admin/deleteUser/${id}`);
+      const { data } = await axios.delete(`/admin/deletenotice/${id}`);
       setDataChange(data);
       hideLoader();
     } catch (err) {
@@ -59,32 +59,27 @@ const AdminDashboardTable = (props) => {
 
   return (
     <>
-      {allUser ? (
+      {allNotices ? (
         <div className="container dashboardData">
           <div className="row justify-content-around dashborad_right_menu">
-            <div className="col-2 dashborad_right_menu_item">
-              <b>{props.totalUser}</b>
+            <div className="col-3 dashborad_right_menu_item">
+              <b>{props.totalNotice}</b>
               <div>
-                <i class="fas fa-users"></i> &nbsp;{props.userCount}
+                <i class="fas fa-users"></i> &nbsp;{props.totalNoticesCount}
               </div>
             </div>
-            <div className="col-2 dashborad_right_menu_item">
-              <b>{props.verifiedUser}</b>
+            <div className="col-3 dashborad_right_menu_item">
+              <b>{props.verifiedNotice}</b>
               <div>
-                <i class="fas fa-user-check"></i> &nbsp;{props.noOfVerifiedUser}
+                <i class="fas fa-user-check"></i> &nbsp;
+                {props.verfiedNoticeCount}
               </div>
             </div>
-            <div className="col-2 dashborad_right_menu_item">
-              <b>{props.teacher}</b>
+            <div className="col-3 dashborad_right_menu_item">
+              <b>{props.unverfiedNotice}</b>
               <div>
                 <i class="fas fa-chalkboard-teacher"></i> &nbsp;
-                {props.noOfTeacher}
-              </div>
-            </div>
-            <div className="col-2 dashborad_right_menu_item">
-              <b>{props.student}</b>
-              <div>
-                <i class="fas fa-user"></i> &nbsp;{props.noOfStudent}
+                {props.unverfiedNoticeCount}
               </div>
             </div>
           </div>
@@ -93,9 +88,8 @@ const AdminDashboardTable = (props) => {
               <thead>
                 <tr>
                   <th scope="col">S.No</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Role</th>
+                  <th scope="col">Notice</th>
+                  <th scope="col">Date</th>
                   <th scope="col">Status</th>
                   <th scope="col" colSpan="2">
                     Action
@@ -103,14 +97,13 @@ const AdminDashboardTable = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {allUser.map((user, index) => (
+                {allNotices.map((notice, index) => (
                   <tr key={index}>
                     <th scope="row">{index}</th>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.role}</td>
+                    <td>{notice.content}</td>
+                    <td>{notice.date}</td>
                     <td>
-                      {user.isVerified ? (
+                      {notice.isVerified ? (
                         <button type="button" className="btn btn-success">
                           <i class="fas fa-user-check"></i> &nbsp;Verified
                         </button>
@@ -122,16 +115,16 @@ const AdminDashboardTable = (props) => {
                     </td>
                     <td>
                       <button
-                        onClick={() => deleteUser(user._id)}
+                        onClick={() => deleteNotice(notice._id)}
                         type="button"
                         className="btn btn-danger"
                       >
                         <i class="fas fa-trash"></i> &nbsp; Delete
                       </button>
                       &nbsp; &nbsp; &nbsp;
-                      {!user.isVerified ? (
+                      {!notice.isVerified ? (
                         <button
-                          onClick={() => verifyUser(user._id)}
+                          onClick={() => verifyNotice(notice._id)}
                           type="button"
                           className="btn btn-primary"
                         >
@@ -139,11 +132,11 @@ const AdminDashboardTable = (props) => {
                         </button>
                       ) : (
                         <button
-                          onClick={() => unVerify(user._id)}
+                          onClick={() => unVerify(notice._id)}
                           type="button"
-                          className="btn btn-danger"
+                          className="btn btn-secondary"
                         >
-                          <i class="fas fa-ban"></i> &nbsp; Block
+                          <i class="fas fa-ban"></i> &nbsp; Spam
                         </button>
                       )}
                     </td>
@@ -161,4 +154,4 @@ const AdminDashboardTable = (props) => {
   );
 };
 
-export default AdminDashboardTable;
+export default AdminNoticesTable;

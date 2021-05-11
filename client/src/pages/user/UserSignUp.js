@@ -1,11 +1,11 @@
 import React from 'react'
 
-const AdminTable = () => {
+const UserSignUp = () => {
     return (
         <div>
-            
+            UserSignUp
         </div>
     )
 }
 
-export default AdminTable
+export default UserSignUp

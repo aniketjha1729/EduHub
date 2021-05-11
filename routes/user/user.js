@@ -10,7 +10,7 @@ const {
 
 router.get("/test", (req, res) => {
   res.status(200).json({
-    Message: "Students Routes Working",
+    Message: "User Routes Working",
   });
 });
 

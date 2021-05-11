@@ -6,7 +6,7 @@ RED='\033[1;31m'
 NC='\033[0m'
 
 echo -e "${GREEN}\nThis script runs some basic GIT commands.${NC}"
-echo -e "${RED}\nMenu:\n   0. TERMINAL\t   6. COMMIT\n   1. INIT\t   7. PUSH MASTER\n   2. ORIGIN\t   8. CREATE BRANCH\n   3. PULL \t   9. CHECKOUT TO BRANCH\n   4. STATUS \t  10. PUSH BRANCH\n   5. ADD\n${NC}"
+echo -e "${RED}\nMenu:\n   0. TERMINAL\t   6. COMMIT\n   1. INIT\t   7. PUSH MASTER\n   2. ORIGIN\t   8. CREATE BRANCH\n   3. PULL \t   9. CHECKOUT TO BRANCH\n   4. STATUS \t  10. PUSH BRANCH\n   5. ADD \t  11. GIT FETCH\n${NC}"
 echo -e -n "${BLUE}Enter a number from the above menu or any other value to exit: ${NC}"
 read choice
 
@@ -60,6 +60,10 @@ case $choice in
 		echo -n 'Enter BRANCH name: '
 		read branch
 		eval 'git push origin "$branch"'
+		;;
+	11)
+		echo -e '\e[5mGIT fetch:\e[25m\n'
+		git fetch
 		;;
 	0)
 		exec /bin/bash

@@ -75,7 +75,6 @@ const AdminSignIn = ({ adminLogin, isAuthenticated }) => {
             onChange={onChange}
           />
           <br />
-          <Link to="/reset">Forgot Password?</Link>
           <br />
           <input type="submit" className="btn btn-primary" value="Login" />
           <br />

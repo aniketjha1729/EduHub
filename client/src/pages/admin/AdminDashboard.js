@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import "../../components/admin/css/adminDashboard.css";
 import AdminDashboardTable from "../../components/admin/AdminDashboardTable";
 import axios from "../../api/axios";
 import useLoader from "../../components/loader/useLoader";
 import Navbar from "../../components/navbar/Navbar";
+
 const AdminDashboard = () => {
   const [totalUserCount, setTotalUserCount] = useState();
   const [verfiedUserCount, setVerfiedUserCount] = useState();

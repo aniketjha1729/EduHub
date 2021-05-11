@@ -11,19 +11,19 @@ export const SidebarData = [
   },
   {
     title: "Create Notice",
-    path: "/admin/notices",
+    path: "/admin/createnotice",
     icon: <IoIcons.IoIosPaper />,
     cName: "nav-text",
   },
   {
     title: "Notices",
-    path: "/admin/users",
+    path: "/admin/notices",
     icon: <IoIcons.IoIosPaper />,
     cName: "nav-text",
   },
   {
     title: "Team",
-    path: "/admin/notices",
+    path: "/abc",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
   },

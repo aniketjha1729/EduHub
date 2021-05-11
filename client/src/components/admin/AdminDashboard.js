@@ -84,6 +84,7 @@ const AdminDashboard = () => {
                       <button type="button" className="btn btn-primary">
                         Primary
                       </button>
+                     
                     </td>
                   </tr>
                 </tbody>

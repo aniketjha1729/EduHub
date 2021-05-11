@@ -55,7 +55,6 @@ const AdminNoticesTable = (props) => {
     } catch (err) {
       console.log(err);
     }
-    
   };
 
   return (
@@ -91,6 +90,7 @@ const AdminNoticesTable = (props) => {
                   <th scope="col">S.No</th>
                   <th scope="col">Notice</th>
                   <th scope="col">Date</th>
+                  <th scope="col">Creator</th>
                   <th scope="col">Status</th>
                   <th scope="col" colSpan="2">
                     Action
@@ -102,7 +102,8 @@ const AdminNoticesTable = (props) => {
                   <tr key={index}>
                     <th scope="row">{index}</th>
                     <td>{notice.content}</td>
-                    <td>{notice.date}</td>
+                    <td>{new Date(notice.date).toLocaleDateString()}</td>
+                    <td>{notice.postedBy}</td>
                     <td>
                       {notice.isVerified ? (
                         <button type="button" className="btn btn-success">

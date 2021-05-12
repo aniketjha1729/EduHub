@@ -4,7 +4,7 @@
   "description": "EduHub",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "aniketjha1729",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "mongoose": "^5.12.1",
+    "multer": "^1.4.2",
     "validator": "^13.5.2"
   }
 }
-

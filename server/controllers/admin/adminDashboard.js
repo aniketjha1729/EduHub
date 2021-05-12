@@ -81,7 +81,7 @@ exports.createNotice = (req, res) => {
     }
     let notice = new Notice(fields);
     if (!file.document) {
-      return res.status(422).json({ message: "Please fill all the fields" });
+      return res.status(422).json({ message: "Please attach a file" });
     }
     if (file.document) {
       if (file.document.size > 300000) {
@@ -92,6 +92,7 @@ exports.createNotice = (req, res) => {
       notice.document.data = fs.readFileSync(file.document.path);
       notice.document.contentType = file.document.type;
       notice.isVerified = true;
+      notice.postedBy = "admin";
     }
     notice.save((err, notice) => {
       if (err) {

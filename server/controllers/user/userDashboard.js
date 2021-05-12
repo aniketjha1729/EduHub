@@ -39,6 +39,7 @@ exports.getUserById = (req, res) => {
 
 exports.getAllUsers = (req, res) => {
   User.find()
+    .select("-password")
     .then((users) => {
       res.status(200).json(users);
     })
@@ -77,8 +78,10 @@ exports.createNotice = (req, res) => {
       notice.document.contentType = file.document.type;
       if (req.user.role == "student") {
         notice.isVerified = false;
+        notice.postedBy = "Student";
       } else if (req.user.role == "teacher") {
         notice.isVerified = true;
+        notice.postedBy = "Teacher";
       } else {
         notice.isVerified = false;
       }

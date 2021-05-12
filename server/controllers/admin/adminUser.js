@@ -9,7 +9,7 @@ const authKey = process.env.SECRET_ADMIN_AUTH_KEY;
 exports.createAdmin = (req, res) => {
   const newAdmin = new AdminUser({
     name: "admin",
-    email: "admintest@test.com",
+    email: "admin@test.com",
     password: "admin@1234",
   });
   bcrypt.genSalt(10, (err, salt) => {

@@ -119,7 +119,7 @@ const AdminNoticesTable = (props) => {
                     <td>{new Date(notice.date).toLocaleDateString()}</td>
                     <td>{notice.postedBy}</td>
                     <td>
-                      <a
+                      <button type="button" className="btn btn-success"
                         href="#/"
                         onClick={() =>
                           downloadFile(
@@ -128,9 +128,9 @@ const AdminNoticesTable = (props) => {
                             notice.file_mimetype
                           )
                         }
-                      >
+                      ><i class="fas fa-cloud-download-alt"></i>&nbsp;
                         Download
-                      </a>
+                      </button>
                     </td>
                     <td>
                       {notice.isVerified ? (

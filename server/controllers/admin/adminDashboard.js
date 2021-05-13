@@ -4,6 +4,7 @@ const AdminUser = require("../../models/admin/adminUserModel");
 const Post = require("../../models/post/postModel");
 const formidable = require("formidable");
 const fs = require("fs");
+const path = require('path');
 
 /*<===============================================================================================>*/
 
@@ -64,46 +65,70 @@ exports.deleteUser = (req, res) => {
   });
 };
 
-exports.createNotice = (req, res) => {
-  let form = new formidable.IncomingForm();
-  form.keepExtensions = true;
-  form.parse(req, (err, fields, file) => {
-    if (err) {
-      return res.status(400).json({
-        errors: "Problem with file",
-      });
-    }
-    const { content } = fields;
-    if (!content) {
-      return res.status(400).json({
-        errors: "Please inlcude all fileds",
-      });
-    }
-    let notice = new Notice(fields);
-    if (!file.document) {
-      return res.status(422).json({ message: "Please attach a file" });
-    }
-    if (file.document) {
-      if (file.document.size > 300000) {
-        return res.status(400).json({
-          errors: "file is to big",
-        });
-      }
-      notice.document.data = fs.readFileSync(file.document.path);
-      notice.document.contentType = file.document.type;
-      notice.isVerified = true;
-      notice.postedBy = "admin";
-    }
-    notice.save((err, notice) => {
-      if (err) {
-        return res.status(400).json({
-          errors: "saving failed",
-        });
-      }
-      res.json(notice);
+(exports.createNotice = async (req, res) => {
+  console.log("heere");
+  try {
+    const { content } = req.body;
+    const { path, mimetype } = req.file;
+    const notice = new Notice({
+      postedBy:"admin",
+      isVerified:true,
+      content,
+      file_path: path,
+      file_mimetype: mimetype,
     });
-  });
-};
+    await notice.save();
+    res.send("file uploaded successfully.");
+  } catch (error) {
+    res.status(400).send("Error while uploading file. Try again later.");
+  }
+}),
+  (error, req, res, next) => {
+    if (error) {
+      res.status(500).send(error.message);
+    }
+  };
+
+// exports.createNotice = (req, res) => {
+//   let form = new formidable.IncomingForm();
+//   form.keepExtensions = true;
+//   form.parse(req, (err, fields, file) => {
+//     if (err) {
+//       return res.status(400).json({
+//         errors: "Problem with file",
+//       });
+//     }
+//     const { content } = fields;
+//     if (!content) {
+//       return res.status(400).json({
+//         errors: "Please inlcude all fileds",
+//       });
+//     }
+//     let notice = new Notice(fields);
+//     if (!file.document) {
+//       return res.status(422).json({ message: "Please attach a file" });
+//     }
+//     if (file.document) {
+//       if (file.document.size > 300000) {
+//         return res.status(400).json({
+//           errors: "file is to big",
+//         });
+//       }
+//       notice.document.data = fs.readFileSync(file.document.path);
+//       notice.document.contentType = file.document.type;
+//       notice.isVerified = true;
+//       notice.postedBy = "admin";
+//     }
+//     notice.save((err, notice) => {
+//       if (err) {
+//         return res.status(400).json({
+//           errors: "saving failed",
+//         });
+//       }
+//       res.json(notice);
+//     });
+//   });
+// };
 
 exports.verifyNotice = (req, res) => {
   Notice.findById({ _id: req.params.noticeId })
@@ -135,14 +160,26 @@ exports.deleteNotice = (req, res) => {
 };
 
 // remove .select("-document")
-TODO: exports.getAllNotices = (req, res) => {
-  Notice.find({}, {}, { sort: { date: -1 } })
-    .select("-document")
-    .then((notices) => {
-      if (!notices) {
-        return res.status(404).json({ message: "No notification found" });
-      }
-      return res.status(200).json(notices);
-    })
-    .catch((err) => console.log(err));
+TODO: exports.getAllNotices = async (req, res) => {
+  try {
+    const files = await Notice.find({});
+
+    res.send(files);
+  } catch (error) {
+    res.status(400).send("Error while getting list of files. Try again later.");
+  }
+};
+
+exports.downloadNotice = async (req, res) => {
+  
+  try {
+    const notice = await Notice.findById(req.params.noticeId);
+    console.log(notice);
+    res.set({
+      "Content-Type": notice.file_mimetype,
+    });
+    res.sendFile(path.join(__dirname, "../../", notice.file_path));
+  } catch (error) {
+    res.status(400).send("Error while downloading file. Try again later.");
+  }
 };

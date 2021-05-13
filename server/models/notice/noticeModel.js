@@ -3,9 +3,13 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const NoticeSchema = new Schema({
-  document: {
-    data: Buffer,
-    contentType: String,
+  file_path: {
+    type: String,
+    required: true
+  },
+  file_mimetype: {
+    type: String,
+    required: true
   },
   content: {
     type: String,

@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./css/adminDashboard.css";
 import axios from "../../api/axios";
 import useLoader from "../../components/loader/useLoader";
+import download from "downloadjs";
 
 const AdminNoticesTable = (props) => {
   const [allNotices, setAllNotices] = useState([]);
   const [dataChange, setDataChange] = useState();
   const [loader, showLoader, hideLoader] = useLoader();
-
   useEffect(() => {
     const getAllNotices = async () => {
       try {
@@ -21,6 +21,19 @@ const AdminNoticesTable = (props) => {
     getAllNotices();
     props.getAllNotices();
   }, [dataChange]);
+
+  const downloadFile = async (id, path, mimetype) => {
+    try {
+      const result = await axios.get(`/admin/downloadNotice/${id}`, {
+        responseType: "blob",
+      });
+      const split = path.split("/");
+      const filename = split[split.length - 1];
+      return download(result.data, filename, mimetype);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const verifyNotice = async (id) => {
     showLoader();
@@ -91,6 +104,7 @@ const AdminNoticesTable = (props) => {
                   <th scope="col">Notice</th>
                   <th scope="col">Date</th>
                   <th scope="col">Creator</th>
+                  <th scope="col">Download</th>
                   <th scope="col">Status</th>
                   <th scope="col" colSpan="2">
                     Action
@@ -104,6 +118,20 @@ const AdminNoticesTable = (props) => {
                     <td>{notice.content}</td>
                     <td>{new Date(notice.date).toLocaleDateString()}</td>
                     <td>{notice.postedBy}</td>
+                    <td>
+                      <a
+                        href="#/"
+                        onClick={() =>
+                          downloadFile(
+                            notice._id,
+                            notice.file_path,
+                            notice.file_mimetype
+                          )
+                        }
+                      >
+                        Download
+                      </a>
+                    </td>
                     <td>
                       {notice.isVerified ? (
                         <button type="button" className="btn btn-success">

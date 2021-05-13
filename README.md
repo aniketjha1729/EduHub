@@ -11,9 +11,8 @@ A Social Network developed with MERN stack.
 ## Steps to init project
 
 1.  First install all dependencies with npm:
-    `npm install` in the root directory && `npm install` in the client directory.
-2.  Open mongodb, and the server.
-3.  Create a `.env` file and insert the following code. Replace values with yours!!
+    `npm install` in the root directory && `npm install` in the server directory.
+2.  Create a `.env` file and insert the following code. Replace values with yours!!
 
     ```javascript
     DATABASE = "mongodb://localhost/eduhub";
@@ -22,15 +21,15 @@ A Social Network developed with MERN stack.
     SECRET_TEACHER_AUTH_KEY = "teacherkey";
     ```
 
-4.  Start the server for backend and frontend
-    ### For backend
-    `npm start` in the root directory
+3.  Start the server for backend and frontend
     ### For frontend
-    Go to the client directory and run the command `npm start`
-5.  Now load the app
+    `npm start` in the root directory
+    ### For backend
+    Go to the server directory and run the command `npm start`
+4.  Now load the app
 
     ```javacript
     localhost:3000
     ```
 
-6.  Enjoy!!
+5.  Enjoy!!

@@ -7,6 +7,7 @@ import PageNoteFound from "../pages/404/PageNoteFound";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 import Home from "../pages/Home";
 import AdminNotices from "../pages/admin/AdminNotices";
+import ShowNotice from "../pages/admin/ShowNotice";
 
 const Routes = () => {
   return (

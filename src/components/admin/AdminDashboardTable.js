@@ -61,7 +61,7 @@ const AdminDashboardTable = (props) => {
     <>
       {allUser ? (
         <div className="container dashboardData">
-          <div className="row justify-content-around dashborad_right_menu">
+          <div className="row justify-content-around dashborad_right_menu divSticky">{/* margin-left: 2px; */}
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.totalUser}</b>
               <div>
@@ -104,7 +104,7 @@ const AdminDashboardTable = (props) => {
               </thead>
               <tbody>
                 {allUser.map((user, index) => (
-                  <tr key={index}>
+                  <tr key={index} style={{width:"20%"},{alignItems: "center"}}>
                     <th scope="row">{index}</th>
                     <td>{user.name}</td>
                     <td>{user.email}</td>

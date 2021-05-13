@@ -54,7 +54,6 @@ const ShowNotice = () => {
               ({ _id, content, file_path, file_mimetype }) => (
                 <tr key={_id}>
                   <td className="file-title">{content}</td>
-                  
                   <td>
                     <a
                       href="#/"

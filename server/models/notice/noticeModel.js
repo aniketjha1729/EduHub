@@ -15,13 +15,13 @@ const NoticeSchema = new Schema({
     type: String,
     required: true,
   },
-  // postedBy:{
-  //   type:String,
-  //   required:true,
-  // },
-  // isVerified: {
-  //   type: Boolean,
-  // },
+  postedBy:{
+    type:String,
+    required:true,
+  },
+  isVerified: {
+    type: Boolean,
+  },
   date: {
     type: Date,
     default: Date.now,

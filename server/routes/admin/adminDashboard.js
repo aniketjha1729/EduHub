@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const path = require("path");
 
 const {
   createNotice,
@@ -52,9 +51,9 @@ router.get("/testauth", isAdminAuth, isAdmin, (req, res) => {
 
 router.get("/currentUser", isAdminAuth, isAdmin, currentProfile);
 
-//router.put("/verify/:userId", isAdminAuth, isAdmin, verifyUser);
+router.put("/verify/:userId", isAdminAuth, isAdmin, verifyUser);
 
-//router.delete("/deleteUser/:userId", isAdminAuth, isAdmin, deleteUser);
+router.delete("/deleteUser/:userId", isAdminAuth, isAdmin, deleteUser);
 
 router.post(
   "/createnotice",
@@ -66,9 +65,9 @@ router.post(
 
 router.get("/downloadNotice/:noticeId", isAdminAuth, isAdmin, downloadNotice);
 
-//router.put("/verifynotice/:noticeId", isAdminAuth, isAdmin, verifyNotice);
+router.put("/verifynotice/:noticeId", isAdminAuth, isAdmin, verifyNotice);
 
-//router.delete("/deletenotice/:noticeId", isAdminAuth, isAdmin, deleteNotice);
+router.delete("/deletenotice/:noticeId", isAdminAuth, isAdmin, deleteNotice);
 
 router.get("/notices", isAdminAuth, isAdmin, getAllNotices);
 

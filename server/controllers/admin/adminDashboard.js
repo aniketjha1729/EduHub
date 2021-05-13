@@ -71,6 +71,8 @@ exports.deleteUser = (req, res) => {
     const { content } = req.body;
     const { path, mimetype } = req.file;
     const notice = new Notice({
+      postedBy:"admin",
+      isVerified:true,
       content,
       file_path: path,
       file_mimetype: mimetype,

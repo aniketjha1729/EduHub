@@ -5,6 +5,11 @@
     justify-content: start;
     align-items: center;
   }
+
+  .navHeading{
+    margin-left: 50%;
+    color: white;
+  }
   
   .menu-bars {
     margin-left: 2rem;

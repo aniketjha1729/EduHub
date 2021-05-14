@@ -35,14 +35,14 @@ const AdminNoticeCreateForm = () => {
     };
     fileReader.readAsDataURL(uploadedFile);
     setIsPreviewAvailable(uploadedFile.name.match(/\.(jpeg|jpg|png)$/));
-    dropRef.current.style.border = "2px dashed #e9ebeb";
+    dropRef.current.style.border = "2px dashed rgb(213, 255, 134)";
   };
 
   const updateBorder = (dragState) => {
     if (dragState === "over") {
       dropRef.current.style.border = "2px solid #000";
     } else if (dragState === "leave") {
-      dropRef.current.style.border = "2px dashed #e9ebeb";
+      dropRef.current.style.border = "2px dashed rgb(213, 255, 134)";
     }
   };
 

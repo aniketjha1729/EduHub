@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "./navbar.css";
@@ -11,45 +10,43 @@ import { logout } from "../../redux/actions/admin";
 
 const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
   const [sidebar, setSidebar] = useState(true);
-
   const showSidebar = () => setSidebar(sidebar);
 
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
         <div className="navbar">
-          <Link to="#" className="menu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
+          {user ? (
+            <div className="navHeading">
+              {" "}
+              <FaIcons.FaAdn />
+              <span>
+                <b>{user.user.name}</b>
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
-                <b style={{color:"white"}}>EduHub</b>
+                <b style={{ color: "white" }}>EduHub</b>
               </Link>
             </li>
-            {user ? (
-              <li className="nav-text">
-                <Link class="nav-text">
-                  {" "}
-                  <FaIcons.FaAdn />
-                  <span>{user.user.name}</span>
-                </Link>
-              </li>
-            ) : (
-              ""
-            )}
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
+
+            {isAuthenticated &&
+              SidebarData.map((item, index) => {
+                return (
+                  <li key={index} className={item.cName}>
+                    <Link to={item.path}>
+                      {item.icon}
+                      <span>{item.title}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             {isAuthenticated ? (
               <li className="nav-text">
                 <Link onClick={logout}>Logout</Link>

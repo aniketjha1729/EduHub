@@ -10,3 +10,9 @@
   background-color: rgb(255, 255, 255);
   cursor: pointer;
 }
+.divSticky{
+  position: sticky;
+  top: 0px;
+  margin: 1px;
+  background-color: rgb(228, 228, 228);
+}

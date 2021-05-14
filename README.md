@@ -21,15 +21,18 @@ A Social Network developed with MERN stack.
     SECRET_TEACHER_AUTH_KEY = "teacherkey";
     ```
 
-3.  Start the server for backend and frontend
+3. ### Create a folder in ./server directory and name it as
+    `files`
+
+4.  ### Start the server for backend and frontend
     ### For frontend
     `npm start` in the root directory
     ### For backend
     Go to the server directory and run the command `npm start`
-4.  Now load the app
+5.  Now load the app
 
     ```javacript
     localhost:3000
     ```
 
-5.  Enjoy!!
+6.  Enjoy!!

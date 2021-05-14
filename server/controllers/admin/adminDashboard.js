@@ -66,14 +66,14 @@ exports.deleteUser = (req, res) => {
 };
 
 (exports.createNotice = async (req, res) => {
-  console.log("heere");
   try {
-    const { content } = req.body;
+    const { content,heading } = req.body;
     const { path, mimetype } = req.file;
     const notice = new Notice({
       postedBy:"admin",
       isVerified:true,
       content,
+      heading,
       file_path: path,
       file_mimetype: mimetype,
     });
@@ -174,7 +174,6 @@ exports.downloadNotice = async (req, res) => {
   
   try {
     const notice = await Notice.findById(req.params.noticeId);
-    console.log(notice);
     res.set({
       "Content-Type": notice.file_mimetype,
     });

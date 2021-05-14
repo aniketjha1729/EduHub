@@ -15,6 +15,10 @@ const NoticeSchema = new Schema({
     type: String,
     required: true,
   },
+  heading:{
+    type: String,
+    required: true,
+  },
   postedBy:{
     type:String,
     required:true,

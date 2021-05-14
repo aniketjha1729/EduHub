@@ -101,7 +101,6 @@ const AdminNoticeCreateForm = () => {
                   />
                   </Form.Group>
             </div>
-
             <div className="row">
             <div className="col-sm-12">
               <div className="upload-section shadow p-3 mb-5 bg-body rounded">

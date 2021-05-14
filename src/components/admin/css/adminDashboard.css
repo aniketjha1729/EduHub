@@ -30,6 +30,6 @@
 .divSticky{
   position: sticky;
   top: 0px;
-  margin: 1px;
   background-color: rgb(236, 236, 245);
+  margin: 1px;
 }

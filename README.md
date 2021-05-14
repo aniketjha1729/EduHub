@@ -24,7 +24,7 @@ A Social Network developed with MERN stack.
 3. ### Create a folder in ./server directory and name it as
     `files`
 
-4.  Start the server for backend and frontend
+4.  ### Start the server for backend and frontend
     ### For frontend
     `npm start` in the root directory
     ### For backend

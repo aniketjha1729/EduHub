@@ -75,43 +75,65 @@ const AdminNoticeCreateForm = () => {
     }
   };
   return (
-    <div className="container noticeUpload">
-      <Form className="search-form" onSubmit={handleOnSubmit}>
-        <Row>
-          <Col>
-            <Form.Group controlId="title">
-              <Form.Control
-                type="text"
-                name="content"
-                value={state.content || ""}
-                placeholder="Notice Content"
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <div className="upload-section">
-          <Dropzone
-            onDrop={onDrop}
-            onDragEnter={() => updateBorder("over")}
-            onDragLeave={() => updateBorder("leave")}
-          >
-            {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps({ className: "drop-zone" })} ref={dropRef}>
-                <input {...getInputProps()} />
-                <p>Drag and drop a file OR click here to select a file</p>
-                {file && (
-                  <div>
-                    <strong>Selected file:</strong> {file.name}
-                  </div>
-                )}
+    <div className="noticeUpload main media-body">
+      <Form className="search-form"  onSubmit={handleOnSubmit}>
+        <div style={{width: "600px"}}>
+          <div className="row shadow p-3 mb-5 bg-body rounded">
+            <div className="col-sm-6">
+                <Form.Group controlId="title" className="shadow p-3 mb-5 bg-body rounded">
+                  <Form.Control
+                    type="text"
+                    name="heading"
+                    value={state.content || ""}
+                    placeholder="Notice Heading"
+                    onChange={handleInputChange}
+                  />
+                  </Form.Group>
+            </div>
+            <div className="col-sm-6">
+                <Form.Group controlId="title" className="shadow p-3 mb-5 bg-body rounded">
+                  <textarea rows="1" cols="23"
+                    type="textarea"
+                    name="content"
+                    value={state.content || ""}
+                    placeholder="Type Notice Content here"
+                    onChange={handleInputChange}
+                  />
+                  </Form.Group>
+            </div>
+
+            <div className="row">
+            <div className="col-sm-12">
+              <div className="upload-section shadow p-3 mb-5 bg-body rounded">
+                  <Dropzone
+                    onDrop={onDrop}
+                    onDragEnter={() => updateBorder("over")}
+                    onDragLeave={() => updateBorder("leave")}
+                  >
+                  {({ getRootProps, getInputProps }) => (
+                    <div {...getRootProps({ className: "drop-zone" })} ref={dropRef}>
+                      <input {...getInputProps()} />
+                      <p>Drag and drop a file OR click here to select a file</p>
+                      {file && (
+                        <div style={{width: "100px"}}>
+                          <strong>Selected file:</strong> {file.name}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                  </Dropzone>
+                </div>
               </div>
-            )}
-          </Dropzone>
+            </div>
+          </div>
+          <div className="row" style={{"margin-left": "40%"}}>
+            <div className="col-sm-12">
+              <Button variant="primary" type="submit">
+                Publish
+              </Button>
+            </div>
+          </div>
         </div>
-        <Button variant="primary" type="submit">
-          Publish
-        </Button>
       </Form>
     </div>
   );

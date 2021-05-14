@@ -101,7 +101,7 @@ const AdminNoticesTable = (props) => {
               <thead>
                 <tr>
                   <th scope="col">S.No</th>
-                  <th scope="col">Notice</th>
+                  <th scope="col">Heading</th>
                   <th scope="col">Date</th>
                   <th scope="col">Creator</th>
                   <th scope="col">Download</th>
@@ -119,8 +119,7 @@ const AdminNoticesTable = (props) => {
                     <td>{new Date(notice.date).toLocaleDateString()}</td>
                     <td>{notice.postedBy}</td>
                     <td>
-                      <button type="button" className="btn btn-success"
-                        href="#/"
+                      <i
                         onClick={() =>
                           downloadFile(
                             notice._id,
@@ -128,19 +127,16 @@ const AdminNoticesTable = (props) => {
                             notice.file_mimetype
                           )
                         }
-                      ><i class="fas fa-cloud-download-alt"></i>&nbsp;
-                        Download
-                      </button>
+                        class="fas fa-cloud-download-alt fa-2x"
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                      &nbsp;
                     </td>
                     <td>
                       {notice.isVerified ? (
-                        <button type="button" className="btn btn-success">
-                          <i class="fas fa-user-check"></i> &nbsp;Verified
-                        </button>
+                        <i class="fas fa-clipboard-check fa-2x"></i>
                       ) : (
-                        <button type="button" className="btn btn-warning">
-                          <i class="fas fa-flask"></i> &nbsp; Pending
-                        </button>
+                        <i class="fas fa-flask fa-2x"></i>
                       )}
                     </td>
                     <td>

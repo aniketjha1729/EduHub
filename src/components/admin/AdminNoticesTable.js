@@ -100,15 +100,15 @@ const AdminNoticesTable = (props) => {
     <>
       {allNotices ? (
         <div className="container dashboardData">
-          <div className="row justify-content-around dashborad_right_menu">
+          <div className="row justify-content-around dashborad_right_menu divSticky">
             <div className="col-3 dashborad_right_menu_item">
               <b>{props.totalNotice}</b>
               <div>
                 <i class="fas fa-users"></i> &nbsp;{props.totalNoticesCount}
               </div>
             </div>
-            <div className="col-2 dashborad_right_menu_item">
-              <select
+            <div className="col-2 dashborad_right_menu_item btn">
+              <select className="drop"
                 name="filter"
                 value={filterType}
                 onChange={(value) => fieldChange(value)}

@@ -86,7 +86,7 @@ const AdminDashboardTable = (props) => {
     <>
       {allUser ? (
         <div className="container dashboardData">
-          <div className="row justify-content-around dashborad_right_menu">
+          <div className="row justify-content-around dashborad_right_menu divSticky">
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.totalUser}</b>
               <div>
@@ -99,8 +99,8 @@ const AdminDashboardTable = (props) => {
                 <i class="fas fa-user-check"></i> &nbsp;{props.noOfVerifiedUser}
               </div>
             </div>
-            <div className="col-2 dashborad_right_menu_item">
-              <select
+            <div className="col-2 dashborad_right_menu_item btn">
+              <select className="drop"
                 name="filter"
                 value={filterType}
                 onChange={(value) => fieldChange(value)}

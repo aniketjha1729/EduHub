@@ -18,38 +18,37 @@ const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
         <div className="navbar">
-          <Link to="#" className="menu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
+          {user ? (
+            <div className="navHeading">
+              <FaIcons.FaAdn />
+              <span>{user.user.name}</span>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
-        <nav activeKey="/" onSelect={(selectedKey) => alert(`selected ${selectedKey}`)} className={sidebar ? "nav-menu active" : "nav-menu"}>
+        <nav
+          activeKey="/"
+          onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+          className={sidebar ? "nav-menu active" : "nav-menu"}
+        >
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
-                <b style={{color:"white"}}>EduHub</b>
+                <b style={{ color: "white" }}>EduHub</b>
               </Link>
             </li>
-            {user ? (
-              <li className="nav-text">
-                <Link class="nav-text">
-                  {" "}
-                  <FaIcons.FaAdn />
-                  <span>{user.user.name}</span>
-                </Link>
-              </li>
-            ) : (
-              ""
-            )}
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
+            {isAuthenticated &&
+              SidebarData.map((item, index) => {
+                return (
+                  <li key={index} className={item.cName}>
+                    <Link to={item.path}>
+                      {item.icon}
+                      <span>{item.title}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             {isAuthenticated ? (
               <li className="nav-text">
                 <Link onClick={logout}>Logout</Link>

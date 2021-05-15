@@ -27,12 +27,13 @@ export const adminLogin = (email, password) => async (dispatch) => {
       type: ADMIN_LOGIN_SUCCESS,
       payload: res.data,
     });
-
     dispatch(loadAdminData());
   } catch (err) {
-    const errors = err.response.data.error;
+    const errors = err.response.data.errors[0].msg;
+    console.log(errors);
     dispatch({
       type: ADMIN_LOGIN_FAIL,
+      payload: errors,
     });
   }
 };

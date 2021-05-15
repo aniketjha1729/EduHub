@@ -7,6 +7,7 @@ const AdminDashboardTable = (props) => {
   const [allUser, setAllUser] = useState([]);
   const [dataChange, setDataChange] = useState();
   const [loader, showLoader, hideLoader] = useLoader();
+  const [filterType, setFilterType] = useState("");
 
   useEffect(() => {
     const getAllUser = async () => {
@@ -21,6 +22,30 @@ const AdminDashboardTable = (props) => {
     getAllUser();
     props.getAllUser();
   }, [dataChange]);
+
+  const fieldChange = async (e) => {
+    if (e.target.value == "verified") {
+      setFilterType(e.target.value)
+      try {
+        const { data } = await axios.get("/admin/allUsers");
+        const filteredData = data.filter((item) => item.isVerified == true);
+        console.log(filteredData);
+        setAllUser(filteredData);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      setFilterType(e.target.value)
+      try {
+        const { data } = await axios.get("/admin/allUsers");
+        const filteredData = data.filter((item) => item.isVerified == false);
+        console.log(filteredData);
+        setAllUser(filteredData);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
   const verifyUser = async (id) => {
     showLoader();
@@ -61,7 +86,7 @@ const AdminDashboardTable = (props) => {
     <>
       {allUser ? (
         <div className="container dashboardData">
-          <div className="row justify-content-around dashborad_right_menu divSticky">{/* margin-left: 2px; */}
+          <div className="row justify-content-around dashborad_right_menu divSticky">
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.totalUser}</b>
               <div>
@@ -73,6 +98,17 @@ const AdminDashboardTable = (props) => {
               <div>
                 <i class="fas fa-user-check"></i> &nbsp;{props.noOfVerifiedUser}
               </div>
+            </div>
+            <div className="col-2 dashborad_right_menu_item btn">
+              <select className="drop"
+                name="filter"
+                value={filterType}
+                onChange={(value) => fieldChange(value)}
+              >
+                <option value="">Filter</option>
+                <option value={"verified"}>Verified</option>
+                <option value={"pending"}>Pending</option>
+              </select>
             </div>
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.teacher}</b>
@@ -104,7 +140,10 @@ const AdminDashboardTable = (props) => {
               </thead>
               <tbody>
                 {allUser.map((user, index) => (
-                  <tr key={index} style={{width:"20%"},{alignItems: "center"}}>
+                  <tr
+                    key={index}
+                    style={({ width: "20%" }, { alignItems: "center" })}
+                  >
                     <th scope="row">{index}</th>
                     <td>{user.name}</td>
                     <td>{user.email}</td>

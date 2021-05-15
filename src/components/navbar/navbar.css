@@ -5,6 +5,11 @@
     justify-content: start;
     align-items: center;
   }
+
+  .navHeading{
+    margin-left: 50%;
+    color: white;
+  }
   
   .menu-bars {
     margin-left: 2rem;
@@ -69,5 +74,8 @@
   
   span {
     margin-left: 16px;
+  }
+  .navv{
+    width: 250px;
   }
   

@@ -1,21 +1,21 @@
 import React, { useState, useRef } from "react";
 import Dropzone from "react-dropzone";
 import { useHistory } from "react-router-dom";
-
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import axios from "../../api/axios";
-import "./css/adminCreateNotice.css";
+import "./css/adminDashboard.css";
 
 const AdminNoticeCreateForm = () => {
   const history = useHistory();
-  const [file, setFile] = useState(null); // state for storing actual image
-  const [previewSrc, setPreviewSrc] = useState(""); // state for storing previewImage
+  const [file, setFile] = useState(null); 
+  const [previewSrc, setPreviewSrc] = useState("");
   const [state, setState] = useState({
     content: "",
+    heading: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
-  const [isPreviewAvailable, setIsPreviewAvailable] = useState(false); // state to show preview only for images
-  const dropRef = useRef(); // React ref for managing the hover state of droppable area
+  const [isPreviewAvailable, setIsPreviewAvailable] = useState(false); 
+  const dropRef = useRef();
 
   const handleInputChange = (event) => {
     setState({
@@ -34,14 +34,14 @@ const AdminNoticeCreateForm = () => {
     };
     fileReader.readAsDataURL(uploadedFile);
     setIsPreviewAvailable(uploadedFile.name.match(/\.(jpeg|jpg|png)$/));
-    dropRef.current.style.border = "2px dashed #e9ebeb";
+    dropRef.current.style.border = "2px dashed rgb(213, 255, 134)";
   };
 
   const updateBorder = (dragState) => {
     if (dragState === "over") {
       dropRef.current.style.border = "2px solid #000";
     } else if (dragState === "leave") {
-      dropRef.current.style.border = "2px dashed #e9ebeb";
+      dropRef.current.style.border = "2px dashed rgb(213, 255, 134)";
     }
   };
 
@@ -49,13 +49,13 @@ const AdminNoticeCreateForm = () => {
     event.preventDefault();
 
     try {
-      const { content } = state;
+      const { content, heading } = state;
       if (content.trim() !== "") {
         if (file) {
           const formData = new FormData();
           formData.append("file", file);
           formData.append("content", content);
-
+          formData.append("heading", heading);
           setErrorMsg("");
           await axios.post("/admin/createnotice", formData, {
             headers: {
@@ -75,43 +75,77 @@ const AdminNoticeCreateForm = () => {
     }
   };
   return (
-    <div className="container noticeUpload">
+    <div className="noticeUpload main media-body">
       <Form className="search-form" onSubmit={handleOnSubmit}>
-        <Row>
-          <Col>
-            <Form.Group controlId="title">
-              <Form.Control
-                type="text"
-                name="content"
-                value={state.content || ""}
-                placeholder="Notice Content"
-                onChange={handleInputChange}
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <div className="upload-section">
-          <Dropzone
-            onDrop={onDrop}
-            onDragEnter={() => updateBorder("over")}
-            onDragLeave={() => updateBorder("leave")}
-          >
-            {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps({ className: "drop-zone" })} ref={dropRef}>
-                <input {...getInputProps()} />
-                <p>Drag and drop a file OR click here to select a file</p>
-                {file && (
-                  <div>
-                    <strong>Selected file:</strong> {file.name}
-                  </div>
-                )}
+        <div style={{ width: "600px" }}>
+          <div className="row shadow p-3 mb-5 bg-body rounded">
+            <div className="col-sm-6">
+              <Form.Group
+                controlId="title"
+                className="shadow p-3 mb-5 bg-body rounded"
+              >
+                <Form.Control
+                  type="text"
+                  name="heading"
+                  value={state.heading || ""}
+                  placeholder="Notice Heading"
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+            </div>
+            <div className="col-sm-6">
+              <Form.Group
+                controlId="title"
+                className="shadow p-3 mb-5 bg-body rounded"
+              >
+                <textarea
+                  rows="1"
+                  cols="23"
+                  type="textarea"
+                  name="content"
+                  value={state.content || ""}
+                  placeholder="Type Notice Content here"
+                  onChange={handleInputChange}
+                />
+              </Form.Group>
+            </div>
+            <div className="row">
+              <div className="col-sm-12">
+                <div className="upload-section shadow p-3 mb-5 bg-body rounded">
+                  <Dropzone
+                    onDrop={onDrop}
+                    onDragEnter={() => updateBorder("over")}
+                    onDragLeave={() => updateBorder("leave")}
+                  >
+                    {({ getRootProps, getInputProps }) => (
+                      <div
+                        {...getRootProps({ className: "drop-zone" })}
+                        ref={dropRef}
+                      >
+                        <input {...getInputProps()} />
+                        <p>
+                          Drag and drop a file OR click here to select a file
+                        </p>
+                        {file && (
+                          <div style={{ width: "100px" }}>
+                            <strong>Selected file:</strong> {file.name}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </Dropzone>
+                </div>
               </div>
-            )}
-          </Dropzone>
+            </div>
+          </div>
+          <div className="row" style={{ "margin-left": "40%" }}>
+            <div className="col-sm-12">
+              <Button variant="primary" type="submit">
+                Publish
+              </Button>
+            </div>
+          </div>
         </div>
-        <Button variant="primary" type="submit">
-          Publish
-        </Button>
       </Form>
     </div>
   );

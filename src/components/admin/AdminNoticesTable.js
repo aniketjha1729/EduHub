@@ -8,6 +8,8 @@ const AdminNoticesTable = (props) => {
   const [allNotices, setAllNotices] = useState([]);
   const [dataChange, setDataChange] = useState();
   const [loader, showLoader, hideLoader] = useLoader();
+  const [filterType, setFilterType] = useState("");
+
   useEffect(() => {
     const getAllNotices = async () => {
       try {
@@ -32,6 +34,30 @@ const AdminNoticesTable = (props) => {
       return download(result.data, filename, mimetype);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const fieldChange = async (e) => {
+    if (e.target.value == "verified") {
+      setFilterType(e.target.value)
+      try {
+        const { data } = await axios.get("/admin/notices");
+        const filteredData = data.filter((item) => item.isVerified == true);
+        console.log(filteredData);
+        setAllNotices(filteredData);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      setFilterType(e.target.value)
+      try {
+        const { data } = await axios.get("/admin/notices");
+        const filteredData = data.filter((item) => item.isVerified == false);
+        console.log(filteredData);
+        setAllNotices(filteredData);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -81,6 +107,17 @@ const AdminNoticesTable = (props) => {
                 <i class="fas fa-users"></i> &nbsp;{props.totalNoticesCount}
               </div>
             </div>
+            <div className="col-2 dashborad_right_menu_item">
+              <select
+                name="filter"
+                value={filterType}
+                onChange={(value) => fieldChange(value)}
+              >
+                <option value="">Filter</option>
+                <option value={"verified"}>Verified</option>
+                <option value={"pending"}>Pending</option>
+              </select>
+            </div>
             <div className="col-3 dashborad_right_menu_item">
               <b>{props.verifiedNotice}</b>
               <div>
@@ -101,7 +138,7 @@ const AdminNoticesTable = (props) => {
               <thead>
                 <tr>
                   <th scope="col">S.No</th>
-                  <th scope="col">Notice</th>
+                  <th scope="col">Heading</th>
                   <th scope="col">Date</th>
                   <th scope="col">Creator</th>
                   <th scope="col">Download</th>
@@ -119,8 +156,7 @@ const AdminNoticesTable = (props) => {
                     <td>{new Date(notice.date).toLocaleDateString()}</td>
                     <td>{notice.postedBy}</td>
                     <td>
-                      <button type="button" className="btn btn-success"
-                        href="#/"
+                      <i
                         onClick={() =>
                           downloadFile(
                             notice._id,
@@ -128,19 +164,16 @@ const AdminNoticesTable = (props) => {
                             notice.file_mimetype
                           )
                         }
-                      ><i class="fas fa-cloud-download-alt"></i>&nbsp;
-                        Download
-                      </button>
+                        class="fas fa-cloud-download-alt fa-2x"
+                        style={{ cursor: "pointer" }}
+                      ></i>
+                      &nbsp;
                     </td>
                     <td>
                       {notice.isVerified ? (
-                        <button type="button" className="btn btn-success">
-                          <i class="fas fa-user-check"></i> &nbsp;Verified
-                        </button>
+                        <i class="fas fa-clipboard-check fa-2x"></i>
                       ) : (
-                        <button type="button" className="btn btn-warning">
-                          <i class="fas fa-flask"></i> &nbsp; Pending
-                        </button>
+                        <i class="fas fa-flask fa-2x"></i>
                       )}
                     </td>
                     <td>

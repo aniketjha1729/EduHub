@@ -1,4 +1,4 @@
-.dashboardData{
+.dashboardData {
   margin-left: 90px;
 }
 
@@ -15,11 +15,15 @@
 }
 
 
+
+.tdcolors {
+  background-color: rgb(230, 230, 230);
+}
 .noticeUpload {
   width: 300px;
   margin-top: 30px;
 }
-.drop-zone{
+.drop-zone {
   width: 500px;
 }
 .upload-section {
@@ -30,17 +34,17 @@
   background-color: rgb(255, 255, 255);
   cursor: pointer;
 }
-.divSticky{
+.divSticky {
   position: sticky;
   top: 0px;
   margin: 1px;
   background-color: rgb(228, 228, 228);
 }
-.main{
+.main {
   height: 500px;
   margin-left: 35%;
 }
-.drop{
+.drop {
   width: 100%;
   height: 100%;
   border: solid white;

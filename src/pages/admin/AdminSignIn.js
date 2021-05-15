@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { adminLogin } from "../../redux/actions/admin";
 import Navbar from "../../components/navbar/Navbar";
 
-const AdminSignIn = ({ adminLogin, isAuthenticated }) => {
+const AdminSignIn = ({ adminLogin, isAuthenticated, errors }) => {
   const [formData, setFormData] = useState({
     email: "admin@test.com",
     password: "admin@1234",
@@ -41,12 +41,12 @@ const AdminSignIn = ({ adminLogin, isAuthenticated }) => {
         >
           <h2>Admin Panel</h2>
           <br />
-          {errormsg ? (
+          {errors ? (
             <div
               class="alert alert-danger alert-dismissible fade show"
               role="alert"
             >
-              {errormsg}
+              {errors}
               <button
                 type="button"
                 class="close"
@@ -90,11 +90,11 @@ const AdminSignIn = ({ adminLogin, isAuthenticated }) => {
 
 AdminSignIn.propTypes = {
   adminLogin: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.admin.isAuthenticated,
+  errors: state.admin.errors,
 });
 
 export default connect(mapStateToProps, { adminLogin })(AdminSignIn);

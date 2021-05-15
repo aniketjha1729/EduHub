@@ -9,11 +9,11 @@ const initialState = {
   authToken: localStorage.getItem("token"),
   isAuthenticated: false,
   user: null,
+  errors:null,
 };
 
 function adminAuthReducer(state = initialState, action) {
   const { type, payload } = action;
-
   switch (type) {
     case CURRENT_ADMIN_USER:
       return {
@@ -28,6 +28,13 @@ function adminAuthReducer(state = initialState, action) {
         isAuthenticated: true,
       };
     case ADMIN_LOGIN_FAIL:
+      return{
+        ...state,
+        authToken:null,
+        isAuthenticated:false,
+        user:null,
+        errors:payload
+      }
     case ADMIN_LOGOUT:
       return {
         ...state,

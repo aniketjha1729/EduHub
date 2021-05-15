@@ -21,7 +21,7 @@ const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
           {user ? (
             <div className="navHeading">
               <FaIcons.FaAdn />
-              <span>{user.user.name}</span>
+              <span>{user.name}</span>
             </div>
           ) : (
             ""

@@ -1,22 +1,21 @@
 import React, { useState, useRef } from "react";
 import Dropzone from "react-dropzone";
 import { useHistory } from "react-router-dom";
-
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import axios from "../../api/axios";
-import "./css/adminCreateNotice.css";
+import "./css/adminDashboard.css";
 
 const AdminNoticeCreateForm = () => {
   const history = useHistory();
-  const [file, setFile] = useState(null); // state for storing actual image
-  const [previewSrc, setPreviewSrc] = useState(""); // state for storing previewImage
+  const [file, setFile] = useState(null); 
+  const [previewSrc, setPreviewSrc] = useState("");
   const [state, setState] = useState({
     content: "",
     heading: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
-  const [isPreviewAvailable, setIsPreviewAvailable] = useState(false); // state to show preview only for images
-  const dropRef = useRef(); // React ref for managing the hover state of droppable area
+  const [isPreviewAvailable, setIsPreviewAvailable] = useState(false); 
+  const dropRef = useRef();
 
   const handleInputChange = (event) => {
     setState({

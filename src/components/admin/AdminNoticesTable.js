@@ -8,6 +8,8 @@ const AdminNoticesTable = (props) => {
   const [allNotices, setAllNotices] = useState([]);
   const [dataChange, setDataChange] = useState();
   const [loader, showLoader, hideLoader] = useLoader();
+  const [filterType, setFilterType] = useState("");
+
   useEffect(() => {
     const getAllNotices = async () => {
       try {
@@ -32,6 +34,30 @@ const AdminNoticesTable = (props) => {
       return download(result.data, filename, mimetype);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const fieldChange = async (e) => {
+    if (e.target.value == "verified") {
+      setFilterType(e.target.value)
+      try {
+        const { data } = await axios.get("/admin/notices");
+        const filteredData = data.filter((item) => item.isVerified == true);
+        console.log(filteredData);
+        setAllNotices(filteredData);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      setFilterType(e.target.value)
+      try {
+        const { data } = await axios.get("/admin/notices");
+        const filteredData = data.filter((item) => item.isVerified == false);
+        console.log(filteredData);
+        setAllNotices(filteredData);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -80,6 +106,17 @@ const AdminNoticesTable = (props) => {
               <div>
                 <i class="fas fa-users"></i> &nbsp;{props.totalNoticesCount}
               </div>
+            </div>
+            <div className="col-2 dashborad_right_menu_item">
+              <select
+                name="filter"
+                value={filterType}
+                onChange={(value) => fieldChange(value)}
+              >
+                <option value="">Filter</option>
+                <option value={"verified"}>Verified</option>
+                <option value={"pending"}>Pending</option>
+              </select>
             </div>
             <div className="col-3 dashborad_right_menu_item">
               <b>{props.verifiedNotice}</b>

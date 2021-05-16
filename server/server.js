@@ -12,7 +12,6 @@ const adminDashboardRoutes = require("./routes/admin/adminDashboard");
 const userRoutes = require("./routes/user/user");
 const userDashboardRoutes = require("./routes/user/userDashboard");
 
-
 const app = express();
 
 mongoose
@@ -20,6 +19,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false,
   })
   .then(() => {
     console.log("Db Connected");
@@ -30,8 +30,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use("/admin", adminUserRoutes,adminDashboardRoutes);
-app.use("/user", userRoutes,userDashboardRoutes);
+app.use("/admin", adminUserRoutes, adminDashboardRoutes);
+app.use("/user", userRoutes, userDashboardRoutes);
 
 app.listen(PORT, () => {
   console.log("Server is running on", PORT);

@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
 
 const {
   getAllNotices,
@@ -15,26 +16,54 @@ const {
   deletePost,
   deleteComment,
   verifyNotice,
-  currentProfile
+  currentProfile,
 } = require("../../controllers/user/userDashboard");
 
 const { isUserAuth, isVerified } = require("../../controllers/auth");
 
-
 /*<===================================================================================================>*/
+
+const upload = multer({
+  storage: multer.diskStorage({
+    destination(req, file, cb) {
+      cb(null, "./files");
+    },
+    filename(req, file, cb) {
+      cb(null, `${new Date().getTime()}_${file.originalname}`);
+    },
+  }),
+  limits: {
+    fileSize: 1000000, // max file size 1MB = 1000000 bytes
+  },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(jpeg|jpg|png|pdf|doc|docx|xlsx|xls)$/)) {
+      return cb(
+        new Error(
+          "only upload files with jpg, jpeg, png, pdf, doc, docx, xslx, xls format."
+        )
+      );
+    }
+    cb(undefined, true); // continue with upload
+  },
+});
 
 router.get("/testauth", isUserAuth, isVerified, (req, res) => {
   res.status(200).json({ msg: "User Authenticated" });
 });
 
-
-router.get("/currentUser",isUserAuth,isVerified,currentProfile)
+router.get("/currentUser", isUserAuth, isVerified, currentProfile);
 
 router.get("/profile/:userId", isUserAuth, isVerified, getUserById);
 
 router.put("/verifynotice/:noticeId", isUserAuth, isVerified, verifyNotice);
 
-router.post("/createNotice", isUserAuth, isVerified, createNotice);
+router.post(
+  "/createNotice",
+  isUserAuth,
+  isVerified,
+  upload.single("file"),
+  createNotice
+);
 
 router.get("/notices", isUserAuth, isVerified, getAllNotices);
 

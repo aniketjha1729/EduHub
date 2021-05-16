@@ -16,6 +16,7 @@ const App = () => {
       setAuthToken(localStorage.token);
     }
     store.dispatch(loadAdminData());
+    console.log(store);
 
     // log user out from all tabs if they log out in one tab
     window.addEventListener("storage", () => {

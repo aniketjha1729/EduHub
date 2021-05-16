@@ -4,6 +4,12 @@ import * as IoIcons from "react-icons/io";
 
 export const SidebarData = [
   {
+    title: "Admin",
+    path: "/admin",
+    icon: <FaIcons.FaAdn />,
+    cName: "nav-text",
+  },
+  {
     title: "Users",
     path: "/admin/users",
     icon: <FaIcons.FaUserAlt />,

@@ -8,7 +8,7 @@ import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
 import { ADMIN_LOGIN_FAIL } from "./redux/actions/types";
 import { loadAdminData } from "./redux/actions/admin";
-
+import UserNavbar from "./components/navbar/UserNavbar";
 const App = () => {
   useEffect(() => {
     // check for token in LS
@@ -28,6 +28,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
+          <UserNavbar />
           <Switch>
             <Route component={Routes} />
           </Switch>

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "./navbar.css";
@@ -17,16 +15,6 @@ const AdminNavbar = ({ logout, isAuthenticated, admin: { user } }) => {
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar">
-          {user ? (
-            <div className="navHeading">
-              <FaIcons.FaAdn />
-              <span>{user.name}</span>
-            </div>
-          ) : (
-            ""
-          )}
-        </div>
         <nav
           activeKey="/"
           onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}

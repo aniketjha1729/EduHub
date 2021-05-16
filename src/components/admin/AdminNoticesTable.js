@@ -138,13 +138,13 @@ const AdminNoticesTable = (props) => {
             <table className="table">
               <thead>
                 <tr>
-                  <th scope="col">S.No</th>
-                  <th scope="col">Heading</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Creator</th>
-                  <th scope="col">Download</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" colSpan="2">
+                  <th className="text-center" scope="col">S.No</th>
+                  <th className="text-center" scope="col">Heading</th>
+                  <th className="text-center" scope="col">Date</th>
+                  <th className="text-center" scope="col">Creator</th>
+                  <th className="text-center" scope="col">Download</th>
+                  <th className="text-center" scope="col">Status</th>
+                  <th className="text-center" scope="col">
                     Action
                   </th>
                 </tr>
@@ -152,11 +152,11 @@ const AdminNoticesTable = (props) => {
               <tbody>
                 {allNotices.map((notice, index) => (
                   <tr key={index} className={index % 2 == 0 ? "tdcolors" : ""}>
-                    <th scope="row">{index}</th>
-                    <td>{notice.content}</td>
-                    <td>{new Date(notice.date).toLocaleDateString()}</td>
-                    <td>{notice.postedBy}</td>
-                    <td>
+                    <th className="text-center" scope="row">{index}</th>
+                    <td className="text-center">{notice.content}</td>
+                    <td className="text-center">{new Date(notice.date).toLocaleDateString()}</td>
+                    <td className="text-center">{notice.postedBy}</td>
+                    <td className="text-center">
                       <i
                         onClick={() =>
                           downloadFile(
@@ -165,19 +165,19 @@ const AdminNoticesTable = (props) => {
                             notice.file_mimetype
                           )
                         }
-                        class="fas fa-cloud-download-alt fa-2x"
+                        className="fas fa-cloud-download-alt fa-2x"
                         style={{ cursor: "pointer" }}
                       ></i>
                       &nbsp;
                     </td>
-                    <td>
+                    <td className="text-center">
                       {notice.isVerified ? (
-                        <i class="fas fa-clipboard-check fa-2x"></i>
+                        <i className="fas fa-clipboard-check fa-2x"></i>
                       ) : (
-                        <i class="fas fa-flask fa-2x"></i>
+                        <i className="fas fa-flask fa-2x"></i>
                       )}
                     </td>
-                    <td>
+                    <td className="text-center">
                       <button
                         onClick={() => deleteNotice(notice._id)}
                         type="button"
@@ -200,7 +200,7 @@ const AdminNoticesTable = (props) => {
                           type="button"
                           className="btn btn-secondary"
                         >
-                          <i class="fas fa-ban"></i> &nbsp; Spam
+                          <i className="fas fa-ban"></i> &nbsp; Spam
                         </button>
                       )}
                     </td>

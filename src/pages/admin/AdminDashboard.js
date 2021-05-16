@@ -3,7 +3,7 @@ import "../../components/admin/css/adminDashboard.css";
 import AdminDashboardTable from "../../components/admin/AdminDashboardTable";
 import axios from "../../api/axios";
 import useLoader from "../../components/loader/useLoader";
-import Navbar from "../../components/navbar/Navbar";
+import AdminNavbar from "../../components/navbar/AdminNavbar";
 
 const AdminDashboard = () => {
   const [totalUserCount, setTotalUserCount] = useState();
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <Navbar />
+      <AdminNavbar />
       <div className="container">
         <br />
         <AdminDashboardTable

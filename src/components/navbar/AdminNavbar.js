@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { SidebarData } from "./SidebarData";
 import "./navbar.css";
@@ -8,8 +9,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../redux/actions/admin";
 
-const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
+const AdminNavbar = ({ logout, isAuthenticated, admin: { user } }) => {
   const [sidebar, setSidebar] = useState(true);
+
   const showSidebar = () => setSidebar(sidebar);
 
   return (
@@ -18,24 +20,24 @@ const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
         <div className="navbar">
           {user ? (
             <div className="navHeading">
-              {" "}
               <FaIcons.FaAdn />
-              <span>
-                <b>{user.user.name}</b>
-              </span>
+              <span>{user.name}</span>
             </div>
           ) : (
             ""
           )}
         </div>
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+        <nav
+          activeKey="/"
+          onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
+          className={sidebar ? "nav-menu active" : "nav-menu"}
+        >
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
               <Link to="#" className="menu-bars">
                 <b style={{ color: "white" }}>EduHub</b>
               </Link>
             </li>
-
             {isAuthenticated &&
               SidebarData.map((item, index) => {
                 return (
@@ -61,7 +63,7 @@ const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
   );
 };
 //for action to be called
-Navbar.propTypes = {
+AdminNavbar.propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
@@ -71,4 +73,4 @@ const mapStateToProps = (state) => ({
   admin: state.admin,
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout })(AdminNavbar);

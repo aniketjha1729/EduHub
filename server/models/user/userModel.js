@@ -23,6 +23,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  department:{
+    type: String,
+    required: true,
+  },
+  year:{
+    type: String,
+    default:"all"
+  },
   date: {
     type: Date,
     default: Date.now,

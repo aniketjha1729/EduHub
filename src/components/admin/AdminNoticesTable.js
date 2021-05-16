@@ -39,7 +39,7 @@ const AdminNoticesTable = (props) => {
 
   const fieldChange = async (e) => {
     if (e.target.value == "verified") {
-      setFilterType(e.target.value)
+      setFilterType(e.target.value);
       try {
         const { data } = await axios.get("/admin/notices");
         const filteredData = data.filter((item) => item.isVerified == true);
@@ -49,7 +49,7 @@ const AdminNoticesTable = (props) => {
         console.log(err);
       }
     } else {
-      setFilterType(e.target.value)
+      setFilterType(e.target.value);
       try {
         const { data } = await axios.get("/admin/notices");
         const filteredData = data.filter((item) => item.isVerified == false);
@@ -100,15 +100,16 @@ const AdminNoticesTable = (props) => {
     <>
       {allNotices ? (
         <div className="container dashboardData">
-          <div className="row justify-content-around dashborad_right_menu">
+          <div className="row justify-content-around dashborad_right_menu divSticky">
             <div className="col-3 dashborad_right_menu_item">
               <b>{props.totalNotice}</b>
               <div>
                 <i class="fas fa-users"></i> &nbsp;{props.totalNoticesCount}
               </div>
             </div>
-            <div className="col-2 dashborad_right_menu_item">
+            <div className="col-2 dashborad_right_menu_item btn">
               <select
+                className="drop"
                 name="filter"
                 value={filterType}
                 onChange={(value) => fieldChange(value)}
@@ -150,7 +151,7 @@ const AdminNoticesTable = (props) => {
               </thead>
               <tbody>
                 {allNotices.map((notice, index) => (
-                  <tr key={index}>
+                  <tr key={index} className={index % 2 == 0 ? "tdcolors" : ""}>
                     <th scope="row">{index}</th>
                     <td>{notice.content}</td>
                     <td>{new Date(notice.date).toLocaleDateString()}</td>

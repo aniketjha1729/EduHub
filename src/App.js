@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
 import Routes from "./routing/Routes";
 import "./App.css";
 
@@ -16,7 +15,6 @@ const App = () => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
-
     store.dispatch(loadAdminData());
 
     // log user out from all tabs if they log out in one tab

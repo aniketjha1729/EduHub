@@ -4,26 +4,20 @@ const AdminUser = require("../../models/admin/adminUserModel");
 const Post = require("../../models/post/postModel");
 const formidable = require("formidable");
 const fs = require("fs");
-const path = require('path');
+const path = require("path");
 
 /*<===============================================================================================>*/
 
-exports.currentProfile = (req, res) => {
-  AdminUser.findById(req.user.id).then((user) => {
+exports.currentProfile = async (req, res) => {
+  try {
+    let user = await AdminUser.findById(req.user.id).select("-password");
     if (!user) {
-      return res.status(500).json({ msg: "Server error" });
-    } else {
-      const { name, isAdmin, email, _id } = user;
-      return res.status(200).json({
-        user: {
-          name,
-          isAdmin,
-          email,
-          _id,
-        },
-      });
+      return res.json({ errors: [{ msg: "Invalid token" }] });
     }
-  });
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.status(500).json({ errors: [{ msg: "Server Error" }] });
+  }
 };
 
 exports.verifyUser = (req, res) => {
@@ -67,11 +61,11 @@ exports.deleteUser = (req, res) => {
 
 (exports.createNotice = async (req, res) => {
   try {
-    const { content,heading } = req.body;
+    const { content, heading } = req.body;
     const { path, mimetype } = req.file;
     const notice = new Notice({
-      postedBy:"admin",
-      isVerified:true,
+      postedBy: "admin",
+      isVerified: true,
       content,
       heading,
       file_path: path,
@@ -171,7 +165,6 @@ TODO: exports.getAllNotices = async (req, res) => {
 };
 
 exports.downloadNotice = async (req, res) => {
-  
   try {
     const notice = await Notice.findById(req.params.noticeId);
     res.set({

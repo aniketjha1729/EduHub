@@ -25,7 +25,7 @@ const AdminDashboardTable = (props) => {
 
   const fieldChange = async (e) => {
     if (e.target.value == "verified") {
-      setFilterType(e.target.value)
+      setFilterType(e.target.value);
       try {
         const { data } = await axios.get("/admin/allUsers");
         const filteredData = data.filter((item) => item.isVerified == true);
@@ -35,7 +35,7 @@ const AdminDashboardTable = (props) => {
         console.log(err);
       }
     } else {
-      setFilterType(e.target.value)
+      setFilterType(e.target.value);
       try {
         const { data } = await axios.get("/admin/allUsers");
         const filteredData = data.filter((item) => item.isVerified == false);
@@ -86,7 +86,7 @@ const AdminDashboardTable = (props) => {
     <>
       {allUser ? (
         <div className="container dashboardData">
-          <div className="row justify-content-around dashborad_right_menu">
+          <div className="row justify-content-around dashborad_right_menu divSticky">
             <div className="col-2 dashborad_right_menu_item">
               <b>{props.totalUser}</b>
               <div>
@@ -99,8 +99,9 @@ const AdminDashboardTable = (props) => {
                 <i class="fas fa-user-check"></i> &nbsp;{props.noOfVerifiedUser}
               </div>
             </div>
-            <div className="col-2 dashborad_right_menu_item">
+            <div className="col-2 dashborad_right_menu_item btn">
               <select
+                className="drop"
                 name="filter"
                 value={filterType}
                 onChange={(value) => fieldChange(value)}
@@ -128,10 +129,12 @@ const AdminDashboardTable = (props) => {
             <table className="table">
               <thead>
                 <tr>
-                  <th scope="col">S.No</th>
+                  <th>S.No</th>
                   <th scope="col">Name</th>
                   <th scope="col">Email</th>
                   <th scope="col">Role</th>
+                  <th scope="col">Department</th>
+                  <th scope="col">Year</th>
                   <th scope="col">Status</th>
                   <th scope="col" colSpan="2">
                     Action
@@ -140,14 +143,13 @@ const AdminDashboardTable = (props) => {
               </thead>
               <tbody>
                 {allUser.map((user, index) => (
-                  <tr
-                    key={index}
-                    style={({ width: "20%" }, { alignItems: "center" })}
-                  >
-                    <th scope="row">{index}</th>
+                  <tr key={index} className={index % 2 == 0 ? "tdcolors" : ""}>
+                    <td>{index}</td>
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.role}</td>
+                    <td>{user.department}</td>
+                    <td>{user.year}</td>
                     <td>
                       {user.isVerified ? (
                         <button type="button" className="btn btn-success">

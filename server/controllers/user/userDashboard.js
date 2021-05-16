@@ -6,23 +6,16 @@ const fs = require("fs");
 
 /*<=========================================User==================================================>*/
 
-exports.currentProfile = (req, res) => {
-  User.findById(req.user.id).then((user) => {
+exports.currentProfile = async (req, res) => {
+  try {
+    let user = await User.findById(req.user.id).select("-password");
     if (!user) {
-      return res.status(500).json({ msg: "Server error" });
-    } else {
-      const { name, isVerified, email, _id, role } = user;
-      return res.status(200).json({
-        user: {
-          name,
-          isVerified,
-          email,
-          _id,
-          role,
-        },
-      });
+      return res.json({ errors: [{ msg: "Invalid token" }] });
     }
-  });
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.status(500).json({ errors: [{ msg: "Server Error" }] });
+  }
 };
 
 exports.getUserById = (req, res) => {

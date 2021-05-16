@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../redux/actions/admin";
 
-const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
+const AdminNavbar = ({ logout, isAuthenticated, admin: { user } }) => {
   const [sidebar, setSidebar] = useState(true);
 
   const showSidebar = () => setSidebar(sidebar);
@@ -63,7 +63,7 @@ const Navbar = ({ logout, isAuthenticated, admin: { user } }) => {
   );
 };
 //for action to be called
-Navbar.propTypes = {
+AdminNavbar.propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
@@ -73,4 +73,4 @@ const mapStateToProps = (state) => ({
   admin: state.admin,
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout })(AdminNavbar);

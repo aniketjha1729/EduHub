@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../components/admin/css/adminDashboard.css";
-import Navbar from "../../components/navbar/Navbar";
+import AdminNavbar from "../../components/navbar/AdminNavbar";
 import axios from "../../api/axios";
 import useLoader from "../../components/loader/useLoader";
 import AdminNoticesTable from "../../components/admin/AdminNoticesTable";
@@ -35,7 +35,7 @@ const AdminNotices = () => {
 
   return (
     <>
-      <Navbar />
+      <AdminNavbar />
       <div className="container">
         <br />
         <AdminNoticesTable

@@ -8,16 +8,16 @@ const path = require("path");
 
 /*<===============================================================================================>*/
 
-exports.currentProfile = (req, res) => {
-  AdminUser.findById(req.user.id)
-    .select("-password")
-    .then((user) => {
-      if (!user) {
-        return res.status(500).json({ msg: "Server error" });
-      } else {
-        return res.status(200).json(user);
-      }
-    });
+exports.currentProfile = async (req, res) => {
+  try {
+    let user = await AdminUser.findById(req.user.id).select("-password");
+    if (!user) {
+      return res.json({ errors: [{ msg: "Invalid token" }] });
+    }
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.status(500).json({ errors: [{ msg: "Server Error" }] });
+  }
 };
 
 exports.verifyUser = (req, res) => {

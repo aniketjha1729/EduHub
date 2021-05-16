@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { adminLogin } from "../../redux/actions/admin";
-import Navbar from "../../components/navbar/Navbar";
+import AdminNavbar from "../../components/navbar/AdminNavbar";
 
 const AdminSignIn = ({ adminLogin, isAuthenticated, errors }) => {
   const [formData, setFormData] = useState({
@@ -26,7 +26,7 @@ const AdminSignIn = ({ adminLogin, isAuthenticated, errors }) => {
   }
   return (
     <>
-      <Navbar />
+      <AdminNavbar />
       <div className="signin">
         <div
           className="card signin_card"

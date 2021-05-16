@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
 import Routes from "./routing/Routes";
 import "./App.css";
 
@@ -9,15 +8,15 @@ import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
 import { ADMIN_LOGIN_FAIL } from "./redux/actions/types";
 import { loadAdminData } from "./redux/actions/admin";
-
+import UserNavbar from "./components/navbar/UserNavbar";
 const App = () => {
   useEffect(() => {
     // check for token in LS
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
-
     store.dispatch(loadAdminData());
+    console.log(store);
 
     // log user out from all tabs if they log out in one tab
     window.addEventListener("storage", () => {
@@ -29,6 +28,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Fragment>
+          <UserNavbar />
           <Switch>
             <Route component={Routes} />
           </Switch>

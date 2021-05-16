@@ -3,99 +3,74 @@ const Notice = require("../../models/notice/noticeModel");
 const Post = require("../../models/post/postModel");
 const formidable = require("formidable");
 const fs = require("fs");
+const path = require("path");
 
 /*<=========================================User==================================================>*/
 
-exports.currentProfile = (req, res) => {
-  User.findById(req.user.id).then((user) => {
+exports.currentProfile = async (req, res) => {
+  try {
+    let user = await User.findById(req.user.id).select("-password");
     if (!user) {
-      return res.status(500).json({ msg: "Server error" });
-    } else {
-      const { name, isVerified, email, _id, role } = user;
-      return res.status(200).json({
-        user: {
-          name,
-          isVerified,
-          email,
-          _id,
-          role,
-        },
-      });
+      return res.json({ errors: [{ msg: "Invalid token" }] });
     }
-  });
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.status(500).json({ errors: [{ msg: "Server Error" }] });
+  }
 };
 
-exports.getUserById = (req, res) => {
-  User.findById({ _id: req.params.userId })
-    .then((user) => {
-      if (user) {
-        res.status(200).json(user);
-      } else {
-        return res.status(404).json({ err: "No user found" });
-      }
-    })
-    .catch((err) => console.log(err));
+exports.getUserById = async (req, res) => {
+  try {
+    let user = await User.findById({ _id: req.params.userId }).select(
+      "-password"
+    );
+    if (!user) {
+      return res.status(404).json({ errors: [{ msg: "No user found" }] });
+    }
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.status(500).json({ errors: [{ msg: "Server Error" }] });
+  }
 };
 
-exports.getAllUsers = (req, res) => {
-  User.find()
-    .select("-password")
-    .then((users) => {
-      res.status(200).json(users);
-    })
-    .catch((err) => console.log(err));
+exports.getAllUsers = async (req, res) => {
+  try {
+    const user = await User.find().select("-password");
+    if (!user) {
+      return res.status(404).json({ errors: [{ msg: "No user found" }] });
+    }
+    return res.status(200).json(user);
+  } catch (err) {
+    return res.status(500).json({ errors: [{ msg: "Server Error" }] });
+  }
 };
 // <========================================************===========================================>
 
 // <========================================Notice=================================================>
 
-exports.createNotice = (req, res) => {
-  let form = new formidable.IncomingForm();
-  form.keepExtensions = true;
-  form.parse(req, (err, fields, file) => {
-    if (err) {
-      return res.status(400).json({
-        errors: "Problem with file",
-      });
-    }
-    const { content } = fields;
-    if (!content) {
-      return res.status(400).json({
-        errors: "Please inlcude all fileds",
-      });
-    }
-    let notice = new Notice(fields);
-    if (!file.document) {
-      return res.status(422).json({ message: "Please fill all the fields" });
-    }
-    if (file.document) {
-      if (file.document.size > 300000) {
-        return res.status(400).json({
-          errors: "file is to big",
-        });
-      }
-      notice.document.data = fs.readFileSync(file.document.path);
-      notice.document.contentType = file.document.type;
-      if (req.user.role == "student") {
-        notice.isVerified = false;
-        notice.postedBy = "Student";
-      } else if (req.user.role == "teacher") {
-        notice.isVerified = true;
-        notice.postedBy = "Teacher";
-      } else {
-        notice.isVerified = false;
-      }
-    }
-    notice.save((err, notice) => {
-      if (err) {
-        return res.status(400).json({
-          errors: "saving failed",
-        });
-      }
-      res.json(notice);
+(exports.createNotice = async (req, res) => {
+  try {
+    const { content, heading } = req.body;
+    const { path, mimetype } = req.file;
+    const notice = new Notice({
+      postedBy: req.user.role == "teacher" ? "teacher" : "student",
+      isVerified: req.user.role == "teacher" ? true : false,
+      content,
+      heading,
+      file_path: path,
+      file_mimetype: mimetype,
     });
-  });
-};
+    await notice.save();
+    res.send("file uploaded successfully.");
+  } catch (error) {
+    res.status(400).send("Error while uploading file. Try again later.");
+  }
+}),
+  (error, req, res, next) => {
+    if (error) {
+      res.status(500).send(error.message);
+    }
+  };
 
 //add document
 TODO: exports.getAllNotices = (req, res) => {

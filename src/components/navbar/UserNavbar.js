@@ -3,7 +3,7 @@ import "./navbar.css";
 const UserNavbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-primary divSticky">
+      <nav className="navbar navbar-expand-lg navbar-light bg-primary userDivSticky">
         <a href="" className="navbar-brand" style={{ color: "white" }}>
           <b>EduHub</b>
         </a>

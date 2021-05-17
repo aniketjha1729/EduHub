@@ -78,8 +78,10 @@ span {
 .navv {
   width: 250px;
 }
-.divSticky {
+.userDivSticky {
   position: sticky;
   top: 0px;
   margin: 0px;
+  box-shadow: 0 5px 8px #414141;
+
 }

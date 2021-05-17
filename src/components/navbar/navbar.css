@@ -80,6 +80,6 @@ span {
 }
 .divSticky {
   position: sticky;
-  top: -1px;
+  top: 0px;
   margin: 0px;
 }

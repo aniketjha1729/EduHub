@@ -1,9 +1,9 @@
 .userLogin {
-  background-color: white;
   min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
+
 }
 
 .login-container {
@@ -14,7 +14,11 @@
 .login-card {
   border-radius: 20px;
   height: 500px;
-  background-image: linear-gradient(to right, rgb(0,123,255),rgb(35, 141, 255));
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 123, 255),
+    rgb(35, 141, 255)
+  );
   border: none;
   overflow: hidden;
   box-shadow: 0 5px 8px #414141;
@@ -40,7 +44,11 @@
   font-size: 32px;
   margin-bottom: 10px;
   font-weight: 700;
-  background-image: linear-gradient(to right, rgb(0,123,255),rgb(35, 141, 255));
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 123, 255),
+    rgb(35, 141, 255)
+  );
   color: transparent;
   background-clip: text;
 }
@@ -55,7 +63,11 @@
 .login-button {
   width: 250px;
   border-radius: 25px;
-  background-image: linear-gradient(to right, rgb(0,123,255),rgb(35, 141, 255));
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 123, 255),
+    rgb(35, 141, 255)
+  );
   color: #fff;
   font-weight: 700;
   cursor: pointer;
@@ -66,7 +78,11 @@
   padding: 10px;
   padding-left: 40px;
   border-radius: 25px;
-  background-image: linear-gradient(to right, rgb(0,123,255),rgb(35, 141, 255));
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 123, 255),
+    rgb(35, 141, 255)
+  );
   color: #fff;
   border: none;
   display: block;

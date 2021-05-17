@@ -12,11 +12,15 @@
   background-color: white;
   height: 455px;
   overflow: scroll;
+  border: 1px solid rgb(194, 194, 194) !important;
 }
 
+.dashborad_right_table::-webkit-scrollbar {
+  display: none;
+}
 
-thead{
-  background-color: rgb(0,123,255);
+thead {
+  background-color: rgb(0, 123, 255);
   color: white;
 }
 .tdcolors {

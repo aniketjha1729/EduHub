@@ -107,7 +107,7 @@ const AdminNoticesTable = (props) => {
                 <i class="fas fa-users"></i> &nbsp;{props.totalNoticesCount}
               </div>
             </div>
-            <div className="col-2 dashborad_right_menu_item btn">
+            <div className="col-2">
               <select
                 className="drop"
                 name="filter"

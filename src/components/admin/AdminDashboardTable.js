@@ -99,7 +99,7 @@ const AdminDashboardTable = (props) => {
                 <i class="fas fa-user-check"></i> &nbsp;{props.noOfVerifiedUser}
               </div>
             </div>
-            <div className="col-2 dashborad_right_menu_item btn">
+            <div className="col-2">
               <select
                 className="drop"
                 name="filter"
@@ -129,14 +129,26 @@ const AdminDashboardTable = (props) => {
             <table className="table">
               <thead>
                 <tr>
-                  <th>S.No</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Role</th>
-                  <th scope="col">Department</th>
-                  <th scope="col">Year</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" colSpan="2">
+                  <th className="text-center">S.No</th>
+                  <th className="text-center" scope="col">
+                    Name
+                  </th>
+                  <th className="text-center" scope="col">
+                    Email
+                  </th>
+                  <th className="text-center" scope="col">
+                    Role
+                  </th>
+                  <th className="text-center" scope="col">
+                    Department
+                  </th>
+                  <th className="text-center" scope="col">
+                    Year
+                  </th>
+                  <th className="text-center" scope="col">
+                    Status
+                  </th>
+                  <th className="text-center" scope="col">
                     Action
                   </th>
                 </tr>
@@ -144,30 +156,30 @@ const AdminDashboardTable = (props) => {
               <tbody>
                 {allUser.map((user, index) => (
                   <tr key={index} className={index % 2 == 0 ? "tdcolors" : ""}>
-                    <td>{index}</td>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.role}</td>
-                    <td>{user.department}</td>
-                    <td>{user.year}</td>
-                    <td>
+                    <td className="text-center">{index}</td>
+                    <td className="text-center">{user.name}</td>
+                    <td className="text-center">{user.email}</td>
+                    <td className="text-center">{user.role}</td>
+                    <td className="text-center">{user.department}</td>
+                    <td className="text-center">{user.year}</td>
+                    <td className="text-center">
                       {user.isVerified ? (
                         <button type="button" className="btn btn-success">
-                          <i class="fas fa-user-check"></i> &nbsp;Verified
+                          <i className="fas fa-user-check"></i> &nbsp;Verified
                         </button>
                       ) : (
                         <button type="button" className="btn btn-warning">
-                          <i class="fas fa-flask"></i> &nbsp; Pending
+                          <i className="fas fa-flask"></i> &nbsp; Pending
                         </button>
                       )}
                     </td>
-                    <td>
+                    <td className="text-center">
                       <button
                         onClick={() => deleteUser(user._id)}
                         type="button"
                         className="btn btn-danger"
                       >
-                        <i class="fas fa-trash"></i> &nbsp; Delete
+                        <i className="fas fa-trash"></i> &nbsp; Delete
                       </button>
                       &nbsp; &nbsp; &nbsp;
                       {!user.isVerified ? (
@@ -176,7 +188,7 @@ const AdminDashboardTable = (props) => {
                           type="button"
                           className="btn btn-primary"
                         >
-                          <i class="fas fa-arrow-right"></i> &nbsp; Verify
+                          <i className="fas fa-arrow-right"></i> &nbsp; Verify
                         </button>
                       ) : (
                         <button
@@ -184,7 +196,7 @@ const AdminDashboardTable = (props) => {
                           type="button"
                           className="btn btn-danger"
                         >
-                          <i class="fas fa-ban"></i> &nbsp; Block
+                          <i className="fas fa-ban"></i> &nbsp; Block
                         </button>
                       )}
                     </td>

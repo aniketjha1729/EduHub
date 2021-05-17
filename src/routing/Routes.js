@@ -7,7 +7,6 @@ import AdminPrivateRoute from "./AdminPrivateRoute";
 import Home from "../pages/Home";
 import AdminNotices from "../pages/admin/AdminNotices";
 import AdminSignIn from "../pages/admin/AdminSignIn";
-import UserSignIn from "../pages/user/UserSignIn";
 
 const Routes = () => {
   return (
@@ -21,7 +20,6 @@ const Routes = () => {
         component={AdminCreateNotice}
       />
       <Route exact path="/" component={Home} />
-      <Route exact path="/login" component={UserSignIn} />
       <Route exact path="/admin" component={AdminSignIn} />
       <Route component={PageNoteFound} />
     </Switch>

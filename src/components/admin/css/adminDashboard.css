@@ -52,8 +52,10 @@ thead {
   margin-left: 35%;
 }
 .drop {
-  width: 100%;
+  width: 103%;
   height: 100%;
   border: solid white;
   background-color: white;
+  text-align-last: center;
+  font-weight: bold;
 }

@@ -99,7 +99,7 @@ const AdminDashboardTable = (props) => {
                 <i class="fas fa-user-check"></i> &nbsp;{props.noOfVerifiedUser}
               </div>
             </div>
-            <div className="col-2 dashborad_right_menu_item btn">
+            <div className="col-2">
               <select
                 className="drop"
                 name="filter"

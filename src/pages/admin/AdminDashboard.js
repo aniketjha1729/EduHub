@@ -4,6 +4,7 @@ import AdminDashboardTable from "../../components/admin/AdminDashboardTable";
 import axios from "../../api/axios";
 import useLoader from "../../components/loader/useLoader";
 import AdminNavbar from "../../components/navbar/AdminNavbar";
+import zIndex from "@material-ui/core/styles/zIndex";
 
 const AdminDashboard = () => {
   const [totalUserCount, setTotalUserCount] = useState();
@@ -47,7 +48,7 @@ const AdminDashboard = () => {
   return (
     <>
       <AdminNavbar />
-      <div className="container">
+      <div className="container" >
         <br />
         <AdminDashboardTable
           totalUser="Total User"

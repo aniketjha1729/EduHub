@@ -1,0 +1,139 @@
+.userLogin {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  
+.login-radio label{
+  margin-left: .5 rem;
+  
+}
+
+.custom-select{
+  width: auto;
+  position: relative;
+  z-index: -1;
+ margin: 5px;
+}
+.custom-select select{
+  width: 150px;
+  display: hidden;
+  
+}
+
+  
+  .login-container {
+    min-width: 400px;
+    border-radius: 20px;
+  }
+  
+  .login-card {
+    border-radius: 20px;
+    height: 1000;
+    background-image: linear-gradient(
+      to right,
+      rgb(0, 123, 255),
+      rgb(35, 141, 255)
+    );
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 5px 8px #414141;
+    z-index: 0;
+    box-sizing: border-box;
+  }
+  
+  .circle {
+    position: absolute;
+    bottom: -350px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    clip-path: circle(50%);
+    height: 700px;
+    width: 600px;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .login-head {
+    margin-top: 30px;
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    background-image: linear-gradient(
+      to right,
+      rgb(0, 123, 255),
+      rgb(35, 141, 255)
+    );
+    color: transparent;
+    background-clip: text;
+  }
+  
+  .login-icon {
+    position: relative;
+    display: block;
+    left: -87px;
+    top: 30px;
+    color: rgb(255, 255, 255);
+  }
+  
+  .login-button {
+    width: 250px;
+    border-radius: 25px;
+    background-image: linear-gradient(
+      to right,
+      rgb(0, 123, 255),
+      rgb(35, 141, 255)
+    );
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .login-input {
+    width: 220px;
+    padding: 10px;
+    padding-left: 40px;
+    border-radius: 25px;
+    background-image: linear-gradient(
+      to right,
+      rgb(0, 123, 255),
+      rgb(35, 141, 255)
+    );
+    color: #fff;
+    border: none;
+    display: block;
+  }
+  
+  .login-input::placeholder {
+    color: #fff;
+    opacity: 0.6;
+  }
+  
+  .login-input:focus {
+    border: none;
+    outline: none;
+  }
+  
+  .login-check_1 {
+    font-weight: 500;
+    color: rgb(85, 85, 85);
+    margin: 15px auto;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+    .login-container {
+      max-width: 100%;
+    }
+    .login-card {
+      box-shadow: none;
+    }
+    .userLogin {
+      background-color: #fff;
+    }
+    
+  }
+  

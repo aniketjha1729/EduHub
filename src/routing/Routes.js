@@ -20,6 +20,7 @@ const Routes = () => {
         component={AdminCreateNotice}
       />
       <Route exact path="/" component={Home} />
+      <Route exact path="/signup" component={Home} />
       <Route exact path="/admin" component={AdminSignIn} />
       <Route component={PageNoteFound} />
     </Switch>

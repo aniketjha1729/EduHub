@@ -17,9 +17,9 @@ let currentState = store.getState();
 store.subscribe(() => {
   let previousState = currentState;
   currentState = store.getState();
-  if (previousState.admin.authToken !== currentState.admin.authToken) {
-    const authToken = currentState.admin.authToken;
-    setAuthToken(authToken);
+  if (previousState.admin.adminAuthToken !== currentState.admin.adminAuthToken) {
+    const adminAuthToken = currentState.admin.adminAuthToken;
+    setAuthToken(adminAuthToken);
   }
 });
 

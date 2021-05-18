@@ -6,7 +6,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  authToken: localStorage.getItem("token"),
+  adminAuthToken: localStorage.getItem("admintoken"),
   isAuthenticated: false,
   isAdmin:false,
   user: null,
@@ -33,7 +33,7 @@ function adminAuthReducer(state = initialState, action) {
     case ADMIN_LOGIN_FAIL:
       return{
         ...state,
-        authToken:null,
+        adminAuthToken:null,
         isAuthenticated:false,
         isAdmin:false,
         user:null,
@@ -42,7 +42,7 @@ function adminAuthReducer(state = initialState, action) {
     case ADMIN_LOGOUT:
       return {
         ...state,
-        authToken: null,
+        adminAuthToken: null,
         isAuthenticated: false,
         isAdmin:false,
         user: null,

@@ -42,7 +42,7 @@ exports.adminSignIn = async (req, res) => {
           .status(400)
           .json({ errors: [{ msg: "Password does not match" }] });
       }
-      const authToken = jwt.sign(
+      const adminAuthToken = jwt.sign(
         {
           _id: adminUser._id,
         },
@@ -52,7 +52,7 @@ exports.adminSignIn = async (req, res) => {
         }
       );
       return res.status(200).json({
-        authToken,
+        adminAuthToken,
       });
     } catch (err) {
       res.status(500).json({ errors: [{ msg: "Server Error" }] });

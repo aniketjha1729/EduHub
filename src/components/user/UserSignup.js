@@ -1,18 +1,37 @@
 import React from "react";
-import { UserLogin } from "./UserLogin"
 import "./css/usersignup.css";
-
-
-import {
-    Container,
-    Button,
-    Row,
-    Col,
-    Form,
-    FormControl
-} from "react-bootstrap";
-
 const UserSignup = () => {
+  return (
+    <div className="userLogin">
+      <div className="login-container">
+        <div className="card login-card">
+          <div className="card-body">
+            <div className="circle"></div>
+            <header className="login-head text-center">
+              <i className="fas fa-user fa-2x"></i>
+              <p>Sign Up</p>
+            </header>
+            <form action="" className="main-form text-center">
+              <div className="form-group my-0">
+                <label className="my-0">
+                  <i className="fas fa-user login-icon"></i>
+                  <input
+                    type="text"
+                    className="login-input"
+                    placeholder="Name"
+                  />
+                </label>
+              </div>
+              <div className="form-group my-0">
+                <label className="my-0">
+                  <i className="fas fa-envelope login-icon"></i>
+                  <input
+                    type="text"
+                    className="login-input"
+                    placeholder="Email"
+                  />
+                </label>
+              </div>
 
     return (
         <div className="usersignup">
@@ -107,9 +126,6 @@ const UserSignup = () => {
                                     </div>
                                 </Col>
                             </Row>
-
-
-
                             <label className="signup-check_1">
                                 <input type="checkbox" />
                     &nbsp;Remember Me
@@ -129,8 +145,9 @@ const UserSignup = () => {
                 </div>
             </div>
         </div>
-    );
-}
+</form>
 
+  );
+};
 
 export default UserSignup;

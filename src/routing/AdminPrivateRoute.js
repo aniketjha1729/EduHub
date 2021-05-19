@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 
 const AdminPrivateRoute = ({
   component: Component,
-  admin: { isAuthenticated, authToken },
+  admin: { isAuthenticated, adminAuthToken },
   ...rest
 }) => (
   <Route
     {...rest}
     render={(props) =>
-      isAuthenticated && authToken != null ? (
+      isAuthenticated && adminAuthToken != null ? (
         <Component {...props} />
       ) : (
         <Redirect to="/admin" />

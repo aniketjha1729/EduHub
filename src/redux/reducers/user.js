@@ -1,50 +1,45 @@
 import {
-  ADMIN_LOGIN_SUCCESS,
-  ADMIN_LOGIN_FAIL,
-  ADMIN_LOGOUT,
-  CURRENT_ADMIN_USER,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_FAIL,
+  USER_LOGOUT,
+  CURRENT_USER,
 } from "../actions/types";
 
 const initialState = {
-  adminAuthToken: localStorage.getItem("admintoken"),
+  userAuthToken: localStorage.getItem("usertoken"),
   isAuthenticated: false,
-  isAdmin:false,
   user: null,
-  errors:null,
+  errors: null,
 };
 
-function adminAuthReducer(state = initialState, action) {
+function userAuthReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
-    case CURRENT_ADMIN_USER:
+    case CURRENT_USER:
       return {
         ...state,
         isAuthenticated: true,
-        isAdmin:true,
         user: payload,
       };
-    case ADMIN_LOGIN_SUCCESS:
+    case USER_LOGIN_SUCCESS:
       return {
         ...state,
         ...payload,
         isAuthenticated: true,
-        isAdmin:true,
       };
-    case ADMIN_LOGIN_FAIL:
+    case USER_LOGIN_FAIL:
       return{
         ...state,
-        adminAuthToken:null,
+        userAuthToken:null,
         isAuthenticated:false,
-        isAdmin:false,
         user:null,
         errors:payload
       }
-    case ADMIN_LOGOUT:
+    case USER_LOGOUT:
       return {
         ...state,
-        adminAuthToken: null,
+        userAuthToken: null,
         isAuthenticated: false,
-        isAdmin:false,
         user: null,
       };
     default:
@@ -52,4 +47,4 @@ function adminAuthReducer(state = initialState, action) {
   }
 }
 
-export default adminAuthReducer;
+export default userAuthReducer;

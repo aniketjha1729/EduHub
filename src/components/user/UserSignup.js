@@ -1,39 +1,8 @@
 import React from "react";
 import "./css/usersignup.css";
+import {Row,Col} from 'react-bootstrap'
 const UserSignup = () => {
-  return (
-    <div className="userLogin">
-      <div className="login-container">
-        <div className="card login-card">
-          <div className="card-body">
-            <div className="circle"></div>
-            <header className="login-head text-center">
-              <i className="fas fa-user fa-2x"></i>
-              <p>Sign Up</p>
-            </header>
-            <form action="" className="main-form text-center">
-              <div className="form-group my-0">
-                <label className="my-0">
-                  <i className="fas fa-user login-icon"></i>
-                  <input
-                    type="text"
-                    className="login-input"
-                    placeholder="Name"
-                  />
-                </label>
-              </div>
-              <div className="form-group my-0">
-                <label className="my-0">
-                  <i className="fas fa-envelope login-icon"></i>
-                  <input
-                    type="text"
-                    className="login-input"
-                    placeholder="Email"
-                  />
-                </label>
-              </div>
-
-    return (
+   return (
         <div className="usersignup">
             <div className="signup-container">
                 <div className="card signup-card">
@@ -77,7 +46,7 @@ const UserSignup = () => {
                             </div>
                             <Row className="spacing">
                                 <Col>
-                                    <div class="custom-select" >
+                                    <div >
                                         <select className="drop">
                                             <option value="0">Gender:</option>
                                             <option value="Male">Male</option>
@@ -88,7 +57,7 @@ const UserSignup = () => {
 
                                 </Col>
                                 <Col>
-                                    <div class="custom-select" >
+                                    <div >
                                         <select className="drop">
                                             <option value="0">Role:</option>
                                             <option value="Teacher">Teacher</option>
@@ -102,7 +71,7 @@ const UserSignup = () => {
                             <Row className="spacing">
                                 <Col>
 
-                                    <div class="custom-select" >
+                                    <div  >
                                         <select className="drop">
                                             <option value="0">Select Year:</option>
                                             <option value="1">First Year</option>
@@ -115,7 +84,7 @@ const UserSignup = () => {
                                 <Col>
 
 
-                                    <div class="custom-select" >
+                                    <div  >
                                         <select className="drop">
                                             <option value="0">Department:</option>
                                             <option value="Teacher">CSE</option>
@@ -145,7 +114,7 @@ const UserSignup = () => {
                 </div>
             </div>
         </div>
-</form>
+
 
   );
 };

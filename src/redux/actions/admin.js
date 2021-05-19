@@ -29,8 +29,10 @@ export const adminLogin = (email, password) => async (dispatch) => {
     });
     dispatch(loadAdminData());
   } catch (err) {
-    const errors = err.response.data.errors[0].msg;
-    console.log(errors);
+    let errors="Network error";
+    if(err.response){
+      errors= err.response.data.errors[0].msg;
+    }
     dispatch({
       type: ADMIN_LOGIN_FAIL,
       payload: errors,

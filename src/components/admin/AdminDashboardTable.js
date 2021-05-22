@@ -101,7 +101,7 @@ const AdminDashboardTable = (props) => {
             </div>
             <div className="col-2">
               <select
-                className="drop"
+                className="admin-drop"
                 name="filter"
                 value={filterType}
                 onChange={(value) => fieldChange(value)}
@@ -126,7 +126,7 @@ const AdminDashboardTable = (props) => {
             </div>
           </div>
           <div className="dashborad_right_table">
-            <table className="table">
+            <table className="table table-striped table-sm">
               <thead>
                 <tr>
                   <th className="text-center">S.No</th>
@@ -155,7 +155,7 @@ const AdminDashboardTable = (props) => {
               </thead>
               <tbody>
                 {allUser.map((user, index) => (
-                  <tr key={index} className={index % 2 == 0 ? "tdcolors" : ""}>
+                  <tr key={index}>
                     <td className="text-center">{index}</td>
                     <td className="text-center">{user.name}</td>
                     <td className="text-center">{user.email}</td>
@@ -164,11 +164,11 @@ const AdminDashboardTable = (props) => {
                     <td className="text-center">{user.year}</td>
                     <td className="text-center">
                       {user.isVerified ? (
-                        <button type="button" className="btn btn-success">
+                        <button type="button" className="btn btn-success btn-sm">
                           <i className="fas fa-user-check"></i> &nbsp;Verified
                         </button>
                       ) : (
-                        <button type="button" className="btn btn-warning">
+                        <button type="button" className="btn btn-warning btn-sm">
                           <i className="fas fa-flask"></i> &nbsp; Pending
                         </button>
                       )}
@@ -177,7 +177,7 @@ const AdminDashboardTable = (props) => {
                       <button
                         onClick={() => deleteUser(user._id)}
                         type="button"
-                        className="btn btn-danger"
+                        className="btn btn-danger btn-sm"
                       >
                         <i className="fas fa-trash"></i> &nbsp; Delete
                       </button>
@@ -186,7 +186,7 @@ const AdminDashboardTable = (props) => {
                         <button
                           onClick={() => verifyUser(user._id)}
                           type="button"
-                          className="btn btn-primary"
+                          className="btn btn-primary btn-sm"
                         >
                           <i className="fas fa-arrow-right"></i> &nbsp; Verify
                         </button>
@@ -194,7 +194,7 @@ const AdminDashboardTable = (props) => {
                         <button
                           onClick={() => unVerify(user._id)}
                           type="button"
-                          className="btn btn-danger"
+                          className="btn btn-danger btn-sm"
                         >
                           <i className="fas fa-ban"></i> &nbsp; Block
                         </button>

@@ -25,7 +25,7 @@ exports.signIn = async (req, res) => {
           .status(400)
           .json({ errors: [{ msg: "Password does not match" }] });
       }
-      const authToken = jwt.sign(
+      const userAuthToken = jwt.sign(
         {
           _id: user._id,
         },
@@ -35,7 +35,7 @@ exports.signIn = async (req, res) => {
         }
       );
       return res.status(200).json({
-        authToken,
+        userAuthToken,
       });
     } catch (err) {
       return res.status(500).json({ errors: [{ msg: "Server Error" }] });

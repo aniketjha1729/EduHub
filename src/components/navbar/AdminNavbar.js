@@ -22,7 +22,7 @@ const AdminNavbar = ({ logout, isAuthenticated, admin: { user } }) => {
         >
           <ul className="nav-menu-items" onClick={showSidebar}>
             <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
+              <Link to="/" className="menu-bars">
                 <b style={{ color: "white" }}>EduHub</b>
               </Link>
             </li>

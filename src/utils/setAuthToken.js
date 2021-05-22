@@ -1,13 +1,24 @@
 import api from "../api/axios";
 
-const setAuthToken = (authToken) => {
-  if (authToken) {
-    api.defaults.headers.common["Bearer"] = authToken;
-    localStorage.setItem("token", authToken);
+export const setAuthToken = (adminAuthToken) => {
+  if (adminAuthToken) {
+    api.defaults.headers.common["Bearer"] = adminAuthToken;
+    localStorage.setItem("admintoken", adminAuthToken);
   } else {
     delete api.defaults.headers.common["Bearer"];
-    localStorage.removeItem("token");
+    localStorage.removeItem("admintoken");
   }
 };
 
-export default setAuthToken;
+
+export const setUserAuthToken = (userAuthToken) => {
+  if (userAuthToken) {
+    api.defaults.headers.common["Bearer"] = userAuthToken;
+    localStorage.setItem("usertoken", userAuthToken);
+  } else {
+    delete api.defaults.headers.common["Bearer"];
+    localStorage.removeItem("usertoken");
+  }
+};
+
+

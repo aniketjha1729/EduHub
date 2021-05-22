@@ -47,7 +47,7 @@ const AdminDashboard = () => {
   return (
     <>
       <AdminNavbar />
-      <div className="container">
+      <div className="container" >
         <br />
         <AdminDashboardTable
           totalUser="Total User"

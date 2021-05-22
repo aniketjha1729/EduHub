@@ -9,7 +9,7 @@ exports.isUserAuth = (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.SECRET_STUDENT_AUTH_KEY, (err, payload) => {
       if (err) {
-        return res.status(401).send({ message: "Invalid Token" });
+        return res.status(401).json({ errors: [{ msg: "Invalid token" }] });
       }
       const { _id } = payload;
       User.findById(_id)
@@ -20,7 +20,7 @@ exports.isUserAuth = (req, res, next) => {
         });
     });
   } else {
-    return res.status(401).send({ message: "User not signed in." });
+    return res.status(401).json({ errors: [{ msg: "Token required" }] });
   }
 };
 
@@ -29,7 +29,7 @@ exports.isAdminAuth = (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.SECRET_ADMIN_AUTH_KEY, (err, payload) => {
       if (err) {
-        return res.status(401).send({ message: "Invalid Token" });
+        return res.status(401).json({ errors: [{ msg: "Invalid token" }] });
       }
       const { _id } = payload;
       AdminUser.findById(_id)
@@ -40,13 +40,13 @@ exports.isAdminAuth = (req, res, next) => {
         });
     });
   } else {
-    return res.status(401).send({ message: "User not signed in." });
+    return res.status(401).json({ errors: [{ msg: "Token required" }] });
   }
 };
 
 exports.isVerified = (req, res, next) => {
   if (!req.user || !req.user.isVerified) {
-    return res.status(401).json({ message: "User not verified by admin" });
+    return res.status(401).json({ errors: [{ msg: "User not verified" }] });
   }
   if (req.user && req.user.isVerified) {
     return next();
@@ -75,7 +75,9 @@ exports.isAdmin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     return next();
   }
-  return res.status(401).send({ message: "Admin Token is not valid." });
+  return res
+    .status(401)
+    .send({ errors: [{ msg: "Admin Token is not valid." }] });
 };
 
 /*<================================================================================================>*/

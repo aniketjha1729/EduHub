@@ -109,7 +109,7 @@ const AdminNoticesTable = (props) => {
             </div>
             <div className="col-2">
               <select
-                className="drop"
+                className="admin-drop"
                 name="filter"
                 value={filterType}
                 onChange={(value) => fieldChange(value)}
@@ -135,7 +135,7 @@ const AdminNoticesTable = (props) => {
             </div>
           </div>
           <div className="dashborad_right_table">
-            <table className="table">
+            <table className="table table-striped table-sm">
               <thead>
                 <tr>
                   <th className="text-center" scope="col">S.No</th>
@@ -151,7 +151,7 @@ const AdminNoticesTable = (props) => {
               </thead>
               <tbody>
                 {allNotices.map((notice, index) => (
-                  <tr key={index} className={index % 2 == 0 ? "tdcolors" : ""}>
+                  <tr key={index}>
                     <th className="text-center" scope="row">{index}</th>
                     <td className="text-center">{notice.content}</td>
                     <td className="text-center">{new Date(notice.date).toLocaleDateString()}</td>
@@ -181,7 +181,7 @@ const AdminNoticesTable = (props) => {
                       <button
                         onClick={() => deleteNotice(notice._id)}
                         type="button"
-                        className="btn btn-danger"
+                        className="btn btn-danger btn-sm"
                       >
                         <i class="fas fa-trash"></i> &nbsp; Delete
                       </button>
@@ -190,7 +190,7 @@ const AdminNoticesTable = (props) => {
                         <button
                           onClick={() => verifyNotice(notice._id)}
                           type="button"
-                          className="btn btn-primary"
+                          className="btn btn-primary btn-sm"
                         >
                           <i class="fas fa-arrow-right"></i> &nbsp; Verify
                         </button>
@@ -198,7 +198,7 @@ const AdminNoticesTable = (props) => {
                         <button
                           onClick={() => unVerify(notice._id)}
                           type="button"
-                          className="btn btn-secondary"
+                          className="btn btn-secondary btn-sm"
                         >
                           <i className="fas fa-ban"></i> &nbsp; Spam
                         </button>

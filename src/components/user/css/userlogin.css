@@ -13,11 +13,6 @@
 .login-card {
   border-radius: 20px;
   height: 1000;
-  background-image: linear-gradient(
-    to right,
-    rgb(0, 123, 255),
-    rgb(35, 141, 255)
-  );
   border: none;
   overflow: hidden;
   box-shadow: 0 5px 8px #414141;

@@ -87,10 +87,6 @@ const UserSignup = () => {
                   </div>
                 </Col>
               </Row>
-              <label className="signup-check_1">
-                <input type="checkbox" />
-                &nbsp;Remember Me
-              </label>
               <div className="form-group">
                 <label>
                   <input

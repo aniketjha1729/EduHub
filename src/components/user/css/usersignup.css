@@ -4,9 +4,13 @@
   align-items: center;
   justify-content: center;
   margin-top: 8px;
+  margin-left: 142%;
 }
 
 .spacing {
+  margin-top: 50px;
+}
+.spacing1 {
   margin-top: 25px;
 }
 .signup-radio label {
@@ -24,11 +28,11 @@
 
 .signup-container {
   min-width: 400px;
-  border-radius: 20px;
+  border-radius: 0px;
 }
 
 .signup-card {
-  border-radius: 20px;
+  border-radius: 10px;
   height: 87vh;
   width: 500px;
   border: none;
@@ -76,7 +80,7 @@
 .drop {
   width: 100%;
   height: 150%;
-  border-radius: 20px;
+  border-radius: 1px;
   border: solid rgb(35, 141, 255);
   background-color: rgb(35, 141, 255);
   text-align-last: center;
@@ -85,14 +89,14 @@
 }
 
 .drop option {
-  border-radius: 20px;
+  border-radius: 0px;
   border: solid rgb(35, 141, 255);
   text-align-last: center;
   font-weight: bold;
 }
 .signup-button {
   width: 250px;
-  border-radius: 25px;
+  border-radius: 0px;
   margin-top: 25px;
   background-image: linear-gradient(
     to right,
@@ -108,7 +112,7 @@
   width: 320px;
   padding: 10px;
   padding-left: 40px;
-  border-radius: 25px;
+  border-radius: 0px;
   background-image: linear-gradient(
     to right,
     rgb(0, 123, 255),

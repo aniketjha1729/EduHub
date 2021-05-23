@@ -5,7 +5,9 @@ import PostCard from "../components/user/PostCard";
 const Home = () => {
   return (
     <div style={{ zIndex: "-1", position: "absolute",paddingTop: "100px" }}>
-      <PostCard />
+      {/* <PostCard /> */}
+      <UserSignUp/>
+      {/* <UserLogin/> */}
     </div>
   );
 };

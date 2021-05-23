@@ -3,15 +3,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 189%;
 }
 
 .login-container {
   min-width: 400px;
-  border-radius: 20px;
+  border-radius: 0px;
 }
 
 .login-card {
-  border-radius: 20px;
+  border-radius: 10px;
   height: 1000;
   border: none;
   overflow: hidden;
@@ -57,7 +58,7 @@
 
 .login-button {
   width: 250px;
-  border-radius: 25px;
+  border-radius: 0px;
   background-image: linear-gradient(
     to right,
     rgb(0, 123, 255),
@@ -72,7 +73,7 @@
   width: 220px;
   padding: 10px;
   padding-left: 40px;
-  border-radius: 25px;
+  border-radius: 0px;
   background-image: linear-gradient(
     to right,
     rgb(0, 123, 255),

@@ -19,7 +19,7 @@ const UserSignup = () => {
                   <input
                     type="text"
                     className="signup-input"
-                    placeholder="Name"
+                    placeholder=" Name"
                   />
                 </label>
               </div>
@@ -29,7 +29,7 @@ const UserSignup = () => {
                   <input
                     type="text"
                     className="signup-input"
-                    placeholder="Email"
+                    placeholder=" Email"
                   />
                 </label>
               </div>
@@ -39,34 +39,29 @@ const UserSignup = () => {
                   <input
                     type="password"
                     className="signup-input"
-                    placeholder="password"
+                    placeholder=" Password"
                   />
                 </label>
               </div>
               <Row className="spacing">
                 <Col>
-                  <div>
                     <select className="drop">
                       <option value="0">Gender:</option>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
                     </select>
-                  </div>
                 </Col>
                 <Col>
-                  <div>
                     <select className="drop">
                       <option value="0">Role:</option>
                       <option value="Teacher">Teacher</option>
                       <option value="Student">Student</option>
                     </select>
-                  </div>
                 </Col>
               </Row>
 
-              <Row className="spacing">
+              <Row className="spacing1">
                 <Col>
-                  <div>
                     <select className="drop">
                       <option value="0">Select Year:</option>
                       <option value="1">First Year</option>
@@ -74,20 +69,17 @@ const UserSignup = () => {
                       <option value="3">Third Year</option>
                       <option value="4">Fourth Year</option>
                     </select>
-                  </div>
                 </Col>
                 <Col>
-                  <div>
                     <select className="drop">
                       <option value="0">Department:</option>
                       <option value="Teacher">CSE</option>
                       <option value="Student">ECE</option>
                       <option value="Student">IT</option>
                     </select>
-                  </div>
                 </Col>
               </Row>
-              <div className="form-group">
+              <div className="form-group spacing">
                 <label>
                   <input
                     type="button"

@@ -62,7 +62,7 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
                   <input
                     type="email"
                     className="login-input"
-                    placeholder="email"
+                    placeholder=" Email"
                     name="email"
                     value={email}
                     onChange={onChange}
@@ -76,7 +76,7 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
                     type="password"
                     className="login-input"
                     name="password"
-                    placeholder="password"
+                    placeholder=" Password"
                     value={password}
                     onChange={onChange}
                   />

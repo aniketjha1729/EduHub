@@ -43,7 +43,7 @@ const UserSignup = () => {
                   />
                 </label>
               </div>
-              <Row className="spacing">
+              <Row className="signup-spacing">
                 <Col>
                     <select className="drop">
                       <option value="0">Gender:</option>
@@ -60,7 +60,7 @@ const UserSignup = () => {
                 </Col>
               </Row>
 
-              <Row className="spacing1">
+              <Row className="signup-spacing1">
                 <Col>
                     <select className="drop">
                       <option value="0">Select Year:</option>

@@ -69,7 +69,7 @@ exports.signUp = async (req, res) => {
           if (err) throw err;
           newuser.password = hash;
           newuser.save((err, user) => {
-            res.status(200).json(user);
+            res.status(200).json({success:[{msg:"Signup Success"}]});
           });
         });
       });

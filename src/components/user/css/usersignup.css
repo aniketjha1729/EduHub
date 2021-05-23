@@ -3,27 +3,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 8px;
-  margin-left: 142%;
 }
 
-.spacing {
+.signup-spacing {
   margin-top: 50px;
 }
-.spacing1 {
+.signup-spacing1 {
   margin-top: 25px;
 }
 .signup-radio label {
   margin-left: 0.5 rem;
-}
-
-.custom-select {
-  width: auto;
-  position: relative;
-}
-.custom-select select {
-  width: 150px;
-  display: hidden;
 }
 
 .signup-container {
@@ -40,19 +29,6 @@
   box-shadow: 0 5px 8px #414141;
   z-index: 0;
   box-sizing: border-box;
-}
-
-.circle {
-  position: absolute;
-  bottom: -400px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  clip-path: circle(50%);
-  height: 720px;
-  width: 600px;
-  z-index: -1;
-  overflow: hidden;
 }
 
 .signup-head {

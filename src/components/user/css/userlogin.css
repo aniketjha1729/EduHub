@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 189%;
 }
 
 .login-container {
@@ -21,18 +20,6 @@
   box-sizing: border-box;
 }
 
-.circle {
-  position: absolute;
-  bottom: -350px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  clip-path: circle(50%);
-  height: 600px;
-  width: 600px;
-  z-index: -1;
-  overflow: hidden;
-}
 
 .login-head {
   margin-top: 30px;

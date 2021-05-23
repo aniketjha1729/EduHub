@@ -93,6 +93,7 @@
 .signup-button {
   width: 250px;
   border-radius: 25px;
+  margin-top: 25px;
   background-image: linear-gradient(
     to right,
     rgb(0, 123, 255),

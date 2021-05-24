@@ -48,7 +48,7 @@ exports.signUp = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   } else {
-    const { name, email, password, role, department, year } = req.body;
+    const { name, email, password, role, department, year, gender } = req.body;
     try {
       let user = await User.findOne({ email });
       if (user) {
@@ -62,14 +62,15 @@ exports.signUp = async (req, res) => {
         password,
         role,
         department,
-        year
+        year,
+        gender,
       });
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newuser.password, salt, (err, hash) => {
           if (err) throw err;
           newuser.password = hash;
           newuser.save((err, user) => {
-            res.status(200).json({success:[{msg:"Signup Success"}]});
+            res.status(200).json({ success: [{ msg: "Signup Success" }] });
           });
         });
       });

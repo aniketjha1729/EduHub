@@ -84,3 +84,6 @@ span {
   width: 100%;
   box-shadow: 0 5px 8px #414141;
 }
+.navbar{
+  z-index: 100;
+}

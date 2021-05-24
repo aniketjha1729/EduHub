@@ -31,7 +31,7 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
       <div className="login-container">
         <div className="card login-card">
           <div className="card-body">
-            <div className="circle"></div>
+            {/* <div className="circle"></div> */}
             <header className="login-head text-center">
               <i className="fas fa-user fa-2x"></i>
               <p>Login</p>

@@ -4,8 +4,8 @@ import UserSignUp from "../components/user/UserSignup";
 const Home = () => {
   return (
     <>
+    <UserLogin/>
       <UserSignUp/>
-      {/* <UserLogin/> */}
     </>
   );
 };

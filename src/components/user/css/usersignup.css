@@ -21,7 +21,7 @@
 }
 
 .signup-card {
-  height: 87vh;
+  /* height: 1000; */
   width: 500px;
   border: none;
   overflow: hidden;
@@ -29,6 +29,7 @@
   z-index: 0;
   box-sizing: border-box;
   background-color: white;
+  margin-bottom: 10px;
 }
 
 .signup-head {

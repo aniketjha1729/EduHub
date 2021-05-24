@@ -54,7 +54,7 @@ const UserSignup = () => {
                   <input
                     type="text"
                     className="signup-input"
-                    placeholder=" Email"
+                    placeholder="Email"
                     name="email"
                     value={email}
                     onChange={onChange}
@@ -138,7 +138,7 @@ const UserSignup = () => {
                   </select>
                 </div>
               </div>
-              <div className="form-group spacing">
+              <div className="form-group signup-spacing">
                 <label>
                   <input
                     type="submit"

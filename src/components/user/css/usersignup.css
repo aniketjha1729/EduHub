@@ -17,6 +17,7 @@
 
 .signup-container {
   min-width: 400px;
+  margin-top: 5%;
 }
 
 .signup-card {
@@ -27,6 +28,7 @@
   box-shadow: 0 5px 8px #414141;
   z-index: 0;
   box-sizing: border-box;
+  background-color: white;
 }
 
 .signup-head {
@@ -42,13 +44,13 @@
   color: transparent;
   background-clip: text;
 }
-
 .signup-icon {
   position: relative;
   display: block;
   left: -128px;
   top: 31px;
   color: rgb(255, 255, 255);
+  padding-right: 1em;
 }
 
 .drop {
@@ -65,6 +67,9 @@
   border-radius: 0px;
   text-align-last: center;
   font-weight: bold;
+
+  background-color: white;
+  color:rgb(0, 123, 255);
 }
 .signup-button {
   width: 250px;

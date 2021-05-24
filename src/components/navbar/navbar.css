@@ -79,7 +79,7 @@ span {
   width: 250px;
 }
 .userDivSticky {
-position: fixed;
+  position: fixed;
   margin: 0px;
   width: 100%;
   box-shadow: 0 5px 8px #414141;

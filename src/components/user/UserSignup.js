@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import "./css/usersignup.css";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { userRegister } from "../../redux/actions/user";
 const UserSignup = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -14,15 +11,12 @@ const UserSignup = () => {
     gender: "",
   });
   const { name, email, password, role, department, year, gender } = formData;
-  const [errormsg, setErrormsg] = useState("");
-
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(JSON.stringify(formData));
-    // userLogin(email, password);
   };
   return (
     <div className="usersignup">
@@ -146,7 +140,6 @@ const UserSignup = () => {
                   />
                 </label>
               </div>
-              {/* <span className="check_1">Forget Password</span> */}
             </form>
           </div>
         </div>

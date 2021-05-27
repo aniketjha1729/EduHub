@@ -5,7 +5,7 @@ import { logout } from "../../redux/actions/user";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-const UserNavbar = ({ logout, isAuthenticated, user: { user } }) => {
+const UserNavbar = ({ logout, isAuthenticated,adminisAuthenticated, user: { user } }) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-primary userDivSticky">
@@ -70,6 +70,7 @@ UserNavbar.propTypes = {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.user.isAuthenticated,
+  adminisAuthenticated:state.admin.isAuthenticated,
   user: state.user,
 });
 

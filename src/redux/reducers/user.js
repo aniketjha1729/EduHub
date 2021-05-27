@@ -3,6 +3,8 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGOUT,
   CURRENT_USER,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL
 } from "../actions/types";
 
 const initialState = {
@@ -10,6 +12,7 @@ const initialState = {
   isAuthenticated: false,
   user: null,
   errors: null,
+  signupStatus:null,
 };
 
 function userAuthReducer(state = initialState, action) {
@@ -42,6 +45,24 @@ function userAuthReducer(state = initialState, action) {
         isAuthenticated: false,
         user: null,
       };
+    case USER_REGISTER_SUCCESS:
+      return {
+        ...state,
+        userAuthToken: null,
+        isAuthenticated: false,
+        user: null,
+        signupStatus:payload
+      };
+    case USER_REGISTER_FAIL:{
+      return{
+        ...state,
+        userAuthToken: null,
+        isAuthenticated: false,
+        user: null,
+        signupStatus:null,
+        errors:payload
+      }
+    }
     default:
       return state;
   }

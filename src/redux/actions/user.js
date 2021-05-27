@@ -5,7 +5,30 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGOUT,
   CURRENT_USER,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
 } from "./types";
+
+export const userRegister =
+  (name, email, password, role, department, year) => async (dispatch) => {
+    const body = { name, email, password, role, department, year };
+    try {
+      const res = await axios.post("/user/signup", body);
+      dispatch({
+        type: USER_REGISTER_SUCCESS,
+        payload: res.data,
+      });
+    } catch (err) {
+      let errors = "Network error";
+      if (err.response) {
+        errors = err.response.data.errors[0].msg;
+      }
+      dispatch({
+        type: USER_REGISTER_FAIL,
+        payload: errors,
+      });
+    }
+  };
 
 export const loadUserData = () => async (dispatch) => {
   try {
@@ -29,9 +52,9 @@ export const userLogin = (email, password) => async (dispatch) => {
     });
     dispatch(loadUserData());
   } catch (err) {
-    let errors="Network error";
-    if(err.response){
-      errors= err.response.data.errors[0].msg;
+    let errors = "Network error";
+    if (err.response) {
+      errors = err.response.data.errors[0].msg;
     }
     dispatch({
       type: USER_LOGIN_FAIL,

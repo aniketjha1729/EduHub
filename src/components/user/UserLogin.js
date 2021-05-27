@@ -31,7 +31,7 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
       <div className="login-container">
         <div className="card login-card">
           <div className="card-body">
-            <div className="circle"></div>
+            {/* <div className="circle"></div> */}
             <header className="login-head text-center">
               <i className="fas fa-user fa-2x"></i>
               <p>Login</p>
@@ -62,7 +62,7 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
                   <input
                     type="email"
                     className="login-input"
-                    placeholder="email"
+                    placeholder=" Email"
                     name="email"
                     value={email}
                     onChange={onChange}
@@ -76,7 +76,7 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
                     type="password"
                     className="login-input"
                     name="password"
-                    placeholder="password"
+                    placeholder=" Password"
                     value={password}
                     onChange={onChange}
                   />

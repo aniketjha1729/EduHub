@@ -7,31 +7,19 @@
 
 .login-container {
   min-width: 400px;
-  border-radius: 20px;
+  border-radius: 0px;
 }
 
 .login-card {
-  border-radius: 20px;
   height: 1000;
   border: none;
   overflow: hidden;
   box-shadow: 0 5px 8px #414141;
   z-index: 0;
   box-sizing: border-box;
+  background-color: white;
 }
 
-.circle {
-  position: absolute;
-  bottom: -350px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  clip-path: circle(50%);
-  height: 600px;
-  width: 600px;
-  z-index: -1;
-  overflow: hidden;
-}
 
 .login-head {
   margin-top: 30px;
@@ -57,7 +45,7 @@
 
 .login-button {
   width: 250px;
-  border-radius: 25px;
+  border-radius: 0px;
   background-image: linear-gradient(
     to right,
     rgb(0, 123, 255),
@@ -72,7 +60,7 @@
   width: 220px;
   padding: 10px;
   padding-left: 40px;
-  border-radius: 25px;
+  border-radius: 0px;
   background-image: linear-gradient(
     to right,
     rgb(0, 123, 255),

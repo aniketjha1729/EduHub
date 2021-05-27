@@ -59,6 +59,12 @@
   background-color: #1a83ff;
 }
 
+.user-nav-link{
+  color: #ffff;
+  padding: 5px;
+  text-decoration: none;
+}
+
 .nav-menu-items {
   width: 100%;
 }

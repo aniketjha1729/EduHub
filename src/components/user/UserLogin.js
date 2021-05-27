@@ -7,11 +7,10 @@ import "./css/userlogin.css";
 
 const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "test3@gmail.com",
+    password: "Test@1234",
   });
   const { email, password } = formData;
-  const [errormsg, setErrormsg] = useState("");
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,7 +22,7 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
   };
 
   if (isAuthenticated) {
-    console.log("success login");
+    return <Redirect to="/" />;
   }
 
   return (
@@ -31,7 +30,6 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
       <div className="login-container">
         <div className="card login-card">
           <div className="card-body">
-            {/* <div className="circle"></div> */}
             <header className="login-head text-center">
               <i className="fas fa-user fa-2x"></i>
               <p>Login</p>
@@ -42,15 +40,6 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
                 role="alert"
               >
                 {errors}
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="alert"
-                  aria-label="Close"
-                  onClick={() => setErrormsg("")}
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
               </div>
             ) : (
               ""
@@ -95,7 +84,6 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
                   />
                 </label>
               </div>
-              {/* <span className="check_1">Forget Password</span> */}
             </form>
           </div>
         </div>

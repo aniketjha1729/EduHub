@@ -8,6 +8,8 @@ import Home from "../pages/Home";
 import AdminNotices from "../pages/admin/AdminNotices";
 import AdminSignIn from "../pages/admin/AdminSignIn";
 import UserSignup from "../components/user/UserSignup";
+import UserLogin from "../components/user/UserLogin";
+
 const Routes = () => {
   return (
     <Switch>
@@ -21,6 +23,7 @@ const Routes = () => {
       />
       <Route exact path="/" component={Home} />
       <Route exact path="/signup" component={UserSignup} />
+      <Route exact path="/login" component={UserLogin} />
       <Route exact path="/admin" component={AdminSignIn} />
       <Route component={PageNoteFound} />
     </Switch>

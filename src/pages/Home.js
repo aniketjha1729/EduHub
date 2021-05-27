@@ -1,12 +1,20 @@
 import React from "react";
-import UserLogin from "../components/user/UserLogin";
-import UserSignUp from "../components/user/UserSignup";
-const Home = () => {
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+
+const Home = ({ isAuthenticated }) => {
+  if (!isAuthenticated) {
+    return <Redirect to="/login" />;
+  }
   return (
     <>
-      <UserSignUp />
+      <div>Dashboard</div>
     </>
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.user.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(Home);

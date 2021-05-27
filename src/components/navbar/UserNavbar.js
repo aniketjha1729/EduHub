@@ -1,12 +1,17 @@
 import React from "react";
 import "./navbar.css";
-const UserNavbar = () => {
+import { Link } from "react-router-dom";
+import { logout } from "../../redux/actions/user";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+const UserNavbar = ({ logout, isAuthenticated, user: { user } }) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-primary userDivSticky">
-        <a href="" className="navbar-brand" style={{ color: "white" }}>
+        <Link to="/" className="navbar-brand" style={{ color: "white" }}>
           <b>EduHub</b>
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           data-toggle="collapse"
@@ -26,22 +31,46 @@ const UserNavbar = () => {
               Search
             </button>
           </form> */}
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <a href="" className="nav-link">
-                Users
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="" className="nav-link">
-                Users
-              </a>
-            </li>
-          </ul>
+          {isAuthenticated ? (
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to="/" className="user-nav-link">
+                  {user?user.name:""}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link onClick={logout} className="user-nav-link">
+                  Logout
+                </Link>
+              </li>
+            </ul>
+          ) : (
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link to="/login" className="user-nav-link">
+                  SignIn
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/signup" className="user-nav-link">
+                  SignUp
+                </Link>
+              </li>
+            </ul>
+          )}
         </div>
       </nav>
     </>
   );
 };
 
-export default UserNavbar;
+UserNavbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.user.isAuthenticated,
+  user: state.user,
+});
+
+export default connect(mapStateToProps, { logout })(UserNavbar);

@@ -4,7 +4,7 @@ import {
   USER_LOGOUT,
   CURRENT_USER,
   USER_REGISTER_SUCCESS,
-  USER_REGISTER_FAIL
+  USER_REGISTER_FAIL,
 } from "../actions/types";
 
 const initialState = {
@@ -12,7 +12,7 @@ const initialState = {
   isAuthenticated: false,
   user: null,
   errors: null,
-  signupStatus:null,
+  signupStatus: null,
 };
 
 function userAuthReducer(state = initialState, action) {
@@ -31,19 +31,21 @@ function userAuthReducer(state = initialState, action) {
         isAuthenticated: true,
       };
     case USER_LOGIN_FAIL:
-      return{
+      return {
         ...state,
-        userAuthToken:null,
-        isAuthenticated:false,
-        user:null,
-        errors:payload
-      }
+        userAuthToken: null,
+        isAuthenticated: false,
+        user: null,
+        errors: payload,
+      };
     case USER_LOGOUT:
       return {
         ...state,
         userAuthToken: null,
         isAuthenticated: false,
         user: null,
+        errors: null,
+        signupStatus: null,
       };
     case USER_REGISTER_SUCCESS:
       return {
@@ -51,17 +53,17 @@ function userAuthReducer(state = initialState, action) {
         userAuthToken: null,
         isAuthenticated: false,
         user: null,
-        signupStatus:payload
+        signupStatus: payload,
       };
-    case USER_REGISTER_FAIL:{
-      return{
+    case USER_REGISTER_FAIL: {
+      return {
         ...state,
         userAuthToken: null,
         isAuthenticated: false,
         user: null,
-        signupStatus:null,
-        errors:payload
-      }
+        signupStatus: null,
+        errors: payload,
+      };
     }
     default:
       return state;

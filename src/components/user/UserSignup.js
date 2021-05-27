@@ -29,7 +29,6 @@ const UserSignup = () => {
       <div className="signup-container">
         <div className="card signup-card">
           <div className="card-body">
-            {/* <div className="circle"></div> */}
             <header className="signup-head text-center">
               <i className="fas fa-user fa-2x"></i>
               <p>Sign Up</p>

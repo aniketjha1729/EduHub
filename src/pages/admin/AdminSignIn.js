@@ -27,13 +27,16 @@ const AdminSignIn = ({ adminLogin, isAuthenticated, errors }) => {
   return (
     <>
       <AdminNavbar />
+      <br></br>
+      <br></br>
+      <br></br>
       <div className="signin">
         <div
           className="card signin_card"
           style={{
             padding: "3%",
             textAlign: "center",
-            margin: "20px auto",
+            "margin": "auto",
             maxWidth: "400px",
             borderRadius: "10px",
             boxShadow: "5px 10px 20px #888888",

@@ -8,7 +8,7 @@
 }
 
 .dashborad_right_table {
-  margin-top: 20px;
+  margin-top: 40px;
   background-color: white;
   height: 455px;
   overflow: scroll;
@@ -41,8 +41,7 @@ thead {
 }
 .divSticky {
   position: sticky;
-  top: 0px;
-  margin: 1px;
+  top: 58px;
   background-color: rgb(228, 228, 228);
 }
 .main {

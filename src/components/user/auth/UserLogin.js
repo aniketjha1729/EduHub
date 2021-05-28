@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { userLogin } from "../../redux/actions/user";
-import "./css/userlogin.css";
+import { userLogin } from "../../../redux/actions/user";
+import "../css/userlogin.css";
 
 const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
   const [formData, setFormData] = useState({

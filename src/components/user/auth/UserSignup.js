@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { userRegister } from "../../redux/actions/user";
-import "./css/usersignup.css";
+import { userRegister } from "../../../redux/actions/user";
+import "../css/usersignup.css";
 
-const UserSignup = ({userRegister,signupStatus,errors}) => {
+const UserSignup = ({ userRegister, signupStatus, errors }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     name: "",
     role: "",
     department: "",
-    year: "",
+    year: "all",
     gender: "",
   });
 
@@ -23,8 +23,8 @@ const UserSignup = ({userRegister,signupStatus,errors}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    //console.log(JSON.stringify(formData));
-    userRegister(name, email, password, role, department, year, gender)
+    console.log(JSON.stringify(formData));
+    userRegister(name, email, password, role, department, year, gender);
   };
 
   if (signupStatus) {
@@ -117,29 +117,24 @@ const UserSignup = ({userRegister,signupStatus,errors}) => {
                 </div>
               </div>
               <div className="row signup-spacing1">
-                <div className="col">
-                  <select
-                    className="drop"
-                    name="year"
-                    value={year}
-                    onChange={onChange}
-                  >
-                    {role == "Teacher" ? (
-                      <>
-                        <option value="">Select Year:</option>
-                        <option value="all">All</option>
-                      </>
-                    ) : (
-                      <>
-                        <option value="">Select Year:</option>
-                        <option value="1">First Year</option>
-                        <option value="2">Second Year</option>
-                        <option value="3">Third Year</option>
-                        <option value="4">Fourth Year</option>
-                      </>
-                    )}
-                  </select>
-                </div>
+                {role == "Student" || role == "" ? (
+                  <div className="col">
+                    <select
+                      className="drop"
+                      name="year"
+                      value={year}
+                      onChange={onChange}
+                    >
+                      <option value="">Select Year:</option>
+                      <option value="1st">First Year</option>
+                      <option value="2nd">Second Year</option>
+                      <option value="3rd">Third Year</option>
+                      <option value="4th">Fourth Year</option>
+                    </select>
+                  </div>
+                ) : (
+                  ""
+                )}
                 <div className="col">
                   <select
                     className="drop"
@@ -148,9 +143,12 @@ const UserSignup = ({userRegister,signupStatus,errors}) => {
                     onChange={onChange}
                   >
                     <option value="">Department:</option>
-                    <option value="Teacher">CSE</option>
-                    <option value="Student">ECE</option>
-                    <option value="Student">IT</option>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="IT">IT</option>
+                    <option value="CIVIL">CIVIL</option>
+                    <option value="EE">EE</option>
+                    <option value="MECH">Mech</option>
                   </select>
                 </div>
               </div>
@@ -181,4 +179,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { userRegister })(UserSignup);
-

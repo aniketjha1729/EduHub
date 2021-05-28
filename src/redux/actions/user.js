@@ -10,8 +10,9 @@ import {
 } from "./types";
 
 export const userRegister =
-  (name, email, password, role, department, year) => async (dispatch) => {
-    const body = { name, email, password, role, department, year };
+  (name, email, password, role, department, year, gender) =>
+  async (dispatch) => {
+    const body = { name, email, password, role, department, year, gender };
     try {
       const res = await axios.post("/user/signup", body);
       dispatch({

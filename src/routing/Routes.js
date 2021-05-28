@@ -4,11 +4,12 @@ import AdminCreateNotice from "../pages/admin/AdminCreateNotice";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import PageNoteFound from "../pages/404/PageNoteFound";
 import AdminPrivateRoute from "./AdminPrivateRoute";
+import UserPrivateRoute from "./UserPrivateRoute";
 import Home from "../pages/Home";
 import AdminNotices from "../pages/admin/AdminNotices";
 import AdminSignIn from "../pages/admin/AdminSignIn";
-import UserSignup from "../components/user/UserSignup";
-import UserLogin from "../components/user/UserLogin";
+import UserSignup from "../components/user/auth/UserSignup";
+import UserLogin from "../components/user/auth/UserLogin";
 
 const Routes = () => {
   return (
@@ -21,7 +22,7 @@ const Routes = () => {
         path="/admin/createnotice"
         component={AdminCreateNotice}
       />
-      <Route exact path="/" component={Home} />
+      <UserPrivateRoute exact path="/" component={Home} />
       <Route exact path="/signup" component={UserSignup} />
       <Route exact path="/login" component={UserLogin} />
       <Route exact path="/admin" component={AdminSignIn} />

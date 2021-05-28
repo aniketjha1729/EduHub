@@ -23,7 +23,7 @@ exports.signIn = async (req, res) => {
       if (!isMatch) {
         return res
           .status(400)
-          .json({ errors: [{ msg: "Password does not match" }] });
+          .json({ errors: [{ msg: "Invalid credentials" }] });
       }
       const userAuthToken = jwt.sign(
         {
@@ -49,6 +49,19 @@ exports.signUp = async (req, res) => {
     return res.status(422).json({ errors: errors.array() });
   } else {
     const { name, email, password, role, department, year, gender } = req.body;
+    if (
+      !name ||
+      !email ||
+      !password ||
+      !role ||
+      !department ||
+      !year ||
+      !gender
+    ) {
+      return res
+        .json(200)
+        .json({ errors: [{ msg: "All fields are required" }] });
+    }
     try {
       let user = await User.findOne({ email });
       if (user) {
@@ -70,6 +83,7 @@ exports.signUp = async (req, res) => {
           if (err) throw err;
           newuser.password = hash;
           newuser.save((err, user) => {
+            console.log("here");
             res.status(200).json({ success: [{ msg: "Signup Success" }] });
           });
         });

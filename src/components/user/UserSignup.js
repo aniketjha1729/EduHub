@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { userRegister } from "../../redux/actions/user";
 import "./css/usersignup.css";
-const UserSignup = () => {
+
+const UserSignup = ({userRegister,signupStatus,errors}) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -10,14 +15,22 @@ const UserSignup = () => {
     year: "",
     gender: "",
   });
+
   const { name, email, password, role, department, year, gender } = formData;
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(formData));
+    //console.log(JSON.stringify(formData));
+    userRegister(name, email, password, role, department, year, gender)
   };
+
+  if (signupStatus) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <div className="usersignup">
       <div className="signup-container">
@@ -27,6 +40,16 @@ const UserSignup = () => {
               <i className="fas fa-user fa-2x"></i>
               <p>Sign Up</p>
             </header>
+            {errors ? (
+              <div
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+              >
+                {errors}
+              </div>
+            ) : (
+              ""
+            )}
             <form onSubmit={onSubmit} className="main-form text-center">
               <div className="form-group my-0">
                 <label className="my-0">
@@ -148,4 +171,14 @@ const UserSignup = () => {
   );
 };
 
-export default UserSignup;
+UserSignup.propTypes = {
+  userRegister: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  signupStatus: state.user.signupStatus,
+  errors: state.user.errors,
+});
+
+export default connect(mapStateToProps, { userRegister })(UserSignup);
+

@@ -53,7 +53,7 @@ function userAuthReducer(state = initialState, action) {
         userAuthToken: null,
         isAuthenticated: false,
         user: null,
-        signupStatus: payload,
+        signupStatus: payload.success[0].msg,
       };
     case USER_REGISTER_FAIL: {
       return {

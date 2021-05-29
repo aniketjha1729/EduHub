@@ -5,7 +5,12 @@ import { logout } from "../../redux/actions/user";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-const UserNavbar = ({ logout, isAuthenticated,adminisAuthenticated, user: { user } }) => {
+const UserNavbar = ({
+  logout,
+  isAuthenticated,
+  adminisAuthenticated,
+  user: { user },
+}) => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-primary userDivSticky">
@@ -35,7 +40,7 @@ const UserNavbar = ({ logout, isAuthenticated,adminisAuthenticated, user: { user
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to="/" className="user-nav-link">
-                  {user?user.name:""}
+                  {user ? user.name : ""}
                 </Link>
               </li>
               <li className="nav-item">
@@ -47,12 +52,22 @@ const UserNavbar = ({ logout, isAuthenticated,adminisAuthenticated, user: { user
           ) : (
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link to="/login" className="user-nav-link">
+                <Link
+                  to="/login"
+                  className="user-nav-link"
+                  data-toggle="collapse"
+                  data-target="#navbarMenu"
+                >
                   SignIn
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/signup" className="user-nav-link">
+                <Link
+                  to="/signup"
+                  className="user-nav-link"
+                  data-toggle="collapse"
+                  data-target="#navbarMenu"
+                >
                   SignUp
                 </Link>
               </li>
@@ -70,7 +85,7 @@ UserNavbar.propTypes = {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.user.isAuthenticated,
-  adminisAuthenticated:state.admin.isAuthenticated,
+  adminisAuthenticated: state.admin.isAuthenticated,
   user: state.user,
 });
 

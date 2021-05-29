@@ -8,9 +8,11 @@
   height: 89vh;
   margin-top: 70px;
   width: 20%;
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
   overflow: scroll;
   overflow-x: hidden;
+  position: fixed;
+  margin-right: 75%;
 }
 
 .home-left-view::-webkit-scrollbar {
@@ -47,6 +49,8 @@
   border: 2px solid black;
   overflow: scroll;
   overflow-x: hidden;
+  position: fixed;
+  margin-left: 75%;
 }
 
 .home-right-view::-webkit-scrollbar {

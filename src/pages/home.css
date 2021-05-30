@@ -8,15 +8,14 @@
   height: 89vh;
   margin-top: 70px;
   width: 20%;
-  border: 2px solid rgb(0, 0, 0);
-  overflow: scroll;
+  overflow: hidden;
   overflow-x: hidden;
   position: fixed;
   margin-right: 75%;
 }
 
-.home-left-view::-webkit-scrollbar {
-  width: 10px;
+.home-left-view:hover {
+  overflow-y: scroll;
 }
 
 /* Track */
@@ -39,22 +38,16 @@
 .home-middle-view {
   margin-top: 70px;
   width: 40%;
-  border: 2px solid black;
 }
 
 .home-right-view {
   height: 70vh;
   margin-top: 75px;
   width: 20%;
-  border: 2px solid black;
-  overflow: scroll;
+  overflow: hidden;
   overflow-x: hidden;
   position: fixed;
   margin-left: 75%;
-}
-
-.home-right-view::-webkit-scrollbar {
-  width: 10px;
 }
 
 /* Track */
@@ -69,7 +62,6 @@
   border-radius: 10px;
 }
 
-/* Handle on hover */
-.home-right-view::-webkit-scrollbar-thumb:hover {
-  background: #8d8c8c;
+.home-right-view:hover {
+  overflow-y: scroll;
 }

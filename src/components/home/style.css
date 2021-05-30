@@ -1,0 +1,22 @@
+.card-img-postedBy {
+  width: 100%;
+  height: auto 
+}
+.card-action{
+    float: right;
+}
+
+.home-card{
+    border-radius:10px ;
+}
+
+.card-img-postedByIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.card-img-postedImg {
+  width: 40px;
+  height: 40px;
+}

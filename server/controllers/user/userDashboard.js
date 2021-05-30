@@ -170,12 +170,34 @@ exports.deletePost = (req, res) => {
 
 //add document
 TODO: exports.getAllPost = (req, res) => {
+  let filterPost = [];
   Post.find()
     .select("-document")
     .populate("postedBy")
     .then((posts) => {
-      res.status(200).json(posts);
+      posts.map((post) => {
+        if (post.postedBy.department == req.user.department) {
+          filterPost.push(post);
+        }
+      });
     })
+    .then(() => res.status(200).json(filterPost))
+    .catch((err) => console.log(err));
+};
+
+exports.getPostByDepartment = (req, res) => {
+  let filterPost = [];
+  Post.find()
+    .select("-document")
+    .populate("postedBy")
+    .then((posts) => {
+      posts.map((post) => {
+        if (post.postedBy.department == req.params.departmentName) {
+          filterPost.push(post);
+        }
+      });
+    })
+    .then(() => res.status(200).json(filterPost))
     .catch((err) => console.log(err));
 };
 

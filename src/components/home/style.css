@@ -20,3 +20,20 @@
   width: 40px;
   height: 40px;
 }
+
+
+.left-card-profileCard{
+  background-color: aquamarine;
+  height: 70px;
+}
+
+.left-card-ProfileIcon{
+  margin-top: 20px;
+  margin-left: 33%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; 
+}
+.left-card-profileDes{
+  margin-top: 20px;
+}

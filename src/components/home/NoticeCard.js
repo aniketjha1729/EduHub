@@ -4,7 +4,6 @@ const NoticeCard = () => {
   return (
     <div>
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -15,7 +14,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -26,7 +24,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -37,7 +34,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -48,7 +44,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -59,7 +54,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -70,7 +64,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -81,7 +74,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -92,7 +84,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -103,7 +94,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -114,7 +104,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -125,7 +114,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -136,7 +124,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -147,7 +134,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -158,7 +144,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -169,7 +154,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -180,7 +164,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -191,7 +174,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -202,7 +184,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -213,7 +194,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">
@@ -224,7 +204,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div class="card" style={{ width: "100%" }}>
-        <div class="card-header">Featured</div>
         <img src="..." class="card-img-top" alt="..." />
         <div class="card-body">
           <p class="card-text">

@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
+import axios from "../../api/axios";
 const PostCard = () => {
+  useEffect(() => {
+    const getAllPost = async () => {
+      try {
+        const { data } = await axios.get("/user/post/getAllPost");
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getAllPost();
+  }, []);
+
   return (
     <div>
       <div className="card home-card" style={{ width: "100%" }}>

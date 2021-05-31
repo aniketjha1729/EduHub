@@ -9,7 +9,7 @@
   margin-top: 70px;
   width: 20%;
   position: fixed;
-  margin-right: 75%;
+  margin-right: 65%;
 }
 
 /* .home-left-view:hover {
@@ -45,7 +45,7 @@
   overflow: scroll;
   overflow-x: hidden;
   position: fixed;
-  margin-left: 75%;
+  margin-left: 65%;
 }
 
 .home-right-view::-webkit-scrollbar {

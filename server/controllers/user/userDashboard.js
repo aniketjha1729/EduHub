@@ -168,12 +168,11 @@ exports.deletePost = (req, res) => {
   });
 };
 
-//add document
-TODO: exports.getAllPost = (req, res) => {
+exports.getAllPost = (req, res) => {
   let filterPost = [];
   Post.find()
-    .select("-document")
     .populate("postedBy")
+    .select("-password")
     .then((posts) => {
       posts.map((post) => {
         if (post.postedBy.department == req.user.department) {
@@ -188,7 +187,6 @@ TODO: exports.getAllPost = (req, res) => {
 exports.getPostByDepartment = (req, res) => {
   let filterPost = [];
   Post.find()
-    .select("-document")
     .populate("postedBy")
     .then((posts) => {
       posts.map((post) => {

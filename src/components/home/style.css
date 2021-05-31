@@ -5,6 +5,9 @@
 .card-action{
     float: right;
 }
+.card-header{
+  background-color: white;
+}
 
 .home-card{
     border-radius:10px ;

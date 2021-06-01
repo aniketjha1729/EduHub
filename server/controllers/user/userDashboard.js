@@ -168,11 +168,9 @@ exports.deletePost = (req, res) => {
   });
 };
 
-//add document
-TODO: exports.getAllPost = (req, res) => {
+exports.getAllPost = (req, res) => {
   let filterPost = [];
   Post.find()
-    .select("-document")
     .populate("postedBy")
     .then((posts) => {
       posts.map((post) => {

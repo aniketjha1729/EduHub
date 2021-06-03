@@ -22,7 +22,7 @@ const AdminSignIn = ({ adminLogin, isAuthenticated, errors }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/admin/users" />;
+    return <Redirect to="/admin/dashboard" />;
   }
   
   return (

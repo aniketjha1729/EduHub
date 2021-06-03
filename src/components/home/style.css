@@ -71,3 +71,15 @@
   margin-left: 2px;
   margin-right: 2px;
 }
+
+
+.card-body{
+  padding-top: 0;
+}
+
+
+.card-header{
+  padding-top: .25rem;
+  padding-bottom :0px;
+  
+}

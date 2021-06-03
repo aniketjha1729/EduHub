@@ -13,7 +13,7 @@ const UserNavbar = ({
 }) => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light bg-primary userDivSticky">
+      <nav className="navbar navbar-expand-lg userDivSticky userNav">
         <Link to="/" className="navbar-brand" style={{ color: "white" }}>
           <b>EduHub</b>
         </Link>

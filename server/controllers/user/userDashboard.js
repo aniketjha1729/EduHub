@@ -168,11 +168,9 @@ exports.deletePost = (req, res) => {
   });
 };
 
-//add document
-TODO: exports.getAllPost = (req, res) => {
+exports.getAllPost = (req, res) => {
   let filterPost = [];
   Post.find()
-    .select("-document")
     .populate("postedBy")
     .then((posts) => {
       posts.map((post) => {
@@ -225,6 +223,15 @@ TODO: exports.getMyPost = (req, res) => {
       res.status(200).json(posts);
     })
     .catch((err) => console.log(err));
+};
+
+exports.photo = (req, res) => {
+  Post.findById({ _id: req.params.postId }).then((post) => {
+    if (post.document.data) {
+      res.set("Content-Type", post.document.contentType);
+      return res.send(post.document.data);
+    }
+  });
 };
 // <========================================************===========================================>
 

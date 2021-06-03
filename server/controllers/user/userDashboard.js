@@ -224,6 +224,15 @@ TODO: exports.getMyPost = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+
+exports.photo = (req, res) => {
+  Post.findById({ _id: req.params.postId }).then((post) => {
+    if (post.document.data) {
+      res.set("Content-Type", post.document.contentType);
+      return res.send(post.document.data);
+    }
+  });
+};
 // <========================================************===========================================>
 
 // <========================================Comment================================================>

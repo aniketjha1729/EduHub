@@ -1,11 +1,12 @@
 .card-img-postedBy {
   width: 100%;
-  height: auto 
+  height: 100%; 
 }
 .card-action{
     float: right;
 }
 .card-header{
+  border-bottom:0;
   background-color: white;
 }
 
@@ -14,8 +15,8 @@
 }
 
 .card-img-postedByIcon {
-  width: 40px;
-  height: 40px;
+  width: 85%;
+  height: 65%;
   border-radius: 50%;
 }
 
@@ -39,4 +40,46 @@
 }
 .left-card-profileDes{
   margin-top: 20px;
+}
+
+
+.card-postedByName{
+
+  font-size: 15px;
+  margin-right:0;
+  margin-left: 0px;
+  margin-bottom: 0;
+}
+
+.card-postedByDesignation{
+  font-size: 8px;
+  margin-right:2px;
+}
+
+
+
+.card-postedByDept{
+  
+  font-size: 8px;
+}
+.Column{
+  padding-right: 0;
+  padding-left: .25rem;
+}
+
+.row-name{
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+
+.card-body{
+  padding-top: 0;
+}
+
+
+.card-header{
+  padding-top: .25rem;
+  padding-bottom :0px;
+  
 }

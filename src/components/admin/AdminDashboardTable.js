@@ -164,13 +164,13 @@ const AdminDashboardTable = (props) => {
                     <td className="text-center">{user.year}</td>
                     <td className="text-center">
                       {user.isVerified ? (
-                        <button type="button" className="btn btn-success btn-sm">
-                          <i className="fas fa-user-check"></i> &nbsp;Verified
-                        </button>
+                        <div className="admin-verfied">
+                          Verified
+                        </div>
                       ) : (
-                        <button type="button" className="btn btn-warning btn-sm">
-                          <i className="fas fa-flask"></i> &nbsp; Pending
-                        </button>
+                        <div className="admin-peding">
+                          Pending
+                        </div>
                       )}
                     </td>
                     <td className="text-center">

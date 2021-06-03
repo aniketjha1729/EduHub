@@ -1,12 +1,22 @@
 .dashboardData {
-  margin-left: 90px;
+  margin-left: 95px;
 }
 
 .dashborad_right_menu_item {
   background-color: white;
   height: 55px;
 }
+.admin-verfied{
+  background-color: rgb(151, 253, 168);
+  border-radius: 5px;
+  color: rgb(0, 114, 19);
+}
 
+.admin-peding{
+  background-color: rgb(146, 196, 236);
+  border-radius: 5px;
+  color: rgb(0, 71, 129);
+}
 .dashborad_right_table {
   margin-top: 44px;
   background-color: white;
@@ -42,7 +52,7 @@ thead {
 }
 .divSticky {
   position: sticky;
-  top: 58px;
+  top: 48px;
   background-color: rgb(228, 228, 228);
   padding-top: 38px;
 }

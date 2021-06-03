@@ -4,7 +4,6 @@ const NoticeCard = () => {
   return (
     <div>
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -14,7 +13,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -24,7 +22,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -34,7 +31,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -44,7 +40,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -54,7 +49,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -64,7 +58,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -74,7 +67,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -84,7 +76,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -94,7 +85,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -104,7 +94,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -114,7 +103,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -124,7 +112,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -134,7 +121,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -144,7 +130,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -154,7 +139,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -164,7 +148,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -174,7 +157,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -184,7 +166,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -194,7 +175,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the
@@ -204,7 +184,6 @@ const NoticeCard = () => {
       </div>
       <br />
       <div className="card" style={{ width: "100%" }}>
-        <img src="..." className="card-img-top" alt="..." />
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the

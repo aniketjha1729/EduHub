@@ -165,16 +165,20 @@ const AdminNoticesTable = (props) => {
                             notice.file_mimetype
                           )
                         }
-                        className="fas fa-cloud-download-alt fa-2x"
+                        className="fas fa-file-download fa-2x"
                         style={{ cursor: "pointer" }}
                       ></i>
                       &nbsp;
                     </td>
                     <td className="text-center">
                       {notice.isVerified ? (
-                        <i className="fas fa-clipboard-check fa-2x"></i>
+                        <div className="admin-verfied">
+                        Verified
+                      </div>
                       ) : (
-                        <i className="fas fa-flask fa-2x"></i>
+                        <div className="admin-peding">
+                          Pending
+                        </div>
                       )}
                     </td>
                     <td className="text-center">

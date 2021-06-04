@@ -2,10 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../../assets/lg.svg");
+  min-height: 90vh;
 }
 
 .signup-spacing {
-  margin-top: 50px;
+  margin-top: 25px;
 }
 .signup-spacing1 {
   margin-top: 25px;
@@ -15,56 +19,55 @@
 }
 
 .signup-container {
-  min-width: 400px;
-  margin-top: 5%;
+  margin-top: 70px;
+  min-width: 300px;
+  
 }
 
+
 .signup-card {
-  width: 500px;
   border: none;
-  box-shadow: 0 5px 8px #414141;
+  overflow: hidden;
+  opacity: 1;
   z-index: 0;
   box-sizing: border-box;
-  background-color: white;
-  margin-bottom: 10px;
+  background-color: #e6e6e6;
+  width: 400px;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 .signup-head {
   font-size: 20px;
   font-weight: 700;
-  background-image: linear-gradient(
-    to right,
-    rgb(0, 123, 255),
-    rgb(35, 141, 255)
-  );
+  background-color: #6C63FF;
   color: transparent;
   background-clip: text;
 }
 .signup-icon {
   position: relative;
   display: block;
-  left: -128px;
+  left: -100px;
   top: 31px;
   color: rgb(255, 255, 255);
   padding-right: 1em;
 }
 
 .drop {
-  width: 100%;
+  width: 80%;
   height: 150%;
-  border: solid rgb(35, 141, 255);
-  background-color: rgb(35, 141, 255);
+  border: solid #7d76f1;
+  background-color: #7d76f1;
   text-align-last: center;
   font-weight: bold;
   color: #fff;
 }
 
 .drop option {
-  border-radius: 0px;
   text-align-last: center;
   font-weight: bold;
   background-color: white;
-  color:rgb(0, 123, 255);
+  color:#6C63FF;
 }
 
 .signup-button {
@@ -72,8 +75,8 @@
   margin-top: 5px;
   background-image: linear-gradient(
     to right,
-    rgb(0, 123, 255),
-    rgb(35, 141, 255)
+    #7d76f1,
+    #7d76f1
   );
   color: #fff;
   font-weight: 700;
@@ -81,13 +84,13 @@
 }
 
 .signup-input {
-  width: 320px;
+  width: 250px;
   padding: 10px;
   padding-left: 40px;
   background-image: linear-gradient(
     to right,
-    rgb(0, 123, 255),
-    rgb(35, 141, 255)
+    #7d76f1,
+    #7d76f1
   );
   color: #fff;
   border: none;

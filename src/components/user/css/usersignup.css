@@ -5,8 +5,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../../../assets/lg.svg");
-  height: 580px;;
-
+  min-height: 90vh;
 }
 
 .signup-spacing {
@@ -20,11 +19,9 @@
 }
 
 .signup-container {
-  
-
-  margin-top: 90px;
+  margin-top: 70px;
   min-width: 300px;
-  border-radius: 0px;
+  
 }
 
 
@@ -38,17 +35,12 @@
   width: 400px;
   background-repeat: no-repeat;
   background-position: bottom;
-  /* background-image: url("../../../assets/lg.svg"); */
 }
 
 .signup-head {
   font-size: 20px;
   font-weight: 700;
-  background-image: linear-gradient(
-    to right,
-    #6C63FF,
-    #6C63FF
-  );
+  background-color: #6C63FF;
   color: transparent;
   background-clip: text;
 }
@@ -64,7 +56,7 @@
 .drop {
   width: 80%;
   height: 150%;
-  border: solid rgb(35, 141, 255);
+  border: solid #7d76f1;
   background-color: #7d76f1;
   text-align-last: center;
   font-weight: bold;
@@ -72,7 +64,6 @@
 }
 
 .drop option {
-  border-radius: 0px;
   text-align-last: center;
   font-weight: bold;
   background-color: white;
@@ -133,9 +124,4 @@
   .usersignup {
     background-color: #fff;
   }
-}
-
-
-.col{
-  padding: 0;
 }

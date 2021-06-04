@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Doughnut, Bar, Line } from "react-chartjs-2";
 import "./css/adminDashboard.css";
-const AdminDashboard = () => {
+const AdminDashboard = (props) => {
   const [dates, setDates] = useState([]);
   useEffect(() => {
     const getAllDaysOfMonth = () => {
       let date = new Date(Date.UTC(2021, 6, 1));
       let days = [];
       while (date.getUTCMonth() === 6) {
-        days.push(new Date(date).toLocaleString('en-us',{month:'short', day:'numeric'}));
+        days.push(
+          new Date(date).toLocaleString("en-us", {
+            month: "short",
+            day: "numeric",
+          })
+        );
         date.setUTCDate(date.getUTCDate() + 1);
       }
       setDates(days);
@@ -20,7 +25,9 @@ const AdminDashboard = () => {
       <div className="row">
         <div className="col-4">
           <div className="card" style={{ width: "20rem" }}>
-            <div class="card-header text-center">Featured</div>
+            <div class="card-header text-center">
+              {props.totalUser} : {props.userCount}
+            </div>
             <div className="card-body">
               <Doughnut
                 options={{ maintainAspectRatio: false }}
@@ -28,8 +35,12 @@ const AdminDashboard = () => {
                   labels: ["Teacher", "Student", "Verified", "Pending"],
                   datasets: [
                     {
-                      label: "# of Votes",
-                      data: [30, 300, 266, 64],
+                      data: [
+                        props.noOfTeacher,
+                        props.noOfStudent,
+                        props.noOfVerifiedUser,
+                        props.noOfPendingUser,
+                      ],
                       backgroundColor: [
                         "rgba(255, 99, 132)",
                         "rgba(54, 162, 235)",
@@ -128,7 +139,10 @@ const AdminDashboard = () => {
                   datasets: [
                     {
                       label: "",
-                      data: [2,5,10,4,1,0,5,6,5,7,8,10,12,4,2,2,2,2,4,6,7,4,3,5,10,14,20,10,3,0],
+                      data: [
+                        2, 5, 10, 4, 1, 0, 5, 6, 5, 7, 8, 10, 12, 4, 2, 2, 2, 2,
+                        4, 6, 7, 4, 3, 5, 10, 14, 11, 10, 3, 0,
+                      ],
                       backgroundColor: [
                         "rgba(255, 99, 132)",
                         "rgba(54, 162, 235)",
@@ -151,27 +165,42 @@ const AdminDashboard = () => {
         </div>
         <div className="col-4">
           <div className="card" style={{ width: "20rem" }}>
-            <div class="card-header text-center">Featured</div>
+            <div class="card-header text-center">
+              {props.notice} : {props.noticeCount}
+            </div>
             <div className="card-body">
               <Doughnut
-                options={{ maintainAspectRatio: false }}
+                height={200}
                 data={{
-                  labels: ["Teacher", "Student", "Verified", "Pending"],
+                  labels: [
+                    "Verified",
+                    "Pending",
+                    "ByTeacher",
+                    "ByStudent",
+                    "ByAdmin",
+                  ],
                   datasets: [
                     {
-                      label: "# of Votes",
-                      data: [30, 300, 266, 64],
+                      data: [
+                        props.verfiedNoticeCount,
+                        props.pendingNoticeCount,
+                        props.noticeByTeacherCount,
+                        props.noticeByStudentCount,
+                        props.noticeByAdminCount,
+                      ],
                       backgroundColor: [
                         "rgba(255, 99, 132)",
                         "rgba(54, 162, 235)",
-                        "rgba(255, 206, 86)",
                         "rgba(75, 192, 192)",
+                        "rgba(255, 206, 86)",
+                        "rgba(150, 255, 125)",
                       ],
                       borderColor: [
                         "rgba(255, 99, 132, 1)",
                         "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
                         "rgba(75, 192, 192, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(150, 255, 125, 1)",
                       ],
                       borderWidth: 1,
                     },
@@ -186,7 +215,7 @@ const AdminDashboard = () => {
       <div className="row">
         <div className="col">
           <div className="card" style={{ width: "100%", height: "400px" }}>
-            <div class="card-header text-center">Featured</div>
+            <div class="card-header text-center">User By Department</div>
             <div className="card-body">
               <Bar
                 options={{ maintainAspectRatio: false }}
@@ -195,7 +224,14 @@ const AdminDashboard = () => {
                   datasets: [
                     {
                       label: "",
-                      data: [250, 280, 206, 104, 150, 80],
+                      data: [
+                        props.csestudentCount,
+                        props.itstudentCount,
+                        props.ecestudentCount,
+                        props.civilstudentCount,
+                        props.eestudentCount,
+                        props.mechstudentCount,
+                      ],
                       backgroundColor: [
                         "rgba(255, 99, 132)",
                         "rgba(54, 162, 235)",

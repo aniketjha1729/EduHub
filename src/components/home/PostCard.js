@@ -42,7 +42,7 @@ const PostCard = () => {
                     <div className="card-postedByDesignation">
                       <i>
                         {post.postedBy.role == "student"
-                          ? post.postedBy.year
+                          ? post.postedBy.year+"Year  "
                           : "Teacher"}
                       </i>
                     </div>

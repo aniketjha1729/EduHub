@@ -44,7 +44,6 @@
 
 
 .card-postedByName{
-
   font-size: 15px;
   margin-right:0;
   margin-left: 0px;
@@ -52,15 +51,14 @@
 }
 
 .card-postedByDesignation{
-  font-size: 8px;
+  font-size: 13px;
   margin-right:2px;
 }
 
 
 
 .card-postedByDept{
-  
-  font-size: 8px;
+  font-size: 13px;
 }
 .Column{
   padding-right: 0;

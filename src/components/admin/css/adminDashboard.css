@@ -2,10 +2,17 @@
   margin-left: 95px;
 }
 
+.admin-dashboard{
+  margin-left: 267px;
+  margin-top: 75px;
+  position: absolute;
+}
+
 .dashborad_right_menu_item {
   background-color: white;
   height: 55px;
 }
+
 .admin-verfied{
   background-color: rgb(151, 253, 168);
   border-radius: 5px;

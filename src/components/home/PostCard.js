@@ -3,6 +3,7 @@ import "./style.css";
 import { Row, Col } from "react-bootstrap";
 import axios from "../../api/axios";
 import PostImage from "./PostImage";
+import CreatePostCard from "./CreatePostCard";
 const PostCard = () => {
   const [allPost, setAllPost] = useState([]);
   useEffect(() => {
@@ -20,10 +21,12 @@ const PostCard = () => {
 
   return (
     <div>
+      <CreatePostCard />
+      <br />
       {allPost.map((post, index) => (
         <>
           <div key={index} className="card home-card" style={{ width: "100%" }}>
-            <div className="card-header ">
+            <div className="card-header post-card-header">
               <Row>
                 <Col xs="1" sm="1" lg="1" className="Column">
                   <img
@@ -42,7 +45,7 @@ const PostCard = () => {
                     <div className="card-postedByDesignation">
                       <i>
                         {post.postedBy.role == "student"
-                          ? post.postedBy.year+"Year  "
+                          ? post.postedBy.year + "Year  "
                           : "Teacher"}
                       </i>
                     </div>
@@ -64,6 +67,7 @@ const PostCard = () => {
               </p>
             </div>
             <PostImage postId={post._id} />
+            <div class="card-footer bg-transparent border-success">Footer</div>
           </div>
           <br />
         </>

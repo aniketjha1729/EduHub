@@ -73,7 +73,7 @@ router.post("/post/createPost", isUserAuth, isVerified, createPost);
 
 router.get("/post/getAllPost", isUserAuth, isVerified, getAllPost);
 
-router.get("/post/photo/:postId",photo);
+router.get("/post/photo/:postId", photo);
 
 router.get("/post/mypost", isUserAuth, isVerified, getMyPost);
 

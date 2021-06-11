@@ -1,10 +1,34 @@
 import React, { useState } from "react";
+import axios from "../../api/axios";
 import { Link } from "react-router-dom";
 
 const CreatePostCard = () => {
   const [postModel, setPostModel] = useState(true);
   const [noticeModel, setNoticeModel] = useState(false);
   const [quesModel, setQuesModel] = useState(false);
+  const [formData, setFormData] = useState({
+    document: "",
+    content: "",
+  });
+
+  const { content, document } = formData;
+
+  // useEffect(() => {
+  //   setFormData({...formData,photo:new Photo()})
+  // }, [])
+
+  const handleChange = (name) => (event) => {
+    const value =
+      name === "document" ? event.target.files[0] : event.target.value;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData);
+    axios.post("/user/post/createPost", formData);
+  };
+
   return (
     <div>
       <div className="card text-center">
@@ -32,7 +56,7 @@ const CreatePostCard = () => {
                   setQuesModel(false);
                 }}
               >
-                Publich Notice
+                Publish Notice
               </Link>
             </li>
             <li className="nav-item">
@@ -59,9 +83,87 @@ const CreatePostCard = () => {
                 With supporting text below as a natural lead-in to additional
                 content.
               </p>
-              <a href="#" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
                 Create Post
-              </a>
+              </button>
+              <div
+                className="modal fade"
+                id="exampleModalCenter"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+              >
+                <div
+                  className="modal-dialog modal-dialog-centered"
+                  role="document"
+                >
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="exampleModalLongTitle">
+                        Modal title
+                      </h5>
+                      <button
+                        type="button"
+                        className="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div className="modal-body">
+                      <form>
+                        <div className="form-group">
+                          <div className="custom-file">
+                            <input
+                              type="file"
+                              name="document"
+                              onChange={handleChange("document")}
+                              className="custom-file-input"
+                              id="validatedCustomFile"
+                              accept="image"
+                            />
+                            <label
+                              className="custom-file-label"
+                              for="validatedCustomFile"
+                            >
+                              {document.name}
+                            </label>
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label for="formGroupExampleInput">
+                            Example label
+                          </label>
+                          <input
+                            onChange={handleChange("content")}
+                            name="content"
+                            type="text"
+                            className="form-control"
+                            id="formGroupExampleInput"
+                            placeholder="Example input"
+                            value={content}
+                          />
+                        </div>
+                        <button
+                          type="submit"
+                          onClick={onSubmit}
+                          className="btn btn-primary"
+                          value="Save changes"
+                        >
+                          Save Changes
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           ) : (
             ""

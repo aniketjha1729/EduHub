@@ -120,14 +120,16 @@ exports.createPost = (req, res) => {
   form.keepExtensions = true;
   form.parse(req, (err, fields, file) => {
     if (err) {
+      console.log(err);
       return res.status(400).json({
-        errors: "Problem with file",
+        errors: [{ msg: "Problem with file" }],
       });
     }
     const { content } = fields;
+    console.log(content);
     if (!content) {
       return res.status(400).json({
-        errors: "Please inlcude all fileds",
+        errors: [{ msg: "Content Required" }],
       });
     }
     let post = new Post(fields);
@@ -140,6 +142,7 @@ exports.createPost = (req, res) => {
       }
       post.document.data = fs.readFileSync(file.document.path);
       post.document.contentType = file.document.type;
+      console.log(file.document.type);
     }
     post.save((err, post) => {
       if (err) {

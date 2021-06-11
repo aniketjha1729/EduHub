@@ -4,9 +4,9 @@ const PostImage = ({ postId }) => {
   const imageUrl = `${process.env.REACT_APP_BACKEND_URL}/user/post/photo/${postId}`;
   return (
     <img
-      className="card-img-postedBy"
+      className="card-img-postedBy card-img-top"
       src={imageUrl}
-      class="card-img-top"
+      
       alt="..."
     />
   );

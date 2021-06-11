@@ -67,7 +67,7 @@ const PostCard = () => {
               </p>
             </div>
             <PostImage postId={post._id} />
-            <div class="card-footer bg-transparent border-success">Footer</div>
+            <div className="card-footer bg-transparent border-success">Footer</div>
           </div>
           <br />
         </>

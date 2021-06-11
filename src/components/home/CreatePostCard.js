@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "../../api/axios";
 import { Link } from "react-router-dom";
 
@@ -6,21 +6,23 @@ const CreatePostCard = () => {
   const [postModel, setPostModel] = useState(true);
   const [noticeModel, setNoticeModel] = useState(false);
   const [quesModel, setQuesModel] = useState(false);
-  const [formData, setFormData] = useState({
+  const [values, setValues] = useState({
     document: "",
     content: "",
+    formData:""
   });
 
-  const { content, document } = formData;
+  const { content, document,formData } = values;
 
-  // useEffect(() => {
-  //   setFormData({...formData,photo:new Photo()})
-  // }, [])
+  useEffect(() => {
+    setValues({...values,formData:new FormData()})
+  }, [])
 
   const handleChange = (name) => (event) => {
     const value =
       name === "document" ? event.target.files[0] : event.target.value;
-    setFormData({ ...formData, [name]: value });
+      formData.set(name,value);
+      setValues({ ...values, [name]: value });
   };
 
   const onSubmit = (event) => {

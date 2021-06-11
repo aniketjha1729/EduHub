@@ -142,7 +142,7 @@ exports.createPost = (req, res) => {
       }
       post.document.data = fs.readFileSync(file.document.path);
       post.document.contentType = file.document.type;
-      console.log(file.document.type);
+      
     }
     post.save((err, post) => {
       if (err) {

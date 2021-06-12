@@ -47,7 +47,6 @@ const AdminNoticeCreateForm = () => {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-
     try {
       const { content, heading } = state;
       if (content.trim() !== "") {

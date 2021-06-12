@@ -1,7 +1,7 @@
 import React from "react";
 import LeftCard from "../components/home/LeftCard";
 import NoticeCard from "../components/home/NoticeCard";
-import PostCard from "../components/home/PostCard";
+import Feed from "../components/home/PostFeed";
 
 import "./home.css";
 const Home = () => {
@@ -12,11 +12,11 @@ const Home = () => {
           <LeftCard />
         </div>
         <div className="home-middle-view">
-          <PostCard />
+          <Feed />
         </div>
         <div className="home-right-view">
           <div className="card notice-header" style={{ width: "100%" }}>
-            <div className="card-header text-center">Notices</div>
+            <div className="text-center">Notices</div>
           </div>
           <NoticeCard />
         </div>

@@ -26,13 +26,13 @@
   height: 40px;
 }
 
-.left-profileDescription{
+.left-profileDescription {
   margin-top: 10px;
 }
 
 .left-card-profileCard {
-  border-radius:5px ;
-  background-color: #F7F7F7;
+  border-radius: 5px;
+  background-color: #f7f7f7;
   height: 70px;
   border-bottom: 1px solid #dad2d2;
 }
@@ -86,26 +86,22 @@
   cursor: pointer;
 }
 
-.custom-file-label
-{
+.custom-file-label {
   border: #6c63ff solid 1px;
   color: black;
 }
-.custom-file-label:hover
-{
+.custom-file-label:hover {
   border: orange dotted 1px;
   color: red;
 }
-.postButton
-{
+.postButton {
   color: whitesmoke;
   border: #6c63ff solid 1px;
   background-color: #6c63ff;
   width: 50%;
   font: 150% bold;
 }
-.postButton:hover
-{
+.postButton:hover {
   color: whitesmoke;
   box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
   background-color: #6c63ff;
@@ -113,35 +109,28 @@
   width: 50%;
   font: 150% bold;
 }
-.example-input
-{
+.example-input {
   border: #6c63ff solid 1px;
   color: black;
 }
 
-.example-label
-{
+.example-label {
   font: 150% bold;
 }
 
-.newButton
-{
+.newButton {
   color: black;
-  border: #6c63ff solid 3px;
-  background-color: #E6E6E6;
-  width: 80%;
+  background-color: #e6e6e6;
+  width: 100%;
   font: 100%;
   text-align: left;
   border-radius: 20px;
   height: 40px;
   padding-left: 15px;
 }
-.newButton:hover
-{
-  background-color: white;
+.newButton:hover {
   cursor: text;
 }
-.newButton:focus
-{
+.newButton:focus {
   box-shadow: 0px 0px;
 }

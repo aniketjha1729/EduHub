@@ -29,7 +29,7 @@ export const SidebarData = [
   },
   {
     title: "Team",
-    path: "/abc",
+    path: "/teams",
     icon: <IoIcons.IoMdPeople />,
     cName: "nav-text",
   },

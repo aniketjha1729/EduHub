@@ -153,7 +153,7 @@ const AdminNoticesTable = (props) => {
                 {allNotices.map((notice, index) => (
                   <tr key={index}>
                     <th className="text-center" scope="row">{index}</th>
-                    <td className="text-center">{notice.content}</td>
+                    <td className="text-center">{notice.heading}</td>
                     <td className="text-center">{new Date(notice.date).toLocaleDateString()}</td>
                     <td className="text-center">{notice.postedBy}</td>
                     <td className="text-center">

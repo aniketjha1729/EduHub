@@ -15,6 +15,9 @@ const Home = () => {
           <PostCard />
         </div>
         <div className="home-right-view">
+          <div className="card notice-header" style={{ width: "100%" }}>
+            <div className="card-header text-center">Notices</div>
+          </div>
           <NoticeCard />
         </div>
       </div>

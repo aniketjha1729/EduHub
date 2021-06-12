@@ -19,6 +19,7 @@ const {
   currentProfile,
   getPostByDepartment,
   photo,
+  downloadNotice,
 } = require("../../controllers/user/userDashboard");
 
 const { isUserAuth, isVerified } = require("../../controllers/auth");
@@ -66,6 +67,8 @@ router.post(
   upload.single("file"),
   createNotice
 );
+
+router.get("/downloadNotice/:noticeId", isUserAuth, isVerified, downloadNotice);
 
 router.get("/notices", isUserAuth, isVerified, getAllNotices);
 

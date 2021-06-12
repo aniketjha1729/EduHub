@@ -109,8 +109,7 @@ exports.deleteNotice = async (req, res) => {
   }
 };
 
-// remove .select("-document")
-TODO: exports.getAllNotices = async (req, res) => {
+exports.getAllNotices = async (req, res) => {
   try {
     const files = await Notice.find({});
     res.send(files);

@@ -80,22 +80,18 @@ const CreatePostCard = () => {
         <div className="card-body">
           {postModel ? (
             <div className="card-body">
-              <h5 className="card-title">Post</h5>
-              <p className="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
+              <br />
               <button
                 type="button"
                 className="btn btn-primary"
                 data-toggle="modal"
-                data-target="#exampleModalCenter"
+                data-target="#postModel"
               >
                 Create Post
               </button>
               <div
                 className="modal fade"
-                id="exampleModalCenter"
+                id="postModel"
                 tabindex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalCenterTitle"
@@ -159,7 +155,7 @@ const CreatePostCard = () => {
                           className="btn btn-primary"
                           value="Save changes"
                         >
-                          Save Changes
+                          Post
                         </button>
                       </form>
                     </div>
@@ -172,25 +168,95 @@ const CreatePostCard = () => {
           )}
           {noticeModel ? (
             <div className="card-body">
-              <h5 className="card-title">Notice</h5>
-              <p className="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <a href="#" className="btn btn-primary">
-                Create Notice
-              </a>
+              <br />
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-toggle="modal"
+                data-target="#noticeModel"
+              >
+                Publish Notice
+              </button>
+              <div
+                className="modal fade"
+                id="noticeModel"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+              >
+                <div
+                  className="modal-dialog modal-dialog-centered"
+                  role="document"
+                >
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="exampleModalLongTitle">
+                        Modal title
+                      </h5>
+                      <button
+                        type="button"
+                        className="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div className="modal-body">
+                      <form>
+                        <div className="form-group">
+                          <div className="custom-file">
+                            <input
+                              type="file"
+                              name="document"
+                              
+                              className="custom-file-input"
+                              id="validatedCustomFile"
+                              accept="image"
+                            />
+                            <label
+                              className="custom-file-label"
+                              for="validatedCustomFile"
+                            >
+                              
+                            </label>
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label for="formGroupExampleInput">
+                            Example label
+                          </label>
+                          <input
+                            
+                            name="content"
+                            type="text"
+                            className="form-control"
+                            id="formGroupExampleInput"
+                            placeholder="Example input"
+                            
+                          />
+                        </div>
+                        <button
+                          type="submit"
+                          
+                          className="btn btn-primary"
+                          value="Save changes"
+                        >
+                          Publish
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           ) : (
             ""
           )}
           {quesModel ? (
             <div className="card-body">
-              <h5 className="card-title">Question</h5>
-              <p className="card-text">
-                With supporting text below as a natural lead-in to additional
-                content.
-              </p>
+             <br />
               <a href="#" className="btn btn-primary">
                 Ask Question
               </a>

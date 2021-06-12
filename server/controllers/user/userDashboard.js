@@ -72,24 +72,27 @@ exports.getAllUsers = async (req, res) => {
     }
   };
 
-//add document
-TODO: exports.getAllNotices = (req, res) => {
-  let data = [];
-  Notice.find({}, {}, { sort: { date: -1 } })
-    .select("-document")
-    .then((notices) => {
-      if (!notices) {
-        return res.status(404).json({ message: "No notice found" });
-      }
-      notices.map((notice) => {
-        if (notice.isVerified) {
-          data.push(notice);
-        }
-      });
-      res.status(200).json(data);
-    })
-    .catch((err) => console.log(err));
+exports.getAllNotices = async (req, res) => {
+  try {
+    const files = await Notice.find({isVerified:true});
+    res.send(files);
+  } catch (error) {
+    res.status(400).send("Error while getting list of files. Try again later.");
+  }
 };
+
+exports.downloadNotice = async (req, res) => {
+  try {
+    const notice = await Notice.findById(req.params.noticeId);
+    res.set({
+      "Content-Type": notice.file_mimetype,
+    });
+    res.sendFile(path.join(__dirname, "../../", notice.file_path));
+  } catch (error) {
+    res.status(400).send("Error while downloading file. Try again later.");
+  }
+};
+
 
 exports.verifyNotice = (req, res) => {
   if (req.user.role == "student") {
@@ -142,7 +145,6 @@ exports.createPost = (req, res) => {
       }
       post.document.data = fs.readFileSync(file.document.path);
       post.document.contentType = file.document.type;
-      
     }
     post.save((err, post) => {
       if (err) {

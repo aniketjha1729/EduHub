@@ -6,11 +6,22 @@ import PostImage from "./PostImage";
 import CreatePostCard from "./CreatePostCard";
 const PostCard = () => {
   const [allPost, setAllPost] = useState([]);
+
+  function sortByDate(a, b) {
+    if (a.date < b.date) {
+        return 1;
+    }
+    if (a.date > b.date) {
+        return -1;
+    }
+    return 0;
+}
   useEffect(() => {
     const getAllPost = async () => {
       try {
         const { data } = await axios.get("/user/post/getAllPost");
-        setAllPost(data);
+        const sortedData=data.sort(sortByDate)
+        setAllPost(sortedData);
         console.log(data);
       } catch (err) {
         console.log(err);
@@ -62,8 +73,7 @@ const PostCard = () => {
             </div>
             <div className="card-body">
               <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {post.content}
               </p>
             </div>
             <PostImage postId={post._id} />

@@ -29,18 +29,16 @@ const NoticeCard = () => {
       console.log(error);
     }
   };
-  
+
   return (
     <div>
       {allNotices.map((notice, index) => (
         <>
-          <div key={index} className="card" style={{ width: "100%" }}>
+          <div key={index} style={{ width: "100%" }}>
             <div className="card-body">
               <p className="card-text">
-                <div>{notice.heading}</div>
-                <div>{notice.content}</div>
-                <div>{notice.postedBy}</div>
-                <div>
+                <div className="notice-heading text-center">
+                  <b>{notice.heading}</b> &nbsp;
                   <i
                     onClick={() =>
                       downloadFile(
@@ -49,14 +47,23 @@ const NoticeCard = () => {
                         notice.file_mimetype
                       )
                     }
-                    className="fas fa-file-download fa-2x"
+                    className="fas fa-file-download"
                     style={{ cursor: "pointer" }}
                   ></i>
+                </div>
+                <div className="notice-postedBy text-center">
+                  {notice.postedBy}:{" "}
+                  {new Date(notice.date).toLocaleDateString()}
+                </div>
+                <div className="notice-description text-center">
+                  {notice.content}
+                </div>
+                <div>
+                  
                 </div>
               </p>
             </div>
           </div>
-          <br />
         </>
       ))}
     </div>

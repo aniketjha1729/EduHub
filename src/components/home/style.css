@@ -26,9 +26,15 @@
   height: 40px;
 }
 
+.left-profileDescription{
+  margin-top: 10px;
+}
+
 .left-card-profileCard {
-  background-color: #6c63ff;
+  border-radius:5px ;
+  background-color: #F7F7F7;
   height: 70px;
+  border-bottom: 1px solid #dad2d2;
 }
 
 .left-card-ProfileIcon {

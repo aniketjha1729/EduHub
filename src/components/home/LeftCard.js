@@ -12,7 +12,8 @@ const LeftCard = () => {
           />
         </div>
         <div className="card-body left-card-profileDes">
-          <p className="card-text">
+
+          <p className="card-text left-profileDescription">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
@@ -21,7 +22,7 @@ const LeftCard = () => {
       <br />
       <div className="card" style={{ width: "100%" }}>
         <div className="card-header">Featured</div>
-        <img src="..." className="card-img-top" alt="..." />
+        
         <div className="card-body">
           <p className="card-text">
             Some quick example text to build on the card title and make up the

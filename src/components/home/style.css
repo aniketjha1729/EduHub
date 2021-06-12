@@ -72,9 +72,9 @@
   padding-top: 0;
 }
 
-.user-notice-drop-area {
+/* .user-notice-drop-area {
   border: 2px dotted rgb(116, 116, 116);
-}
+} */
 
 .user-notice-drop-area:hover {
   cursor: pointer;
@@ -120,19 +120,15 @@
 
 .newButton
 {
-  color: whitesmoke;
-  border: #6c63ff solid 1px;
-  background-color: #6c63ff;
-  width: 50%;
-  font: 150% bold;
+  color: black;
+  border: #6c63ff solid 2px;
+  background-color: rgb(216, 228, 238);
+  width: 80%;
+  font: 100%;
+  text-align: left;
   border-radius: 50px;
 }
 .newButton:hover
 {
-  color: black;
-  border: #6c63ff solid 1px;
   background-color: white;
-  width: 50%;
-  font: 150% bold;
-  border-radius: 50px;
 }

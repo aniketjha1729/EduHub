@@ -3,8 +3,8 @@ import "./style.css";
 import { Row, Col } from "react-bootstrap";
 import axios from "../../api/axios";
 import PostImage from "./PostImage";
-import CreatePostCard from "./CreatePostCard";
-const PostCard = () => {
+import CreateCard from "./CreateCard";
+const PostFeed = () => {
   const [allPost, setAllPost] = useState([]);
 
   function sortByDate(a, b) {
@@ -32,7 +32,7 @@ const PostCard = () => {
 
   return (
     <div>
-      <CreatePostCard />
+      <CreateCard />
       <br />
       {allPost.map((post, index) => (
         <>
@@ -86,4 +86,4 @@ const PostCard = () => {
   );
 };
 
-export default PostCard;
+export default PostFeed;

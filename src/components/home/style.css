@@ -1,18 +1,18 @@
 .card-img-postedBy {
   width: 100%;
-  height: 100%; 
+  height: 100%;
 }
-.card-action{
-    float: right;
+.card-action {
+  float: right;
 }
-.post-card-header{
+.post-card-header {
   background-color: white;
-  padding-top: .25rem;
-  padding-bottom :0px;
+  padding-top: 0.25rem;
+  padding-bottom: 0px;
 }
 
-.home-card{
-    border-radius:10px ;
+.home-card {
+  border-radius: 10px;
 }
 
 .card-img-postedByIcon {
@@ -26,52 +26,56 @@
   height: 40px;
 }
 
-
-.left-card-profileCard{
-  background-color: #6C63FF;
+.left-card-profileCard {
+  background-color: #6c63ff;
   height: 70px;
 }
 
-.left-card-ProfileIcon{
+.left-card-ProfileIcon {
   margin-top: 20px;
   margin-left: 33%;
   width: 80px;
   height: 80px;
-  border-radius: 50%; 
+  border-radius: 50%;
 }
-.left-card-profileDes{
+.left-card-profileDes {
   margin-top: 20px;
 }
 
-
-.card-postedByName{
+.card-postedByName {
   font-size: 15px;
-  margin-right:0;
+  margin-right: 0;
   margin-left: 0px;
   margin-bottom: 0;
 }
 
-.card-postedByDesignation{
+.card-postedByDesignation {
   font-size: 13px;
-  margin-right:2px;
+  margin-right: 2px;
 }
 
-
-
-.card-postedByDept{
+.card-postedByDept {
   font-size: 13px;
 }
-.Column{
+
+.Column {
   padding-right: 0;
-  padding-left: .25rem;
+  padding-left: 0.25rem;
 }
 
-.row-name{
+.row-name {
   margin-left: 2px;
   margin-right: 2px;
 }
 
-
-.card-body{
+.card-body {
   padding-top: 0;
+}
+
+.user-notice-drop-area {
+  border: 2px dotted rgb(116, 116, 116);
+}
+
+.user-notice-drop-area:hover {
+  cursor: pointer;
 }

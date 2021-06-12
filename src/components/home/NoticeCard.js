@@ -29,6 +29,7 @@ const NoticeCard = () => {
       console.log(error);
     }
   };
+  
   return (
     <div>
       {allNotices.map((notice, index) => (

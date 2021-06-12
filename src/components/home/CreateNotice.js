@@ -75,7 +75,7 @@ const CreateNotice = () => {
       <br />
       <button
         type="button"
-        className="btn newButton"
+        className="btn UserHome-TextBoxLikeButton"
         data-toggle="modal"
         data-target="#noticeModel"
       >
@@ -111,7 +111,7 @@ const CreateNotice = () => {
                     name="heading"
                     type="text"
                     value={state.heading || ""}
-                    className="form-control example-input"
+                    className="form-control UserHome-example-input example-input"
                     id="formGroupExampleInput"
                     placeholder="Notice Heading"
                     onChange={handleInputChange}
@@ -123,7 +123,7 @@ const CreateNotice = () => {
                     cols="23"
                     type="textarea"
                     name="content"
-                    className="form-control example-input"
+                    className="form-control UserHome-example-input example-input"
                     id="formGroupExampleInput"
                     value={state.content || ""}
                     placeholder="Type Notice Content here"
@@ -131,7 +131,7 @@ const CreateNotice = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <div className="user-notice-drop-area example-input">
+                  <div className="user-notice-drop-area UserHome-example-input example-input">
                     <Dropzone
                       onDrop={onDrop}
                       onDragEnter={() => updateBorder("over")}
@@ -156,7 +156,7 @@ const CreateNotice = () => {
                     </Dropzone>
                   </div>
                 </div>
-                <button type="submit" className="btn postButton">
+                <button type="submit" className="btn UserHome-modal-button">
                   Publish
                 </button>
               </form>

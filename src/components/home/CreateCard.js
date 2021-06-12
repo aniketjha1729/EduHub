@@ -68,7 +68,7 @@ const CreateCard = () => {
           {quesModel ? (
             <div className="card-body">
               <br />
-              <a href="#" className="btn newButton">
+              <a href="#" className="btn UserHome-TextBoxLikeButton">
                 Ask Question
               </a>
             </div>

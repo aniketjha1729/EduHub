@@ -86,22 +86,22 @@
   cursor: pointer;
 }
 
-.custom-file-label {
+.UserHome-custom-file-label {
   border: #6c63ff solid 1px;
   color: black;
 }
-.custom-file-label:hover {
+.UserHome-custom-file-label:hover {
   border: orange dotted 1px;
   color: red;
 }
-.postButton {
+.UserHome-modal-button {
   color: whitesmoke;
   border: #6c63ff solid 1px;
   background-color: #6c63ff;
   width: 50%;
   font: 150% bold;
 }
-.postButton:hover {
+.UserHome-modal-button:hover {
   color: whitesmoke;
   box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
   background-color: #6c63ff;
@@ -109,16 +109,16 @@
   width: 50%;
   font: 150% bold;
 }
-.example-input {
+.UserHome-example-input {
   border: #6c63ff solid 1px;
   color: black;
 }
 
-.example-label {
+.UserHome-example-label {
   font: 150% bold;
 }
 
-.newButton {
+.UserHome-TextBoxLikeButton {
   color: black;
   background-color: #e6e6e6;
   width: 100%;
@@ -128,9 +128,9 @@
   height: 40px;
   padding-left: 15px;
 }
-.newButton:hover {
+.UserHome-TextBoxLikeButton:hover {
   cursor: text;
 }
-.newButton:focus {
+.UserHome-TextBoxLikeButton:focus {
   box-shadow: 0px 0px;
 }

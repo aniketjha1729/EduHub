@@ -43,3 +43,21 @@
   font-size: large;
   background-color: #F7F7F7;
 }
+/* <CSS by Amit> */
+.teamCol
+{
+  border: red 1px solid;
+  padding: 2%;
+}
+.teamPic
+{
+  border-radius: 50%;
+  width: 150px;
+  margin-right: 30px;
+}
+.teamName
+{
+  font: 250% bold;
+  padding: 2%;
+}
+/* END */

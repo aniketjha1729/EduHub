@@ -30,7 +30,7 @@ const CreatePost = () => {
       <br />
       <button
         type="button"
-        className="btn newButton"
+        className="btn UserHome-TextBoxLikeButton"
         data-toggle="modal"
         data-target="#postModel"
       >
@@ -64,7 +64,7 @@ const CreatePost = () => {
                 <div className="form-group">
                   <div className="custom-file">
                     <label
-                      className="custom-file-label"
+                      className="custom-file-label UserHome-custom-file-label"
                       for="validatedCustomFile"
                       placeholder="Click here to select a file"
                     >
@@ -82,12 +82,12 @@ const CreatePost = () => {
                   </div>
                 </div>
                 <div className="form-group">
-                  <label className="example-label" for="formGroupExampleInput">Example label</label>
+                  <label className="UserHome-example-label example-label" for="formGroupExampleInput">Example label</label>
                   <input
                     onChange={handleChange("content")}
                     name="content"
                     type="text"
-                    className="form-control example-input"
+                    className="form-control example-input UserHome-example-input"
                     id="formGroupExampleInput"
                     placeholder="Example input"
                     value={content}
@@ -96,7 +96,7 @@ const CreatePost = () => {
                 <button
                   type="submit"
                   onClick={onSubmit}
-                  className="btn postButton"
+                  className="btn UserHome-modal-button"
                   value="Save changes"
                 >
                   Post

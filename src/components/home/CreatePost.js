@@ -30,7 +30,7 @@ const CreatePost = () => {
       <br />
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn newButton"
         data-toggle="modal"
         data-target="#postModel"
       >
@@ -63,29 +63,31 @@ const CreatePost = () => {
               <form>
                 <div className="form-group">
                   <div className="custom-file">
-                    <input
-                      type="file"
-                      name="document"
-                      onChange={handleChange("document")}
-                      className="custom-file-input"
-                      id="validatedCustomFile"
-                      accept="image"
-                    />
                     <label
                       className="custom-file-label"
                       for="validatedCustomFile"
+                      placeholder="Click here to select a file"
                     >
-                      {document.name}
+                    {document.name}
+                      <input
+                        type="file"
+                        name="document"
+                        onChange={handleChange("document")}
+                        className="custom-file-input"
+                        id="validatedCustomFile"
+                        accept="image"
+                        placeholder="Click here to select a file"
+                      />
                     </label>
                   </div>
                 </div>
                 <div className="form-group">
-                  <label for="formGroupExampleInput">Example label</label>
+                  <label className="example-label" for="formGroupExampleInput">Example label</label>
                   <input
                     onChange={handleChange("content")}
                     name="content"
                     type="text"
-                    className="form-control"
+                    className="form-control example-input"
                     id="formGroupExampleInput"
                     placeholder="Example input"
                     value={content}
@@ -94,7 +96,7 @@ const CreatePost = () => {
                 <button
                   type="submit"
                   onClick={onSubmit}
-                  className="btn btn-primary"
+                  className="btn postButton"
                   value="Save changes"
                 >
                   Post

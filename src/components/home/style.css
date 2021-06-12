@@ -79,3 +79,60 @@
 .user-notice-drop-area:hover {
   cursor: pointer;
 }
+
+.custom-file-label
+{
+  border: #6c63ff solid 1px;
+  color: black;
+}
+.custom-file-label:hover
+{
+  border: orange dotted 1px;
+  color: red;
+}
+.postButton
+{
+  color: whitesmoke;
+  border: #6c63ff solid 1px;
+  background-color: #6c63ff;
+  width: 50%;
+  font: 150% bold;
+}
+.postButton:hover
+{
+  color: whitesmoke;
+  box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
+  background-color: #6c63ff;
+  transform: translateY(-2px);
+  width: 50%;
+  font: 150% bold;
+}
+.example-input
+{
+  border: #6c63ff solid 1px;
+  color: black;
+}
+
+.example-label
+{
+  font: 150% bold;
+}
+
+.newButton
+{
+  color: whitesmoke;
+  border: #6c63ff solid 1px;
+  background-color: #6c63ff;
+  width: 50%;
+  font: 150% bold;
+  border-radius: 50px;
+}
+.newButton:hover
+{
+  color: black;
+  border: #6c63ff solid 1px;
+  background-color: white;
+  width: 50%;
+  font: 150% bold;
+  border-radius: 50px;
+}

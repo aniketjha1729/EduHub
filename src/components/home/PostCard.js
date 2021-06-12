@@ -3,13 +3,25 @@ import "./style.css";
 import { Row, Col } from "react-bootstrap";
 import axios from "../../api/axios";
 import PostImage from "./PostImage";
+import CreatePostCard from "./CreatePostCard";
 const PostCard = () => {
   const [allPost, setAllPost] = useState([]);
+
+  function sortByDate(a, b) {
+    if (a.date < b.date) {
+        return 1;
+    }
+    if (a.date > b.date) {
+        return -1;
+    }
+    return 0;
+}
   useEffect(() => {
     const getAllPost = async () => {
       try {
         const { data } = await axios.get("/user/post/getAllPost");
-        setAllPost(data);
+        const sortedData=data.sort(sortByDate)
+        setAllPost(sortedData);
         console.log(data);
       } catch (err) {
         console.log(err);
@@ -20,10 +32,12 @@ const PostCard = () => {
 
   return (
     <div>
+      <CreatePostCard />
+      <br />
       {allPost.map((post, index) => (
         <>
           <div key={index} className="card home-card" style={{ width: "100%" }}>
-            <div className="card-header ">
+            <div className="card-header post-card-header">
               <Row>
                 <Col xs="1" sm="1" lg="1" className="Column">
                   <img
@@ -42,7 +56,7 @@ const PostCard = () => {
                     <div className="card-postedByDesignation">
                       <i>
                         {post.postedBy.role == "student"
-                          ? post.postedBy.year+"Year  "
+                          ? post.postedBy.year + "Year  "
                           : "Teacher"}
                       </i>
                     </div>
@@ -59,11 +73,11 @@ const PostCard = () => {
             </div>
             <div className="card-body">
               <p className="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {post.content}
               </p>
             </div>
             <PostImage postId={post._id} />
+            <div className="card-footer bg-transparent border-success">Footer</div>
           </div>
           <br />
         </>

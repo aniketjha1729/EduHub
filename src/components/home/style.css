@@ -5,9 +5,10 @@
 .card-action{
     float: right;
 }
-.card-header{
-  border-bottom:0;
+.post-card-header{
   background-color: white;
+  padding-top: .25rem;
+  padding-bottom :0px;
 }
 
 .home-card{
@@ -73,11 +74,4 @@
 
 .card-body{
   padding-top: 0;
-}
-
-
-.card-header{
-  padding-top: .25rem;
-  padding-bottom :0px;
-  
 }

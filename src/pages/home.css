@@ -44,9 +44,13 @@
   background-color: #F7F7F7;
 }
 /* <CSS by Amit> */
+
+.team-container{
+  margin-left: 16%;
+}
 .teamCol
 {
-  border: red 1px solid;
+  
   padding: 2%;
 }
 .teamPic
@@ -60,4 +64,5 @@
   font: 250% bold;
   padding: 2%;
 }
+
 /* END */

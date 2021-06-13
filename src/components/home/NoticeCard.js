@@ -8,7 +8,7 @@ const NoticeCard = () => {
     const getAllNotices = async () => {
       try {
         const { data } = await axios.get("/user/notices");
-        console.log(data);
+        // console.log(data);
         setAllNotices(data);
       } catch (err) {
         console.log(err);
@@ -33,7 +33,6 @@ const NoticeCard = () => {
   return (
     <div>
       {allNotices.map((notice, index) => (
-        <>
           <div key={index} style={{ width: "100%" }}>
             <div className="card-body">
               <p className="card-text">
@@ -64,7 +63,6 @@ const NoticeCard = () => {
               </p>
             </div>
           </div>
-        </>
       ))}
     </div>
   );

@@ -129,7 +129,6 @@ exports.createPost = (req, res) => {
       });
     }
     const { content } = fields;
-    console.log(content);
     if (!content) {
       return res.status(400).json({
         errors: [{ msg: "Content Required" }],
@@ -294,8 +293,8 @@ exports.deleteComment = (req, res) => {
 
 // <========================================Like====================================================>
 
-//add document
-TODO: exports.addLikes = (req, res) => {
+exports.addLikes = (req, res) => {
+  console.log("hello");
   Post.findById(req.params.postId)
     .then((post) => {
       if (

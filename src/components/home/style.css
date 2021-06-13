@@ -110,8 +110,14 @@
   font: 150% bold;
 }
 .UserHome-example-input {
-  border: #6c63ff solid 1px;
+  border: none;
   color: black;
+  height: 70px;
+}
+.UserHome-example-input:focus {
+  border: none;
+  outline-color: white;
+  outline-width: 0 !important;
 }
 
 .UserHome-example-label {
@@ -119,7 +125,7 @@
 }
 
 .UserHome-TextBoxLikeButton {
-  color: black;
+  color: rgb(124, 124, 124);
   background-color: #e6e6e6;
   width: 100%;
   font: 100%;

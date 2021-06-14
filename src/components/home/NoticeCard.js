@@ -1,15 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
 import download from "downloadjs";
-
+import "./style.css"
 const NoticeCard = () => {
+
+  const sortByDate = (a, b) => {
+    if (a.date < b.date) {
+      return 1;
+    }
+    if (a.date > b.date) {
+      return -1;
+    }
+    return 0;
+  };
+
   const [allNotices, setAllNotices] = useState([]);
   useEffect(() => {
     const getAllNotices = async () => {
       try {
         const { data } = await axios.get("/user/notices");
-        console.log(data);
-        setAllNotices(data);
+        const sortedData = data.sort(sortByDate);
+        setAllNotices(sortedData);
       } catch (err) {
         console.log(err);
       }
@@ -31,9 +42,8 @@ const NoticeCard = () => {
   };
 
   return (
-    <div>
+    <div className="notice-container">
       {allNotices.map((notice, index) => (
-        <>
           <div key={index} style={{ width: "100%" }}>
             <div className="card-body">
               <p className="card-text">
@@ -58,13 +68,10 @@ const NoticeCard = () => {
                 <div className="notice-description text-center">
                   {notice.content}
                 </div>
-                <div>
-                  
-                </div>
               </p>
             </div>
+           
           </div>
-        </>
       ))}
     </div>
   );

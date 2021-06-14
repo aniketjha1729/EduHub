@@ -15,29 +15,27 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users",
   },
-  comments:[
+  comments: [
     {
       comment: {
         type: String,
-        required: true
+        required: true,
       },
-      commentedBy:{
+      commentedBy: {
         type: Schema.Types.ObjectId,
-        ref: 'users'
+        ref: "users",
       },
       date: {
         type: Date,
-        default: Date.now
-      }
-    }
+        default: Date.now,
+      },
+    },
   ],
   likes: [
     {
-      likedBy: {
-        type: Schema.Types.ObjectId,
-        ref: 'users'
-      }
-    }
+      type: Schema.Types.ObjectId,
+      ref: "users",
+    },
   ],
   date: {
     type: Date,

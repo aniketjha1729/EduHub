@@ -100,8 +100,8 @@ router.delete(
   deleteComment
 );
 
-router.post("/post/like/:postId", isUserAuth, isVerified, addLikes);
+router.put("/post/like/:postId", isUserAuth, isVerified, addLikes);
 
-router.post("/post/dislike/:postId", isUserAuth, isVerified, removeLike);
+router.put("/post/dislike/:postId", isUserAuth, isVerified, removeLike);
 
 module.exports = router;

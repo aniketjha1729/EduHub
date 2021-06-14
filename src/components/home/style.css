@@ -12,7 +12,7 @@
 }
 
 .home-card {
-  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .card-img-postedByIcon {
@@ -106,12 +106,16 @@
   box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
   background-color: #6c63ff;
   transform: translateY(-2px);
-  width: 50%;
-  font: 150% bold;
 }
 .UserHome-example-input {
-  border: #6c63ff solid 1px;
+  border: none;
   color: black;
+  height: 70px;
+}
+.UserHome-example-input:focus {
+  border: none;
+  outline-color: white;
+  outline-width: 0 !important;
 }
 
 .UserHome-example-label {
@@ -119,7 +123,7 @@
 }
 
 .UserHome-TextBoxLikeButton {
-  color: black;
+  color: rgb(124, 124, 124);
   background-color: #e6e6e6;
   width: 100%;
   font: 100%;
@@ -133,4 +137,18 @@
 }
 .UserHome-TextBoxLikeButton:focus {
   box-shadow: 0px 0px;
+}
+.notice-container {
+  height: 55vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: white;
+}
+.notice-container::-webkit-scrollbar {
+  display: none;
+}
+.postLike,
+.postComment,
+.postSave {
+  cursor: pointer;
 }

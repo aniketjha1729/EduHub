@@ -74,7 +74,7 @@ exports.getAllUsers = async (req, res) => {
 
 exports.getAllNotices = async (req, res) => {
   try {
-    const files = await Notice.find({isVerified:true});
+    const files = await Notice.find({ isVerified: true });
     res.send(files);
   } catch (error) {
     res.status(400).send("Error while getting list of files. Try again later.");
@@ -92,7 +92,6 @@ exports.downloadNotice = async (req, res) => {
     res.status(400).send("Error while downloading file. Try again later.");
   }
 };
-
 
 exports.verifyNotice = (req, res) => {
   if (req.user.role == "student") {
@@ -129,7 +128,6 @@ exports.createPost = (req, res) => {
       });
     }
     const { content } = fields;
-    console.log(content);
     if (!content) {
       return res.status(400).json({
         errors: [{ msg: "Content Required" }],
@@ -176,7 +174,8 @@ exports.deletePost = (req, res) => {
 exports.getAllPost = (req, res) => {
   let filterPost = [];
   Post.find()
-    .populate("postedBy")
+    .populate("postedBy","_id name department")
+    .populate("comments.commentedBy", "_id name")
     .then((posts) => {
       posts.map((post) => {
         if (post.postedBy.department == req.user.department) {
@@ -294,42 +293,39 @@ exports.deleteComment = (req, res) => {
 
 // <========================================Like====================================================>
 
-//add document
-TODO: exports.addLikes = (req, res) => {
-  Post.findById(req.params.postId)
-    .then((post) => {
-      if (
-        post.likes.filter((like) => like.likedBy.toString() === req.user.id)
-          .length > 0
-      ) {
-        return res
-          .status(400)
-          .json({ alreadyliked: "User already liked this post" });
-      }
-      post.likes.unshift({ likedBy: req.user.id });
-      post.save().then((post) => res.json(post));
-    })
-    .catch((err) => console.log(err));
+exports.addLikes = (req, res) => {
+  Post.findByIdAndUpdate(
+    req.params.postId,
+    {
+      $push: { likes: req.user.id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
 };
 
-// add documment
-TODO: exports.removeLike = (req, res) => {
-  Post.findById(req.params.postId)
-    .then((post) => {
-      if (
-        post.likes.filter((like) => like.likedBy.toString() === req.user.id)
-          .length === 0
-      ) {
-        return res
-          .status(400)
-          .json({ notliked: "You have not yet liked this post" });
-      }
-      const removeIndex = post.likes
-        .map((item) => item.likedBy.toString())
-        .indexOf(req.user.id);
-      post.likes.splice(removeIndex, 1);
-      post.save().then((post) => res.json(post));
-    })
-    .catch((err) => res.status(404).json({ postnotfound: "No post found" }));
+exports.removeLike = (req, res) => {
+  Post.findByIdAndUpdate(
+    req.params.postId,
+    {
+      $pull: { likes: req.user.id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
 };
 // <========================================************===========================================>

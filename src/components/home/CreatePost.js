@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
 
-const CreatePost = () => {
+const CreatePost = (props) => {
   const [values, setValues] = useState({
     document: "",
     content: "",
     formData: "",
   });
-  
+  let userName = "aniket";
   const { content, document, formData } = values;
   useEffect(() => {
     setValues({ ...values, formData: new FormData() });
@@ -20,10 +20,14 @@ const CreatePost = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    axios.post("/user/post/createPost", formData);
+    try {
+      const { data } = await axios.post("/user/post/createPost", formData);
+      props.getAllPost();
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="card-body">
@@ -47,7 +51,10 @@ const CreatePost = () => {
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLongTitle">
+              <h5
+                className="modal-title text-center"
+                id="exampleModalLongTitle"
+              >
                 Create Post
               </h5>
               <button
@@ -62,13 +69,24 @@ const CreatePost = () => {
             <div className="modal-body">
               <form>
                 <div className="form-group">
+                  <div className="form-group">
+                    <input
+                      onChange={handleChange("content")}
+                      name="content"
+                      type="text"
+                      className="form-control example-input UserHome-example-input"
+                      id="formGroupExampleInput"
+                      placeholder={`What's on your mind, ${userName} ?`}
+                      value={content}
+                    />
+                  </div>
                   <div className="custom-file">
                     <label
                       className="custom-file-label UserHome-custom-file-label"
                       for="validatedCustomFile"
                       placeholder="Click here to select a file"
                     >
-                    {document.name}
+                      {document.name}
                       <input
                         type="file"
                         name="document"
@@ -81,20 +99,9 @@ const CreatePost = () => {
                     </label>
                   </div>
                 </div>
-                <div className="form-group">
-                  <label className="UserHome-example-label example-label" for="formGroupExampleInput">Example label</label>
-                  <input
-                    onChange={handleChange("content")}
-                    name="content"
-                    type="text"
-                    className="form-control example-input UserHome-example-input"
-                    id="formGroupExampleInput"
-                    placeholder="Example input"
-                    value={content}
-                  />
-                </div>
                 <button
                   type="submit"
+                  data-dismiss="modal"
                   onClick={onSubmit}
                   className="btn UserHome-modal-button"
                   value="Save changes"

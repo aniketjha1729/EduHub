@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import CreateNotice from "./CreateNotice";
 import CreatePost from "./CreatePost";
 
-const CreateCard = () => {
+const CreateCard = (props) => {
   const [postModel, setPostModel] = useState(true);
   const [noticeModel, setNoticeModel] = useState(false);
   const [quesModel, setQuesModel] = useState(false);
@@ -56,7 +56,7 @@ const CreateCard = () => {
         </div>
         <div className="card-body">
           {postModel ? (
-            <CreatePost/>
+            <CreatePost getAllPost={props.getAllPost}/>
           ) : (
             ""
           )}
@@ -68,7 +68,7 @@ const CreateCard = () => {
           {quesModel ? (
             <div className="card-body">
               <br />
-              <a href="#" className="btn btn-primary">
+              <a href="#" className="btn UserHome-TextBoxLikeButton">
                 Ask Question
               </a>
             </div>

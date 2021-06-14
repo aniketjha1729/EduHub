@@ -12,7 +12,8 @@
 }
 
 .home-card {
-  border-radius: 10px;
+  
+  margin-bottom: 15px;
 }
 
 .card-img-postedByIcon {
@@ -26,9 +27,15 @@
   height: 40px;
 }
 
+.left-profileDescription {
+  margin-top: 10px;
+}
+
 .left-card-profileCard {
-  background-color: #6c63ff;
+  border-radius: 5px;
+  background-color: #f7f7f7;
   height: 70px;
+  border-bottom: 1px solid #dad2d2;
 }
 
 .left-card-ProfileIcon {
@@ -72,10 +79,69 @@
   padding-top: 0;
 }
 
-.user-notice-drop-area {
+/* .user-notice-drop-area {
   border: 2px dotted rgb(116, 116, 116);
-}
+} */
 
 .user-notice-drop-area:hover {
+  cursor: pointer;
+}
+
+.UserHome-custom-file-label {
+  border: #6c63ff solid 1px;
+  color: black;
+}
+.UserHome-custom-file-label:hover {
+  border: orange dotted 1px;
+  color: red;
+}
+.UserHome-modal-button {
+  color: whitesmoke;
+  border: #6c63ff solid 1px;
+  background-color: #6c63ff;
+  width: 50%;
+  font: 150% bold;
+}
+.UserHome-modal-button:hover {
+  color: whitesmoke;
+  box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
+  background-color: #6c63ff;
+  transform: translateY(-2px);
+  width: 50%;
+  font: 150% bold;
+}
+.UserHome-example-input {
+  border: none;
+  color: black;
+  height: 70px;
+}
+.UserHome-example-input:focus {
+  border: none;
+  outline-color: white;
+  outline-width: 0 !important;
+}
+
+.UserHome-example-label {
+  font: 150% bold;
+}
+
+.UserHome-TextBoxLikeButton {
+  color: rgb(124, 124, 124);
+  background-color: #e6e6e6;
+  width: 100%;
+  font: 100%;
+  text-align: left;
+  border-radius: 20px;
+  height: 40px;
+  padding-left: 15px;
+}
+.UserHome-TextBoxLikeButton:hover {
+  cursor: text;
+}
+.UserHome-TextBoxLikeButton:focus {
+  box-shadow: 0px 0px;
+}
+
+.postLike,.postComment,.postSave{
   cursor: pointer;
 }

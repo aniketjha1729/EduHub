@@ -31,7 +31,7 @@ const CreateNotice = () => {
     };
     fileReader.readAsDataURL(uploadedFile);
     setIsPreviewAvailable(uploadedFile.name.match(/\.(jpeg|jpg|png)$/));
-    dropRef.current.style.border = "2px dashed rgb(213, 255, 134)";
+   
   };
 
   const updateBorder = (dragState) => {
@@ -75,7 +75,7 @@ const CreateNotice = () => {
       <br />
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn UserHome-TextBoxLikeButton"
         data-toggle="modal"
         data-target="#noticeModel"
       >
@@ -111,7 +111,7 @@ const CreateNotice = () => {
                     name="heading"
                     type="text"
                     value={state.heading || ""}
-                    className="form-control"
+                    className="form-control UserHome-example-input example-input"
                     id="formGroupExampleInput"
                     placeholder="Notice Heading"
                     onChange={handleInputChange}
@@ -123,7 +123,7 @@ const CreateNotice = () => {
                     cols="23"
                     type="textarea"
                     name="content"
-                    className="form-control"
+                    className="form-control UserHome-example-input example-input"
                     id="formGroupExampleInput"
                     value={state.content || ""}
                     placeholder="Type Notice Content here"
@@ -131,7 +131,7 @@ const CreateNotice = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <div className="user-notice-drop-area">
+                  <div className="user-notice-drop-area UserHome-example-input example-input">
                     <Dropzone
                       onDrop={onDrop}
                       onDragEnter={() => updateBorder("over")}
@@ -144,7 +144,7 @@ const CreateNotice = () => {
                         >
                           <input {...getInputProps()} />
                           <p>
-                            Drag and drop a file OR click here to select a file
+                            Drag and drop a file OR Click here to select a file
                           </p>
                           {file && (
                             <div style={{ width: "100px" }}>
@@ -156,7 +156,7 @@ const CreateNotice = () => {
                     </Dropzone>
                   </div>
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn UserHome-modal-button">
                   Publish
                 </button>
               </form>

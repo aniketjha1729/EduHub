@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
 
-const CreatePost = () => {
+const CreatePost = (props) => {
   const [values, setValues] = useState({
     document: "",
     content: "",
     formData: "",
   });
-  
+  let userName = "aniket";
   const { content, document, formData } = values;
   useEffect(() => {
     setValues({ ...values, formData: new FormData() });
@@ -20,21 +20,25 @@ const CreatePost = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    axios.post("/user/post/createPost", formData);
+    try {
+      const { data } = await axios.post("/user/post/createPost", formData);
+      props.getAllPost();
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="card-body">
       <br />
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn UserHome-TextBoxLikeButton"
         data-toggle="modal"
         data-target="#postModel"
       >
-        Create Post
+        Start a Post
       </button>
       <div
         className="modal fade"
@@ -47,7 +51,10 @@ const CreatePost = () => {
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLongTitle">
+              <h5
+                className="modal-title text-center"
+                id="exampleModalLongTitle"
+              >
                 Create Post
               </h5>
               <button
@@ -62,39 +69,41 @@ const CreatePost = () => {
             <div className="modal-body">
               <form>
                 <div className="form-group">
-                  <div className="custom-file">
+                  <div className="form-group">
                     <input
-                      type="file"
-                      name="document"
-                      onChange={handleChange("document")}
-                      className="custom-file-input"
-                      id="validatedCustomFile"
-                      accept="image"
+                      onChange={handleChange("content")}
+                      name="content"
+                      type="text"
+                      className="form-control example-input UserHome-example-input"
+                      id="formGroupExampleInput"
+                      placeholder={`What's on your mind, ${userName} ?`}
+                      value={content}
                     />
+                  </div>
+                  <div className="custom-file">
                     <label
-                      className="custom-file-label"
+                      className="custom-file-label UserHome-custom-file-label"
                       for="validatedCustomFile"
+                      placeholder="Click here to select a file"
                     >
                       {document.name}
+                      <input
+                        type="file"
+                        name="document"
+                        onChange={handleChange("document")}
+                        className="custom-file-input"
+                        id="validatedCustomFile"
+                        accept="image"
+                        placeholder="Click here to select a file"
+                      />
                     </label>
                   </div>
                 </div>
-                <div className="form-group">
-                  <label for="formGroupExampleInput">Example label</label>
-                  <input
-                    onChange={handleChange("content")}
-                    name="content"
-                    type="text"
-                    className="form-control"
-                    id="formGroupExampleInput"
-                    placeholder="Example input"
-                    value={content}
-                  />
-                </div>
                 <button
                   type="submit"
+                  data-dismiss="modal"
                   onClick={onSubmit}
-                  className="btn btn-primary"
+                  className="btn UserHome-modal-button"
                   value="Save changes"
                 >
                   Post

@@ -11,12 +11,17 @@ import AdminSignIn from "../pages/admin/AdminSignIn";
 import UserSignup from "../components/user/auth/UserSignup";
 import UserLogin from "../components/user/auth/UserLogin";
 import AdminDashboard from "../pages/admin/AdminDashboard";
+import Teams from "../pages/Teams";
 
 const Routes = () => {
   return (
     <Switch>
       <AdminPrivateRoute exact path="/admin/users" component={AdminUser} />
-      <AdminPrivateRoute exact path="/admin/dashboard" component={AdminDashboard} />
+      <AdminPrivateRoute
+        exact
+        path="/admin/dashboard"
+        component={AdminDashboard}
+      />
       <AdminPrivateRoute exact path="/admin/notices" component={AdminNotices} />
       <AdminPrivateRoute
         exact
@@ -27,6 +32,7 @@ const Routes = () => {
       <Route exact path="/signup" component={UserSignup} />
       <Route exact path="/login" component={UserLogin} />
       <Route exact path="/admin" component={AdminSignIn} />
+      <Route exact path="/teams" component={Teams} />
       <Route component={PageNoteFound} />
     </Switch>
   );

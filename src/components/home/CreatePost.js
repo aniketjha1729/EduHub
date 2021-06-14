@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
 
-const CreatePost = () => {
+const CreatePost = (props) => {
   const [values, setValues] = useState({
     document: "",
     content: "",
@@ -20,10 +20,14 @@ const CreatePost = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    axios.post("/user/post/createPost", formData);
+    try {
+      const { data } = await axios.post("/user/post/createPost", formData);
+      props.getAllPost();
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="card-body">
@@ -97,6 +101,7 @@ const CreatePost = () => {
                 </div>
                 <button
                   type="submit"
+                  data-dismiss="modal"
                   onClick={onSubmit}
                   className="btn UserHome-modal-button"
                   value="Save changes"

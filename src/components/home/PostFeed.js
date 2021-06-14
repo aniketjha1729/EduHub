@@ -4,9 +4,8 @@ import { Row, Col } from "react-bootstrap";
 import axios from "../../api/axios";
 import PostImage from "./PostImage";
 import CreateCard from "./CreateCard";
-const PostFeed = () => {
+const PostFeed = (props) => {
   const [allPost, setAllPost] = useState([]);
-  const [likeCount, setLikeCount] = useState();
 
   const sortByDate = (a, b) => {
     if (a.date < b.date) {
@@ -20,12 +19,21 @@ const PostFeed = () => {
 
   const addLikes = async (postId) => {
     try {
-      const { data } = await axios.post(`/user/post/like/${postId}`);
+      const { data } = await axios.put(`/user/post/like/${postId}`);
       getAllPost();
     } catch (err) {
       console.log(err);
     }
   };
+
+  const removeLikes=async(postId)=>{
+    try {
+      const { data } = await axios.put(`/user/post/dislike/${postId}`);
+      getAllPost();
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const getAllPost = async () => {
     try {
@@ -39,12 +47,13 @@ const PostFeed = () => {
   };
 
   useEffect(() => {
+    console.log(props.user._id);
     getAllPost();
   }, []);
 
   return (
     <div>
-      <CreateCard />
+      <CreateCard user={props.user} getAllPost={getAllPost} />
       <br />
       {allPost.map((post, index) => (
         <div key={index} className="card home-card" style={{ width: "100%" }}>
@@ -90,14 +99,23 @@ const PostFeed = () => {
             <div className="post-CountLiked">
               <p>{post.likes.length} Likes</p>
               <div className="row text-center postAction">
-                <div
-                  className="col-4 postLike"
-                  onClick={() => {
-                    addLikes(post._id);
-                  }}
-                >
-                  <i className="fas fa-thumbs-up"></i> &nbsp;Like
-                </div>
+                {post.likes.includes(props.user._id) ? (
+                  <div className="col-4 postLike" style={{ color: "Blue" }} onClick={() => {
+                    removeLikes(post._id);
+                  }}>
+                    {" "}
+                    <i className="fas fa-thumbs-up"></i> &nbsp;Like
+                  </div>
+                ) : (
+                  <div
+                    className="col-4 postLike"
+                    onClick={() => {
+                      addLikes(post._id);
+                    }}
+                  >
+                    <i className="fas fa-thumbs-up"></i> &nbsp;Like
+                  </div>
+                )}
                 <div className="col-4 postComment">
                   <i className="fas fa-comment-alt"></i> &nbsp; Comment
                 </div>

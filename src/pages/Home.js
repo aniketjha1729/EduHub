@@ -2,9 +2,10 @@ import React from "react";
 import LeftCard from "../components/home/LeftCard";
 import NoticeCard from "../components/home/NoticeCard";
 import Feed from "../components/home/PostFeed";
-
+import { connect } from "react-redux";
 import "./home.css";
-const Home = () => {
+
+const Home = ({ user: { user } }) => {
   return (
     <>
       <div className="home-container">
@@ -12,7 +13,7 @@ const Home = () => {
           <LeftCard />
         </div>
         <div className="home-middle-view">
-          <Feed />
+          <Feed user={user ? user: ""} />
         </div>
         <div className="home-right-view">
           <div className="card notice-header" style={{ width: "100%" }}>
@@ -27,4 +28,8 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, {})(Home);

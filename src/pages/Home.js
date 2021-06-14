@@ -13,7 +13,7 @@ const Home = ({ user: { user } }) => {
           <LeftCard />
         </div>
         <div className="home-middle-view">
-          <Feed user={user ? user: ""} />
+          <Feed user={user ? user : ""} />
         </div>
         <div className="home-right-view">
           <div className="card notice-header" style={{ width: "100%" }}>
@@ -22,6 +22,16 @@ const Home = ({ user: { user } }) => {
             </div>
           </div>
           <NoticeCard />
+          <br />
+          <div className="container eduhubFooter">
+            <div className="row justify-content-center">
+              <div className="col-3">About</div>
+              <div className="col-3">Team</div>
+            </div>
+            <div className="row text-center">
+              <div className="col">EduHub @ 2021</div>
+            </div>
+          </div>
         </div>
       </div>
     </>

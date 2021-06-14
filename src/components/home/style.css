@@ -12,7 +12,6 @@
 }
 
 .home-card {
-  
   margin-bottom: 15px;
 }
 
@@ -107,8 +106,6 @@
   box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
   background-color: #6c63ff;
   transform: translateY(-2px);
-  width: 50%;
-  font: 150% bold;
 }
 .UserHome-example-input {
   border: none;
@@ -141,7 +138,17 @@
 .UserHome-TextBoxLikeButton:focus {
   box-shadow: 0px 0px;
 }
-
-.postLike,.postComment,.postSave{
+.notice-container {
+  height: 55vh;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: white;
+}
+.notice-container::-webkit-scrollbar {
+  display: none;
+}
+.postLike,
+.postComment,
+.postSave {
   cursor: pointer;
 }

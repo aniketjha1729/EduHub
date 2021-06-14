@@ -6,7 +6,7 @@ import CreatePost from "./CreatePost";
 const CreateCard = (props) => {
   const [postModel, setPostModel] = useState(true);
   const [noticeModel, setNoticeModel] = useState(false);
-  const [quesModel, setQuesModel] = useState(false);
+  const [forumModel, setForumModel] = useState(false);
 
   return (
     <div>
@@ -19,7 +19,7 @@ const CreateCard = (props) => {
                 onClick={() => {
                   setPostModel(true);
                   setNoticeModel(false);
-                  setQuesModel(false);
+                  setForumModel(false);
                 }}
               >
                 Create Post
@@ -32,7 +32,7 @@ const CreateCard = (props) => {
                 onClick={() => {
                   setNoticeModel(true);
                   setPostModel(false);
-                  setQuesModel(false);
+                  setForumModel(false);
                 }}
               >
                 Publish Notice
@@ -42,14 +42,14 @@ const CreateCard = (props) => {
               <Link
                 className="nav-link "
                 className="nav-link"
-                className={quesModel ? "nav-link active" : "nav-link"}
+                className={forumModel ? "nav-link active" : "nav-link"}
                 onClick={() => {
-                  setQuesModel(true);
+                  setForumModel(true);
                   setPostModel(false);
                   setNoticeModel(false);
                 }}
               >
-                Ask Question
+                Forum
               </Link>
             </li>
           </ul>
@@ -65,11 +65,11 @@ const CreateCard = (props) => {
           ) : (
             ""
           )}
-          {quesModel ? (
+          {forumModel ? (
             <div className="card-body">
               <br />
               <a href="#" className="btn UserHome-TextBoxLikeButton">
-                Ask Question
+                Drop your query.....
               </a>
             </div>
           ) : (

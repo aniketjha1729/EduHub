@@ -6,6 +6,7 @@ import PostImage from "./PostImage";
 import CreateCard from "./CreateCard";
 const PostFeed = (props) => {
   const [allPost, setAllPost] = useState([]);
+  const [toggleCommentState, setToggleCommentState] = useState(false);
 
   const sortByDate = (a, b) => {
     if (a.date < b.date) {
@@ -17,6 +18,10 @@ const PostFeed = (props) => {
     return 0;
   };
 
+  const toggleComment = () => {
+    setToggleCommentState(!toggleCommentState);
+  };
+
   const addLikes = async (postId) => {
     try {
       const { data } = await axios.put(`/user/post/like/${postId}`);
@@ -26,14 +31,14 @@ const PostFeed = (props) => {
     }
   };
 
-  const removeLikes=async(postId)=>{
+  const removeLikes = async (postId) => {
     try {
       const { data } = await axios.put(`/user/post/dislike/${postId}`);
       getAllPost();
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const getAllPost = async () => {
     try {
@@ -100,9 +105,13 @@ const PostFeed = (props) => {
               <p>{post.likes.length} Likes</p>
               <div className="row text-center postAction">
                 {post.likes.includes(props.user._id) ? (
-                  <div className="col-4 postLike" style={{ color: "Blue" }} onClick={() => {
-                    removeLikes(post._id);
-                  }}>
+                  <div
+                    className="col-4 postLike"
+                    style={{ color: "Blue" }}
+                    onClick={() => {
+                      removeLikes(post._id);
+                    }}
+                  >
                     {" "}
                     <i className="fas fa-thumbs-up"></i> &nbsp;Like
                   </div>
@@ -116,13 +125,20 @@ const PostFeed = (props) => {
                     <i className="fas fa-thumbs-up"></i> &nbsp;Like
                   </div>
                 )}
-                <div className="col-4 postComment">
+                <div className="col-4 postComment" onClick={toggleComment}>
                   <i className="fas fa-comment-alt"></i> &nbsp; Comment
                 </div>
                 <div className="col-4 postSave">
                   <i className="fas fa-bookmark"></i> &nbsp;Save
                 </div>
               </div>
+              {toggleCommentState ? (
+                <div className="row">
+                  <div className="col">hello</div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         </div>

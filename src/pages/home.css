@@ -46,8 +46,10 @@
 /* <CSS by Amit> */
 .teamCol
 {
-  border: red 1px solid;
+  /* border: rgb(95, 54, 54) 1px solid; */
   padding: 2%;
+  background-color: white;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 .teamPic
 {
@@ -57,7 +59,36 @@
 }
 .teamName
 {
-  font: 250% bold;
+  font: 230% bold;
   padding: 2%;
 }
+.teamNameID
+{
+  font: 90% bold;
+}
+.teamCardUp
+{
+  background-color: white;
+  margin-top: 30px;
+  box-shadow: 0 -2px 7px 3px rgb(44, 44, 65);
+}
+.teamCardDown
+{
+  background-color: white;
+  margin-bottom: 30px;
+  box-shadow: 0 3px 7px 3px rgb(44, 44, 65);
+}
+.teamCardDown:hover
+{
+  box-shadow: 0 0 0;
+}
+.teamCardLeft
+{
+  margin-left: 10px;
+}
+.teamCardRight
+{
+  margin-left: 50px;
+}
+
 /* END */

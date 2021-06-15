@@ -21,6 +21,12 @@
   border-radius: 50%;
 }
 
+.comment-user-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
 .card-img-postedImg {
   width: 40px;
   height: 40px;
@@ -153,4 +159,32 @@
 .postComment,
 .postSave {
   cursor: pointer;
+}
+
+.commentContainer {
+  margin-top: 10px;
+}
+
+.commentInputContainer {
+  width: 100%;
+}
+
+.commentInput {
+  border-radius: 20px;
+  background-color: #e6e6e6;
+  width: 100%;
+  border: 1px solid #e6e6e6;
+  height: 33px;
+}
+
+input:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  padding: 10px;
+}
+
+::-webkit-input-value {
+  padding: 10px;
 }

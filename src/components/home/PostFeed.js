@@ -41,6 +41,15 @@ const PostFeed = (props) => {
     }
   };
 
+  const makeComment = async (comment, postId) => {
+    const body = { comment };
+    try {
+      const { data } = await axios.post(`/user/post/comment/${postId}`, body);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const getAllPost = async () => {
     try {
       const { data } = await axios.get("/user/post/getAllPost");
@@ -102,7 +111,14 @@ const PostFeed = (props) => {
           </div>
           <div className="card-footer bg-transparent">
             <div className="post-CountLiked">
-              <p>{post.likes.length} Likes</p>
+              {post.likes.length > 0 ? (
+                <p>
+                  {post.likes.length}{" "}
+                  {post.likes.length == 1 ? "Like" : "Likes"}
+                </p>
+              ) : (
+                ""
+              )}
               <div className="row text-center postAction">
                 {post.likes.includes(props.user._id) ? (
                   <div
@@ -131,15 +147,63 @@ const PostFeed = (props) => {
                     toggleComment(post._id);
                   }}
                 >
-                  <i className="fas fa-comment-alt"></i> &nbsp; Comment
+                  <i className="fas fa-comment-alt"></i> &nbsp;
+                  {post.comments.length > 0 ? post.comments.length : ""} &nbsp;
+                  Comments
                 </div>
                 <div className="col-4 postSave">
                   <i className="fas fa-bookmark"></i> &nbsp;Save
                 </div>
               </div>
               {commentId == post._id ? (
-                <div className="row">
-                  <div className="col">hello</div>
+                <div className="commentContainer">
+                  {post.comments.map((comment) => (
+                    <div className="row">
+                      <div className="col-1">
+                        <img
+                          className="comment-user-icon "
+                          src="https://images.unsplash.com/photo-1558899622-6e22c5d1c554?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
+                          alt=""
+                        />
+                      </div>
+                      <div className="col-11 commentInputContainer">
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            className="commentInput"
+                            value={comment.comment}
+                            disabled
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+
+                  <div className="row">
+                    <div className="col-1">
+                      <img
+                        className="comment-user-icon "
+                        src="https://images.unsplash.com/photo-1558899622-6e22c5d1c554?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
+                        alt=""
+                      />
+                    </div>
+                    <div className="col-11 commentInputContainer">
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          makeComment(e.target[0].value, post._id);
+                        }}
+                      >
+                        <div className="form-group">
+                          <input
+                            type="text"
+                            className="commentInput"
+                            placeholder="Write a comment..."
+                          />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 ""

@@ -12,6 +12,8 @@ import UserSignup from "../components/user/auth/UserSignup";
 import UserLogin from "../components/user/auth/UserLogin";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import Teams from "../pages/Teams";
+import Forum from "../pages/Forum";
+import Profile from "../pages/Profile";
 
 const Routes = () => {
   return (
@@ -29,6 +31,8 @@ const Routes = () => {
         component={AdminCreateNotice}
       />
       <UserPrivateRoute exact path="/" component={Home} />
+      <UserPrivateRoute exact path="/forum" component={Forum} />
+      <UserPrivateRoute exact path="/profile" component={Profile} />
       <Route exact path="/signup" component={UserSignup} />
       <Route exact path="/login" component={UserLogin} />
       <Route exact path="/admin" component={AdminSignIn} />

@@ -174,7 +174,8 @@ exports.deletePost = (req, res) => {
 exports.getAllPost = (req, res) => {
   let filterPost = [];
   Post.find()
-    .populate("postedBy")
+    .populate("postedBy","_id name department")
+    .populate("comments.commentedBy", "_id name")
     .then((posts) => {
       posts.map((post) => {
         if (post.postedBy.department == req.user.department) {

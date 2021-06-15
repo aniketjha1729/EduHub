@@ -7,6 +7,7 @@ import CreateCard from "./CreateCard";
 const PostFeed = (props) => {
   const [allPost, setAllPost] = useState([]);
   const [toggleCommentState, setToggleCommentState] = useState(false);
+  const [commentId, setCommentId] = useState();
 
   const sortByDate = (a, b) => {
     if (a.date < b.date) {
@@ -18,8 +19,8 @@ const PostFeed = (props) => {
     return 0;
   };
 
-  const toggleComment = () => {
-    setToggleCommentState(!toggleCommentState);
+  const toggleComment = (postId) => {
+    setCommentId(postId);
   };
 
   const addLikes = async (postId) => {
@@ -52,7 +53,6 @@ const PostFeed = (props) => {
   };
 
   useEffect(() => {
-    console.log(props.user._id);
     getAllPost();
   }, []);
 
@@ -125,14 +125,19 @@ const PostFeed = (props) => {
                     <i className="fas fa-thumbs-up"></i> &nbsp;Like
                   </div>
                 )}
-                <div className="col-4 postComment" onClick={toggleComment}>
+                <div
+                  className="col-4 postComment"
+                  onClick={() => {
+                    toggleComment(post._id);
+                  }}
+                >
                   <i className="fas fa-comment-alt"></i> &nbsp; Comment
                 </div>
                 <div className="col-4 postSave">
                   <i className="fas fa-bookmark"></i> &nbsp;Save
                 </div>
               </div>
-              {toggleCommentState ? (
+              {commentId == post._id ? (
                 <div className="row">
                   <div className="col">hello</div>
                 </div>

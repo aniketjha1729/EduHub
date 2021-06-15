@@ -41,13 +41,8 @@ const CreateCard = (props) => {
             <li className="nav-item">
               <Link
                 className="nav-link "
-                className="nav-link"
                 className={forumModel ? "nav-link active" : "nav-link"}
-                onClick={() => {
-                  setForumModel(true);
-                  setPostModel(false);
-                  setNoticeModel(false);
-                }}
+                to="/forum"
               >
                 Forum
               </Link>

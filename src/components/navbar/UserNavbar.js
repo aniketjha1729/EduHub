@@ -39,7 +39,7 @@ const UserNavbar = ({
           {isAuthenticated ? (
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link to="/" className="user-nav-link">
+                <Link to="/profile" className="user-nav-link">
                   {user ? user.name : ""}
                 </Link>
               </li>

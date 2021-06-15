@@ -143,6 +143,8 @@
   overflow: scroll;
   overflow-x: hidden;
   background-color: white;
+  border: 1px solid rgb(167, 157, 157);
+  border-radius: 5px;
 }
 .notice-container::-webkit-scrollbar {
   display: none;

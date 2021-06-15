@@ -166,6 +166,7 @@
 }
 
 .commentInputContainer {
+  line-height: var(--lh);
   width: 100%;
 }
 
@@ -188,3 +189,16 @@ input:focus {
 ::-webkit-input-value {
   padding: 10px;
 }
+
+
+.form-group{
+  width: 500px;
+  
+}
+
+.commentInput{
+  padding-left: 1rem ;
+  word-wrap: break-word;
+
+}
+

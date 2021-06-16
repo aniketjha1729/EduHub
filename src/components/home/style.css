@@ -177,6 +177,7 @@
 }
 
 .commentInputContainer {
+  line-height: var(--lh);
   width: 100%;
 }
 

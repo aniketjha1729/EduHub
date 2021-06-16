@@ -156,11 +156,22 @@
   display: none;
 }
 .postLike,
+.removeLike,
 .postComment,
 .postSave {
   cursor: pointer;
 }
 
+.postLike:hover{
+  color: #8b86f3;
+}
+.removeLike:hover{
+  color: #212529;
+}
+
+.removeLike{
+  color: blue;
+}
 .commentContainer {
   margin-top: 10px;
 }
@@ -169,8 +180,14 @@
   width: 100%;
 }
 
+.prevCommentContainer {
+  background-color: #e6e6e6;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
 .commentInput {
-  border-radius: 20px;
+  border-radius: 15px;
   background-color: #e6e6e6;
   width: 100%;
   border: 1px solid #e6e6e6;

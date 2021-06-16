@@ -45,6 +45,7 @@ const PostFeed = (props) => {
     const body = { comment };
     try {
       const { data } = await axios.post(`/user/post/comment/${postId}`, body);
+      getAllPost();
     } catch (err) {
       console.log(err);
     }
@@ -122,8 +123,7 @@ const PostFeed = (props) => {
               <div className="row text-center postAction">
                 {post.likes.includes(props.user._id) ? (
                   <div
-                    className="col-4 postLike"
-                    style={{ color: "Blue" }}
+                    className="col-4 removeLike"
                     onClick={() => {
                       removeLikes(post._id);
                     }}
@@ -166,19 +166,12 @@ const PostFeed = (props) => {
                           alt=""
                         />
                       </div>
-                      <div className="col-11 commentInputContainer">
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="commentInput"
-                            value={comment.comment}
-                            disabled
-                          />
-                        </div>
+                      <div className="col-10 prevCommentContainer">
+                        <div><b>{comment.commentedBy.name}</b></div>
+                        <div>{comment.comment}</div>
                       </div>
                     </div>
                   ))}
-
                   <div className="row">
                     <div className="col-1">
                       <img

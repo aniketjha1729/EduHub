@@ -188,8 +188,10 @@ const PostFeed = (props) => {
                         }}
                       >
                         <div className="form-group">
-                          <input
-                            type="text"
+                          <textarea
+                            onkeyup="textAreaAdjust(this)"
+                            cols="1"
+                            rows="1"
                             className="commentInput"
                             placeholder="Write a comment..."
                           />
@@ -210,3 +212,7 @@ const PostFeed = (props) => {
 };
 
 export default PostFeed;
+// function textAreaAdjust(element) {
+//   element.style.height = "1px";
+//   element.style.height = (25+element.scrollHeight)+"px";
+// }

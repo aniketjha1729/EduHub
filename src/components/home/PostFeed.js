@@ -51,6 +51,11 @@ const PostFeed = (props) => {
     }
   };
 
+  // const onEnterPress = async (e,comment) => {
+  //   e.preventDefault();
+  //   console.log("hello");
+  // };
+
   const getAllPost = async () => {
     try {
       const { data } = await axios.get("/user/post/getAllPost");
@@ -167,7 +172,9 @@ const PostFeed = (props) => {
                         />
                       </div>
                       <div className="col-10 prevCommentContainer">
-                        <div><b>{comment.commentedBy.name}</b></div>
+                        <div>
+                          <b>{comment.commentedBy.name}</b>
+                        </div>
                         <div>{comment.comment}</div>
                       </div>
                     </div>
@@ -188,10 +195,8 @@ const PostFeed = (props) => {
                         }}
                       >
                         <div className="form-group">
-                          <textarea
-                            onkeyup="textAreaAdjust(this)"
-                            cols="1"
-                            rows="1"
+                          <input
+                            type="text"
                             className="commentInput"
                             placeholder="Write a comment..."
                           />

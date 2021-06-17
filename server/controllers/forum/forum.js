@@ -1,8 +1,8 @@
-const Forum = require("../../models/forum/questions");
+const Question = require("../../models/forum/questions");
 const formidable = require("formidable");
 const fs = require("fs");
 
-exports.createForum = (req, res) => {
+exports.askQuestion = (req, res) => {
   let form = new formidable.IncomingForm();
   form.keepExtensions = true;
   form.parse(req, (err, fields, file) => {
@@ -12,30 +12,35 @@ exports.createForum = (req, res) => {
         errors: [{ msg: "Problem with file" }],
       });
     }
-    const { description } = fields;
-    if (!description) {
+    const { description, tags } = fields;
+    if (!description || !tags) {
       return res.status(400).json({
-        errors: [{ msg: "Description Required" }],
+        errors: [{ msg: "Tags and description required" }],
       });
     }
-    let forum = new Forum(fields);
-    forum.postedBy = req.user._id;
+    let question = new Question({
+      description,
+      tags: Array.isArray(tags)
+        ? tags
+        : tags.split(",").map((tags) => tags.trim()),
+    });
+    question.postedBy = req.user._id;
     if (file.document) {
       if (file.document.size > 300000) {
         return res.status(400).json({
           errors: [{ msg: "File Size is to big" }],
         });
       }
-      post.document.data = fs.readFileSync(file.document.path);
-      post.document.contentType = file.document.type;
+      question.document.data = fs.readFileSync(file.document.path);
+      question.document.contentType = file.document.type;
     }
-    forum.save((err, post) => {
+    question.save((err, question) => {
       if (err) {
         return res.status(400).json({
           errors: "saving failed",
         });
       }
-      res.json(post);
+      res.json(question);
     });
   });
 };

@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const QuestionSchema = new Schema({
+const AnswerSchema = new Schema({
   question: {
     type: Schema.Types.ObjectId,
     ref: "questions",
   },
-  comment: {
+  answer: {
     type: String,
     required: true,
   },
@@ -22,7 +22,7 @@ const QuestionSchema = new Schema({
       },
     },
   ],
-  commentedBy: {
+  answeredBy: {
     type: Schema.Types.ObjectId,
     ref: "users",
   },
@@ -44,4 +44,4 @@ const QuestionSchema = new Schema({
   },
 });
 
-module.exports = Question = mongoose.model("questions", QuestionSchema);
+module.exports = Answer = mongoose.model("answers", AnswerSchema);

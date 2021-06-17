@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
-const AnswerSchema = new Schema({
+const QuestionSchema = new Schema({
   document: {
     data: Buffer,
     contentType: String,
@@ -37,4 +37,4 @@ const AnswerSchema = new Schema({
   },
 });
 
-module.exports = Answer = mongoose.model("questions", AnswerSchema);
+module.exports = Question = mongoose.model("questions", QuestionSchema);

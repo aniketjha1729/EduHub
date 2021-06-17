@@ -174,7 +174,7 @@ exports.deletePost = (req, res) => {
 exports.getAllPost = (req, res) => {
   let filterPost = [];
   Post.find()
-    .populate("postedBy","_id name department")
+    .populate("postedBy", "_id name department")
     .populate("comments.commentedBy", "_id name")
     .then((posts) => {
       posts.map((post) => {
@@ -241,10 +241,11 @@ exports.photo = (req, res) => {
 
 // <========================================Comment================================================>
 
-//add document
-TODO: exports.addComment = (req, res) => {
+exports.addComment = (req, res) => {
+  
   const { comment } = req.body;
   if (!comment) {
+    console.log(comment);
     return res.status(422).json({ message: "Please include all fields" });
   }
   Post.findById(req.params.postId)

@@ -222,3 +222,19 @@ input:focus {
 ::-webkit-input-value {
   padding: 10px;
 }
+.CreateCardBold
+{
+  font: 150% bold;
+}
+.CreateCardSocial
+{
+  color: rgb(0, 170, 128) !important;
+}
+.CreateCardBold:hover
+{
+  color: black !important;
+}
+.CreateCardNoticeBoard
+{
+  color: rgb(255, 123, 0) !important;
+}

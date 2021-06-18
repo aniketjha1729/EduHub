@@ -12,30 +12,31 @@ const CreateCard = (props) => {
     <div>
       <div className="card text-center">
         <div className="card-header">
-          <ul className="nav nav-tabs card-header-tabs">
-            <li className="nav-item">
-              <Link
-                className={postModel ? "nav-link active" : "nav-link"}
-                onClick={() => {
-                  setPostModel(true);
-                  setNoticeModel(false);
-                  setForumModel(false);
-                }}
-              >
-                Create Post
-              </Link>
-            </li>
+          <ul className="nav nav-tabs card-header-tabs CreateCardBold">
             <li className="nav-item">
               <Link
                 className="nav-link"
-                className={noticeModel ? "nav-link active" : "nav-link"}
+                className={noticeModel ? "nav-link active CreateCardNoticeBoard" : "nav-link"}
                 onClick={() => {
                   setNoticeModel(true);
                   setPostModel(false);
                   setForumModel(false);
                 }}
               >
-                Publish Notice
+                <i class="fas fa-clipboard"></i> Notice Board
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={postModel ? "nav-link active CreateCardSocial" : "nav-link"}
+                id="mewmew"
+                onClick={() => {
+                  setPostModel(true);
+                  setNoticeModel(false);
+                  setForumModel(false);
+                }}
+              >
+                <i class="fas fa-users"></i> Social
               </Link>
             </li>
             <li className="nav-item">
@@ -44,7 +45,7 @@ const CreateCard = (props) => {
                 className={forumModel ? "nav-link active" : "nav-link"}
                 to="/forum"
               >
-                Forum
+                <i class="fas fa-chalkboard-teacher"></i> Forum
               </Link>
             </li>
           </ul>

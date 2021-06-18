@@ -38,7 +38,7 @@ const CreatePost = (props) => {
         data-toggle="modal"
         data-target="#postModel"
       >
-        Start a Post
+        Create a Post
       </button>
       <div
         className="modal fade"

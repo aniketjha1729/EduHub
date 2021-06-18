@@ -229,6 +229,9 @@ input:focus {
 .CreateCardSocial
 {
   color: rgb(0, 170, 128) !important;
+  border-top: 2px solid rgb(0, 170, 128) !important;
+  border-left: 2px solid rgb(0, 170, 128) !important;
+  border-right: 2px solid rgb(0, 170, 128) !important;
 }
 .CreateCardBold:hover
 {
@@ -237,4 +240,11 @@ input:focus {
 .CreateCardNoticeBoard
 {
   color: rgb(255, 123, 0) !important;
+  border-top: 2px solid rgb(255, 123, 0) !important;
+  border-left: 2px solid rgb(255, 123, 0) !important;
+  border-right: 2px solid rgb(255, 123, 0) !important;
+}
+#CreateCardIDdown.card-header
+{
+  border-bottom: 1px solid grey;
 }

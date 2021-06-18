@@ -11,7 +11,7 @@ const CreateCard = (props) => {
   return (
     <div>
       <div className="card text-center">
-        <div className="card-header">
+        <div className="card-header" id="CreateCardIDdown">
           <ul className="nav nav-tabs card-header-tabs CreateCardBold">
             <li className="nav-item">
               <Link
@@ -29,7 +29,6 @@ const CreateCard = (props) => {
             <li className="nav-item">
               <Link
                 className={postModel ? "nav-link active CreateCardSocial" : "nav-link"}
-                id="mewmew"
                 onClick={() => {
                   setPostModel(true);
                   setNoticeModel(false);

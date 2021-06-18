@@ -1,9 +1,16 @@
 import React from 'react'
+import ForumLeft from './ForumLeft'
+import ForumRight from './ForumRight'
 
 const Forum = () => {
     return (
-        <div>
-            Forum
+        <div className="ForumDown">
+            <div className="ForumLeft">
+                <ForumLeft/>
+            </div>
+            <div className="ForumRight">
+                <ForumRight/>
+            </div>
         </div>
     )
 }

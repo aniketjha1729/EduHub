@@ -93,7 +93,25 @@
   margin-left: 50px;
 }
 
+.ForumDown
+{
+  padding-top: 60px;
+}
+.ForumLeft
+{
+  margin-left: 2%;
+  width: 30%;
+  border: 2px solid black;
+  float: left;
+}
+.ForumRight
+{
+  margin-right: 2%;
+  width: 60%;
+  border: 2px solid black;
+  float: right;
+}
+/* END */
 .eduhubFooter{
   font-size: 13px;
 }
-/* END */

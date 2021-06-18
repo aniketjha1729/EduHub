@@ -49,7 +49,7 @@ exports.question = (req, res) => {
 exports.allQuestion = (req, res) => {
   Question.find()
     .select("-document")
-    .populate("postedBy", "_id name role department")
+    .populate("postedBy", "_id name role department year")
     .then((questions) => {
       res.status(200).json(questions);
     });
@@ -108,3 +108,92 @@ exports.getAnswerByQuestion = (req, res) => {
     return res.status(200).json(ans);
   });
 };
+
+exports.addReply=(req,res)=>{
+  const { reply } = req.body;
+  if (!reply) {
+    return res.status(422).json({ message: "Please include all fields" });
+  }
+  Answer.findById(req.params.commentId)
+    .then((comment) => {
+      const newReply = {
+        reply,
+        repliedBy: req.user._id,
+      };
+      comment.replies.unshift(newReply);
+      comment.save().then((comment) => res.json(comment));
+    })
+    .catch((err) => console.log(err));
+}
+
+exports.upVoteQuestion=(req,res)=>{
+  Question.findByIdAndUpdate(
+    req.params.quesId,
+    {
+      $push: { upVotes: req.user.id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
+}
+
+exports.downVoteQuestion=(req,res)=>{
+  Question.findByIdAndUpdate(
+    req.params.quesId,
+    {
+      $push: { downVotes: req.user.id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
+}
+
+exports.upVoteAns=(req,res)=>{
+  Answer.findByIdAndUpdate(
+    req.params.ansId,
+    {
+      $push: { upVotes: req.user.id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
+}
+
+exports.downVoteAns=(req,res)=>{
+  Answer.findByIdAndUpdate(
+    req.params.ansId,
+    {
+      $push: { downVotes: req.user.id },
+    },
+    {
+      new: true,
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({ error: err });
+    } else {
+      res.json(result);
+    }
+  });
+}

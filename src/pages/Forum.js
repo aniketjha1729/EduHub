@@ -1,6 +1,6 @@
 import React from 'react'
-import ForumLeft from './ForumLeft'
-import ForumRight from './ForumRight'
+import ForumLeft from '../components/forum/ForumLeft'
+import ForumRight from '../components/forum/ForumRight'
 
 const Forum = () => {
     return (

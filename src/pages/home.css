@@ -72,9 +72,10 @@
   background-color: white;
   margin-bottom: 15px;
   box-shadow: 0 3px 7px 3px rgb(44, 44, 65);
+  transition: box-shadow 0.5s;
 }
 .teamCardDown:hover {
-  box-shadow: 0 3px 7px 3px rgb(31, 31, 185);
+  box-shadow: 0 3px 13px 3px rgb(31, 31, 185);
 }
 .teamCardLeft {
   margin-left: 10px;
@@ -88,15 +89,63 @@
 }
 .ForumLeft {
   margin-left: 2%;
-  width: 30%;
-  border: 2px solid black;
+  width: 10%;
+  /* border: 2px solid black; */
   float: left;
 }
 .ForumRight {
   margin-right: 2%;
-  width: 60%;
-  border: 2px solid black;
+  width: 80%;
+  /* border: 2px solid black; */
   float: right;
+}
+
+.ForumLeftHomeCol
+{
+  background-color: rgb(0, 120, 189);
+  margin: auto !important;
+}
+.ForumLeftQuestionCol
+{
+  background-color: rgb(189, 123, 0);
+}
+.ForumLeftTagCol
+{
+  background-color: rgb(189, 123, 0);
+}
+a#ForumLeftIDhome
+{
+  font: 180% bold;
+  color: white;
+}
+a#ForumLeftIDquestion
+{
+  font: 130% bold;
+  color: white;
+}
+a#ForumLeftIDtag
+{
+  font: 130% bold;
+  color: white;
+}
+#ForumRightIDtextarea
+{
+  margin-bottom: 20px;
+  padding: 15px;
+  font: 125% bold;
+}
+#ForumRightIDbutton
+{
+  background-color: blue;
+  padding: 5px;
+  font: 200% bold;
+  color:white;
+  transition: background-color 0.4s;
+}
+#ForumRightIDbutton:hover
+{
+  background-color: green;
+  box-shadow: 0 3px 5px 3px rgb(4, 71, 57);
 }
 /* END */
 .eduhubFooter {

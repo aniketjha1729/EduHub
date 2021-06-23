@@ -13,14 +13,15 @@ exports.question = (req, res) => {
         errors: [{ msg: "Problem with file" }],
       });
     }
-    const { description, tags } = fields;
-    if (!description || !tags) {
+    const { description, tags, subject } = fields;
+    if (!description || !tags || !subject) {
       return res.status(400).json({
         errors: [{ msg: "Tags and description required" }],
       });
     }
     let question = new Question({
       description,
+      subject,
       tags: Array.isArray(tags)
         ? tags
         : tags.split(",").map((tags) => tags.trim()),
@@ -73,15 +74,15 @@ exports.getQuestionByDept = (req, res) => {
     });
 };
 
-exports.getQuestionByTags=(req,res)=>{
+exports.getQuestionByTags = (req, res) => {
   const { tags } = req.body;
   const getAlltags = Array.isArray(tags)
     ? tags
     : tags.split(",").map((tags) => tags.trim());
-    Question.find({ tags: { $in: getAlltags } }).then((question)=>{
-      return res.status(200).json(question);
-    })    
-}
+  Question.find({ tags: { $in: getAlltags } }).then((question) => {
+    return res.status(200).json(question);
+  });
+};
 
 exports.answer = (req, res) => {
   const { ans } = req.body;
@@ -109,7 +110,7 @@ exports.getAnswerByQuestion = (req, res) => {
   });
 };
 
-exports.addReply=(req,res)=>{
+exports.addReply = (req, res) => {
   const { reply } = req.body;
   if (!reply) {
     return res.status(422).json({ message: "Please include all fields" });
@@ -124,9 +125,9 @@ exports.addReply=(req,res)=>{
       comment.save().then((comment) => res.json(comment));
     })
     .catch((err) => console.log(err));
-}
+};
 
-exports.upVoteQuestion=(req,res)=>{
+exports.upVoteQuestion = (req, res) => {
   Question.findByIdAndUpdate(
     req.params.quesId,
     {
@@ -142,9 +143,9 @@ exports.upVoteQuestion=(req,res)=>{
       res.json(result);
     }
   });
-}
+};
 
-exports.downVoteQuestion=(req,res)=>{
+exports.downVoteQuestion = (req, res) => {
   Question.findByIdAndUpdate(
     req.params.quesId,
     {
@@ -160,9 +161,9 @@ exports.downVoteQuestion=(req,res)=>{
       res.json(result);
     }
   });
-}
+};
 
-exports.upVoteAns=(req,res)=>{
+exports.upVoteAns = (req, res) => {
   Answer.findByIdAndUpdate(
     req.params.ansId,
     {
@@ -178,9 +179,9 @@ exports.upVoteAns=(req,res)=>{
       res.json(result);
     }
   });
-}
+};
 
-exports.downVoteAns=(req,res)=>{
+exports.downVoteAns = (req, res) => {
   Answer.findByIdAndUpdate(
     req.params.ansId,
     {
@@ -196,4 +197,4 @@ exports.downVoteAns=(req,res)=>{
       res.json(result);
     }
   });
-}
+};

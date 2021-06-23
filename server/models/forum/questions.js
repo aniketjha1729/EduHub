@@ -11,6 +11,10 @@ const QuestionSchema = new Schema({
     type: String,
     required: true,
   },
+  subject: {
+    type: String,
+    required: true,
+  },
   postedBy: {
     type: Schema.Types.ObjectId,
     ref: "users",

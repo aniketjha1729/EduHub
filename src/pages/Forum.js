@@ -1,18 +1,26 @@
-import React from 'react'
-import ForumLeft from '../components/forum/ForumLeft'
-import ForumRight from '../components/forum/ForumRight'
+import React, { useState } from "react";
+import ForumFeed from "../components/forum/ForumFeed";
+import Question from "../components/forum/Question";
+import "./home.css";
 
 const Forum = () => {
-    return (
-        <div className="ForumDown">
-            <div className="ForumLeft">
-                <ForumLeft/>
-            </div>
-            <div className="ForumRight">
-                <ForumRight/>
-            </div>
-        </div>
-    )
-}
+  const [toggleQuestion, setToggleQuestion] = useState(false);
+  const toggleQuestionSection = () => {
+    setToggleQuestion(!toggleQuestion);
+  };
+  return (
+    <div className="forumContainer">
+      <div className="forum-left-view">hello</div>
+      <div className="forum-middle-view">
+        {toggleQuestion ? <Question /> : <ForumFeed />}
+      </div>
+      <div className="forum-right-view">
+        <button className="btn btn-primary" onClick={toggleQuestionSection}>
+          Ask Question
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default Forum;

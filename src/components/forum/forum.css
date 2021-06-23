@@ -1,0 +1,59 @@
+.forumBody {
+  margin-top: 10px;
+}
+.forum-question-voteUp {
+  margin-bottom: 10px;
+}
+
+.forum-question-voteDowb {
+  margin-top: 10px;
+}
+
+.forum-tagsContainer {
+  margin-top: 5px;
+  margin-left: 40%;
+}
+
+.forumShowMoreAns {
+  margin-bottom: 10px;
+}
+.forumShowMoreAns:hover {
+  cursor: pointer;
+}
+.forum-questionAction {
+  border-bottom: 1px solid gainsboro;
+  height: 30px;
+}
+
+.forum-questionAction-answer:hover {
+  background-color: #dddddd;
+  cursor: pointer;
+}
+
+.forum-questionAction-saveAnswer:hover {
+  background-color: #dddddd;
+  cursor: pointer;
+}
+.btn:focus,
+a:focus {
+  outline: none;
+}
+
+.forumAnswer {
+  background-color: #dddddd;
+}
+textarea {
+  resize: none;
+}
+.forum-AnswerReply {
+  margin-left: 10%;
+  background-color: #dddddd;
+}
+
+.forum-replyButton {
+  margin-left: 10%;
+}
+
+.forum-replyButton:hover {
+  cursor: pointer;
+}

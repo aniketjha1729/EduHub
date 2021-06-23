@@ -31,7 +31,7 @@ const Routes = () => {
         component={AdminCreateNotice}
       />
       <UserPrivateRoute exact path="/" component={Home} />
-      <UserPrivateRoute exact path="/forum" component={Forum} />
+      <Route exact path="/forum" component={Forum} />
       <UserPrivateRoute exact path="/profile" component={Profile} />
       <Route exact path="/signup" component={UserSignup} />
       <Route exact path="/login" component={UserLogin} />

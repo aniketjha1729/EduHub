@@ -84,69 +84,35 @@
   margin-left: 50px;
 }
 
-.ForumDown {
-  padding-top: 60px;
-}
-.ForumLeft {
-  margin-left: 2%;
-  width: 10%;
-  /* border: 2px solid black; */
-  float: left;
-}
-.ForumRight {
-  margin-right: 2%;
-  width: 80%;
-  /* border: 2px solid black; */
-  float: right;
+.forumContainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-around;
 }
 
-.ForumLeftHomeCol
-{
-  background-color: rgb(0, 120, 189);
-  margin: auto !important;
+.forum-left-view {
+  
+  height: 89vh;
+  margin-top: 70px;
+  width: 15%;
+  position: fixed;
+  margin-right: 80%;
 }
-.ForumLeftQuestionCol
-{
-  background-color: rgb(189, 123, 0);
+
+.forum-middle-view {
+  
+  margin-top: 70px;
+  width: 60%;
 }
-.ForumLeftTagCol
-{
-  background-color: rgb(189, 123, 0);
+
+.forum-right-view {
+  
+  margin-top: 75px;
+  width: 10%;
+  position: fixed;
+  margin-left: 75%;
 }
-a#ForumLeftIDhome
-{
-  font: 180% bold;
-  color: white;
-}
-a#ForumLeftIDquestion
-{
-  font: 130% bold;
-  color: white;
-}
-a#ForumLeftIDtag
-{
-  font: 130% bold;
-  color: white;
-}
-#ForumRightIDtextarea
-{
-  margin-bottom: 20px;
-  padding: 15px;
-  font: 125% bold;
-}
-#ForumRightIDbutton
-{
-  background-color: blue;
-  padding: 5px;
-  font: 200% bold;
-  color:white;
-  transition: background-color 0.4s;
-}
-#ForumRightIDbutton:hover
-{
-  background-color: green;
-  box-shadow: 0 3px 5px 3px rgb(4, 71, 57);
-}
+
 /* END */
 .eduhubFooter {
   font-size: 13px;

@@ -9,11 +9,21 @@
   margin-top: 10px;
 }
 
+.fa-arrow-circle-up {
+  color: green !important;
+  cursor: pointer;
+}
+
+.fa-arrow-circle-down {
+  color: rgb(202, 26, 26) !important;
+  cursor: pointer;
+}
+
 .forum-question-voteCountUp {
   color: rgb(101, 192, 48);
 }
 
-.forum-QuestionImage{
+.forum-QuestionImage {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,6 +77,10 @@ textarea {
 .forum-AnswerReply {
   margin-left: 10%;
   background-color: #dddddd;
+}
+
+.replyInputWrapper{
+  margin-left: 15%;
 }
 
 .forum-replyButton {

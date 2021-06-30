@@ -6,7 +6,6 @@ const PostImage = ({ postId }) => {
     <img
       className="card-img-postedBy card-img-top"
       src={imageUrl}
-      
       alt="..."
     />
   );

@@ -49,10 +49,9 @@ exports.question = (req, res) => {
 
 exports.allQuestion = (req, res) => {
   Question.find()
-    .select("-document")
     .populate("postedBy", "_id name role department year")
     .then((questions) => {
-      res.status(200).json(questions);
+      return res.status(200).json(questions);
     });
 };
 
@@ -195,6 +194,15 @@ exports.downVoteAns = (req, res) => {
       return res.status(422).json({ error: err });
     } else {
       res.json(result);
+    }
+  });
+};
+
+exports.document = (req, res) => {
+  Question.findById({ _id: req.params.quesId }).then((post) => {
+    if (post.document.data) {
+      res.set("Content-Type", post.document.contentType);
+      return res.send(post.document.data);
     }
   });
 };

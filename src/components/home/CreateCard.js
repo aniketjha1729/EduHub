@@ -23,7 +23,7 @@ const CreateCard = (props) => {
                   setForumModel(false);
                 }}
               >
-                <i class="fas fa-clipboard"></i> Notice Board
+                <i className="fas fa-clipboard"></i> Notice Board
               </Link>
             </li>
             <li className="nav-item">
@@ -35,7 +35,7 @@ const CreateCard = (props) => {
                   setForumModel(false);
                 }}
               >
-                <i class="fas fa-users"></i> Social
+                <i className="fas fa-users"></i> Social
               </Link>
             </li>
             <li className="nav-item">
@@ -44,7 +44,7 @@ const CreateCard = (props) => {
                 className={forumModel ? "nav-link active" : "nav-link"}
                 to="/forum"
               >
-                <i class="fas fa-chalkboard-teacher"></i> Forum
+                <i className="fas fa-chalkboard-teacher"></i> Forum
               </Link>
             </li>
           </ul>

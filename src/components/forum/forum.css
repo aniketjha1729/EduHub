@@ -9,9 +9,28 @@
   margin-top: 10px;
 }
 
+.forum-question-voteCountUp {
+  color: rgb(101, 192, 48);
+}
+
+.forum-QuestionImage{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forum-QuestionImage > img {
+  width: 500px;
+  height: 400px;
+}
+
+.forum-question-voteCountDown {
+  color: red;
+}
+
 .forum-tagsContainer {
   margin-top: 5px;
-  margin-left: 40%;
+  float: right;
 }
 
 .forumShowMoreAns {

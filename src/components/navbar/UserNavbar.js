@@ -44,7 +44,7 @@ const UserNavbar = ({
                 </Link>
               </li>
               <li className="nav-item">
-                <Link onClick={logout} className="user-nav-link">
+                <Link to="" onClick={logout} className="user-nav-link">
                   Logout
                 </Link>
               </li>

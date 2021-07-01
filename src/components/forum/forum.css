@@ -1,0 +1,92 @@
+.forumBody {
+  margin-top: 10px;
+}
+.forum-question-voteUp {
+  margin-bottom: 10px;
+}
+
+.forum-question-voteDowb {
+  margin-top: 10px;
+}
+
+.fa-arrow-circle-up {
+  color: green !important;
+  cursor: pointer;
+}
+
+.fa-arrow-circle-down {
+  color: rgb(202, 26, 26) !important;
+  cursor: pointer;
+}
+
+.forum-question-voteCountUp {
+  color: rgb(101, 192, 48);
+}
+
+.forum-QuestionImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forum-QuestionImage > img {
+  width: 500px;
+  height: 400px;
+}
+
+.forum-question-voteCountDown {
+  color: red;
+}
+
+.forum-tagsContainer {
+  margin-top: 5px;
+  float: right;
+}
+
+.forumShowMoreAns {
+  margin-bottom: 10px;
+}
+.forumShowMoreAns:hover {
+  cursor: pointer;
+}
+.forum-questionAction {
+  border-bottom: 1px solid gainsboro;
+  height: 30px;
+}
+
+.forum-questionAction-answer:hover {
+  background-color: #dddddd;
+  cursor: pointer;
+}
+
+.forum-questionAction-saveAnswer:hover {
+  background-color: #dddddd;
+  cursor: pointer;
+}
+.btn:focus,
+a:focus {
+  outline: none;
+}
+
+.forumAnswer {
+  background-color: #dddddd;
+}
+textarea {
+  resize: none;
+}
+.forum-AnswerReply {
+  margin-left: 10%;
+  background-color: #dddddd;
+}
+
+.replyInputWrapper{
+  margin-left: 15%;
+}
+
+.forum-replyButton {
+  margin-left: 10%;
+}
+
+.forum-replyButton:hover {
+  cursor: pointer;
+}

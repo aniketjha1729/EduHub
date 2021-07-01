@@ -4,38 +4,38 @@ import CreateNotice from "./CreateNotice";
 import CreatePost from "./CreatePost";
 
 const CreateCard = (props) => {
-  const [postModel, setPostModel] = useState(true);
-  const [noticeModel, setNoticeModel] = useState(false);
+  const [postModel, setPostModel] = useState(false);
+  const [noticeModel, setNoticeModel] = useState(true);
   const [forumModel, setForumModel] = useState(false);
 
   return (
     <div>
       <div className="card text-center">
-        <div className="card-header">
-          <ul className="nav nav-tabs card-header-tabs">
-            <li className="nav-item">
-              <Link
-                className={postModel ? "nav-link active" : "nav-link"}
-                onClick={() => {
-                  setPostModel(true);
-                  setNoticeModel(false);
-                  setForumModel(false);
-                }}
-              >
-                Create Post
-              </Link>
-            </li>
+        <div className="card-header" id="CreateCardIDdown">
+          <ul className="nav nav-tabs card-header-tabs CreateCardBold">
             <li className="nav-item">
               <Link
                 className="nav-link"
-                className={noticeModel ? "nav-link active" : "nav-link"}
+                className={noticeModel ? "nav-link active CreateCardNoticeBoard" : "nav-link"}
                 onClick={() => {
                   setNoticeModel(true);
                   setPostModel(false);
                   setForumModel(false);
                 }}
               >
-                Publish Notice
+                <i className="fas fa-clipboard"></i> Notice Board
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={postModel ? "nav-link active CreateCardSocial" : "nav-link"}
+                onClick={() => {
+                  setPostModel(true);
+                  setNoticeModel(false);
+                  setForumModel(false);
+                }}
+              >
+                <i className="fas fa-users"></i> Social
               </Link>
             </li>
             <li className="nav-item">
@@ -44,7 +44,7 @@ const CreateCard = (props) => {
                 className={forumModel ? "nav-link active" : "nav-link"}
                 to="/forum"
               >
-                Forum
+                <i className="fas fa-chalkboard-teacher"></i> Forum
               </Link>
             </li>
           </ul>

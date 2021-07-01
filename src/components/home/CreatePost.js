@@ -8,7 +8,9 @@ const CreatePost = (props) => {
     formData: "",
   });
   let userName = "aniket";
+
   const { content, document, formData } = values;
+  
   useEffect(() => {
     setValues({ ...values, formData: new FormData() });
   }, []);
@@ -22,6 +24,7 @@ const CreatePost = (props) => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    console.log(formData);
     try {
       const { data } = await axios.post("/user/post/createPost", formData);
       props.getAllPost();
@@ -38,7 +41,7 @@ const CreatePost = (props) => {
         data-toggle="modal"
         data-target="#postModel"
       >
-        Start a Post
+        Create a Post
       </button>
       <div
         className="modal fade"

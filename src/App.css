@@ -7,3 +7,21 @@
 body {
   background-color: #e6e6e6 !important;
 }
+
+/* rgb(206, 212, 218) */
+input {
+  box-shadow: none !important;
+}
+
+input:focus,
+input:active {
+  border-color: rgb(206, 212, 218) !important;
+}
+textarea {
+  box-shadow: none !important;
+}
+
+button {
+  box-shadow: none !important;
+  border: none !important;
+}

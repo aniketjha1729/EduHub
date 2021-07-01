@@ -6,7 +6,6 @@ import PostImage from "./PostImage";
 import CreateCard from "./CreateCard";
 const PostFeed = (props) => {
   const [allPost, setAllPost] = useState([]);
-  const [toggleCommentState, setToggleCommentState] = useState(false);
   const [commentId, setCommentId] = useState();
 
   const sortByDate = (a, b) => {

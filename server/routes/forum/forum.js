@@ -14,9 +14,12 @@ const {
   downVoteQuestion,
   upVoteAns,
   downVoteAns,
+  document,
 } = require("../../controllers/forum/forum");
 
 router.post("/question", isUserAuth, isVerified, question);
+
+router.get("/question/document/:quesId", document);
 
 router.post("/answer/:quesId", isUserAuth, isVerified, answer);
 

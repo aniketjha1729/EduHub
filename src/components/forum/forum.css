@@ -90,3 +90,44 @@ textarea {
 .forum-replyButton:hover {
   cursor: pointer;
 }
+/* .ForumQuestionDocument{
+  color: red !important;
+  font: 150% bold;
+} */
+#validatedCustomFile.custom-file-input{
+  color: black !important;
+  border: 2px yellowgreen;
+}
+
+
+.forum-question-submit-button {
+  color: whitesmoke;
+  border: #6c63ff solid 1px;
+  background-color: #6c63ff;
+  width: 25%;
+  font: 150% bold;
+}
+.forum-question-submit-button:hover {
+  box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
+  background-color: #124fc2;
+  transform: translateY(-2px);
+  color: whitesmoke !important;
+}
+.ForumLabel{
+  margin-top: 10px;
+}
+
+.forum-question-drop {
+  /* width: 103%; */
+  height: 100%;
+  border: solid #6c63ff 1px;
+  background-color: white;
+  text-align-last: center;
+  font-weight: bold;
+}
+.forum-question-drop:focus{
+
+  /* outline: none !important; */
+  box-shadow: 0 0 0px black;
+  outline-color: black;
+}

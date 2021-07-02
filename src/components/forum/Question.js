@@ -45,7 +45,7 @@ const Question = () => {
             <div className="card-body">
               <h5 className="card-title">
                 <form onSubmit={onSubmit}>
-                  <div className="form-group">
+                  <div className="form-group ForumLabel">
                     <label for="exampleInputEmail1">Your Queries</label>
                     <textarea
                       className="form-control"
@@ -63,6 +63,7 @@ const Question = () => {
                       for="validatedCustomFile"
                       placeholder="Click here to select a file"
                     >
+                    {/* {document.name} */}
                       <input
                         type="file"
                         name="document"
@@ -74,10 +75,10 @@ const Question = () => {
                       />
                     </label>
                   </div>
-                  <div className="form-group">
+                  <div className="form-group ForumLabel">
                     <label for="exampleFormControlSelect1">Subject</label>
                     <select
-                      className="form-control"
+                      className="form-control forum-question-drop"
                       id="exampleFormControlSelect1"
                       name="subject"
                       onChange={handleChange("subject")}
@@ -110,7 +111,7 @@ const Question = () => {
                     </small>
                   </div>
 
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn forum-question-submit-button">
                     Submit
                   </button>
                 </form>

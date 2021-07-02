@@ -112,6 +112,38 @@
   position: fixed;
   margin-left: 75%;
 }
+.forum-question-button:hover {
+  color: whitesmoke;
+  box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
+  background-color: #124fc2;
+  transform: translateX(-5px);
+}
+.forum-question-button {
+  color: whitesmoke;
+  border: #6c63ff solid 1px;
+  background-color: #6c63ff;
+  /* width: 100%; */
+  font: 150% bold;
+  display: inline-block;
+  position: relative;
+  line-height: 1em;
+  padding-left: 1em;
+  padding-right: 2em;
+}
+
+.forum-question-button:after {
+  content: "";
+  position: absolute;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-right: 20px solid #6c63ff;
+  margin-right: 159px;
+  right: 0;
+  margin-bottom: 50px;
+}
+.forum-question-button:hover::after{
+  border-right: 20px solid #124fc2;
+}
 
 /* END */
 .eduhubFooter {

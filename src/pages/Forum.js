@@ -15,8 +15,8 @@ const Forum = () => {
         {toggleQuestion ? <Question /> : <ForumFeed />}
       </div>
       <div className="forum-right-view">
-        <button className="btn btn-primary" onClick={toggleQuestionSection}>
-          Ask Question
+        <button className="btn forum-question-button" onClick={toggleQuestionSection}>
+        <i class="fas fa-arrow-circle-left"></i> Ask Question
         </button>
       </div>
     </div>

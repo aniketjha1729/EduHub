@@ -213,7 +213,7 @@ const ForumFeed = () => {
                       <div className="forumAnswerContainer">
                         <div className="forumFirstAns">
                           <div className="row">
-                            <div className="col-1 text-center">
+                            <div className="col-1 text-right">
                               <div className="forum-answer-voteUp">
                                 <i
                                   className="fas fa-arrow-circle-up fa-2x"
@@ -237,7 +237,7 @@ const ForumFeed = () => {
                                 ></i>
                               </div>
                             </div>
-                            <div className="col-11 forumAnswer">
+                            <div className="col-10 forumAnswer">
                               {ans.answer}
                             </div>
                           </div>

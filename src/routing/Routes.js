@@ -14,6 +14,9 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import Teams from "../pages/Teams";
 import Forum from "../pages/Forum";
 import Profile from "../pages/Profile";
+import userpage from "../components/userpage";
+
+
 
 const Routes = () => {
   return (
@@ -36,6 +39,7 @@ const Routes = () => {
       <Route exact path="/signup" component={UserSignup} />
       <Route exact path="/login" component={UserLogin} />
       <Route exact path="/admin" component={AdminSignIn} />
+      <Route exact path="/userpage" component={userpage} />
       <Route exact path="/teams" component={Teams} />
       <Route component={PageNoteFound} />
     </Switch>

@@ -4,10 +4,10 @@ import Routes from "./routing/Routes";
 import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
-import {setAuthToken,setUserAuthToken} from "./utils/setAuthToken";
+import { setAuthToken, setUserAuthToken } from "./utils/setAuthToken";
 import { ADMIN_LOGIN_FAIL } from "./redux/actions/types";
 import { loadAdminData } from "./redux/actions/admin";
-import { loadUserData } from "./redux/actions/user"
+import { loadUserData } from "./redux/actions/user";
 import UserNavbar from "./components/navbar/UserNavbar";
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
     if (localStorage.admintoken) {
       setAuthToken(localStorage.admintoken);
       store.dispatch(loadAdminData());
-    }else if (localStorage.usertoken) {
+    } else if (localStorage.usertoken) {
       setUserAuthToken(localStorage.usertoken);
       store.dispatch(loadUserData());
     }
@@ -32,7 +32,7 @@ const App = () => {
       <Router>
         <Fragment>
           <UserNavbar />
-          <Switch>
+          <Switch>qwertyuiop[]    
             <Route component={Routes} />
           </Switch>
         </Fragment>

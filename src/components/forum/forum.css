@@ -70,6 +70,7 @@ a:focus {
 
 .forumAnswer {
   background-color: #dddddd;
+  border-radius: 10px;
 }
 textarea {
   resize: none;
@@ -77,6 +78,7 @@ textarea {
 .forum-AnswerReply {
   margin-left: 10%;
   background-color: #dddddd;
+  border-radius: 5px;
 }
 
 .replyInputWrapper{

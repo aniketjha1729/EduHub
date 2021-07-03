@@ -199,7 +199,7 @@ const PostFeed = (props) => {
                             type="text"
                             className="commentInput"
                             placeholder="Write a comment..."
-                          />
+                          /><button className="CommentArrow"></button>
                         </div>
                       </form>
                     </div>

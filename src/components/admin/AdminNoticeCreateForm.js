@@ -100,6 +100,7 @@ const AdminNoticeCreateForm = () => {
                 <textarea
                   rows="1"
                   cols="23"
+                  className="AdminCreateNoticeTextArea"
                   type="textarea"
                   name="content"
                   value={state.content || ""}

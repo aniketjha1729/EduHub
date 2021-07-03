@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
+import Error from "../errors/Error";
 const PostQuestion = () => {
+  const [error, setError] = useState("");
   const [values, setValues] = useState({
     description: "",
     subject: "",
@@ -9,10 +11,11 @@ const PostQuestion = () => {
     formData: "",
   });
 
-  const { description, subject, tags, formData } = values;
+  const { description, subject, tags, document, formData } = values;
 
   useEffect(() => {
     setValues({ ...values, formData: new FormData() });
+    setInterval(() => setError(""), 5000);
   }, []);
 
   const handleChange = (name) => (event) => {
@@ -27,14 +30,32 @@ const PostQuestion = () => {
     console.log(formData);
     try {
       const { data } = await axios.post("/forum/question", formData);
+      setValues({
+        ...values,
+        description: "",
+        subject: "",
+        tags: "",
+        document: "",
+        formData: "",
+      });
     } catch (err) {
       console.log(err);
+      setValues({
+        ...values,
+        description: "",
+        subject: "",
+        tags: "",
+        document: "",
+        formData: "",
+      });
+      setError(err.response.data.errors[0].msg);
     }
   };
 
   return (
     <div className="container questionContainer">
       <div className="row forumBody ">
+        <Error error={error} />
         <div className="col-1"></div>
         <div className="col-11">
           <div className="card">
@@ -62,7 +83,7 @@ const PostQuestion = () => {
                       for="validatedCustomFile"
                       placeholder="Click here to select a file"
                     >
-                      {/* {document.name} */}
+                      {document.name}
                       <input
                         type="file"
                         name="document"

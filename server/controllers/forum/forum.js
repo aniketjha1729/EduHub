@@ -39,7 +39,7 @@ exports.question = (req, res) => {
     question.save((err, question) => {
       if (err) {
         return res.status(400).json({
-          errors: "saving failed",
+          errors: [{ msg: "Something Went wrong" }],
         });
       }
       res.json(question);
@@ -137,7 +137,9 @@ exports.upVoteQuestion = (req, res) => {
     }
   ).exec((err, result) => {
     if (err) {
-      return res.status(422).json({ error: err });
+      return res
+        .status(422)
+        .json({ errors: [{ msg: "You have already UpVoted" }] });
     } else {
       res.json(result);
     }
@@ -155,7 +157,9 @@ exports.downVoteQuestion = (req, res) => {
     }
   ).exec((err, result) => {
     if (err) {
-      return res.status(422).json({ error: err });
+      return res
+        .status(422)
+        .json({ errors: [{ msg: "You have already DownVoted" }] });
     } else {
       res.json(result);
     }
@@ -173,7 +177,9 @@ exports.upVoteAns = (req, res) => {
     }
   ).exec((err, result) => {
     if (err) {
-      return res.status(422).json({ error: err });
+      return res
+        .status(422)
+        .json({ errors: [{ msg: "You have already UpVoted" }] });
     } else {
       res.json(result);
     }
@@ -191,7 +197,9 @@ exports.downVoteAns = (req, res) => {
     }
   ).exec((err, result) => {
     if (err) {
-      return res.status(422).json({ error: err });
+      return res
+        .status(422)
+        .json({ errors: [{ msg: "You have already DownVoted" }] });
     } else {
       res.json(result);
     }

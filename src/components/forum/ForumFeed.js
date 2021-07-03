@@ -3,8 +3,8 @@ import ImageHelper from "./ImageHelper";
 import axios from "../../api/axios";
 import "./forum.css";
 import Question from "./Question";
-import Answer from "./Answer";
 import QuestionVoting from "./QuestionVoting";
+import Error from "../errors/Error";
 
 const ForumFeed = () => {
   const [answerId, setAnswerId] = useState();
@@ -13,6 +13,8 @@ const ForumFeed = () => {
   const [getAnsByQues, setAnsByQues] = useState([]);
   const [ans, setAns] = useState("");
   const [reply, setReply] = useState("");
+  const [error, setError] = useState("");
+  const [filterTags, setFilterTags] = useState("");
 
   const sortByDate = (a, b) => {
     if (a.date < b.date) {
@@ -51,6 +53,7 @@ const ForumFeed = () => {
       getAllQuestion();
     } catch (err) {
       console.log(err);
+      setError(err.response.data.errors[0].msg);
     }
   };
 
@@ -60,6 +63,7 @@ const ForumFeed = () => {
       getAllQuestion();
     } catch (err) {
       console.log(err);
+      setError(err.response.data.errors[0].msg);
     }
   };
 
@@ -69,6 +73,7 @@ const ForumFeed = () => {
       getAnswerByQues(quesId);
     } catch (err) {
       console.log(err);
+      setError(err.response.data.errors[0].msg);
     }
   };
 
@@ -78,6 +83,7 @@ const ForumFeed = () => {
       getAnswerByQues(quesId);
     } catch (err) {
       console.log(err);
+      setError(err.response.data.errors[0].msg);
     }
   };
 
@@ -103,6 +109,17 @@ const ForumFeed = () => {
     }
   };
 
+  const filterQuesByTags = async (tags) => {
+    const body = { tags };
+    try {
+      const { data } = await axios.post("/forum/questions/tags", body);
+      const sortedData = data.sort(sortByDate);
+      setAllQues(sortedData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const getAllQuestion = async () => {
     try {
       const { data } = await axios.get("/forum/allQuestions");
@@ -120,17 +137,33 @@ const ForumFeed = () => {
   return (
     <div className="container">
       <div>
-        <form className="form-inline forum-search">
+        <Error error={error} />
+        <form
+          className="form-inline forum-search"
+          onSubmit={(e) => {
+            e.preventDefault();
+            filterQuesByTags(filterTags);
+            setFilterTags("");
+          }}
+        >
           <input
             className="form-control forum-searchInput"
             type="search"
             placeholder="Tags go here....."
             aria-label="Search"
+            name="filterTags"
+            value={filterTags}
+            onChange={(e) => setFilterTags(e.target.value)}
           />
           &nbsp;
           <button className="btn btn-primary" type="submit">
-            Search
+            Filter
           </button>
+          <div style={{ marginLeft: "170px" }}>
+            <small id="tagHelp" className="form-text text-muted text-center">
+              Seperate your tags with ","
+            </small>
+          </div>
         </form>
       </div>
       {getAllQues.map((question) => (
@@ -245,7 +278,8 @@ const ForumFeed = () => {
                                   onChange={(e) => setReply(e.target.value)}
                                   className="form-control forum-replyInput"
                                   placeholder="Reply To Comments"
-                                /> &nbsp;
+                                />{" "}
+                                &nbsp;
                                 <button
                                   type="button"
                                   type="submit"

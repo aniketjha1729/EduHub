@@ -42,6 +42,13 @@
   margin-top: 5px;
   float: right;
 }
+.ansInputWrapper {
+  margin-left: 40px;
+  margin-bottom: 10px;
+}
+.forum-commentInput {
+  width: 400px !important;
+}
 
 .forumShowMoreAns {
   margin-bottom: 10px;
@@ -81,12 +88,25 @@ textarea {
   border-radius: 5px;
 }
 
-.replyInputWrapper{
+.replyInputWrapper {
   margin-left: 15%;
+  margin-bottom: 10px;
+}
+
+.forum-replyInput{
+  width: 350px !important;
 }
 
 .forum-replyButton {
   margin-left: 10%;
+}
+
+.forum-search {
+  margin-left: 63px;
+}
+
+.forum-searchInput {
+  width: 500px !important;
 }
 
 .forum-replyButton:hover {
@@ -96,26 +116,24 @@ textarea {
   color: red !important;
   font: 150% bold;
 } */
-#validatedCustomFile.custom-file-input{
+#validatedCustomFile.custom-file-input {
   color: black !important;
   border: 2px yellowgreen;
 }
 
-
 .forum-question-submit-button {
+  margin-left: 150px;
   color: whitesmoke;
   border: #6c63ff solid 1px;
   background-color: #6c63ff;
-  width: 25%;
   font: 150% bold;
 }
 .forum-question-submit-button:hover {
   box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
   background-color: #124fc2;
-  transform: translateY(-2px);
   color: whitesmoke !important;
 }
-.ForumLabel{
+.ForumLabel {
   margin-top: 10px;
 }
 
@@ -127,8 +145,7 @@ textarea {
   text-align-last: center;
   font-weight: bold;
 }
-.forum-question-drop:focus{
-
+.forum-question-drop:focus {
   /* outline: none !important; */
   box-shadow: 0 0 0px black;
   outline-color: black;

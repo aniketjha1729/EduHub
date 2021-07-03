@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import ImageHelper from "./ImageHelper";
 import axios from "../../api/axios";
 import "./forum.css";
+import Question from "./Question";
+import Answer from "./Answer";
+import QuestionVoting from "./QuestionVoting";
 
 const ForumFeed = () => {
   const [answerId, setAnswerId] = useState();
@@ -116,49 +119,32 @@ const ForumFeed = () => {
 
   return (
     <div className="container">
+      <div>
+        <form className="form-inline forum-search">
+          <input
+            className="form-control forum-searchInput"
+            type="search"
+            placeholder="Tags go here....."
+            aria-label="Search"
+          />
+          &nbsp;
+          <button className="btn btn-primary" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
       {getAllQues.map((question) => (
         <div className="row forumBody">
           <div className="col-1 text-center">
-            <div className="forum-question-voteUp">
-              <i
-                className="fas fa-arrow-circle-up fa-3x"
-                onClick={() => {
-                  upVoteQues(question._id);
-                }}
-              ></i>
-            </div>
-            <div className="forum-question-voteCountUp">
-              + {question.upVotes.length}
-            </div>
-            <div className="forum-question-voteCountDown">
-              - {question.downVotes.length}
-            </div>
-            <div className="forum-question-voteDowb">
-              <i
-                className="fas fa-arrow-circle-down fa-3x"
-                onClick={() => {
-                  downVoteQues(question._id);
-                }}
-              ></i>
-            </div>
+            <QuestionVoting
+              question={question}
+              upVoteQues={upVoteQues}
+              downVoteQues={downVoteQues}
+            />
           </div>
           <div className="col-11">
             <div className="card">
-              <div
-                className="card-header"
-                style={{ fontWeight: "600", fontSize: "20px" }}
-              >
-                <div className="forum-QuestionContainer">
-                  <span>Q.</span>
-                  <span>{question.description}</span>
-                </div>
-                {question.document ? <ImageHelper quesId={question._id} /> : ""}
-                <div className="forum-tagsContainer">
-                  {question.tags.map((tags) => (
-                    <span className="badge badge-secondary">{tags}</span>
-                  ))}
-                </div>
-              </div>
+              <Question question={question} />
               <div className="card-body">
                 <div className="row text-center forum-questionAction">
                   <div
@@ -178,35 +164,29 @@ const ForumFeed = () => {
                     <h5 className="card-title">Answers:</h5>
                     <div className="ansInputWrapper">
                       <form
+                        className="form-inline"
                         onSubmit={(e) => {
                           e.preventDefault();
                           postAnswer(ans, question._id);
                           setAns("");
                         }}
                       >
-                        <div className="form-group">
-                          <div className="row">
-                            <div className="col-10">
-                              <input
-                                type="text"
-                                className="form-control"
-                                name="ans"
-                                value={ans}
-                                onChange={(e) => setAns(e.target.value)}
-                                placeholder="Type Your answer"
-                              />
-                            </div>
-                            <div className="col-2 text-center">
-                              <button
-                                type="button"
-                                type="submit"
-                                className="btn btn-outline-primary"
-                              >
-                                Answer
-                              </button>
-                            </div>
-                          </div>
-                        </div>
+                        <input
+                          type="text"
+                          className="form-control forum-commentInput"
+                          name="ans"
+                          value={ans}
+                          onChange={(e) => setAns(e.target.value)}
+                          placeholder="Type Your answer"
+                        />
+                        &nbsp;
+                        <button
+                          type="button"
+                          type="submit"
+                          className="btn btn-primary"
+                        >
+                          Answer
+                        </button>
                       </form>
                     </div>
                     {getAnsByQues.map((ans) => (
@@ -252,36 +232,27 @@ const ForumFeed = () => {
                           <div className="replyInputWrapper">
                             {replyId == ans._id ? (
                               <form
+                                className="form-inline"
                                 onSubmit={(e) => {
                                   e.preventDefault();
                                   postReply(reply, ans._id, question._id);
                                   setReply("");
                                 }}
                               >
-                                <div className="row">
-                                  <div className="col-10">
-                                    <div className="form-group">
-                                      <input
-                                        type="text"
-                                        value={reply}
-                                        onChange={(e) =>
-                                          setReply(e.target.value)
-                                        }
-                                        className="form-control"
-                                        placeholder="Reply To Comments"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="col-2">
-                                    <button
-                                      type="button"
-                                      type="submit"
-                                      className="btn btn-outline-primary"
-                                    >
-                                      Reply
-                                    </button>
-                                  </div>
-                                </div>
+                                <input
+                                  type="text"
+                                  value={reply}
+                                  onChange={(e) => setReply(e.target.value)}
+                                  className="form-control forum-replyInput"
+                                  placeholder="Reply To Comments"
+                                /> &nbsp;
+                                <button
+                                  type="button"
+                                  type="submit"
+                                  className="btn btn-primary"
+                                >
+                                  Reply
+                                </button>
                               </form>
                             ) : (
                               ""

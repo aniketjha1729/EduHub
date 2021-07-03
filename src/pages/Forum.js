@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ForumFeed from "../components/forum/ForumFeed";
-import Question from "../components/forum/Question";
+import PostQuestion from "../components/forum/PostQuestion";
 import RightImg from "../assets/right.svg";
 import LeftImg from "../assets/left.svg";
+import { Link } from "react-router-dom";
 import "./home.css";
 
 const Forum = () => {
@@ -17,6 +18,14 @@ const Forum = () => {
           className="card"
           style={{ width: "100%", height: "100%", border: "none" }}
         >
+          <Link to="/" className="forumToBack">
+            <button
+              className="btn forum-question-button"
+              style={{ marginLeft: "30px" }}
+            >
+              <i class="fas fa-arrow-circle-left"></i>Back
+            </button>
+          </Link>
           <img
             src={LeftImg}
             style={{ height: "100%" }}
@@ -32,14 +41,18 @@ const Forum = () => {
         </div>
       </div>
       <div className="forum-middle-view">
-        {toggleQuestion ? <Question /> : <ForumFeed />}
+        {toggleQuestion ? <PostQuestion /> : <ForumFeed />}
       </div>
       <div className="forum-right-view">
         <div
           className="card"
           style={{ width: "100%", height: "100%", border: "none" }}
         >
-          <button className="btn forum-question-button" onClick={toggleQuestionSection}>
+          <button
+            className="btn forum-question-button"
+            style={{ marginLeft: "30px" }}
+            onClick={toggleQuestionSection}
+          >
             <i class="fas fa-arrow-circle-left"></i> Ask Question
           </button>
           <img

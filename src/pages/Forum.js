@@ -39,7 +39,9 @@ const Forum = () => {
           className="card"
           style={{ width: "100%", height: "100%", border: "none" }}
         >
-          
+          <button className="btn forum-question-button" onClick={toggleQuestionSection}>
+            <i class="fas fa-arrow-circle-left"></i> Ask Question
+          </button>
           <img
             src={RightImg}
             style={{ height: "100%" }}

@@ -40,10 +40,11 @@ const PostFeed = (props) => {
     }
   };
 
-  const makeComment = async (comment, postId) => {
+  const makeComment = async (comment, postId, e) => {
     const body = { comment };
     try {
       const { data } = await axios.post(`/user/post/comment/${postId}`, body);
+      e.target[0].value = "";
       getAllPost();
     } catch (err) {
       console.log(err);
@@ -190,7 +191,7 @@ const PostFeed = (props) => {
                       <form
                         onSubmit={(e) => {
                           e.preventDefault();
-                          makeComment(e.target[0].value, post._id);
+                          makeComment(e.target[0].value, post._id, e);
                         }}
                       >
                         <div className="form-group">

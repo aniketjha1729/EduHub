@@ -19,11 +19,9 @@
 }
 
 .signup-container {
-  margin-top: 70px;
+  margin-top: 75px;
   min-width: 300px;
-  
 }
-
 
 .signup-card {
   border: none;
@@ -40,7 +38,7 @@
 .signup-head {
   font-size: 20px;
   font-weight: 700;
-  background-color: #6C63FF;
+  background-color: #6c63ff;
   color: transparent;
   background-clip: text;
 }
@@ -67,17 +65,13 @@
   text-align-last: center;
   font-weight: bold;
   background-color: white;
-  color:#6C63FF;
+  color: #6c63ff;
 }
 
 .signup-button {
   width: 250px;
   margin-top: 5px;
-  background-image: linear-gradient(
-    to right,
-    #7d76f1,
-    #7d76f1
-  );
+  background-image: linear-gradient(to right, #7d76f1, #7d76f1);
   color: #fff;
   font-weight: 700;
   cursor: pointer;
@@ -87,11 +81,7 @@
   width: 250px;
   padding: 10px;
   padding-left: 40px;
-  background-image: linear-gradient(
-    to right,
-    #7d76f1,
-    #7d76f1
-  );
+  background-image: linear-gradient(to right, #7d76f1, #7d76f1);
   color: #fff;
   border: none;
   display: block;

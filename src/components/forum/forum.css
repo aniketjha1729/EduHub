@@ -59,6 +59,7 @@
 .forum-questionAction {
   border-bottom: 1px solid gainsboro;
   height: 30px;
+  margin-top: 10px;  
 }
 
 .forum-questionAction-answer:hover {
@@ -69,6 +70,7 @@
 .forum-questionAction-saveAnswer:hover {
   background-color: #dddddd;
   cursor: pointer;
+ 
 }
 .btn:focus,
 a:focus {

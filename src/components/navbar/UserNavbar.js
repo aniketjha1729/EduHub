@@ -11,6 +11,7 @@ const UserNavbar = ({
   adminisAuthenticated,
   user: { user },
 }) => {
+  console.log(adminisAuthenticated);
   return (
     <>
       <nav className="navbar navbar-expand-lg userDivSticky userNav">
@@ -51,26 +52,32 @@ const UserNavbar = ({
             </ul>
           ) : (
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link
-                  to="/login"
-                  className="user-nav-link"
-                  data-toggle="collapse"
-                  data-target="#navbarMenu"
-                >
-                  SignIn
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/signup"
-                  className="user-nav-link"
-                  data-toggle="collapse"
-                  data-target="#navbarMenu"
-                >
-                  SignUp
-                </Link>
-              </li>
+              {!adminisAuthenticated ? (
+                <>
+                  <li className="nav-item">
+                    <Link
+                      to="/login"
+                      className="user-nav-link"
+                      data-toggle="collapse"
+                      data-target="#navbarMenu"
+                    >
+                      SignIn
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      to="/signup"
+                      className="user-nav-link"
+                      data-toggle="collapse"
+                      data-target="#navbarMenu"
+                    >
+                      SignUp
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                ""
+              )}
             </ul>
           )}
         </div>

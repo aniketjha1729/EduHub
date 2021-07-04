@@ -13,6 +13,8 @@ const {
   downloadNotice,
 } = require("../../controllers/admin/adminDashboard");
 
+const {allQuestion} =require("../../controllers/forum/forum")
+
 const { getAllUsers } = require("../../controllers/user/userDashboard");
 
 const { isAdmin, isAdminAuth } = require("../../controllers/auth");
@@ -72,5 +74,7 @@ router.delete("/deletenotice/:noticeId", isAdminAuth, isAdmin, deleteNotice);
 router.get("/notices", isAdminAuth, isAdmin, getAllNotices);
 
 router.get("/allUsers", isAdminAuth, isAdmin, getAllUsers);
+
+router.get("/forum/allQuestion", isAdminAuth, isAdmin, allQuestion);
 
 module.exports = router;

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { userLogin } from "../../../redux/actions/user";
 import "../css/userlogin.css";
+import Error from "../../errors/Error";
 
 const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
   const [formData, setFormData] = useState({
@@ -27,6 +28,7 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
 
   return (
     <div className="userLogin">
+      {errors ? <Error error={errors} /> : ""}
       <div className="login-container">
         <div className="card login-card">
           <div className="card-body">
@@ -34,16 +36,6 @@ const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
               <i className="fas fa-user fa-2x"></i>
               <p>Login</p>
             </header>
-            {errors ? (
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                role="alert"
-              >
-                {errors}
-              </div>
-            ) : (
-              ""
-            )}
             <form onSubmit={onSubmit} className="main-form text-center">
               <div className="form-group my-0">
                 <label className="my-0">

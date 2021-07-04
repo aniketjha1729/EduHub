@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { userRegister } from "../../../redux/actions/user";
+import Error from "../../errors/Error";
 import "../css/usersignup.css";
 
 const UserSignup = ({ userRegister, signupStatus, errors }) => {
@@ -33,6 +34,7 @@ const UserSignup = ({ userRegister, signupStatus, errors }) => {
 
   return (
     <div className="usersignup">
+      {errors ? <Error error={errors} /> : ""}
       <div className="signup-container">
         <div className="card signup-card">
           <div className="card-body">
@@ -40,16 +42,6 @@ const UserSignup = ({ userRegister, signupStatus, errors }) => {
               <i className="fas fa-user fa-2x"></i>
               <p>Sign Up</p>
             </header>
-            {errors ? (
-              <div
-                class="alert alert-danger alert-dismissible fade show"
-                role="alert"
-              >
-                {errors}
-              </div>
-            ) : (
-              ""
-            )}
             <form onSubmit={onSubmit} className="main-form text-center">
               <div className="form-group my-0">
                 <label className="my-0">

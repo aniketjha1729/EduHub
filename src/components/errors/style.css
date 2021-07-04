@@ -1,0 +1,32 @@
+.errorContainer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.errorDiv {
+  background-color: rgba(240, 70, 70, 0.918);
+  width: 300px;
+  border-radius: 5px;
+  color: white;
+  font-size: large;
+  animation-name: errorTrans;
+  animation-duration: 3s;
+  animation-timing-function: ease;
+    
+}
+@keyframes errorTrans {
+  0% {
+    display: block;
+    margin-left: -500px;
+  }
+  50% {
+    display: block;
+    margin-left: 20px;
+  }
+  100% {
+    display: block;
+    margin-left: -500px;
+  }
+}

@@ -138,7 +138,7 @@ exports.createPost = (req, res) => {
     if (file.document) {
       if (file.document.size > 300000) {
         return res.status(400).json({
-          errors: "file is to big",
+          errors: [{ msg: "File is to big!" }],
         });
       }
       post.document.data = fs.readFileSync(file.document.path);
@@ -147,7 +147,7 @@ exports.createPost = (req, res) => {
     post.save((err, post) => {
       if (err) {
         return res.status(400).json({
-          errors: "saving failed",
+          errors: [{ msg: "Something went wrong!" }],
         });
       }
       res.json(post);
@@ -242,7 +242,6 @@ exports.photo = (req, res) => {
 // <========================================Comment================================================>
 
 exports.addComment = (req, res) => {
-  
   const { comment } = req.body;
   if (!comment) {
     console.log(comment);

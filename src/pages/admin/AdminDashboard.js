@@ -20,6 +20,22 @@ const AdminDashboard = () => {
   const [civilstudentCount, setCivilStudentCount] = useState();
   const [eestudentCount, setEeStudentCount] = useState();
   const [mechstudentCount, setMechStudentCount] = useState();
+
+  const [cseQues, setCseQues] = useState();
+  const [itQues, setItQues] = useState();
+  const [eceQues, setEceQues] = useState();
+  const [civilQues, setCivilQues] = useState();
+  const [eeQues, setEEQues] = useState();
+  const [mechQues, setMechQues] = useState();
+
+  const [subQues, setSubQues] = useState();
+  const [dbmsQues, setDbmsQues] = useState();
+  const [dsQues, setDSQues] = useState();
+  const [mathsQues, setMathsQues] = useState();
+  const [cdQues, setCdQues] = useState();
+  const [deQues, setDeQues] = useState();
+  const [meQues, setMeQues] = useState();
+
   const [loader, showLoader, hideLoader] = useLoader();
 
   useEffect(() => {
@@ -48,24 +64,27 @@ const AdminDashboard = () => {
             studentCount.push(user);
           }
         });
-        let cse=0,it=0,ece=0,civil=0,ee=0,mech=0;
-        data.map((data)=>{
-          if(data.department=="CSE"){
+        let cse = 0,
+          it = 0,
+          ece = 0,
+          civil = 0,
+          ee = 0,
+          mech = 0;
+        data.map((data) => {
+          if (data.department == "CSE") {
             cse++;
-          }else if(data.department=="IT"){
+          } else if (data.department == "IT") {
             it++;
-          }else if(data.department=="IT"){
-            it++;
-          }else if(data.department=="ECE"){
+          } else if (data.department == "ECE") {
             ece++;
-          }else if(data.department=="CIVIL"){
+          } else if (data.department == "CIVIL") {
             civil++;
-          }else if(data.department=="EE"){
+          } else if (data.department == "EE") {
             ee++;
-          }else if(data.department=="MECH"){
+          } else if (data.department == "MECH") {
             mech++;
           }
-        })
+        });
         setStudentCount(studentCount.length);
         setCseStudentCount(cse);
         setEceStudentCount(ece);
@@ -84,18 +103,18 @@ const AdminDashboard = () => {
         const { data } = await axios.get("/admin/notices");
         setNoticeCount(data.length);
         let verifedNotice = 0;
-        let noticeByTeacher=0;
-        let noticeByAdmin=0;
-        let noticeByStudent=0;
+        let noticeByTeacher = 0;
+        let noticeByAdmin = 0;
+        let noticeByStudent = 0;
         data.map((data) => {
           if (data.isVerified) {
             verifedNotice++;
           }
-          if(data.postedBy=="admin"){
+          if (data.postedBy == "admin") {
             noticeByAdmin++;
-          }else if (data.postedBy=="teacher"){
+          } else if (data.postedBy == "teacher") {
             noticeByTeacher++;
-          }else{
+          } else {
             noticeByStudent++;
           }
         });
@@ -105,6 +124,57 @@ const AdminDashboard = () => {
         setnoticeByTeacherCount(noticeByTeacher);
       } catch (err) {}
     };
+    const getAllForumData = async () => {
+      showLoader();
+      try {
+        const { data } = await axios.get("admin/forum/allQuestion");
+        setSubQues(data.length);
+
+        let filteredData;
+        filteredData = data.filter((item) => item.subject == "Compiler Design");
+        setCdQues(filteredData.length);
+
+        filteredData = data.filter(
+          (item) => item.subject == "Digital Electornics"
+        );
+        setDeQues(filteredData.length);
+
+        filteredData = data.filter((item) => item.subject == "Mechanics");
+        setMeQues(filteredData.length);
+
+        filteredData = data.filter((item) => item.subject == "DS-ALGO");
+        setDSQues(filteredData.length);
+
+        filteredData = data.filter((item) => item.subject == "Maths");
+        setMathsQues(filteredData.length);
+
+        filteredData = data.filter((item) => item.subject == "DBMS");
+        setDbmsQues(filteredData.length);
+
+        filteredData = data.filter((item) => item.postedBy.department == "CSE");
+        setCseQues(filteredData.length);
+
+        filteredData = data.filter((item) => item.postedBy.department == "IT");
+        setItQues(filteredData.length);
+
+        filteredData = data.filter((item) => item.postedBy.department == "ECE");
+        setEceQues(filteredData.length);
+
+        filteredData = data.filter(
+          (item) => item.postedBy.department == "CIVIL"
+        );
+        setCivilQues(filteredData.length);
+
+        filteredData = data.filter((item) => item.postedBy.department == "EE");
+        setEEQues(filteredData.length);
+
+        filteredData = data.filter(
+          (item) => item.postedBy.department == "MECH"
+        );
+        setMechQues(filteredData.length);
+      } catch (err) {}
+    };
+    getAllForumData();
     getAllUser();
     getAllNotice();
   }, []);
@@ -132,6 +202,19 @@ const AdminDashboard = () => {
           civilstudentCount={civilstudentCount}
           eestudentCount={eestudentCount}
           mechstudentCount={mechstudentCount}
+          subQues={subQues}
+          cdQues={cdQues}
+          dbmsQues={dbmsQues}
+          dsQues={dsQues}
+          mathsQues={mathsQues}
+          deQues={deQues}
+          meQues={meQues}
+          cseQues={cseQues}
+          itQues={itQues}
+          eceQues={eceQues}
+          civilQues={civilQues}
+          eeQues={eeQues}
+          mechQues={mechQues}
         />
         {loader}
       </div>

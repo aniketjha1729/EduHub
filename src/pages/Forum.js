@@ -15,15 +15,15 @@ const Forum = () => {
     <div className="forumContainer">
       <div className="forum-left-view">
         <div
-          className="card"
-          style={{ width: "100%", height: "100%", border: "none" }}
+          className="card ForumCards"
+          // style={{ width: "100%", height: "100%", border: "none", margin: "auto" }}
         >
           <Link to="/" className="forumToBack">
             <button
               className="btn forum-question-button"
-              style={{ marginLeft: "30px" }}
+              // style={{ marginLeft: "30px" }}
             >
-              <i class="fas fa-arrow-circle-left"></i>Back
+              <i class="fas fa-arrow-circle-left"></i> Back
             </button>
           </Link>
           <img
@@ -45,12 +45,12 @@ const Forum = () => {
       </div>
       <div className="forum-right-view">
         <div
-          className="card"
-          style={{ width: "100%", height: "100%", border: "none" }}
+          className="card ForumCards"
+          // style={{ width: "100%", height: "100%", border: "none", margin: "auto" }}
         >
           <button
             className="btn forum-question-button"
-            style={{ marginLeft: "30px" }}
+            // style={{ marginLeft: "30px" }}
             onClick={toggleQuestionSection}
           >
             <i class="fas fa-arrow-circle-left"></i> Ask Question

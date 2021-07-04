@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ImageHelper from "./ImageHelper";
 import axios from "../../api/axios";
 import "./forum.css";
 import Question from "./Question";
@@ -30,6 +29,16 @@ const ForumFeed = () => {
     return 0;
   };
 
+  const sortByVotes = (a, b) => {
+    if (a.upVotes.length < b.upVotes.length) {
+      return 1;
+    }
+    if (a.upVotes.length > b.upVotes.length) {
+      return -1;
+    }
+    return 0;
+  };
+
   const toggleAnswerSection = (quesId) => {
     setAnswerId(quesId);
     getAnswerByQues(quesId);
@@ -44,7 +53,8 @@ const ForumFeed = () => {
       const { data } = await axios.get(`/forum/answer/question/${quesId}`);
       console.log(data);
       const sortedData = data.sort(sortByDate);
-      setAnsByQues(sortedData);
+      const sortedDataByVotes = sortedData.sort(sortByVotes);
+      setAnsByQues(sortedDataByVotes);
       console.log(sortedData);
     } catch (err) {
       console.log(err);
@@ -118,7 +128,8 @@ const ForumFeed = () => {
     try {
       const { data } = await axios.post("/forum/questions/tags", body);
       const sortedData = data.sort(sortByDate);
-      setAllQues(sortedData);
+      const sortedDataByVotes = sortedData.sort(sortByVotes);
+      setAllQues(sortedDataByVotes);
     } catch (err) {
       console.log(err);
     }
@@ -142,8 +153,9 @@ const ForumFeed = () => {
       const filteredData = data.filter(
         (item) => item.postedBy.department == e.target.value
       );
+      const sortedDataByVotes = filteredData.sort(sortByVotes);
+      setAllQues(sortedDataByVotes);
       console.log(filteredData);
-      setAllQues(filteredData);
     } catch (err) {
       console.log(err);
     }
@@ -156,8 +168,9 @@ const ForumFeed = () => {
       const filteredData = data.filter(
         (item) => item.postedBy.year == e.target.value
       );
+      const sortedDataByVotes = filteredData.sort(sortByVotes);
+      setAllQues(sortedDataByVotes);
       console.log(filteredData);
-      setAllQues(filteredData);
     } catch (err) {
       console.log(err);
     }
@@ -170,8 +183,9 @@ const ForumFeed = () => {
       const filteredData = data.filter(
         (item) => item.subject == e.target.value
       );
+      const sortedDataByVotes = filteredData.sort(sortByVotes);
+      setAllQues(sortedDataByVotes);
       console.log(filteredData);
-      setAllQues(filteredData);
     } catch (err) {
       console.log(err);
     }
@@ -184,8 +198,9 @@ const ForumFeed = () => {
       const filteredData = data.filter(
         (item) => item.postedBy.role == e.target.value
       );
+      const sortedDataByVotes = filteredData.sort(sortByVotes);
+      setAllQues(sortedDataByVotes);
       console.log(filteredData);
-      setAllQues(filteredData);
     } catch (err) {
       console.log(err);
     }
@@ -215,9 +230,10 @@ const ForumFeed = () => {
           <div className="card-body">
             <div className="filerContainer">
               <div className="filterGroup">
-                <div className="row">
+                <div className="row ForumDropRowSelect">
                   <div className="col-3">
                     <select
+                      className="forum-drop"
                       name="filterByStream"
                       value={filterStream}
                       onChange={(value) => filterByStream(value)}
@@ -233,6 +249,7 @@ const ForumFeed = () => {
                   </div>
                   <div className="col-3">
                     <select
+                      className="forum-drop"
                       name="filterByYear"
                       value={filterYear}
                       onChange={(value) => filterByYear(value)}
@@ -246,6 +263,7 @@ const ForumFeed = () => {
                   </div>
                   <div className="col-3">
                     <select
+                      className="forum-drop"
                       id=""
                       name="filterByYear"
                       value={filterSubject}
@@ -264,6 +282,7 @@ const ForumFeed = () => {
                   </div>
                   <div className="col-3">
                     <select
+                      className="forum-drop"
                       id=""
                       name="filterByRole"
                       value={filterRole}
@@ -278,7 +297,7 @@ const ForumFeed = () => {
               </div>
               <div className="filterForm">
                 <form
-                  className="form-inline forum-search"
+                  className="form-inline forum-search ForumFilter"
                   onSubmit={(e) => {
                     e.preventDefault();
                     filterQuesByTags(filterTags);
@@ -298,7 +317,7 @@ const ForumFeed = () => {
                   <button className="btn btn-primary" type="submit">
                     Filter
                   </button>
-                  <div style={{ marginLeft: "170px" }}>
+                  <div className="ForumFilter">
                     <small
                       id="tagHelp"
                       className="form-text text-muted text-center"
@@ -332,7 +351,7 @@ const ForumFeed = () => {
                       toggleAnswerSection(question._id);
                     }}
                   >
-                    Answer
+                    <i className="fas fa-comment-alt"></i> &nbsp; Answer
                   </div>
                   <div className="col-6 forum-questionAction-saveAnswer">
                     Save
@@ -372,7 +391,7 @@ const ForumFeed = () => {
                       <div className="forumAnswerContainer">
                         <div className="forumFirstAns">
                           <div className="row">
-                            <div className="col-1 text-right">
+                            <div className="col-2 text-left">
                               <div className="forum-answer-voteUp">
                                 <i
                                   className="fas fa-arrow-circle-up fa-2x"
@@ -396,7 +415,7 @@ const ForumFeed = () => {
                                 ></i>
                               </div>
                             </div>
-                            <div className="col-10 forumAnswer">
+                            <div className="col-10 forumAnswer text-left">
                               {ans.answer}
                             </div>
                           </div>

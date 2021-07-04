@@ -51,11 +51,6 @@ const PostFeed = (props) => {
     }
   };
 
-  // const onEnterPress = async (e,comment) => {
-  //   e.preventDefault();
-  //   console.log("hello");
-  // };
-
   const getAllPost = async () => {
     try {
       const { data } = await axios.get("/user/post/getAllPost");
@@ -199,7 +194,7 @@ const PostFeed = (props) => {
                             type="text"
                             className="commentInput"
                             placeholder="Write a comment..."
-                          />
+                          /><button className="CommentArrow"></button>
                         </div>
                       </form>
                     </div>

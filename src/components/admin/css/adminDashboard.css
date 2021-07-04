@@ -65,7 +65,7 @@ thead {
 }
 .main {
   height: 500px;
-  margin-left: 35%;
+  padding-left: 83%;
 }
 .admin-drop {
   width: 103%;
@@ -74,4 +74,9 @@ thead {
   background-color: white;
   text-align-last: center;
   font-weight: bold;
+}
+.AdminCreateNoticeTextArea{
+  height: 36px;
+  padding-left: 8px;
+  padding-top: 3px;
 }

@@ -203,6 +203,29 @@
   vertical-align: top; */
   /* overflow: hidden; */
 }
+.CommentArrow{
+  margin-top: 7px;
+  position: absolute;
+  background: #6c63ff;
+  color: white;
+  border: 0;
+  vertical-align: middle;
+}
+.CommentArrow:after {
+  content: "";
+  position: absolute;
+  border-bottom: 18px solid transparent;
+  border-top: 18px solid transparent;
+  border-left: 18px solid #6c63ff;
+  margin-right: 10px;
+  height: 0px;
+  width: 0px;
+  right: 0;
+  transition : border 150ms ease-out; 
+}
+.CommentArrow:hover::after{
+  border-left: 25px solid #124fc2;
+}
 /* .commentInput::-webkit-scrollbar {
   display: none;
 } */

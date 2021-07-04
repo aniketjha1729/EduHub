@@ -63,27 +63,39 @@ const AdminDashboard = (props) => {
         </div>
         <div className="col-4">
           <div className="card" style={{ width: "20rem" }}>
-            <div class="card-header text-center">Featured</div>
+            <div class="card-header text-center">
+              Forum (Department){props.subQues}
+            </div>
             <div className="card-body">
               <Doughnut
                 options={{ maintainAspectRatio: false }}
                 data={{
-                  labels: ["Teacher", "Student", "Verified", "Pending"],
+                  labels: ["CSE", "IT", "ECE", "CIVIL", "EE", "MECH"],
                   datasets: [
                     {
-                      label: "# of Votes",
-                      data: [30, 300, 266, 64],
+                      data: [
+                        props.cseQues,
+                        props.itQues,
+                        props.eceQues,
+                        props.civilQues,
+                        props.eeQues,
+                        props.mechQues,
+                      ],
                       backgroundColor: [
-                        "rgba(255, 99, 132)",
                         "rgba(54, 162, 235)",
-                        "rgba(255, 206, 86)",
+                        "rgba(255, 99, 132)",
                         "rgba(75, 192, 192)",
+                        "rgba(255, 206, 86)",
+                        "rgba(150, 255, 125)",
+                        "rgba(130, 150, 100)",
                       ],
                       borderColor: [
-                        "rgba(255, 99, 132, 1)",
                         "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
+                        "rgba(255, 99, 132, 1)",
                         "rgba(75, 192, 192, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(150, 255, 125, 1)",
+                        "rgba(130, 150, 100,1)",
                       ],
                       borderWidth: 1,
                     },
@@ -95,27 +107,46 @@ const AdminDashboard = (props) => {
         </div>
         <div className="col-4">
           <div className="card" style={{ width: "20rem" }}>
-            <div class="card-header text-center">Featured</div>
+            <div class="card-header text-center">
+              Forum (Subjects){props.subQues}
+            </div>
             <div className="card-body">
               <Doughnut
                 options={{ maintainAspectRatio: false }}
                 data={{
-                  labels: ["Teacher", "Student", "Verified", "Pending"],
+                  labels: [
+                    "DBMS",
+                    "DS-ALGO",
+                    "Maths",
+                    "Compiler Design",
+                    "Digital Electornics",
+                    "Mechanics",
+                  ],
                   datasets: [
                     {
-                      label: "# of Votes",
-                      data: [30, 300, 266, 64],
+                      data: [
+                        props.dbmsQues,
+                        props.dsQues,
+                        props.mathsQues,
+                        props.cdQues,
+                        props.deQues,
+                        props.meQues,
+                      ],
                       backgroundColor: [
                         "rgba(255, 99, 132)",
                         "rgba(54, 162, 235)",
                         "rgba(255, 206, 86)",
                         "rgba(75, 192, 192)",
+                        "rgba(150, 255, 125)",
+                        "rgba(130, 150, 100)",
                       ],
                       borderColor: [
                         "rgba(255, 99, 132, 1)",
                         "rgba(54, 162, 235, 1)",
                         "rgba(255, 206, 86, 1)",
                         "rgba(75, 192, 192, 1)",
+                        "rgba(150, 255, 125, 1)",
+                        "rgba(130, 150, 100,1)",
                       ],
                       borderWidth: 1,
                     },
@@ -215,7 +246,7 @@ const AdminDashboard = (props) => {
       <div className="row">
         <div className="col">
           <div className="card" style={{ width: "100%", height: "400px" }}>
-            <div class="card-header text-center">User By Department</div>
+            <div class="card-header text-center">Students By Department</div>
             <div className="card-body">
               <Bar
                 options={{ maintainAspectRatio: false }}

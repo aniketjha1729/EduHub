@@ -148,7 +148,7 @@ const UserSignup = ({ userRegister, signupStatus, errors }) => {
                 <label>
                   <input
                     type="submit"
-                    className="form-control signup-button"
+                    className="form-control login-button"
                     value="Signup"
                   />
                 </label>

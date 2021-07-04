@@ -118,6 +118,10 @@
   margin-left: 80%;
   height: 89vh;
 }
+.parenthome{
+  background-color: #e6e6e6 !important;
+
+}
 .forum-question-button:hover {
   color: whitesmoke;
   box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);

@@ -123,6 +123,7 @@ const ForumFeed = () => {
   const getAllQuestion = async () => {
     try {
       const { data } = await axios.get("/forum/allQuestions");
+      console.log(data);
       const sortedData = data.sort(sortByDate);
       setAllQues(sortedData);
     } catch (err) {
@@ -138,33 +139,99 @@ const ForumFeed = () => {
     <div className="container">
       <div>
         <Error error={error} />
-        <form
-          className="form-inline forum-search"
-          onSubmit={(e) => {
-            e.preventDefault();
-            filterQuesByTags(filterTags);
-            setFilterTags("");
-          }}
-        >
-          <input
-            className="form-control forum-searchInput"
-            type="search"
-            placeholder="Tags go here....."
-            aria-label="Search"
-            name="filterTags"
-            value={filterTags}
-            onChange={(e) => setFilterTags(e.target.value)}
-          />
-          &nbsp;
-          <button className="btn btn-primary" type="submit">
-            Filter
-          </button>
-          <div style={{ marginLeft: "170px" }}>
-            <small id="tagHelp" className="form-text text-muted text-center">
-              Seperate your tags with ","
-            </small>
+        <div className="card">
+          <div
+            className="card-header text-center"
+            onClick={getAllQuestion}
+            style={{
+              backgroundColor: "#6C63FF",
+              color: "white",
+              fontSize: "large",
+              cursor: "pointer",
+            }}
+          >
+            <b>Welcome to NSEC Forum</b>
           </div>
-        </form>
+          <div className="card-body">
+            <div className="filerContainer">
+              <div className="filterGroup">
+                <div className="row">
+                  <div className="col-3">
+                    <select name="" id="">
+                      <option value="">Filter By Stream</option>
+                      <option value="CSE">CSE</option>
+                      <option value="IT">IT</option>
+                      <option value="MECH">MECH</option>
+                      <option value="CIVIL">CIVIL</option>
+                      <option value="ECE">ECE</option>
+                      <option value="CSE">CSE</option>
+                    </select>
+                  </div>
+                  <div className="col-3">
+                    <select name="" id="">
+                      <option value="">Filter By Year</option>
+                      <option value="1st">1st</option>
+                      <option value="2nd">2nd</option>
+                      <option value="3rd">3rd</option>
+                      <option value="4th">4th</option>
+                    </select>
+                  </div>
+                  <div className="col-3">
+                    <select name="" id="">
+                      <option value="">Filter By Subject</option>
+                      <option>Select</option>
+                      <option>DBMS</option>
+                      <option>DS-ALGO</option>
+                      <option>Maths</option>
+                      <option>Compiler Design</option>
+                      <option>Digital Electornics</option>
+                      <option>Mechanics</option>
+                    </select>
+                  </div>
+                  <div className="col-3">
+                    <select name="" id="">
+                      <option value="">Filter By Role</option>
+                      <option>Teacher</option>
+                      <option>Student</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="filterForm">
+                <form
+                  className="form-inline forum-search"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    filterQuesByTags(filterTags);
+                    setFilterTags("");
+                  }}
+                >
+                  <input
+                    className="form-control forum-searchInput"
+                    type="search"
+                    placeholder="Tags go here....."
+                    aria-label="Search"
+                    name="filterTags"
+                    value={filterTags}
+                    onChange={(e) => setFilterTags(e.target.value)}
+                  />
+                  &nbsp;
+                  <button className="btn btn-primary" type="submit">
+                    Filter
+                  </button>
+                  <div style={{ marginLeft: "170px" }}>
+                    <small
+                      id="tagHelp"
+                      className="form-text text-muted text-center"
+                    >
+                      Seperate your tags with ","
+                    </small>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       {getAllQues.map((question) => (
         <div className="row forumBody">

@@ -215,9 +215,10 @@ const ForumFeed = () => {
           <div className="card-body">
             <div className="filerContainer">
               <div className="filterGroup">
-                <div className="row">
+                <div className="row ForumDropRowSelect">
                   <div className="col-3">
                     <select
+                    className="forum-drop"
                       name="filterByStream"
                       value={filterStream}
                       onChange={(value) => filterByStream(value)}
@@ -233,6 +234,7 @@ const ForumFeed = () => {
                   </div>
                   <div className="col-3">
                     <select
+                    className="forum-drop"
                       name="filterByYear"
                       value={filterYear}
                       onChange={(value) => filterByYear(value)}
@@ -246,6 +248,7 @@ const ForumFeed = () => {
                   </div>
                   <div className="col-3">
                     <select
+                    className="forum-drop"
                       id=""
                       name="filterByYear"
                       value={filterSubject}
@@ -264,6 +267,7 @@ const ForumFeed = () => {
                   </div>
                   <div className="col-3">
                     <select
+                    className="forum-drop"
                       id=""
                       name="filterByRole"
                       value={filterRole}
@@ -278,7 +282,7 @@ const ForumFeed = () => {
               </div>
               <div className="filterForm">
                 <form
-                  className="form-inline forum-search"
+                  className="form-inline forum-search ForumFilter"
                   onSubmit={(e) => {
                     e.preventDefault();
                     filterQuesByTags(filterTags);
@@ -298,7 +302,7 @@ const ForumFeed = () => {
                   <button className="btn btn-primary" type="submit">
                     Filter
                   </button>
-                  <div style={{ marginLeft: "170px" }}>
+                  <div className="ForumFilter">
                     <small
                       id="tagHelp"
                       className="form-text text-muted text-center"

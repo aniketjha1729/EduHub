@@ -64,7 +64,7 @@ const PostQuestion = () => {
             </h5>
             <div className="card-body">
               <h5 className="card-title">
-                <form onSubmit={onSubmit}>
+                <form onSubmit={onSubmit} className="PostQuestionForm">
                   <div className="form-group ForumLabel">
                     <label for="exampleInputEmail1">Your Queries</label>
                     <textarea

@@ -101,6 +101,8 @@
 }
 .forumToBack {
   color: white;
+  /* width: 130px; */
+  text-align: center;
 }
 .forumToBack:hover {
   color: white;
@@ -124,7 +126,7 @@
 }
 .forum-question-button:hover {
   color: whitesmoke;
-  box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4);
+  /* box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4); */
   background-color: #124fc2;
 }
 .forum-question-button {
@@ -133,17 +135,23 @@
   background-color: #6c63ff;
   width: 185px;
   font: 150% bold;
-  display: inline-block;
+  /* display: inline-block;
   position: relative;
-  line-height: 1em;
+  line-height: 1em; */
+  margin: auto;
   /* padding-left: 1em; */
   /* padding-right: 2em; */
 }
 
-.forum-question-button:hover::after {
+/* .forum-question-button:hover::after {
   border-right: 20px solid #124fc2;
+} */
+.ForumCards{
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: auto;
 }
-
 /* END */
 .eduhubFooter {
   font-size: 13px;

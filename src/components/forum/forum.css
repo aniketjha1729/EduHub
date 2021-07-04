@@ -102,12 +102,22 @@ textarea {
 }
 
 .forum-search {
-  margin-left: 20px;
-  margin-top: 10px;
+  /* margin-left: 1000px; */
+  /* margin-top: 10px; */
+  /* width: 99%; */
+  /* margin: auto; */
+  padding-top: 5%;
 }
 
 .forum-searchInput {
   width: 500px !important;
+}
+.ForumFilter{
+  width: 99%;
+  margin: auto;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .forum-replyButton:hover {
@@ -123,7 +133,6 @@ textarea {
 }
 
 .forum-question-submit-button {
-  margin-left: 150px;
   color: whitesmoke;
   border: #6c63ff solid 1px;
   background-color: #6c63ff;
@@ -150,4 +159,26 @@ textarea {
   /* outline: none !important; */
   box-shadow: 0 0 0px black;
   outline-color: black;
+}
+.forum-drop {
+  width: 115%;
+  height: 130%;
+  border: solid #6c63ff 1px;
+  background-color: white;
+  text-align-last: center;
+  font-weight: bold;
+  margin: auto;
+}
+.forum-drop:focus {
+  /* outline: none !important; */
+  box-shadow: 0 0 0px black;
+  outline-color: black;
+}
+.ForumDropRowSelect{
+  width: 100%;
+  margin-top: 22px;
+}
+.PostQuestionForm
+{
+  text-align: center;
 }

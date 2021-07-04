@@ -15,6 +15,10 @@ const ForumFeed = () => {
   const [reply, setReply] = useState("");
   const [error, setError] = useState("");
   const [filterTags, setFilterTags] = useState("");
+  const [filterStream, setFilterStream] = useState("");
+  const [filterYear, setFilterYear] = useState("");
+  const [filterSubject, setFilterSubject] = useState("");
+  const [filterRole, setFilterRole] = useState("");
 
   const sortByDate = (a, b) => {
     if (a.date < b.date) {
@@ -131,6 +135,62 @@ const ForumFeed = () => {
     }
   };
 
+  const filterByStream = async (e) => {
+    setFilterStream(e.target.value);
+    try {
+      const { data } = await axios.get("/forum/allQuestions");
+      const filteredData = data.filter(
+        (item) => item.postedBy.department == e.target.value
+      );
+      console.log(filteredData);
+      setAllQues(filteredData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const filterByYear = async (e) => {
+    setFilterYear(e.target.value);
+    try {
+      const { data } = await axios.get("/forum/allQuestions");
+      const filteredData = data.filter(
+        (item) => item.postedBy.year == e.target.value
+      );
+      console.log(filteredData);
+      setAllQues(filteredData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const filterBySubject = async (e) => {
+    setFilterSubject(e.target.value);
+    try {
+      const { data } = await axios.get("/forum/allQuestions");
+      const filteredData = data.filter(
+        (item) => item.subject == e.target.value
+      );
+      console.log(filteredData);
+      setAllQues(filteredData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const filterByRole = async (e) => {
+    setFilterRole(e.target.value);
+    try {
+      const { data } = await axios.get("/forum/allQuestions");
+      const filteredData = data.filter(
+        (item) => item.postedBy.role == e.target.value
+      );
+      console.log(filteredData);
+      setAllQues(filteredData);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getAllQuestion();
   }, []);
@@ -157,7 +217,11 @@ const ForumFeed = () => {
               <div className="filterGroup">
                 <div className="row">
                   <div className="col-3">
-                    <select name="" id="">
+                    <select
+                      name="filterByStream"
+                      value={filterStream}
+                      onChange={(value) => filterByStream(value)}
+                    >
                       <option value="">Filter By Stream</option>
                       <option value="CSE">CSE</option>
                       <option value="IT">IT</option>
@@ -168,7 +232,11 @@ const ForumFeed = () => {
                     </select>
                   </div>
                   <div className="col-3">
-                    <select name="" id="">
+                    <select
+                      name="filterByYear"
+                      value={filterYear}
+                      onChange={(value) => filterByYear(value)}
+                    >
                       <option value="">Filter By Year</option>
                       <option value="1st">1st</option>
                       <option value="2nd">2nd</option>
@@ -177,22 +245,33 @@ const ForumFeed = () => {
                     </select>
                   </div>
                   <div className="col-3">
-                    <select name="" id="">
+                    <select
+                      id=""
+                      name="filterByYear"
+                      value={filterSubject}
+                      onChange={(value) => filterBySubject(value)}
+                    >
                       <option value="">Filter By Subject</option>
-                      <option>Select</option>
-                      <option>DBMS</option>
-                      <option>DS-ALGO</option>
-                      <option>Maths</option>
-                      <option>Compiler Design</option>
-                      <option>Digital Electornics</option>
-                      <option>Mechanics</option>
+                      <option value="DBMS">DBMS</option>
+                      <option value="DS-ALGO">DS-ALGO</option>
+                      <option value="Maths">Maths</option>
+                      <option value="Compiler Design">Compiler Design</option>
+                      <option value="Digital Electornics">
+                        Digital Electornics
+                      </option>
+                      <option value="Mechanics">Mechanics</option>
                     </select>
                   </div>
                   <div className="col-3">
-                    <select name="" id="">
+                    <select
+                      id=""
+                      name="filterByRole"
+                      value={filterRole}
+                      onChange={(value) => filterByRole(value)}
+                    >
                       <option value="">Filter By Role</option>
-                      <option>Teacher</option>
-                      <option>Student</option>
+                      <option value="student">Teacher</option>
+                      <option value="teacher">Student</option>
                     </select>
                   </div>
                 </div>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../api/axios";
+import Error from "../errors/Error";
 
 const CreatePost = (props) => {
+  const [error, setError] = useState("");
   const [values, setValues] = useState({
     document: "",
     content: "",
@@ -10,7 +12,7 @@ const CreatePost = (props) => {
   let userName = "aniket";
 
   const { content, document, formData } = values;
-  
+
   useEffect(() => {
     setValues({ ...values, formData: new FormData() });
   }, []);
@@ -27,13 +29,27 @@ const CreatePost = (props) => {
     console.log(formData);
     try {
       const { data } = await axios.post("/user/post/createPost", formData);
+      setValues({
+        ...values,
+        document: "",
+        content: "",
+        formData: "",
+      });
       props.getAllPost();
     } catch (err) {
       console.log(err);
+      setValues({
+        ...values,
+        document: "",
+        content: "",
+        formData: "",
+      });
+      setError(err.response.data.errors[0].msg);
     }
   };
   return (
     <div className="card-body">
+      <Error error={error}/>
       <br />
       <button
         type="button"

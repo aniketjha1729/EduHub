@@ -7,7 +7,7 @@ import "./home.css";
 
 const Home = ({ user: { user } }) => {
   return (
-    <>
+    <div className="parenthome">
       <div className="home-container">
         <div className="home-left-view">
           <LeftCard />
@@ -34,7 +34,7 @@ const Home = ({ user: { user } }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

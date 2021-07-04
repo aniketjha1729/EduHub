@@ -332,7 +332,7 @@ const ForumFeed = () => {
                       toggleAnswerSection(question._id);
                     }}
                   >
-                    Answer
+                    <i className="fas fa-comment-alt"></i> &nbsp; Answer
                   </div>
                   <div className="col-6 forum-questionAction-saveAnswer">
                     Save

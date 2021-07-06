@@ -26,14 +26,14 @@ const AdminUser = () => {
       setVerfiedUserCount(verfiedUser.length);
       const teacherCount = [];
       data.map((user) => {
-        if (user.role === "teacher") {
+        if (user.role === "Teacher") {
           teacherCount.push(user);
         }
       });
       setTeacherCount(teacherCount.length);
       const studentCount = [];
       data.map((user) => {
-        if (user.role === "student") {
+        if (user.role === "Student") {
           studentCount.push(user);
         }
       });

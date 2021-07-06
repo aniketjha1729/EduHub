@@ -4,8 +4,8 @@ import CreateNotice from "./CreateNotice";
 import CreatePost from "./CreatePost";
 
 const CreateCard = (props) => {
-  const [postModel, setPostModel] = useState(false);
-  const [noticeModel, setNoticeModel] = useState(true);
+  const [postModel, setPostModel] = useState(true);
+  const [noticeModel, setNoticeModel] = useState(false);
   const [forumModel, setForumModel] = useState(false);
 
   return (
@@ -15,15 +15,11 @@ const CreateCard = (props) => {
           <ul className="nav nav-tabs card-header-tabs CreateCardBold">
             <li className="nav-item">
               <Link
-                className="nav-link"
-                className={noticeModel ? "nav-link active CreateCardNoticeBoard" : "nav-link"}
-                onClick={() => {
-                  setNoticeModel(true);
-                  setPostModel(false);
-                  setForumModel(false);
-                }}
+                className="nav-link "
+                className={forumModel ? "nav-link active" : "nav-link"}
+                to="/forum"
               >
-                <i className="fas fa-clipboard"></i> Notice Board
+                <i className="fas fa-chalkboard-teacher"></i> Forum
               </Link>
             </li>
             <li className="nav-item">
@@ -40,11 +36,15 @@ const CreateCard = (props) => {
             </li>
             <li className="nav-item">
               <Link
-                className="nav-link "
-                className={forumModel ? "nav-link active" : "nav-link"}
-                to="/forum"
+                className="nav-link"
+                className={noticeModel ? "nav-link active CreateCardNoticeBoard" : "nav-link"}
+                onClick={() => {
+                  setNoticeModel(true);
+                  setPostModel(false);
+                  setForumModel(false);
+                }}
               >
-                <i className="fas fa-chalkboard-teacher"></i> Forum
+                <i class="fas fa-pen-nib"></i> Create Notice
               </Link>
             </li>
           </ul>

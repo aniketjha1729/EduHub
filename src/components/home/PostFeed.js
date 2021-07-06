@@ -90,7 +90,7 @@ const PostFeed = (props) => {
                 <Row className="row-name">
                   <div className="card-postedByDesignation">
                     <i>
-                      {post.postedBy.role == "student"
+                      {post.postedBy.role == "Student"
                         ? post.postedBy.year + "Year  "
                         : "Teacher"}
                     </i>

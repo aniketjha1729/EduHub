@@ -53,8 +53,8 @@ exports.getAllUsers = async (req, res) => {
     const { content, heading } = req.body;
     const { path, mimetype } = req.file;
     const notice = new Notice({
-      postedBy: req.user.role == "teacher" ? "teacher" : "student",
-      isVerified: req.user.role == "teacher" ? true : false,
+      postedBy: req.user.role == "Teacher" ? "Teacher" : "Student",
+      isVerified: req.user.role == "Teacher" ? true : false,
       content,
       heading,
       file_path: path,

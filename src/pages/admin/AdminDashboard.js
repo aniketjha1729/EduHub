@@ -53,14 +53,14 @@ const AdminDashboard = () => {
         setVerfiedUserCount(verfiedUser.length);
         const teacherCount = [];
         data.map((user) => {
-          if (user.role === "teacher") {
+          if (user.role === "Teacher") {
             teacherCount.push(user);
           }
         });
         setTeacherCount(teacherCount.length);
         const studentCount = [];
         data.map((user) => {
-          if (user.role === "student") {
+          if (user.role === "Student") {
             studentCount.push(user);
           }
         });
@@ -112,7 +112,7 @@ const AdminDashboard = () => {
           }
           if (data.postedBy == "admin") {
             noticeByAdmin++;
-          } else if (data.postedBy == "teacher") {
+          } else if (data.postedBy == "Teacher") {
             noticeByTeacher++;
           } else {
             noticeByStudent++;

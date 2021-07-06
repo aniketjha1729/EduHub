@@ -289,8 +289,8 @@ const ForumFeed = () => {
                       onChange={(value) => filterByRole(value)}
                     >
                       <option value="">Filter By Role</option>
-                      <option value="student">Teacher</option>
-                      <option value="teacher">Student</option>
+                      <option value="Teacher">Teacher</option>
+                      <option value="Student">Student</option>
                     </select>
                   </div>
                 </div>

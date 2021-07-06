@@ -248,6 +248,7 @@ input:focus {
 .CreateCardBold
 {
   font: 120% bold;
+  width: 100%;
 }
 .CreateCardSocial
 {

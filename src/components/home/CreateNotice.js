@@ -79,7 +79,7 @@ const CreateNotice = () => {
         data-toggle="modal"
         data-target="#noticeModel"
       >
-        Publish Notice
+        Publish a notice
       </button>
       <div
         className="modal fade"
@@ -108,12 +108,13 @@ const CreateNotice = () => {
               <form onSubmit={handleOnSubmit}>
                 <div className="form-group">
                   <input
+                    // style={{"font-family": "Font Awesome 5 Brands"}}
                     name="heading"
                     type="text"
                     value={state.heading || ""}
                     className="form-control UserHome-example-input example-input"
                     id="formGroupExampleInput"
-                    placeholder="Notice Heading"
+                    placeholder="Notice Heading"// &#xf242"
                     onChange={handleInputChange}
                   />
                 </div>

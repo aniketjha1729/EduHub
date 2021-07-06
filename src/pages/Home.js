@@ -18,7 +18,7 @@ const Home = ({ user: { user } }) => {
         <div className="home-right-view">
           <div className="card notice-header" style={{ width: "100%" }}>
             <div className="text-center">
-              <b>Notices</b>{" "}
+              <b style={{color: "rgb(255, 123, 0)"}}><i className="fas fa-clipboard"></i> Notice Board</b>{" "}
             </div>
           </div>
           <NoticeCard />

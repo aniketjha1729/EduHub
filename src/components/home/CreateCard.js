@@ -4,8 +4,8 @@ import CreateNotice from "./CreateNotice";
 import CreatePost from "./CreatePost";
 
 const CreateCard = (props) => {
-  const [postModel, setPostModel] = useState(false);
-  const [noticeModel, setNoticeModel] = useState(true);
+  const [postModel, setPostModel] = useState(true);
+  const [noticeModel, setNoticeModel] = useState(false);
   const [forumModel, setForumModel] = useState(false);
 
   return (

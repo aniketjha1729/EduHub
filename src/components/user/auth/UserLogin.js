@@ -8,8 +8,8 @@ import Error from "../../errors/Error";
 
 const UserLogin = ({ userLogin, isAuthenticated, errors }) => {
   const [formData, setFormData] = useState({
-    email: "test3@gmail.com",
-    password: "Test@1234",
+    email: "aniket@gmail.com",
+    password: "aniket@1234",
   });
   const { email, password } = formData;
 

@@ -77,7 +77,7 @@ const PostFeed = (props) => {
               <Col xs="1" sm="1" lg="1" className="Column">
                 <img
                   className="card-img-postedByIcon"
-                  src="https://images.unsplash.com/photo-1558899622-6e22c5d1c554?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
+                  src="https://bootdey.com/img/Content/avatar/avatar6.png"
                   alt=""
                 />
               </Col>
@@ -90,7 +90,7 @@ const PostFeed = (props) => {
                 <Row className="row-name">
                   <div className="card-postedByDesignation">
                     <i>
-                      {post.postedBy.role == "student"
+                      {post.postedBy.role == "Student"
                         ? post.postedBy.year + "Year  "
                         : "Teacher"}
                     </i>
@@ -162,7 +162,7 @@ const PostFeed = (props) => {
                       <div className="col-1">
                         <img
                           className="comment-user-icon "
-                          src="https://images.unsplash.com/photo-1558899622-6e22c5d1c554?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
+                          src="https://bootdey.com/img/Content/avatar/avatar6.png"
                           alt=""
                         />
                       </div>
@@ -178,7 +178,7 @@ const PostFeed = (props) => {
                     <div className="col-1">
                       <img
                         className="comment-user-icon "
-                        src="https://images.unsplash.com/photo-1558899622-6e22c5d1c554?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
+                        src="https://bootdey.com/img/Content/avatar/avatar6.png"
                         alt=""
                       />
                     </div>

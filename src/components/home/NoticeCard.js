@@ -51,7 +51,7 @@ const NoticeCard = () => {
               : { backgroundColor: "white" }
           }
         >
-          <div className="card-body">
+          <div className="card-body" style={{paddingTop:"10px",marginBottom:"-12px"}}>
             <p className="card-text">
               <div className="notice-heading text-center">
                 <b>{notice.heading}</b> &nbsp;
@@ -64,7 +64,7 @@ const NoticeCard = () => {
                     )
                   }
                   className="fas fa-file-download"
-                  style={{ cursor: "pointer" }}
+                  style={{ cursor: "pointer", marginBottom:"8px" }}
                 ></i>
               </div>
               <div className="notice-postedBy text-center">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { logout } from "../../redux/actions/user";
@@ -12,6 +12,7 @@ const UserNavbar = ({
   user: { user },
 }) => {
   console.log(adminisAuthenticated);
+  const [toogleUserInfo, setToogleUserInfo] = useState(false);
   return (
     <>
       <nav className="navbar navbar-expand-lg userDivSticky userNav">
@@ -20,8 +21,12 @@ const UserNavbar = ({
         </Link>
         <button
           className="navbar-toggler"
+          type="button"
           data-toggle="collapse"
           data-target="#navbarMenu"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -40,8 +45,11 @@ const UserNavbar = ({
           {isAuthenticated ? (
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link to="/profile" className="user-nav-link">
-                  {user ? user.name : ""}
+                <Link
+                  className="user-nav-link"
+                  onClick={() => setToogleUserInfo(!toogleUserInfo)}
+                >
+                  <span>{user ? user.name : ""}</span>
                 </Link>
               </li>
               <li className="nav-item">
@@ -82,6 +90,39 @@ const UserNavbar = ({
           )}
         </div>
       </nav>
+      {toogleUserInfo ? (
+        <div className="userInfoContainer text-center">
+          <div className="row">
+            <div className="col">
+              <Link
+                to="/profile"
+                onClick={() => setToogleUserInfo(!toogleUserInfo)}
+                data-toggle="collapse"
+                data-target="#navbarMenu"
+              >
+                Profile
+              </Link>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">
+            <Link
+                to="/messenger"
+                onClick={() => setToogleUserInfo(!toogleUserInfo)}
+                data-toggle="collapse"
+                data-target="#navbarMenu"
+              >
+                Messenger
+              </Link>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col">Groups</div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -10,6 +10,7 @@ import { loadAdminData } from "./redux/actions/admin";
 import { loadUserData } from "./redux/actions/user";
 import UserNavbar from "./components/navbar/UserNavbar";
 
+
 const App = () => {
   useEffect(() => {
     // check for token in LS

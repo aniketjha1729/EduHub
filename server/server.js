@@ -12,6 +12,7 @@ const adminDashboardRoutes = require("./routes/admin/adminDashboard");
 const userRoutes = require("./routes/user/user");
 const userDashboardRoutes = require("./routes/user/userDashboard");
 const forumRoutes = require("./routes/forum/forum");
+const messengerRoutes = require("./routes/messenger/messenger");
 
 const app = express();
 
@@ -33,7 +34,8 @@ app.use(cookieParser());
 
 app.use("/admin", adminUserRoutes, adminDashboardRoutes);
 app.use("/user", userRoutes, userDashboardRoutes);
-app.use("/forum",forumRoutes);
+app.use("/forum", forumRoutes);
+app.use("/messenger", messengerRoutes);
 
 app.listen(PORT, () => {
   console.log("Server is running on", PORT);

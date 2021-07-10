@@ -74,7 +74,7 @@ const AdminNoticeCreateForm = () => {
     }
   };
   return (
-    <div className="noticeUpload main media-body">
+    <div className="noticeUpload media-body">
       <Form className="search-form" onSubmit={handleOnSubmit}>
         <div style={{ width: "600px" }}>
           <div className="row shadow p-3 mb-5 bg-body rounded">

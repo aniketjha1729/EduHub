@@ -189,9 +189,19 @@
 .chatBoxWrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+.noConversationText{
+  position: absolute;
+  top:10%;
+  font-size: 50px;
+  color: rgb(202, 193, 193);
+  text-align: center;
+  
 }
 .chatBoxTop {
   max-height: 500px;
+  min-height: 500px;
   overflow-y: scroll;
   padding-right: 10px;
 }

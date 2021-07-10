@@ -4,7 +4,7 @@ A Social Network developed with MERN stack.
 
 <p align="center">
  <img src="snaps/Login.png" width="400" heigth="200">
-&nbsp; &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp;
  <img src="snaps/SignUp.png" width="400" heigth="200">
 </p>
 

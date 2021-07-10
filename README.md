@@ -2,7 +2,7 @@
 
 A Social Network developed with MERN stack.
 
-<img src="snaps/Login.png" width="200" heigth="100">
+<img src="snaps/Login.png" width="400" heigth="200">
 
 ## Requirements
 

@@ -21,7 +21,7 @@ A Social Network developed with MERN stack.
 </p>
 
 <p align="center">
- <img src="snaps/AshQuestion.png" width="400" heigth="200">
+ <img src="snaps/AskQuestion.png" width="400" heigth="200">
 &nbsp; &nbsp;
  <img src="snaps/answer.png" width="400" heigth="200">
 </p>

@@ -5,7 +5,25 @@ A Social Network developed with MERN stack.
 <p align="center">
  <img src="snaps/Login.png" width="400" heigth="200">
 &nbsp; &nbsp;
- <img src="snaps/SignUp.png" width="400" heigth="200">
+ <img src="snaps/adminDashboard.png" width="400" heigth="200">
+</p>
+
+<p align="center">
+ <img src="snaps/adminCreateNotice.png" width="400" heigth="200">
+&nbsp; &nbsp;
+ <img src="snaps/adminUser.png" width="400" heigth="200">
+</p>
+
+<p align="center">
+ <img src="snaps/Forum.png" width="400" heigth="200">
+&nbsp; &nbsp;
+ <img src="snaps/CreatePost.png" width="400" heigth="200">
+</p>
+
+<p align="center">
+ <img src="snaps/AshQuestion.png" width="400" heigth="200">
+&nbsp; &nbsp;
+ <img src="snaps/answer.png" width="400" heigth="200">
 </p>
 
 

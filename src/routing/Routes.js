@@ -14,9 +14,7 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import Teams from "../pages/Teams";
 import Forum from "../pages/Forum";
 import Profile from "../pages/Profile";
-import userpage from "../components/userpage";
-
-
+import Messenger from "../pages/Messenger";
 
 const Routes = () => {
   return (
@@ -36,10 +34,10 @@ const Routes = () => {
       <UserPrivateRoute exact path="/" component={Home} />
       <UserPrivateRoute exact path="/forum" component={Forum} />
       <UserPrivateRoute exact path="/profile" component={Profile} />
+      <Route exact path="/messenger" component={Messenger} />
       <Route exact path="/signup" component={UserSignup} />
       <Route exact path="/login" component={UserLogin} />
       <Route exact path="/admin" component={AdminSignIn} />
-      <Route exact path="/userpage" component={userpage} />
       <Route exact path="/teams" component={Teams} />
       <Route component={PageNoteFound} />
     </Switch>

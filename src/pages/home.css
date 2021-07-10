@@ -39,47 +39,52 @@
   font-size: large;
   background-color: #f7f7f7;
 }
-/* <CSS by Amit> */
 
 .team-container {
   margin-left: 16%;
 }
-.teamCol {
-  /* border: rgb(95, 54, 54) 1px solid; */
 
+.teamCol {
   padding: 2%;
   background-color: white;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
+
 .teamPic {
   border-radius: 50%;
   width: 150px;
   margin-right: 30px;
 }
+
 .teamName {
   font: 230% bold;
   padding: 2%;
 }
+
 .teamNameID {
   font: 90% bold;
 }
+
 .teamCardUp {
   background-color: white;
   margin-top: 10px;
   box-shadow: 0 -2px 7px 3px rgb(44, 44, 65);
 }
+
 .teamCardDown {
   background-color: white;
   margin-bottom: 15px;
   box-shadow: 0 3px 7px 3px rgb(44, 44, 65);
   transition: box-shadow 0.5s;
 }
+
 .teamCardDown:hover {
   box-shadow: 0 3px 13px 3px rgb(31, 31, 185);
 }
+
 .teamCardLeft {
   margin-left: 10px;
 }
+
 .teamCardRight {
   margin-left: 50px;
 }
@@ -99,15 +104,17 @@
   margin-right: 79%;
   overflow: hidden;
 }
+
 .forumToBack {
   color: white;
-  /* width: 130px; */
   text-align: center;
 }
+
 .forumToBack:hover {
   color: white;
   text-decoration: none;
 }
+
 .forum-middle-view {
   margin-top: 70px;
   width: 50%;
@@ -120,39 +127,107 @@
   margin-left: 80%;
   height: 89vh;
 }
-.parenthome{
-  background-color: #e6e6e6 !important;
 
+.parenthome {
+  background-color: #e6e6e6 !important;
 }
+
 .forum-question-button:hover {
   color: whitesmoke;
-  /* box-shadow: 7px 7px 7px rgba(0, 88, 139, 0.4); */
   background-color: #124fc2;
 }
+
 .forum-question-button {
   color: whitesmoke;
   border: #6c63ff solid 1px;
   background-color: #6c63ff;
   width: 185px;
   font: 150% bold;
-  /* display: inline-block;
-  position: relative;
-  line-height: 1em; */
   margin: auto;
-  /* padding-left: 1em; */
-  /* padding-right: 2em; */
 }
 
-/* .forum-question-button:hover::after {
-  border-right: 20px solid #124fc2;
-} */
-.ForumCards{
+.ForumCards {
   width: 100%;
   height: 100%;
   border: none;
   margin: auto;
 }
-/* END */
+
 .eduhubFooter {
   font-size: 13px;
+}
+
+.messenger {
+  min-height: 100vh;
+  display: flex;
+}
+
+.chatMenu {
+  margin-top: 55px;
+  flex: 3.0;
+}
+
+.chatMenuInput {
+  width: 90%;
+  padding: 10px 0;
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.chatBox {
+  margin-top: 55px;
+  flex: 6.5;
+}
+
+.chatMenuWrapper,
+.chatBoxWrapper,
+.chatOnlineWrapper {
+  padding: 10px;
+  height: 100%;
+}
+
+.chatBoxWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.noConversationText{
+  position: absolute;
+  top:10%;
+  font-size: 50px;
+  color: rgb(202, 193, 193);
+  text-align: center;
+  
+}
+.chatBoxTop {
+  max-height: 500px;
+  min-height: 500px;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+.chatBoxBottom {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chatMessageInput {
+  width: 85%;
+  height: 40px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+.chatSendButton {
+  width: 70px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #6c63ff;
+  color: white;
+}
+.chatOnline {
+  margin-top: 55px;
+  flex: 2.5;
 }

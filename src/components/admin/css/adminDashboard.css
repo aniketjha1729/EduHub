@@ -42,9 +42,9 @@ thead {
 }
 
 .noticeUpload {
-  width: 300px;
-  /* margin-top: 30px; */
+  width: 100px;
   padding-top: 100px;
+  margin-left: 450px;
 }
 .drop-zone {
   width: 500px;
@@ -63,10 +63,7 @@ thead {
   background-color: rgb(228, 228, 228);
   padding-top: 38px;
 }
-.main {
-  height: 500px;
-  padding-left: 83%;
-}
+
 .admin-drop {
   width: 103%;
   height: 100%;

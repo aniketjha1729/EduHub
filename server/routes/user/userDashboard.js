@@ -56,7 +56,7 @@ router.get("/testauth", isUserAuth, isVerified, (req, res) => {
 
 router.get("/currentUser", isUserAuth, currentProfile);
 
-router.get("/profile/:userId", isUserAuth, isVerified, getUserById);
+router.get("/user/:userId", getUserById);
 
 router.put("/verifynotice/:noticeId", isUserAuth, isVerified, verifyNotice);
 

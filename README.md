@@ -2,6 +2,8 @@
 
 A Social Network developed with MERN stack.
 
+<img src="snaps/Login.png" width="200" heigth="100">
+
 ## Requirements
 
 1. nodeJS >=14.15.4

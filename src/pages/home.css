@@ -164,7 +164,7 @@
 
 .chatMenu {
   margin-top: 55px;
-  flex: 3.0;
+  flex: 3;
 }
 
 .chatMenuInput {
@@ -177,6 +177,7 @@
 .chatBox {
   margin-top: 55px;
   flex: 6.5;
+  background-image: url("../assets/chat.svg");
 }
 
 .chatMenuWrapper,
@@ -191,13 +192,12 @@
   flex-direction: column;
   position: relative;
 }
-.noConversationText{
+.noConversationText {
   position: absolute;
-  top:10%;
+  top: 10%;
   font-size: 50px;
   color: rgb(202, 193, 193);
   text-align: center;
-  
 }
 .chatBoxTop {
   max-height: 500px;

@@ -23,14 +23,13 @@ io.on("connection", (socket) => {
   console.log("socket client conneted");
 
   socket.on("addUser", (userId) => {
-    console.log(userId);
     addUser(userId, socket.id);
     io.emit("getUsers", users);
   });
 
   socket.on("sendMessage", ({ senderId, receiverId, text }) => {
     const user = getUser(receiverId);
-    console.log(senderId, receiverId, text);
+    //console.log(senderId, receiverId, text);
     io.to(user?.socketId).emit("getMessage", {
       senderId,
       text,

@@ -11,7 +11,7 @@ const UserNavbar = ({
   adminisAuthenticated,
   user: { user },
 }) => {
-  console.log(adminisAuthenticated);
+  // console.log(adminisAuthenticated);
   const [toogleUserInfo, setToogleUserInfo] = useState(false);
   return (
     <>

@@ -5,19 +5,45 @@ import Message from "../components/messenger/Message";
 import { connect } from "react-redux";
 import axios from "../api/axios";
 import "./home.css";
+import { io } from "socket.io-client";
 
 const Messenger = ({ user: { user } }) => {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessages] = useState("");
+  const [arrivalMessage, setArrivalMessage] = useState(null);
   const scrollRef = useRef();
+  const socket = useRef();
+
+  useEffect(() => {
+    socket.current = io("ws://localhost:8900");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessage({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    arrivalMessage &&
+      currentChat?.members.includes(arrivalMessage.sender) &&
+      setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage, currentChat]);
+
+  useEffect(() => {
+    socket.current.emit("addUser", user._id);
+    socket.current.on("getUsers", (users) => {
+      console.log(users);
+    });
+  }, [user]);
 
   useEffect(() => {
     const getConversation = async () => {
       try {
         const { data } = await axios.get(`/messenger/${user._id}`);
-        console.log(data);
         setConversations(data);
       } catch (err) {
         console.log(err);
@@ -51,6 +77,17 @@ const Messenger = ({ user: { user } }) => {
       text: newMessage,
       conversationId: currentChat._id,
     };
+
+    const receiverId = currentChat.members.find(
+      (member) => member !== user._id
+    );
+
+    socket.current.emit("sendMessage", {
+      senderId: user._id,
+      receiverId,
+      text: newMessage,
+    });
+
     try {
       const { data } = await axios.post(
         "/messenger/create/newMessage",

@@ -17,7 +17,6 @@ const {
   deleteComment,
   verifyNotice,
   currentProfile,
-  getPostByDepartment,
   photo,
   downloadNotice,
 } = require("../../controllers/user/userDashboard");
@@ -79,13 +78,6 @@ router.get("/post/getAllPost", isUserAuth, isVerified, getAllPost);
 router.get("/post/photo/:postId", photo);
 
 router.get("/post/mypost", isUserAuth, isVerified, getMyPost);
-
-router.get(
-  "/post/department/:departmentName",
-  isUserAuth,
-  isVerified,
-  getPostByDepartment
-);
 
 router.get("/post/:postId", isUserAuth, isVerified, getPostById);
 

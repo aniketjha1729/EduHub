@@ -56,7 +56,7 @@ const PostFeed = (props) => {
       const { data } = await axios.get("/user/post/getAllPost");
       const sortedData = data.sort(sortByDate);
       setAllPost(sortedData);
-      console.log(data);
+      
     } catch (err) {
       console.log(err);
     }

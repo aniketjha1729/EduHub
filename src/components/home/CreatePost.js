@@ -9,11 +9,11 @@ const CreatePost = (props) => {
     content: "",
     formData: "",
   });
-  let userName = "aniket";
 
   const { content, document, formData } = values;
 
   useEffect(() => {
+    console.log(props.user);
     setValues({ ...values, formData: new FormData() });
   }, []);
 
@@ -49,7 +49,7 @@ const CreatePost = (props) => {
   };
   return (
     <div className="card-body">
-      <Error error={error}/>
+      <Error error={error} />
       <br />
       <button
         type="button"
@@ -95,7 +95,7 @@ const CreatePost = (props) => {
                       type="text"
                       className="form-control example-input UserHome-example-input"
                       id="formGroupExampleInput"
-                      placeholder={`What's on your mind, ${userName} ?`}
+                      placeholder={`What's on your mind, ${props?.user?.name} ?`}
                       value={content}
                     />
                   </div>

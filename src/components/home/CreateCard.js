@@ -51,7 +51,7 @@ const CreateCard = (props) => {
         </div>
         <div className="card-body">
           {postModel ? (
-            <CreatePost getAllPost={props.getAllPost}/>
+            <CreatePost getAllPost={props.getAllPost} user={props.user} />
           ) : (
             ""
           )}

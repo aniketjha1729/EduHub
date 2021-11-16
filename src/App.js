@@ -33,7 +33,7 @@ const App = () => {
       <Router>
         <Fragment>
           <UserNavbar />
-          <Switch>qwertyuiop[]    
+          <Switch>   
             <Route component={Routes} />
           </Switch>
         </Fragment>

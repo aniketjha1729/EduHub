@@ -20,8 +20,8 @@ router.post(
 router.post(
   "/signup",
   check("name", "Name is required").notEmpty(),
-  check("role","Role is required").notEmpty(),
-  check("department","Department is required").notEmpty(),
+  check("role", "Role is required").notEmpty(),
+  check("department", "Department is required").notEmpty(),
   check("email", "Please include a valid email").isEmail(),
   check(
     "password",
